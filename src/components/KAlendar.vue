@@ -150,6 +150,9 @@ const selectThisDate = (date: string) => {
 
 .k-alendar-span-container {
   @apply flex justify-between items-center w-full;
+  .k-alendar-text {
+    @apply font-bold;
+  }
 }
 
 .date {
@@ -172,12 +175,11 @@ const selectThisDate = (date: string) => {
 }
 
 .point {
-  /* @apply w-2 h-2 bg-gray-500 rounded-full absolute top-4 right-2 md:hidden; */
   @apply w-2 h-2 bg-gray-500 rounded-full md:hidden;
 }
 
 .selected {
-  @apply bg-blue-500 text-white;
+  @apply bg-[#ebeef5] text-inherit p-2;
 }
 .k-alendar-today-button {
   @apply px-2 py-1 border border-gray-200 rounded-md
