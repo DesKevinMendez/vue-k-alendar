@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import KAlendar, { type KEvent } from './components/KAlendar.vue'
+import KAlendar from './components/KAlendar.vue'
+import type { KEvent } from './types/Events'
 
 const events: KEvent[] = [
   {
@@ -29,6 +30,66 @@ const events: KEvent[] = [
   {
     id: '5',
     title: 'Veamos que tal se muestra así',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '6',
+    title: 'Event 6',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '7',
+    title: 'Event 7',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '8',
+    title: 'Event 8',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '9',
+    title: 'Event 9',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '10',
+    title: 'Event 10',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '11',
+    title: 'Event 11',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '12',
+    title: 'Event 12',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '13',
+    title: 'Event 13',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '14',
+    title: 'Event 14',
+    date: '2024-08-08',
+    description: 'Description of event 1'
+  },
+  {
+    id: '15',
+    title: 'Event 15',
     date: '2024-08-08',
     description: 'Description of event 1'
   }
