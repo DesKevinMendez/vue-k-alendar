@@ -9,7 +9,7 @@ import KAlendar from './components/KAlendar.vue'
     </div>
   </header>
 
-  <main>
+  <main class="p-4">
     <k-alendar />
   </main>
 </template>
