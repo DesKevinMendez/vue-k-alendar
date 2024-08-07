@@ -71,7 +71,7 @@ export default function useRenderCalendar(events: KEvent[]) {
   })
 
   const title = computed(() => {
-    return format(currentDate.value, 'MMMM yyyy')
+    return format(currentDate.value, 'MMMM yyyy', { locale: es })
   })
 
   const nextMonth = () => {

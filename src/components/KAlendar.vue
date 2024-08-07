@@ -127,6 +127,9 @@ const selectThisDate = (date: string) => {
 
 .k-alendar-header-container {
   @apply flex justify-between items-center flex-col sm:flex-row;
+  .center-title > h2 {
+    @apply capitalize;
+  }
   .right-buttons,
   .left-buttons {
     @apply flex items-center space-x-2;
