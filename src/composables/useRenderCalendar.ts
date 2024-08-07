@@ -11,12 +11,22 @@ import {
   startOfMonth,
   startOfWeek
 } from 'date-fns'
+import { es } from 'date-fns/locale';
 import { computed, onMounted, ref } from "vue"
 
 const monthDays = ref<MonthDays[]>([])
 const currentDate = ref(new Date())
 
 export default function useRenderCalendar(events: KEvent[]) {
+
+  const getWeekDays = () => {
+    const start = startOfWeek(new Date(), { locale: es });
+    const end = endOfWeek(new Date(), { locale: es });
+
+    const days = eachDayOfInterval({ start, end });
+
+    return days.map(day => format(day, 'EEE', { locale: es }));
+  };
 
   const todayInISO = () => {
     return new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000)
@@ -80,5 +90,5 @@ export default function useRenderCalendar(events: KEvent[]) {
     monthDays.value = generateDaysCalendar(currentDate.value)
   }
 
-  return { nextMonth, prevMonth, toToday, title, monthDays }
+  return { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays }
 }

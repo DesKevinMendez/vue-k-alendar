@@ -17,6 +17,9 @@
         <button type="button" class="k-alendar-today-button">Día</button>
       </div>
     </header>
+    <div class="k-alendar-days-container">
+      <div v-for="day in getWeekDays()" :key="day">{{ day }}</div>
+    </div>
     <div class="k-alendar-container">
       <div
         v-for="i in monthDays"
@@ -52,7 +55,9 @@ import type { KEvent } from '@/types/Events'
 import { ref } from 'vue'
 
 const props = defineProps<{ events: KEvent[] }>()
-const { nextMonth, prevMonth, toToday, title, monthDays } = useRenderCalendar(props.events)
+const { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays } = useRenderCalendar(
+  props.events
+)
 
 const dateRefs = ref<Record<string, any>>({})
 
@@ -109,8 +114,14 @@ const selectThisDate = (date: string) => {
 .k-alendar-wrapper-container {
   @apply space-y-4;
 }
+
+.k-alendar-days-container {
+  @apply grid gap-1 auto-rows-auto border border-gray-200 rounded-sm text-center capitalize;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
 .k-alendar-container {
-  @apply grid gap-1 auto-rows-auto border border-gray-200 rounded-md;
+  @apply grid gap-1 auto-rows-auto;
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
@@ -122,11 +133,11 @@ const selectThisDate = (date: string) => {
   }
 
   .k-alendar-navegation-prev {
-    @apply px-2 py-1 border border-gray-500 rounded-l-md rounded-r-none w-16
+    @apply px-2 py-1 border border-gray-200 rounded-l-md rounded-r-none w-16
     lg:p-2;
   }
   .k-alendar-navegation-left {
-    @apply px-2 py-1 lg:p-2 border border-gray-500 rounded-r-md w-16;
+    @apply px-2 py-1 lg:p-2 border border-gray-200 rounded-r-md w-16;
   }
 }
 
@@ -139,8 +150,8 @@ const selectThisDate = (date: string) => {
 }
 
 .date {
-  @apply flex items-start justify-start p-2 cursor-pointer flex-col relative;
-  @apply border border-gray-500;
+  @apply flex items-start justify-start p-2 cursor-pointer flex-col relative rounded-sm;
+  @apply border border-gray-200;
 }
 
 .other-month-date {
@@ -166,7 +177,7 @@ const selectThisDate = (date: string) => {
   @apply bg-blue-500 text-white;
 }
 .k-alendar-today-button {
-  @apply px-2 py-1 border border-gray-500 rounded-md
+  @apply px-2 py-1 border border-gray-200 rounded-md
   lg:p-2;
 }
 </style>
