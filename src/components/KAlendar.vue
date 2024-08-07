@@ -40,96 +40,18 @@
 </template>
 
 <script setup lang="ts">
-import {
-  add,
-  eachDayOfInterval,
-  endOfMonth,
-  endOfWeek,
-  format,
-  isSameDay,
-  isSameMonth,
-  startOfMonth,
-  startOfWeek
-} from 'date-fns'
-import { computed, ref } from 'vue'
-
-const currentDate = ref(new Date())
-
-export type KEvent = {
-  id: string
-  title: string
-  date: string
-  description: string
-}
+import useRenderCalendar from '@/composables/useRenderCalendar'
+import type { KEvent } from '@/types/Events'
 
 const props = defineProps<{ events: KEvent[] }>()
-
-const todayInISO = () => {
-  return new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000)
-    .toISOString()
-    .split('T')[0]
-}
+const { nextMonth, prevMonth, toToday, title, monthDays } = useRenderCalendar(props.events)
 
 const eventClicked = (event: KEvent) => {
   console.log(event)
 }
 
-const generateDaysCalendar = (date: Date) => {
-  const days = eachDayOfInterval({
-    start: startOfWeek(startOfMonth(date)),
-    end: endOfWeek(endOfMonth(date))
-  }).map((day) => {
-    const dayFormated = format(day, 'yyyy-MM-dd')
-    const classToButton = []
-    const events = props.events.filter((event) => {
-      return isSameDay(dayFormated, event.date)
-    })
-
-    if (!isSameMonth(day, date)) {
-      classToButton.push('other-month-date')
-    }
-
-    if (isSameDay(dayFormated, todayInISO())) {
-      classToButton.push('selected')
-    }
-
-    const text = format(day, 'd')
-
-    return {
-      day: dayFormated,
-      class: classToButton.join(' '),
-      events,
-      text
-    }
-  })
-
-  return days
-}
-
-const title = computed(() => {
-  return format(currentDate.value, 'MMMM yyyy')
-})
-
 const selectThisDate = (date: string) => {
   console.log(date)
-}
-
-let monthDays = ref(generateDaysCalendar(new Date()))
-
-const nextMonth = () => {
-  currentDate.value = add(currentDate.value, { months: 1 })
-
-  monthDays.value = generateDaysCalendar(currentDate.value)
-}
-
-const prevMonth = () => {
-  currentDate.value = add(currentDate.value, { months: -1 })
-  monthDays.value = generateDaysCalendar(currentDate.value)
-}
-
-const toToday = () => {
-  currentDate.value = new Date()
-  monthDays.value = generateDaysCalendar(currentDate.value)
 }
 </script>
 
