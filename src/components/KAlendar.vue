@@ -115,17 +115,18 @@ const selectThisDate = (date: string) => {
 }
 
 .k-alendar-header-container {
-  @apply flex justify-between items-center flex-col md:flex-row;
+  @apply flex justify-between items-center flex-col sm:flex-row;
   .right-buttons,
   .left-buttons {
     @apply flex items-center space-x-2;
   }
 
   .k-alendar-navegation-prev {
-    @apply p-2 border border-gray-500 rounded-l-md rounded-r-none w-16;
+    @apply px-2 py-1 border border-gray-500 rounded-l-md rounded-r-none w-16
+    lg:p-2;
   }
   .k-alendar-navegation-left {
-    @apply p-2 border border-gray-500 rounded-r-md w-16;
+    @apply px-2 py-1 lg:p-2 border border-gray-500 rounded-r-md w-16;
   }
 }
 
@@ -165,6 +166,7 @@ const selectThisDate = (date: string) => {
   @apply bg-blue-500 text-white;
 }
 .k-alendar-today-button {
-  @apply p-2 border border-gray-500 rounded-md;
+  @apply px-2 py-1 border border-gray-500 rounded-md
+  lg:p-2;
 }
 </style>
