@@ -7,14 +7,17 @@
           <button type="button" class="k-alendar-navegation-left" @click="nextMonth">&rarr;</button>
         </div>
         <button type="button" class="k-alendar-today-button" @click="toToday">Ahora</button>
+        <div class="center-title">
+          <h2>{{ title }}</h2>
+        </div>
       </div>
-      <div class="center-title">
+      <!-- <div class="center-title">
         <h2>{{ title }}</h2>
-      </div>
+      </div> -->
       <div class="right-buttons">
-        <button type="button" class="k-alendar-today-button">Mes</button>
+        <!-- <button type="button" class="k-alendar-today-button">Mes</button>
         <button type="button" class="k-alendar-today-button">Semana</button>
-        <button type="button" class="k-alendar-today-button">Día</button>
+        <button type="button" class="k-alendar-today-button">Día</button> -->
       </div>
     </header>
     <div class="k-alendar-days-container">
@@ -122,15 +125,16 @@ const selectThisDate = (date: string) => {
 
 <style scoped lang="postcss">
 .k-alendar-wrapper-container {
-  @apply space-y-4;
+  @apply space-y-4 dark:text-slate-100;
 }
 
 button {
-  @apply hover:bg-[#ebeef5] transition-colors;
+  @apply hover:bg-[#ebeef5] transition-colors dark:hover:bg-slate-600;
 }
 
 .k-alendar-days-container {
-  @apply grid gap-1 auto-rows-auto border border-gray-200 rounded-sm text-center capitalize;
+  @apply grid gap-1 auto-rows-auto border border-gray-200 rounded-sm text-center capitalize
+  dark:border-gray-600;
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
@@ -151,10 +155,12 @@ button {
 
   .k-alendar-navegation-prev {
     @apply px-2 py-1 border border-gray-200 rounded-l-md rounded-r-none w-16
-    lg:p-2;
+    lg:p-2
+    dark:border-gray-600;
   }
   .k-alendar-navegation-left {
-    @apply px-2 py-1 lg:p-2 border border-gray-200 rounded-r-md w-16;
+    @apply px-2 py-1 lg:p-2 border border-gray-200 rounded-r-md w-16
+    dark:border-gray-600;
   }
 }
 
@@ -171,7 +177,7 @@ button {
 
 .date {
   @apply flex items-start justify-start p-2 cursor-pointer flex-col relative rounded-sm;
-  @apply border border-gray-200;
+  @apply border border-gray-200 dark:border-gray-600;
 }
 
 .other-month-date {
@@ -189,14 +195,17 @@ button {
 }
 
 .point {
-  @apply w-2 h-2 bg-gray-500 rounded-full md:hidden;
+  @apply w-2 h-2 bg-gray-500 rounded-full md:hidden
+  dark:bg-gray-200;
 }
 
 .selected {
-  @apply bg-[#ebeef5] text-inherit p-2;
+  @apply bg-[#ebeef5] text-inherit p-2
+  dark:bg-slate-700;
 }
 .k-alendar-today-button {
   @apply px-2 py-1 border border-gray-200 rounded-md
-  lg:p-2;
+  lg:p-2
+  dark:border-gray-500;
 }
 </style>

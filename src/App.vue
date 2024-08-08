@@ -1,8 +1,29 @@
 <script setup lang="ts">
 import KAlendar from './components/KAlendar.vue'
+import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent } from './types/Events'
 
 const events: KEvent[] = [
+  {
+    id: '16',
+    title: 'Event 16',
+    start_date: '2024-08-15',
+    description: 'Description of event 1'
+  },
+  {
+    id: '17',
+    title: 'Event 17',
+    start_date: '2024-08-15',
+    description: 'Description of event 17',
+    color: '#797979'
+  },
+  {
+    id: '18',
+    title: 'Event 18',
+    start_date: '2024-08-15',
+    description: 'Description of event 17',
+    color: '#797979'
+  },
   {
     id: '1',
     title: 'Event 1',
@@ -105,8 +126,9 @@ const events: KEvent[] = [
 
 <template>
   <header>
-    <div class="text-center">
+    <div class="flex justify-between p-4">
       <h1>K-alendar</h1>
+      <KDarkModeButton />
     </div>
   </header>
 
@@ -115,4 +137,8 @@ const events: KEvent[] = [
   </main>
 </template>
 
-<style scoped></style>
+<style>
+#app {
+  @apply dark:bg-slate-900 dark:text-slate-100;
+}
+</style>
