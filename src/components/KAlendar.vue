@@ -103,7 +103,7 @@ const howEventsShouldRender = (day: string, events: KEvent[]) => {
     eventsToRender.splice(eventsToRender.length - 1, 1, {
       id: 'more',
       title: `+${events.length + 1 - totalOfEventsThatCanRender}`,
-      date: '',
+      start_date: '',
       description: ''
     })
   }

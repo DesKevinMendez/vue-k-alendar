@@ -42,7 +42,7 @@ export default function useRenderCalendar(events: KEvent[]) {
       const dayFormated = format(day, 'yyyy-MM-dd')
       const classToButton = []
       const eventsToRender = events.filter((event) => {
-        return isSameDay(dayFormated, event.date)
+        return isSameDay(dayFormated, event.start_date)
       })
 
       if (!isSameMonth(day, date)) {

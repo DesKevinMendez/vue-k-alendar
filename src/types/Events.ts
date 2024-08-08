@@ -1,6 +1,7 @@
 export type KEvent = {
   id: string
   title: string
-  date: string
+  start_date: string
+  end_date?: string | null
   description: string
 }
