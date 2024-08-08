@@ -7,26 +7,31 @@ const events: KEvent[] = [
     id: '1',
     title: 'Event 1',
     start_date: '2024-08-08',
-    description: 'Description of event 1'
+    end_date: '2024-08-31',
+    description: 'Description of event 1',
+    color: '#ff0000'
   },
   {
     id: '2',
     title: 'Event 2',
     start_date: '2024-09-02',
-    description: 'Description of event 2'
+    description: 'Description of event 2',
+    color: '#00ff00'
   },
   {
     id: '3',
     title: 'Event 3',
     start_date: '2024-08-03',
-    end_date: '2024-08-09',
-    description: 'Description of event 3'
+    end_date: '2024-08-05',
+    description: 'Description of event 3',
+    color: '#0000ff'
   },
   {
     id: '4',
     title: 'Event con mucho texto',
     start_date: '2024-08-08',
-    description: 'Description of event 1'
+    description: 'Description of event 1',
+    color: '#ff00ff'
   },
   {
     id: '5',
@@ -74,6 +79,7 @@ const events: KEvent[] = [
     id: '12',
     title: 'Event 12',
     start_date: '2024-08-08',
+    end_date: '2024-08-10',
     description: 'Description of event 1'
   },
   {

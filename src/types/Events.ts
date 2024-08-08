@@ -4,4 +4,5 @@ export type KEvent = {
   start_date: string
   end_date?: string | null
   description: string
+  color?: string
 }

@@ -8,6 +8,7 @@ import {
   format,
   isSameDay,
   isSameMonth,
+  isWithinInterval,
   startOfMonth,
   startOfWeek
 } from 'date-fns'
@@ -41,7 +42,23 @@ export default function useRenderCalendar(events: KEvent[]) {
     }).map((day) => {
       const dayFormated = format(day, 'yyyy-MM-dd')
       const classToButton = []
-      const eventsToRender = events.filter((event) => {
+
+      const fillEvents: KEvent[] = [];
+
+      events.forEach(event => {
+        if (event.end_date &&
+          isWithinInterval(dayFormated, {
+            start: event.start_date,
+            end: event.end_date
+          })) {
+          fillEvents.push({ ...event, start_date: dayFormated });
+
+        } else {
+          fillEvents.push(event);
+        }
+      });
+
+      const eventsToRender = fillEvents.filter((event) => {
         return isSameDay(dayFormated, event.start_date)
       })
 

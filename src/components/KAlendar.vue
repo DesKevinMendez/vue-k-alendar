@@ -38,6 +38,10 @@
             <li
               v-for="event in howEventsShouldRender(i.day, i.events)"
               :key="event.id"
+              :style="{
+                'background-color':
+                  event.id === 'more' ? 'gray' : event.color ? event.color : '#374151'
+              }"
               @click="eventClicked(i)"
             >
               <h3>{{ event.title }}</h3>
@@ -175,7 +179,7 @@ const selectThisDate = (date: string) => {
   ul {
     @apply list-none space-y-2;
     li {
-      @apply bg-gray-700 px-2 py-1 text-white rounded-md line-clamp-1;
+      @apply bg-gray-700 px-2 py-1 text-white rounded-md line-clamp-1 relative z-50;
     }
   }
 }
