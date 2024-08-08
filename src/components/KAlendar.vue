@@ -38,7 +38,7 @@
             <li
               v-for="event in howEventsShouldRender(i.day, i.events)"
               :key="event.id"
-              @click="eventClicked(event)"
+              @click="eventClicked(i)"
             >
               <h3>{{ event.title }}</h3>
             </li>
@@ -46,13 +46,16 @@
         </div>
       </div>
     </div>
+    <KAlendarEventDetailDialog v-model="openEventsDetailDialog" />
   </section>
 </template>
 
 <script setup lang="ts">
 import useRenderCalendar from '@/composables/useRenderCalendar'
+import type { DayCalendar } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
 import { ref } from 'vue'
+import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 
 const props = defineProps<{ events: KEvent[] }>()
 const { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays } = useRenderCalendar(
@@ -60,9 +63,12 @@ const { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays } = useRend
 )
 
 const dateRefs = ref<Record<string, any>>({})
+const openEventsDetailDialog = ref(false)
 
-const eventClicked = (event: KEvent) => {
-  console.log(event)
+const eventClicked = (event: DayCalendar) => {
+  if (event.events.length > 0) {
+    openEventsDetailDialog.value = true
+  }
 }
 
 const calculateEventsThatCanBeRender = (day: string) => {
@@ -126,7 +132,7 @@ const selectThisDate = (date: string) => {
 }
 
 .k-alendar-header-container {
-  @apply flex justify-between items-center flex-col sm:flex-row;
+  @apply flex justify-between space-y-2 items-center flex-col sm:flex-row sm:space-y-0;
   .center-title > h2 {
     @apply capitalize;
   }

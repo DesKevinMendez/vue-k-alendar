@@ -6,3 +6,10 @@ export type MonthDays = {
   events: KEvent[]
   text: string
 }
+
+export type DayCalendar = {
+  day: string
+  class: string
+  events: KEvent[]
+  text: string
+}

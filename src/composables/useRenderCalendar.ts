@@ -1,4 +1,4 @@
-import type { MonthDays } from '@/types/Calendar'
+import type { DayCalendar, MonthDays } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
 import {
   add,
@@ -34,8 +34,8 @@ export default function useRenderCalendar(events: KEvent[]) {
       .split('T')[0]
   }
 
-  const generateDaysCalendar = (date: Date) => {
-    const days = eachDayOfInterval({
+  const generateDayOfTheMonth = (date: Date): DayCalendar[] => {
+    return eachDayOfInterval({
       start: startOfWeek(startOfMonth(date)),
       end: endOfWeek(endOfMonth(date))
     }).map((day) => {
@@ -58,16 +58,14 @@ export default function useRenderCalendar(events: KEvent[]) {
       return {
         day: dayFormated,
         class: classToButton.join(' '),
-        events: eventsToRender,
+        events: eventsToRender || [],
         text
       }
     })
-
-    return days
   }
 
   onMounted(() => {
-    monthDays.value = generateDaysCalendar(currentDate.value)
+    monthDays.value = generateDayOfTheMonth(currentDate.value)
   })
 
   const title = computed(() => {
@@ -77,17 +75,17 @@ export default function useRenderCalendar(events: KEvent[]) {
   const nextMonth = () => {
     currentDate.value = add(currentDate.value, { months: 1 })
 
-    monthDays.value = generateDaysCalendar(currentDate.value)
+    monthDays.value = generateDayOfTheMonth(currentDate.value)
   }
 
   const prevMonth = () => {
     currentDate.value = add(currentDate.value, { months: -1 })
-    monthDays.value = generateDaysCalendar(currentDate.value)
+    monthDays.value = generateDayOfTheMonth(currentDate.value)
   }
 
   const toToday = () => {
     currentDate.value = new Date()
-    monthDays.value = generateDaysCalendar(currentDate.value)
+    monthDays.value = generateDayOfTheMonth(currentDate.value)
   }
 
   return { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays }
