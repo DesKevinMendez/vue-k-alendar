@@ -125,6 +125,10 @@ const selectThisDate = (date: string) => {
   @apply space-y-4;
 }
 
+button {
+  @apply hover:bg-[#ebeef5] transition-colors;
+}
+
 .k-alendar-days-container {
   @apply grid gap-1 auto-rows-auto border border-gray-200 rounded-sm text-center capitalize;
   grid-template-columns: repeat(7, minmax(0, 1fr));
