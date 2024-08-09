@@ -5,6 +5,7 @@
     modal-mode="mega"
     class="k-alendar-dialog"
     :open="openDialog"
+    @click.self="close"
   >
     <slot name="header">
       <header></header>
@@ -68,7 +69,11 @@ const close = () => {
   }
 }
 
-dialog {
+.k-alendar-dialog {
+  width: 400px;
+  height: 400px;
+  margin: 0;
+  margin-top: 0 !important;
   outline: none;
   display: block;
   inset: 0;

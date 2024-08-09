@@ -27,7 +27,7 @@
       <div
         v-for="i in monthDays"
         :key="i.day.toString()"
-        @click="selectThisDate(i.day)"
+        @click="(e) => selectThisDate(e, i.day)"
         :class="i.class"
         class="date"
         :ref="(el) => (dateRefs[i.day] = el)"
@@ -45,7 +45,7 @@
                 'background-color':
                   event.id === 'more' ? 'gray' : event.color ? event.color : '#374151'
               }"
-              @click="eventClicked(i)"
+              @click="(e) => eventClicked(e, i)"
             >
               <h3>{{ event.title }}</h3>
             </li>
@@ -53,7 +53,13 @@
         </div>
       </div>
     </div>
-    <KAlendarEventDetailDialog v-model="openEventsDetailDialog" />
+    <KAlendarEventDetailDialog
+      v-model="openEventsDetailDialog"
+      :style="{
+        top: `${dialogPositionToRender.y}px`,
+        left: `${dialogPositionToRender.x}px`
+      }"
+    />
   </section>
 </template>
 
@@ -71,11 +77,159 @@ const { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays } = useRend
 
 const dateRefs = ref<Record<string, any>>({})
 const openEventsDetailDialog = ref(false)
+const dialogPositionToRender = ref({ x: 0, y: 0 })
 
-const eventClicked = (event: DayCalendar) => {
+const eventClicked = (element: MouseEvent, event: DayCalendar) => {
+  const sizeOfDialog = 400
   if (event.events.length > 0) {
+    let target = element.target as HTMLElement
+
+    if (target.tagName === 'H3') {
+      target = target.parentElement as HTMLElement
+    }
+
+    const targetPosition = target.getBoundingClientRect()
+    const positionBottomRight = {
+      x: targetPosition.right,
+      y: targetPosition.bottom
+    }
+    const positionBottomLeft = {
+      x: targetPosition.left - sizeOfDialog,
+      y: targetPosition.bottom
+    }
+
+    const positionTopRight = {
+      x: targetPosition.right,
+      y: targetPosition.top - sizeOfDialog
+    }
+
+    const positionTopLeft = {
+      x: targetPosition.left - sizeOfDialog,
+      y: targetPosition.top - sizeOfDialog
+    }
+
+    const { left, bottom, right, top } = calculateTheDistanceToScreen(target)
+    // console.log({ left, bottom, right, top })
+
+    /**
+     * Evaluar si no cabe en la izquierda, sino, lo renderiza en la parte inferior derecha
+     */
+    if (left < sizeOfDialog) {
+      dialogPositionToRender.value = { x: positionBottomRight.x, y: positionBottomRight.y }
+    }
+
+    /**
+     * Evaluar si no cabe en la derecha, sino, lo renderiza en la parte inferior izquierda
+     */
+    if (right < sizeOfDialog) {
+      dialogPositionToRender.value = { x: positionBottomLeft.x, y: positionBottomLeft.y }
+    }
+
+    /**
+     * Cuando no cabe abajo, se renderiza en la parte superior izquierda
+     */
+    if (bottom < sizeOfDialog) {
+      dialogPositionToRender.value = { x: positionTopLeft.x, y: positionTopLeft.y }
+    }
+
+    /**
+     * Cuando no cabe arriba, pero si abajo
+     */
+    if (top < sizeOfDialog) {
+      dialogPositionToRender.value = { x: positionBottomRight.x, y: positionBottomRight.y }
+    }
+
+    /**
+     * Cuando no cabe arriba, ni a la derecha
+     */
+    if (top < sizeOfDialog && right < sizeOfDialog) {
+      dialogPositionToRender.value = { x: positionBottomLeft.x, y: positionBottomLeft.y }
+    }
+
+    /**
+     * Cuando no cabe ni abajo, ni a la izquierda, se renderiza en la parte superior derecha
+     */
+    if (left < sizeOfDialog && bottom < sizeOfDialog) {
+      dialogPositionToRender.value = { x: positionTopRight.x, y: positionTopRight.y }
+    }
+
+    /**
+     * Cuando no cabe ni abajo, ni arriba a la izquierda, ni tampoco arriba a la derecha,
+     * se saca la diferencia y se renderiza en la parte superior izquierda
+     */
+    if (left < sizeOfDialog && bottom < sizeOfDialog && right < sizeOfDialog) {
+      const diff = sizeOfDialog - right + 16
+      dialogPositionToRender.value = { x: positionBottomLeft.x + diff, y: positionTopLeft.y }
+    }
+
+    /**
+     * Cuando no cabe ni arriba, ni abajo, ni a la izquierda, pero si a la derecha
+     */
+    if (
+      left < sizeOfDialog &&
+      top < sizeOfDialog &&
+      bottom < sizeOfDialog &&
+      right > sizeOfDialog
+    ) {
+      const diff = sizeOfDialog - top + 16
+      dialogPositionToRender.value = {
+        x: positionBottomRight.x,
+        y: positionTopLeft.y + diff
+      }
+    }
+
+    /**
+     * Cuando no cabe ni arriba, ni abajo, pero si a la izquierda y derecha
+     */
+    if (top < sizeOfDialog && bottom < sizeOfDialog) {
+      const diff = sizeOfDialog - top + 16
+      dialogPositionToRender.value = {
+        x: positionBottomRight.x,
+        y: positionTopLeft.y + diff
+      }
+    }
+
+    /**
+     * cuando no cabe ni abajo, ni arriba, ni a la izquierda, pero si a la derecha
+     */
+    if (
+      top < sizeOfDialog &&
+      bottom < sizeOfDialog &&
+      right < sizeOfDialog &&
+      left > sizeOfDialog
+    ) {
+      const diff = sizeOfDialog - top + 16
+      dialogPositionToRender.value = {
+        x: positionBottomLeft.x,
+        y: positionTopLeft.y + diff
+      }
+    }
+
+    /**
+     * Cuando cabe en todos lados
+     */
+    if (
+      left > sizeOfDialog &&
+      right > sizeOfDialog &&
+      top > sizeOfDialog &&
+      bottom > sizeOfDialog
+    ) {
+      dialogPositionToRender.value = { x: positionBottomRight.x, y: positionBottomRight.y }
+    }
+
     openEventsDetailDialog.value = true
   }
+}
+
+const calculateTheDistanceToScreen = (element: HTMLElement) => {
+  const rect = element.getBoundingClientRect()
+  const distance = {
+    top: rect.top,
+    bottom: window.innerHeight - rect.bottom,
+    left: rect.left,
+    right: window.innerWidth - rect.right
+  }
+  return distance
 }
 
 const calculateEventsThatCanBeRender = (day: string) => {
@@ -118,8 +272,12 @@ const howEventsShouldRender = (day: string, events: KEvent[]) => {
   return eventsToRender
 }
 
-const selectThisDate = (date: string) => {
-  console.log(date)
+const selectThisDate = (element: MouseEvent, date: string) => {
+  // const dateDiv: HTMLDivElement | null = dateRefs.value[date]
+  // if (!dateDiv) return
+  // const { x, y } = dateDiv.getBoundingClientRect()
+  // dialogPositionToRender.value = { x, y }
+  // dialogPositionToRender.value = { x: element.clientX, y: element.clientY }
 }
 </script>
 
