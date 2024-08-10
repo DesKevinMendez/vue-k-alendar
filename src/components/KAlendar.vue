@@ -39,15 +39,15 @@
         <div class="events" v-if="i.events.length > 0">
           <ul>
             <li
-              v-for="event in howEventsShouldRender(i.day, i.events)"
-              :key="event.id"
+              v-for="calendar in howEventsShouldRender(i.day, i.events)"
+              :key="calendar.id"
               :style="{
                 'background-color':
-                  event.id === 'more' ? 'gray' : event.color ? event.color : '#374151'
+                  calendar.id === 'more' ? 'gray' : calendar.color ? calendar.color : '#374151'
               }"
-              @click="(e) => eventClicked(e, i)"
+              @click="(e) => eventClicked(e, i, calendar)"
             >
-              <h3>{{ event.title }}</h3>
+              <h3>{{ calendar.title }}</h3>
             </li>
           </ul>
         </div>
@@ -55,6 +55,7 @@
     </div>
     <KAlendarEventDetailDialog
       v-model="openEventsDetailDialog"
+      :event="eventSelected"
       :style="{
         top: `${dialogPositionToRender.y}px`,
         left: `${dialogPositionToRender.x}px`
@@ -75,13 +76,21 @@ const { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays } = useRend
   props.events
 )
 
+const eventSelected = ref<KEvent>({
+  id: '',
+  title: '',
+  start_date: '',
+  description: ''
+})
 const dateRefs = ref<Record<string, any>>({})
 const openEventsDetailDialog = ref(false)
 const dialogPositionToRender = ref({ x: 0, y: 0 })
 
-const eventClicked = (element: MouseEvent, event: DayCalendar) => {
+const eventClicked = (element: MouseEvent, calendar: DayCalendar, event: KEvent) => {
+  eventSelected.value = event
+
   const sizeOfDialog = 400
-  if (event.events.length > 0) {
+  if (calendar.events.length > 0) {
     let target = element.target as HTMLElement
 
     if (target.tagName === 'H3') {
@@ -314,11 +323,11 @@ button {
   .k-alendar-navegation-prev {
     @apply px-2 py-1 border border-gray-200 rounded-l-md rounded-r-none w-16
     lg:p-2
-    dark:border-gray-600;
+    dark:border-slate-600;
   }
   .k-alendar-navegation-left {
     @apply px-2 py-1 lg:p-2 border border-gray-200 rounded-r-md w-16
-    dark:border-gray-600;
+    dark:border-slate-600;
   }
 }
 
@@ -335,7 +344,7 @@ button {
 
 .date {
   @apply flex items-start justify-start p-2 cursor-pointer flex-col relative rounded-sm;
-  @apply border border-gray-200 dark:border-gray-600;
+  @apply border border-gray-200 dark:border-slate-600;
 }
 
 .other-month-date {
@@ -364,6 +373,6 @@ button {
 .k-alendar-today-button {
   @apply px-2 py-1 border border-gray-200 rounded-md
   lg:p-2
-  dark:border-gray-500;
+  dark:border-slate-600;
 }
 </style>

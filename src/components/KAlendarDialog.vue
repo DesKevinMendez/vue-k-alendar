@@ -7,13 +7,30 @@
     :open="openDialog"
     @click.self="close"
   >
-    <slot name="header">
-      <header></header>
-    </slot>
-    <article class="main">
+    <header>
+      <slot name="header"> </slot>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        data-prefix="fas"
+        data-icon="xmark"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 320 512"
+        @click="close"
+      >
+        <path
+          class=""
+          fill="currentColor"
+          d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"
+        ></path>
+      </svg>
+    </header>
+    <article class="k-alendar-dialog-main">
       <slot />
     </article>
-    <slot name="footer" />
+    <footer>
+      <slot name="footer" />
+    </footer>
   </dialog>
 </template>
 
@@ -52,7 +69,7 @@ const close = () => {
 }
 </script>
 
-<style>
+<style lang="postcss">
 :where(html) {
   --layer-important: 2147483647;
   --size-content-3: 60ch;
@@ -70,24 +87,23 @@ const close = () => {
 }
 
 .k-alendar-dialog {
+  @apply p-4 space-y-4 flex flex-col  outline-none inset-0
+  overflow-hidden bg-white text-gray-800 rounded-md
+  transition-opacity duration-500 m-0 mt-0
+  dark:bg-slate-900 dark:text-white;
   width: 400px;
   height: 400px;
-  margin: 0;
-  margin-top: 0 !important;
-  outline: none;
-  display: block;
-  inset: 0;
   z-index: var(--layer-important);
   max-inline-size: min(90vw, var(--size-content-3));
   max-block-size: min(80vh, 100%);
-  overflow: hidden;
-  transition: opacity 0.5s;
   animation: var(--animation-scale-down) forwards;
   animation-timing-function: var(--ease-squish-3);
-  border-radius: 0.5rem;
-  padding: 0;
-  border: solid 1px #ccc;
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.5);
+}
+
+.k-alendar-dialog-main {
+  flex: 1;
+  overflow-y: auto;
 }
 
 dialog[open] {
@@ -95,31 +111,25 @@ dialog[open] {
 }
 
 dialog:not([open]) {
-  pointer-events: none;
-  opacity: 0;
+  @apply pointer-events-none opacity-0;
 }
 
 dialog::backdrop {
   /* backdrop-filter: blur(0.25rem); */
 }
 
-dialog article {
-  padding: 0 2rem;
-}
-
 dialog header {
-  margin: 0;
-  background-color: #f3f3f3;
-  padding: 1rem 2rem;
+  @apply p-4 flex justify-between border-b dark:border-gray-600;
+  svg {
+    @apply cursor-pointer h-5 w-5 text-gray-600 dark:text-gray-300;
+  }
 }
 
 dialog footer {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem 2rem;
+  @apply flex justify-end;
 }
 
 dialog header h3 {
-  margin: 0;
+  @apply m-0;
 }
 </style>
