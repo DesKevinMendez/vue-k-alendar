@@ -122,6 +122,22 @@ const events: KEvent[] = [
     title: 'Event 15',
     start_date: '2024-08-08',
     description: 'Description of event 1'
+  },
+  {
+    id: '17',
+    title: 'Event 17',
+    start_date: '2024-08-29T20:35:00',
+    end_date: '2024-08-31T08:00:00',
+    color: '#dc2626',
+    description: 'Evento con fecha y hora'
+  },
+  {
+    id: '19',
+    title: 'Event 19',
+    start_date: '2024-08-06T21:35:55.000000Z',
+    end_date: '2024-08-06T23:35:55.000000Z',
+    color: '#92400e',
+    description: 'Evento con fecha y hora'
   }
 ]
 </script>

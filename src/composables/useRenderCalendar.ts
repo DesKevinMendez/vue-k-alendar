@@ -48,9 +48,10 @@ export default function useRenderCalendar(events: KEvent[]) {
     startDate,
     endDate
   }: { startDate: string, endDate: string }): boolean => {
+
     const dateToCheck = DateTime.fromISO(date);
-    const start = DateTime.fromISO(startDate);
-    const end = DateTime.fromISO(endDate);
+    const start = DateTime.fromISO(startDate, { zone: 'utc' });
+    const end = DateTime.fromISO(endDate, { zone: 'utc' });
 
     const interval = Interval.fromDateTimes(start, end);
     return interval.contains(dateToCheck);
@@ -71,6 +72,7 @@ export default function useRenderCalendar(events: KEvent[]) {
             startDate: event.start_date,
             endDate: event.end_date
           })) {
+
           fillEvents.push({ ...event, start_date: day });
 
         } else {

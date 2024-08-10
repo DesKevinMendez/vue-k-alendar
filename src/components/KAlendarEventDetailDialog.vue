@@ -148,7 +148,9 @@ const dates = computed(() => {
   if (!event.value || !event.value.start_date) return ''
 
   if (event.value.end_date) {
-    return `${formatDate(event.value.start_date, DateTime.DATE_FULL)} - ${formatDate(event.value.end_date, DateTime.DATE_FULL)}`
+    return `${formatDate(event.value.start_date, DateTime.DATETIME_MED_WITH_SECONDS)}
+    -
+    ${formatDate(event.value.end_date, DateTime.DATETIME_MED_WITH_SECONDS)}`
   }
 
   return `${formatDate(event.value.start_date, DateTime.DATE_FULL)}`
