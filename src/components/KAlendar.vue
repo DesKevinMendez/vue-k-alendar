@@ -27,7 +27,7 @@
       <div
         v-for="calendar in monthDays"
         :key="calendar.day.toString()"
-        @click="(e) => selectThisDate(e, calendar.day)"
+        @click="selectThisDate(calendar)"
         :class="calendar.class"
         class="date"
         :ref="(el) => (dateRefs[calendar.day] = el)"
@@ -290,12 +290,30 @@ const howEventsShouldRender = (day: string, events: KEvent[]) => {
   return eventsToRender
 }
 
-const selectThisDate = (element: MouseEvent, date: string) => {
-  // const dateDiv: HTMLDivElement | null = dateRefs.value[date]
-  // if (!dateDiv) return
-  // const { x, y } = dateDiv.getBoundingClientRect()
-  // dialogPositionToRender.value = { x, y }
-  // dialogPositionToRender.value = { x: element.clientX, y: element.clientY }
+const selectThisDate = (calendar: MonthDays) => {
+  /**
+   * cuando es mobile < 768px
+   */
+  if (window.innerWidth < 768) {
+    const sizeOfDialog = 400
+    const x = Math.floor((window.innerWidth - sizeOfDialog) / 2)
+    dialogPositionToRender.value = { x, y: 16 }
+  }
+
+  if (calendar.events.length > 0) {
+    if (calendar.events.length === 1) {
+      eventSelected.value = calendar.events[0]
+    } else {
+      eventSelected.value = {
+        id: 'more',
+        title: `+${calendar.events.length} eventos`,
+        start_date: '',
+        description: ''
+      }
+    }
+    calendarDaySelect.value = calendar
+    openEventsDetailDialog.value = true
+  }
 }
 </script>
 
@@ -320,7 +338,7 @@ button {
 }
 
 .k-alendar-header-container {
-  @apply flex justify-between space-y-2 items-center flex-col sm:flex-row sm:space-y-0;
+  @apply flex justify-between space-y-2 items-center sm:space-y-0;
   .center-title > h2 {
     @apply capitalize;
   }
@@ -370,8 +388,7 @@ button {
 }
 
 .point {
-  @apply w-2 h-2 bg-gray-500 rounded-full md:hidden
-  dark:bg-gray-200;
+  @apply w-2 h-2 bg-blue-500 rounded-full md:hidden;
 }
 
 .selected {

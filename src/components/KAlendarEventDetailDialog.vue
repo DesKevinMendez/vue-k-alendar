@@ -124,12 +124,11 @@ const eventLocal = ref<KEvent | null>(null)
 const props = defineProps<{ event: KEvent | null; calendar: MonthDays | null }>()
 const { event, calendar } = toRefs(props)
 
+const isSeeMore = computed(() => eventLocal.value?.id === 'more')
 watchEffect(() => {
   eventLocal.value = event.value
-  console.log(eventLocal.value)
 })
 
-const isSeeMore = computed(() => eventLocal.value?.id === 'more')
 const allEvents = computed(() => calendar.value?.events)
 const eventOf = computed(() => {
   const day = calendar.value?.day
@@ -188,7 +187,7 @@ const dates = computed(() => {
 }
 
 .events {
-  @apply w-full hidden md:block;
+  @apply w-full;
   ul {
     @apply list-none space-y-2;
     li {
