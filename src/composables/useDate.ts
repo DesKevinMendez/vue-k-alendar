@@ -1,18 +1,16 @@
-import { UTCDate } from "@date-fns/utc"
-import { format } from 'date-fns'
-import { es } from "date-fns/locale"
+import { DateTime, type DateTimeFormatOptions } from "luxon";
+import { computed } from "vue";
 export default function useDate() {
-
-  const dateInUTC = (date: string) => {
-    return new UTCDate(date)
+  const formatDate = (date: string, formatStr: DateTimeFormatOptions) => {
+    return DateTime.fromISO(date).toLocaleString(formatStr);
   }
 
-  const formatDate = (date: string, formatStr: string) => {
-    return format(new UTCDate(date), formatStr, { locale: es })
-  }
+  const todayUTC = computed(() => {
+    return DateTime.utc().toISODate();
+  })
 
   return {
-    dateInUTC,
-    formatDate
+    formatDate,
+    todayUTC
   }
 }

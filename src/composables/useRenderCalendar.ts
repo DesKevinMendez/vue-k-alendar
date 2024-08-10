@@ -1,57 +1,77 @@
 import type { DayCalendar, MonthDays } from '@/types/Calendar';
 import type { KEvent } from '@/types/Events';
-import {
-  add,
-  eachDayOfInterval,
-  endOfMonth,
-  endOfWeek,
-  format,
-  isSameDay,
-  isSameMonth,
-  isWithinInterval,
-  startOfMonth,
-  startOfWeek
-} from 'date-fns';
-import { es } from 'date-fns/locale';
+import { DateTime, Interval, Settings } from 'luxon';
 import { computed, onMounted, ref } from "vue";
-
+import useDate from './useDate';
 const monthDays = ref<MonthDays[]>([])
-const currentDate = ref(new Date())
+const currentDate = ref(DateTime.utc())
+
+Settings.defaultLocale = 'es';
 
 export default function useRenderCalendar(events: KEvent[]) {
-
+  const { todayUTC } = useDate()
   const getWeekDays = () => {
-    const start = startOfWeek(new Date(), { locale: es });
-    const end = endOfWeek(new Date(), { locale: es });
+    const start = DateTime.utc().startOf('week');
+    const end = DateTime.utc().endOf('week');
 
-    const days = eachDayOfInterval({ start, end });
+    const days = [];
+    let currentDay = start;
 
-    return days.map(day => format(day, 'EEE', { locale: es }));
+    while (currentDay <= end) {
+      days.push(currentDay.setLocale('es').toFormat('ccc'));
+      currentDay = currentDay.plus({ days: 1 });
+    }
+
+    return days;
   };
 
-  const todayInISO = () => {
-    return new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000)
-      .toISOString()
-      .split('T')[0]
+  const generateDayOfTheMonth = (date: string) => {
+    const [year, month, day] = date.split('-').map(Number);
+    const generateCalendarFromDate = DateTime.utc().set({ year, month, day });
+    const startOfMonth = generateCalendarFromDate.startOf('month');
+    const endOfMonth = generateCalendarFromDate.endOf('month');
+    const startOfWeek = startOfMonth.startOf('week');
+    const endOfWeek = endOfMonth.endOf('week');
+
+    const days = [];
+    let currentDay = startOfWeek;
+
+    while (currentDay <= endOfWeek) {
+      days.push(currentDay.toISODate());
+      currentDay = currentDay.plus({ days: 1 });
+    }
+
+    return days;
   }
 
-  const generateDayOfTheMonth = (date: Date): DayCalendar[] => {
-    return eachDayOfInterval({
-      start: startOfWeek(startOfMonth(date)),
-      end: endOfWeek(endOfMonth(date))
-    }).map((day) => {
-      const dayFormated = format(day, 'yyyy-MM-dd')
+  const isWithinInterval = (date: string, {
+    startDate,
+    endDate
+  }: { startDate: string, endDate: string }): boolean => {
+    const dateToCheck = DateTime.fromISO(date);
+    const start = DateTime.fromISO(startDate);
+    const end = DateTime.fromISO(endDate);
+
+    const interval = Interval.fromDateTimes(start, end);
+    return interval.contains(dateToCheck);
+  };
+
+  const generateCalendar = (date: string): DayCalendar[] => {
+    return generateDayOfTheMonth(date).map((day) => {
       const classToButton = []
 
       const fillEvents: KEvent[] = [];
 
+      const currentDay = DateTime.fromISO(day);
+      const targetDate = DateTime.fromISO(date);
+
       events.forEach(event => {
         if (event.end_date &&
-          isWithinInterval(dayFormated, {
-            start: event.start_date,
-            end: event.end_date
+          isWithinInterval(day, {
+            startDate: event.start_date,
+            endDate: event.end_date
           })) {
-          fillEvents.push({ ...event, start_date: dayFormated });
+          fillEvents.push({ ...event, start_date: day });
 
         } else {
           fillEvents.push(event);
@@ -59,50 +79,53 @@ export default function useRenderCalendar(events: KEvent[]) {
       });
 
       const eventsToRender = fillEvents.filter((event) => {
-        return isSameDay(dayFormated, event.start_date)
+        return currentDay.hasSame(DateTime.fromISO(event.start_date), 'day')
       })
 
-      if (!isSameMonth(day, date)) {
-        classToButton.push('other-month-date')
+      if (!currentDay.hasSame(targetDate, 'month')) {
+        classToButton.push('other-month-date');
       }
 
-      if (isSameDay(dayFormated, todayInISO())) {
+      if (currentDay.hasSame(DateTime.fromISO(todayUTC.value), 'day')) {
         classToButton.push('selected')
       }
 
-      const text = format(day, 'd')
-
       return {
-        day: dayFormated,
+        day: day,
         class: classToButton.join(' '),
         events: eventsToRender || [],
-        text
+        text: DateTime.fromISO(day).day.toString()
       }
-    })
+    });
+
   }
 
   onMounted(() => {
-    monthDays.value = generateDayOfTheMonth(currentDate.value)
+    monthDays.value = generateCalendar(todayUTC.value)
   })
 
   const title = computed(() => {
-    return format(currentDate.value, 'MMMM yyyy', { locale: es })
+    return DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('MMMM yyyy');
   })
 
   const nextMonth = () => {
-    currentDate.value = add(currentDate.value, { months: 1 })
+    currentDate.value = currentDate.value.plus({ months: 1 })
 
-    monthDays.value = generateDayOfTheMonth(currentDate.value)
+    const next = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd');
+    monthDays.value = generateCalendar(next)
   }
 
   const prevMonth = () => {
-    currentDate.value = add(currentDate.value, { months: -1 })
-    monthDays.value = generateDayOfTheMonth(currentDate.value)
+    currentDate.value = currentDate.value.minus({ months: 1 })
+    const prev = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd');
+
+    monthDays.value = generateCalendar(prev)
   }
 
   const toToday = () => {
-    currentDate.value = new Date()
-    monthDays.value = generateDayOfTheMonth(currentDate.value)
+    currentDate.value = DateTime.utc()
+
+    monthDays.value = generateCalendar(todayUTC.value)
   }
 
   return { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays }

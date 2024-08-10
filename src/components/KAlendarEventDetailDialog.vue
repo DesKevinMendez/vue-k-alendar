@@ -118,6 +118,7 @@ import type { KEvent } from '@/types/Events'
 import { computed, ref, toRefs, watchEffect } from 'vue'
 import KAlendarDialog from './KAlendarDialog.vue'
 import KEventItem from './KEventItem.vue'
+import { DateTime } from 'luxon'
 
 const { formatDate } = useDate()
 const openDetail = defineModel<boolean>()
@@ -134,7 +135,7 @@ const allEvents = computed(() => calendar.value?.events)
 const eventOf = computed(() => {
   const day = calendar.value?.day
   if (day) {
-    return formatDate(day, 'PP')
+    return formatDate(day, DateTime.DATE_FULL)
   }
   return ''
 })
@@ -147,10 +148,10 @@ const dates = computed(() => {
   if (!event.value || !event.value.start_date) return ''
 
   if (event.value.end_date) {
-    return `${formatDate(event.value.start_date, 'PPpp')} - ${formatDate(event.value.end_date, 'PPpp')}`
+    return `${formatDate(event.value.start_date, DateTime.DATE_FULL)} - ${formatDate(event.value.end_date, DateTime.DATE_FULL)}`
   }
 
-  return `${formatDate(event.value.start_date, 'PPpp')}`
+  return `${formatDate(event.value.start_date, DateTime.DATE_FULL)}`
 })
 </script>
 
