@@ -74,7 +74,6 @@ export default function useRenderCalendar(events: KEvent[]) {
           })) {
 
           fillEvents.push({ ...event, start_date: day });
-
         } else {
           fillEvents.push(event);
         }

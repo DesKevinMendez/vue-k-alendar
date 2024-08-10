@@ -11,7 +11,6 @@
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
-          data-v-af0b188d=""
         >
           <path
             class=""
@@ -28,7 +27,6 @@
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
-          data-v-af0b188d=""
         >
           <path
             class=""
@@ -128,6 +126,7 @@ const { event, calendar } = toRefs(props)
 
 watchEffect(() => {
   eventLocal.value = event.value
+  console.log(eventLocal.value)
 })
 
 const isSeeMore = computed(() => eventLocal.value?.id === 'more')
@@ -144,16 +143,30 @@ const clickedEvent = ({ event: eventClck }: { event: KEvent }) => {
   eventLocal.value = eventClck
 }
 
-const dates = computed(() => {
-  if (!event.value || !event.value.start_date) return ''
+const hasTime = (date: string) => {
+  const dateTime = DateTime.fromISO(date)
+  return dateTime.isValid && (dateTime.hour !== 0 || dateTime.minute !== 0 || dateTime.second !== 0)
+}
 
-  if (event.value.end_date) {
-    return `${formatDate(event.value.start_date, DateTime.DATETIME_MED_WITH_SECONDS)}
-    -
-    ${formatDate(event.value.end_date, DateTime.DATETIME_MED_WITH_SECONDS)}`
+const dates = computed(() => {
+  if (!eventLocal.value || !eventLocal.value.start_date) return ''
+
+  const startFormat = hasTime(eventLocal.value.start_date)
+    ? DateTime.DATETIME_MED
+    : DateTime.DATE_FULL
+
+  if (eventLocal.value.end_date) {
+    const endFormat = hasTime(eventLocal.value.end_date)
+      ? DateTime.DATETIME_MED
+      : DateTime.DATE_FULL
+
+    const start = formatDate(eventLocal.value.start_date, startFormat)
+    const end = formatDate(eventLocal.value.end_date, endFormat)
+
+    return `${start} - ${end}`
   }
 
-  return `${formatDate(event.value.start_date, DateTime.DATE_FULL)}`
+  return `${formatDate(eventLocal.value.start_date, startFormat)}`
 })
 </script>
 
