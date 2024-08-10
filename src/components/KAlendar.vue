@@ -25,30 +25,26 @@
     </div>
     <div class="k-alendar-container">
       <div
-        v-for="i in monthDays"
-        :key="i.day.toString()"
-        @click="(e) => selectThisDate(e, i.day)"
-        :class="i.class"
+        v-for="calendar in monthDays"
+        :key="calendar.day.toString()"
+        @click="(e) => selectThisDate(e, calendar.day)"
+        :class="calendar.class"
         class="date"
-        :ref="(el) => (dateRefs[i.day] = el)"
+        :ref="(el) => (dateRefs[calendar.day] = el)"
       >
         <div class="k-alendar-span-container">
-          <span class="k-alendar-text">{{ i.text }}</span>
-          <span class="point" v-if="i.events.length > 0" />
+          <span class="k-alendar-text">{{ calendar.text }}</span>
+          <span class="point" v-if="calendar.events.length > 0" />
         </div>
-        <div class="events" v-if="i.events.length > 0">
+        <div class="events" v-if="calendar.events.length > 0">
           <ul>
-            <li
-              v-for="calendar in howEventsShouldRender(i.day, i.events)"
-              :key="calendar.id"
-              :style="{
-                'background-color':
-                  calendar.id === 'more' ? 'gray' : calendar.color ? calendar.color : '#374151'
-              }"
-              @click="(e) => eventClicked(e, i, calendar)"
-            >
-              <h3>{{ calendar.title }}</h3>
-            </li>
+            <KEventItem
+              v-for="event in howEventsShouldRender(calendar.day, calendar.events)"
+              :key="event.id"
+              :event="event"
+              :calendar
+              @eventClicked="eventClicked"
+            />
           </ul>
         </div>
       </div>
@@ -56,6 +52,7 @@
     <KAlendarEventDetailDialog
       v-model="openEventsDetailDialog"
       :event="eventSelected"
+      :calendar="calendarDaySelect"
       :style="{
         top: `${dialogPositionToRender.y}px`,
         left: `${dialogPositionToRender.x}px`
@@ -66,10 +63,11 @@
 
 <script setup lang="ts">
 import useRenderCalendar from '@/composables/useRenderCalendar'
-import type { DayCalendar } from '@/types/Calendar'
+import type { DayCalendar, MonthDays } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
 import { ref } from 'vue'
 import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
+import KEventItem from './KEventItem.vue'
 
 const props = defineProps<{ events: KEvent[] }>()
 const { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays } = useRenderCalendar(
@@ -82,16 +80,27 @@ const eventSelected = ref<KEvent>({
   start_date: '',
   description: ''
 })
+const calendarDaySelect = ref<MonthDays | null>(null)
 const dateRefs = ref<Record<string, any>>({})
 const openEventsDetailDialog = ref(false)
 const dialogPositionToRender = ref({ x: 0, y: 0 })
 
-const eventClicked = (element: MouseEvent, calendar: DayCalendar, event: KEvent) => {
+const eventClicked = ({
+  mauseEvent,
+  event,
+  calendar
+}: {
+  mauseEvent: MouseEvent
+  event: KEvent
+  day: string
+  calendar: DayCalendar
+}) => {
   eventSelected.value = event
+  calendarDaySelect.value = calendar
 
   const sizeOfDialog = 400
   if (calendar.events.length > 0) {
-    let target = element.target as HTMLElement
+    let target = mauseEvent.target as HTMLElement
 
     if (target.tagName === 'H3') {
       target = target.parentElement as HTMLElement
@@ -357,9 +366,6 @@ button {
   @apply w-full hidden md:block;
   ul {
     @apply list-none space-y-2;
-    li {
-      @apply bg-gray-700 px-2 py-1 text-white rounded-md line-clamp-1 relative z-50;
-    }
   }
 }
 

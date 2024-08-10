@@ -119,7 +119,7 @@ dialog::backdrop {
 }
 
 dialog header {
-  @apply p-4 flex justify-between border-b dark:border-gray-600;
+  @apply p-4 flex border-b justify-between dark:border-gray-600;
   svg {
     @apply cursor-pointer h-5 w-5 text-gray-600 dark:text-gray-300;
   }

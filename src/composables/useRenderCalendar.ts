@@ -1,5 +1,5 @@
-import type { DayCalendar, MonthDays } from '@/types/Calendar'
-import type { KEvent } from '@/types/Events'
+import type { DayCalendar, MonthDays } from '@/types/Calendar';
+import type { KEvent } from '@/types/Events';
 import {
   add,
   eachDayOfInterval,
@@ -11,9 +11,9 @@ import {
   isWithinInterval,
   startOfMonth,
   startOfWeek
-} from 'date-fns'
+} from 'date-fns';
 import { es } from 'date-fns/locale';
-import { computed, onMounted, ref } from "vue"
+import { computed, onMounted, ref } from "vue";
 
 const monthDays = ref<MonthDays[]>([])
 const currentDate = ref(new Date())

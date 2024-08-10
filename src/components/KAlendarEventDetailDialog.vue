@@ -1,7 +1,7 @@
 <template>
   <KAlendarDialog v-model="openDetail">
     <template #header>
-      <div class="flex justify-between space-x-3">
+      <div v-if="!isSeeMore" class="flex justify-between space-x-3">
         <svg
           class="h-5 w-5 text-gray-600"
           aria-hidden="true"
@@ -37,9 +37,14 @@
           ></path>
         </svg>
       </div>
+      <div v-else>
+        <span>
+          <time :datetime="eventOf">{{ eventOf }}</time>
+        </span>
+      </div>
     </template>
     <template #default>
-      <section class="k-alendar-event-detail-main-wrapper">
+      <section v-if="!isSeeMore" class="k-alendar-event-detail-main-wrapper">
         <div class="title">
           <span class="circle" v-if="event?.color" :style="{ backgroundColor: event.color }" />
           <h2>{{ event?.title }}</h2>
@@ -85,30 +90,56 @@
           <p>{{ event?.description }}</p>
         </div>
       </section>
+      <section v-else>
+        <div class="events">
+          <ul>
+            <KEventItem
+              v-for="event in allEvents"
+              :key="event.id"
+              :event="event"
+              :calendar="calendar"
+              @eventClicked="openDetail = true"
+            />
+          </ul>
+        </div>
+      </section>
     </template>
   </KAlendarDialog>
 </template>
 
 <script setup lang="ts">
+import useDate from '@/composables/useDate'
+import type { MonthDays } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
-import KAlendarDialog from './KAlendarDialog.vue'
 import { format } from 'date-fns'
+import { es } from 'date-fns/locale/es'
 import { computed, toRefs } from 'vue'
+import KAlendarDialog from './KAlendarDialog.vue'
+import KEventItem from './KEventItem.vue'
 
+const { dateInUTC } = useDate()
 const openDetail = defineModel<boolean>()
-const props = defineProps<{ event: KEvent | null }>()
-const { event } = toRefs(props)
+const props = defineProps<{ event: KEvent | null; calendar: MonthDays | null }>()
+const { event, calendar } = toRefs(props)
+
+const isSeeMore = computed(() => event.value?.id === 'more')
+const allEvents = computed(() => calendar.value?.events)
+const eventOf = computed(() => {
+  const day = calendar.value?.day
+  if (day) {
+    return format(dateInUTC(day), 'PP', { locale: es })
+  }
+  return ''
+})
 
 const dates = computed(() => {
   if (!event.value || !event.value.start_date) return ''
 
-  // return event.value.start_date
-
   if (event.value.end_date) {
-    return `${format(event.value.start_date, 'PPpp')} - ${format(event.value.end_date, 'PPpp')}`
+    return `${format(dateInUTC(event.value.start_date), 'PPpp', { locale: es })} - ${format(dateInUTC(event.value.end_date), 'PPpp', { locale: es })}`
   }
 
-  return `${format(event.value.start_date, 'PPpp')}`
+  return `${format(dateInUTC(event.value.start_date), 'PPpp', { locale: es })}`
 })
 </script>
 
@@ -127,6 +158,13 @@ const dates = computed(() => {
 }
 .dates {
   @apply text-sm text-gray-500 mb-4 dark:text-gray-400;
+}
+
+.events {
+  @apply w-full hidden md:block;
+  ul {
+    @apply list-none space-y-2;
+  }
 }
 
 .content,

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@date-fns/utc':
+    specifier: ^1.2.0
+    version: 1.2.0
   date-fns:
     specifier: ^3.6.0
     version: 3.6.0
@@ -491,6 +494,10 @@ packages:
       chalk: 5.3.0
     dev: true
     optional: true
+
+  /@date-fns/utc@1.2.0:
+    resolution: {integrity: sha512-YLq+crMPJiBmIdkRmv9nZuZy1mVtMlDcUKlg4mvI0UsC/dZeIaGoGB5p/C4FrpeOhZ7zBTK03T58S0DFkRNMnw==}
+    dev: false
 
   /@esbuild/aix-ppc64@0.21.5:
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
