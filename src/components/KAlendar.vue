@@ -68,10 +68,12 @@ import type { KEvent } from '@/types/Events'
 import { ref } from 'vue'
 import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 import KEventItem from './KEventItem.vue'
+const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday'])
 
 const props = defineProps<{ events: KEvent[] }>()
 const { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays } = useRenderCalendar(
-  props.events
+  props.events,
+  emit
 )
 
 const eventSelected = ref<KEvent>({

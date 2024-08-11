@@ -8,8 +8,10 @@ const currentDate = ref(DateTime.utc())
 
 Settings.defaultLocale = 'es';
 
-export default function useRenderCalendar(events: KEvent[]) {
+export default function useRenderCalendar(events: KEvent[], emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void) {
+
   const { todayUTC } = useDate()
+
   const getWeekDays = () => {
     const start = DateTime.utc().startOf('week');
     const end = DateTime.utc().endOf('week');
@@ -114,6 +116,8 @@ export default function useRenderCalendar(events: KEvent[]) {
 
     const next = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd');
     monthDays.value = generateCalendar(next)
+
+    emit('nextMonth', next)
   }
 
   const prevMonth = () => {
@@ -121,12 +125,16 @@ export default function useRenderCalendar(events: KEvent[]) {
     const prev = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd');
 
     monthDays.value = generateCalendar(prev)
+
+    emit('prevMonth', prev)
   }
 
   const toToday = () => {
     currentDate.value = DateTime.utc()
 
     monthDays.value = generateCalendar(todayUTC.value)
+
+    emit('toToday', todayUTC.value)
   }
 
   return { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays }
