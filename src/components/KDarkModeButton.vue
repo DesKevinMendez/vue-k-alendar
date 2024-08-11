@@ -29,16 +29,17 @@ onMounted(() => {
   const html = document.querySelector('html')
   const mode = window.localStorage.getItem('dark-mode')
 
-  if (mode === 'dark') {
+  if (mode === 'dark' && html) {
     html.classList.add('dark')
   }
 })
 
 const switchMode = () => {
   const html = document.querySelector('html')
-  html.classList.toggle('dark')
-
-  window.localStorage.setItem('dark-mode', html.classList.contains('dark') ? 'dark' : 'light')
+  if (html) {
+    html.classList.toggle('dark')
+    window.localStorage.setItem('dark-mode', html.classList.contains('dark') ? 'dark' : 'light')
+  }
 }
 </script>
 

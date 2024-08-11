@@ -1,18 +1,49 @@
 {
   "name": "k-alendar",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
+  "description": "A simple calendar component for Vue 3",
+  "author": {
+    "name": "Kevin Méndez",
+    "email": "kevinmendez0530@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DesKevinMendez/k-alendar"
+  },
+  "bugs": {
+    "url": "https://github.com/DesKevinMendez/k-alendar/issues"
+  },
+  "keywords": [
+    "calendar",
+    "vue 3"
+  ],
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "build:package": "pnpm build && pnpm types",
+    "types": "vue-tsc --declaration --emitDeclarationOnly --outDir ./dist/types",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/k-alendar.umd.cjs",
+  "module": "./dist/k-alendar.js",
+  "exports": {
+    ".": {
+      "import": "./dist/k-alendar.js",
+      "require": "./dist/k-alendar.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "types": "./dist/types/index.d.ts",
   "dependencies": {
     "luxon": "^3.5.0",
     "vue": "^3.4.29"
