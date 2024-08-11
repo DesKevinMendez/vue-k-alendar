@@ -1,0 +1,56 @@
+name: docs
+
+on:
+  # trigger deployment on every push to main branch
+  push:
+    branches: [main]
+  # trigger deployment manually
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # fetch all commits to get last updated time or other git log info
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          # choose pnpm version to use
+          version: 8
+          # install deps with pnpm
+          run_install: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # choose node.js version to use
+          node-version: 20
+          # cache deps for pnpm
+          cache: pnpm
+
+      # run build script
+      - name: Build library
+        run: pnpm lib:build
+
+      - name: Copy assets
+        run: rm -rf builds && mkdir builds && mv dist builds/dist
+
+      - name: Copy package.json
+        run: cp package.json builds
+
+      - name: Copy README.md
+        run: cp README.md builds
+
+      - name: Push
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: library # The branch name where you want to push the assets
+          FOLDER: dist # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+          MESSAGE: 'Build ✍🏻: ({sha}) {msg}' # The commit message

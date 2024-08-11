@@ -24,7 +24,7 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "build": "run-p type-check \"build-only {@}\" --",
-    "build:package": "pnpm build && pnpm types",
+    "lib:build": "pnpm build && pnpm types",
     "types": "vue-tsc --declaration --emitDeclarationOnly --outDir ./dist/types",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
