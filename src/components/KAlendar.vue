@@ -53,6 +53,8 @@
       v-model="openEventsDetailDialog"
       :event="eventSelected"
       :calendar="calendarDaySelect"
+      @edit="edit"
+      @delete="deleteEvent"
       :style="{
         top: `${dialogPositionToRender.y}px`,
         left: `${dialogPositionToRender.x}px`
@@ -64,11 +66,11 @@
 <script setup lang="ts">
 import useRenderCalendar from '@/composables/useRenderCalendar'
 import type { DayCalendar, MonthDays } from '@/types/Calendar'
-import type { KEvent } from '@/types/Events'
+import type { KEvent, KEventDialogEmit } from '@/types/Events'
 import { ref } from 'vue'
 import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 import KEventItem from './KEventItem.vue'
-const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday'])
+const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday', 'edit', 'delete'])
 
 const props = defineProps<{ events: KEvent[] }>()
 const { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays } = useRenderCalendar(
@@ -239,6 +241,14 @@ const eventClicked = ({
 
     openEventsDetailDialog.value = true
   }
+}
+
+const edit = ({ closeDialog, event }: KEventDialogEmit) => {
+  emit('edit', { closeDialog, event })
+}
+
+const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
+  emit('delete', { closeDialog, event })
 }
 
 const calculateTheDistanceToScreen = (element: HTMLElement) => {

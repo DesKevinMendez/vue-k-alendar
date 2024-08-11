@@ -11,6 +11,7 @@
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
+          @click="edit"
         >
           <path
             class=""
@@ -27,6 +28,7 @@
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
+          @click="deleteEvent"
         >
           <path
             class=""
@@ -123,11 +125,23 @@ const openDetail = defineModel<boolean>()
 const eventLocal = ref<KEvent | null>(null)
 const props = defineProps<{ event: KEvent | null; calendar: MonthDays | null }>()
 const { event, calendar } = toRefs(props)
-
+const emit = defineEmits(['edit', 'delete'])
 const isSeeMore = computed(() => eventLocal.value?.id === 'more')
 watchEffect(() => {
   eventLocal.value = event.value
 })
+
+const closeDialog = () => {
+  openDetail.value = false
+}
+
+const edit = () => {
+  emit('edit', { closeDialog, event: eventLocal.value })
+}
+
+const deleteEvent = () => {
+  emit('delete', { closeDialog, event: eventLocal.value })
+}
 
 const allEvents = computed(() => calendar.value?.events)
 const eventOf = computed(() => {

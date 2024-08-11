@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import KAlendar from './components/KAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
-import type { KEvent } from './types/Events'
+import type { KEvent, KEventDialogEmit } from './types/Events'
 
 const events: KEvent[] = [
   {
@@ -140,18 +140,28 @@ const events: KEvent[] = [
     description: 'Evento con fecha y hora'
   }
 ]
+
+const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
+  console.log(event);
+  closeDialog()
+}
+
+const editEvent = ({ closeDialog, event }: KEventDialogEmit) => {
+  console.log(event);
+  closeDialog()
+}
 </script>
 
 <template>
   <header>
     <div class="flex justify-between p-4">
       <h1>K-alendar</h1>
-      <KDarkModeButton />
+      <KDarkModeButton /> 
     </div>
   </header>
 
   <main class="p-4">
-    <k-alendar :events />
+    <k-alendar :events @delete="deleteEvent" @edit="editEvent"  />
   </main>
 </template>
 

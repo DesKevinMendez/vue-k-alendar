@@ -7,3 +7,8 @@ export type KEvent = {
   autor?: string
   color?: string
 }
+
+export type KEventDialogEmit = {
+  event: KEvent
+  closeDialog: () => void
+}
