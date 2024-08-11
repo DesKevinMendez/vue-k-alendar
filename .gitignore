@@ -28,3 +28,8 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# VuePress
+docs/.vuepress/.temp
+docs/.vuepress/.cache
+docs/.vuepress/dist
