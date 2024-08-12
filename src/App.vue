@@ -2,8 +2,9 @@
 import KAlendar from './components/KAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
+import { ref } from 'vue'
 
-const events: KEvent[] = [
+const events = ref<KEvent[]>([
   {
     id: '16',
     title: 'Event 16',
@@ -139,16 +140,21 @@ const events: KEvent[] = [
     color: '#92400e',
     description: 'Evento con fecha y hora'
   }
-]
+])
 
 const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
-  console.log(event);
+  console.log(event)
   closeDialog()
 }
 
 const editEvent = ({ closeDialog, event }: KEventDialogEmit) => {
-  console.log(event);
+  console.log(event)
   closeDialog()
+}
+
+const duplicateRandomEvent = () => {
+  const randomEvent = events.value[Math.floor(Math.random() * events.value.length)]
+  events.value.push({ ...randomEvent, id: String(Math.random()) })
 }
 </script>
 
@@ -156,12 +162,18 @@ const editEvent = ({ closeDialog, event }: KEventDialogEmit) => {
   <header>
     <div class="flex justify-between p-4">
       <h1>K-alendar</h1>
-      <KDarkModeButton /> 
+      <KDarkModeButton />
     </div>
+    <button
+      class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+      @click="duplicateRandomEvent"
+    >
+      Duplicate event
+    </button>
   </header>
 
   <main class="p-4">
-    <k-alendar :events @delete="deleteEvent" @edit="editEvent"  />
+    <k-alendar :events @delete="deleteEvent" @edit="editEvent" />
   </main>
 </template>
 

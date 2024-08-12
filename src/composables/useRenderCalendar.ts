@@ -137,5 +137,5 @@ export default function useRenderCalendar(events: KEvent[], emit: (event: "nextM
     emit('toToday', todayUTC.value)
   }
 
-  return { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays }
+  return { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays, generateCalendar }
 }
