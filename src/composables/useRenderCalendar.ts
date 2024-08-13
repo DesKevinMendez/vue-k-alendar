@@ -142,6 +142,7 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
     nextMonth, prevMonth,
     eventsToShowInCalendar,
     toToday, title, monthDays,
-    getWeekDays, generateCalendar
+    getWeekDays, generateCalendar,
+    currentDate
   }
 }

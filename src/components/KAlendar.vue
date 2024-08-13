@@ -70,7 +70,6 @@ import type { KEvent, KEventDialogEmit } from '@/types/Events'
 import { ref, watch } from 'vue'
 import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 import KEventItem from './KEventItem.vue'
-import useDate from '@/composables/useDate'
 
 const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday', 'edit', 'delete'])
 
@@ -83,14 +82,18 @@ const {
   title,
   generateCalendar,
   monthDays,
-  getWeekDays
+  getWeekDays,
+  currentDate
 } = useRenderCalendar(emit)
 
-const { todayUTC } = useDate()
-
-watch(props, ({ events }) => {
-    eventsToShowInCalendar.value = events
-    monthDays.value = generateCalendar(todayUTC.value)
+watch(
+  props,
+  ({ events }) => {
+    if (events) {
+      eventsToShowInCalendar.value = events
+      const currentDt = currentDate.value.toFormat('yyyy-MM-dd', { locale: 'utc' })
+      monthDays.value = generateCalendar(currentDt)
+    }
   },
   { deep: true, immediate: true }
 )
