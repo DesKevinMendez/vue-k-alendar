@@ -75,14 +75,25 @@ import useDate from '@/composables/useDate'
 const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday', 'edit', 'delete'])
 
 const props = defineProps<{ events: KEvent[] }>()
-const { nextMonth, prevMonth, toToday, title, generateCalendar, monthDays, getWeekDays } =
-  useRenderCalendar(props.events, emit)
+const {
+  nextMonth,
+  prevMonth,
+  eventsToShowInCalendar,
+  toToday,
+  title,
+  generateCalendar,
+  monthDays,
+  getWeekDays
+} = useRenderCalendar(emit)
 
 const { todayUTC } = useDate()
 
-watch(props.events, () => {
-  monthDays.value = generateCalendar(todayUTC.value)
-})
+watch(props, ({ events }) => {
+    eventsToShowInCalendar.value = events
+    monthDays.value = generateCalendar(todayUTC.value)
+  },
+  { deep: true, immediate: true }
+)
 
 const eventSelected = ref<KEvent>({
   id: '',

@@ -143,7 +143,7 @@ const events = ref<KEvent[]>([
 ])
 
 const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
-  console.log(event)
+  events.value = events.value.filter((e) => e.id !== event.id)
   closeDialog()
 }
 

@@ -4,11 +4,12 @@ import { DateTime, Interval, Settings } from 'luxon';
 import { computed, onMounted, ref } from "vue";
 import useDate from './useDate';
 const monthDays = ref<MonthDays[]>([])
+const eventsToShowInCalendar = ref<KEvent[]>([])
 const currentDate = ref(DateTime.utc())
 
 Settings.defaultLocale = 'es';
 
-export default function useRenderCalendar(events: KEvent[], emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void) {
+export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void) {
 
   const { todayUTC } = useDate()
 
@@ -68,7 +69,7 @@ export default function useRenderCalendar(events: KEvent[], emit: (event: "nextM
       const currentDay = DateTime.fromISO(day);
       const targetDate = DateTime.fromISO(date);
 
-      events.forEach(event => {
+      eventsToShowInCalendar.value.forEach(event => {
         if (event.end_date &&
           isWithinInterval(day, {
             startDate: event.start_date,
@@ -137,5 +138,10 @@ export default function useRenderCalendar(events: KEvent[], emit: (event: "nextM
     emit('toToday', todayUTC.value)
   }
 
-  return { nextMonth, prevMonth, toToday, title, monthDays, getWeekDays, generateCalendar }
+  return {
+    nextMonth, prevMonth,
+    eventsToShowInCalendar,
+    toToday, title, monthDays,
+    getWeekDays, generateCalendar
+  }
 }

@@ -9,21 +9,22 @@
   >
     <header>
       <slot name="header"> </slot>
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        data-prefix="fas"
-        data-icon="xmark"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 320 512"
-        @click="close"
-      >
-        <path
-          class=""
-          fill="currentColor"
-          d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"
-        ></path>
-      </svg>
+      <button class="k-alendar-button-close" type="button" @click="close">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="xmark"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512"
+        >
+          <path
+            class=""
+            fill="currentColor"
+            d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"
+          ></path>
+        </svg>
+      </button>
     </header>
     <article class="k-alendar-dialog-main">
       <slot />
@@ -100,6 +101,9 @@ const close = () => {
   animation-timing-function: var(--ease-squish-3);
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.5);
 }
+.k-alendar-button-close  {
+  @apply px-2 py-2 outline-none border-none bg-transparent cursor-pointer;
+}
 
 .k-alendar-dialog-main {
   flex: 1;
@@ -119,7 +123,7 @@ dialog::backdrop {
 }
 
 dialog header {
-  @apply p-4 flex border-b justify-between dark:border-gray-600;
+  @apply py-4 flex border-b justify-between dark:border-gray-600;
   svg {
     @apply cursor-pointer h-5 w-5 text-gray-600 dark:text-gray-300;
   }
