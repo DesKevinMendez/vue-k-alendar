@@ -1,7 +1,7 @@
 import type { DayCalendar, MonthDays } from '@/types/Calendar';
-import type { KEvent } from '@/types/Events';
+import type { KEvent, KEventCalendarRender } from '@/types/Events';
 import { DateTime, Interval, Settings } from 'luxon';
-import { computed, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 import useDate from './useDate';
 const monthDays = ref<MonthDays[]>([])
 const eventsToShowInCalendar = ref<KEvent[]>([])
@@ -27,6 +27,15 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
 
     return days;
   };
+
+  const eventsToShowInCalendarMutated = computed(() => {
+    return eventsToShowInCalendar.value.map((event) => {
+      return {
+        ...event,
+        date_calendar_to_render: event.start_date
+      }
+    })
+  })
 
   const generateDayOfTheMonth = (date: string) => {
     const [year, month, day] = date.split('-').map(Number);
@@ -64,26 +73,26 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
     return generateDayOfTheMonth(date).map((day) => {
       const classToButton = []
 
-      const fillEvents: KEvent[] = [];
+      const fillEvents: KEventCalendarRender[] = [];
 
       const currentDay = DateTime.fromISO(day);
       const targetDate = DateTime.fromISO(date);
 
-      eventsToShowInCalendar.value.forEach(event => {
+      eventsToShowInCalendarMutated.value.forEach(event => {
         if (event.end_date &&
           isWithinInterval(day, {
             startDate: event.start_date,
             endDate: event.end_date
           })) {
 
-          fillEvents.push({ ...event, start_date: day });
+          fillEvents.push({ ...event, date_calendar_to_render: day });
         } else {
           fillEvents.push(event);
         }
       });
 
       const eventsToRender = fillEvents.filter((event) => {
-        return currentDay.hasSame(DateTime.fromISO(event.start_date), 'day')
+        return currentDay.hasSame(DateTime.fromISO(event.date_calendar_to_render), 'day')
       })
 
       if (!currentDay.hasSame(targetDate, 'month')) {
@@ -103,10 +112,6 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
     });
 
   }
-
-  onMounted(() => {
-    monthDays.value = generateCalendar(todayUTC.value)
-  })
 
   const title = computed(() => {
     return DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('MMMM yyyy');

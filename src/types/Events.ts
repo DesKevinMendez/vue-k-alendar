@@ -8,6 +8,10 @@ export type KEvent = {
   color?: string
 }
 
+export type KEventCalendarRender = KEvent & {
+  date_calendar_to_render: string
+}
+
 export type KEventDialogEmit = {
   event: KEvent
   closeDialog: () => void
