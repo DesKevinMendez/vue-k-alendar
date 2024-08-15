@@ -71,10 +71,12 @@ import type { KEvent, KEventDialogEmit } from '@/types/Events'
 import { ref, watch } from 'vue'
 import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 import KEventItem from './KEventItem.vue'
+import useConfig from '@/composables/useConfig'
 
 const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday', 'edit', 'delete'])
-const props = defineProps<{ events: KEvent[]; tz?: string }>()
+const props = defineProps<{ events: KEvent[]; tz?: string; lang?: string }>()
 const { timezone } = useDate()
+const { setLang } = useConfig()
 
 const {
   nextMonth,
@@ -88,6 +90,29 @@ const {
   currentDate
 } = useRenderCalendar(emit)
 
+const eventSelected = ref<KEvent>({
+  id: '',
+  title: '',
+  start_date: '',
+  description: ''
+})
+const calendarDaySelect = ref<MonthDays | null>(null)
+const dateRefs = ref<Record<string, any>>({})
+const openEventsDetailDialog = ref(false)
+const dialogPositionToRender = ref({ x: 0, y: 0 })
+
+const regenerateCalendar = () => {
+  eventsToShowInCalendar.value = props.events
+  let currentDt = ''
+
+  if (timezone.value === 'utc') {
+    currentDt = currentDate.value.toFormat('yyyy-MM-dd', { locale: timezone.value })
+  } else {
+    currentDt = currentDate.value.toFormat('yyyy-MM-dd')
+  }
+  monthDays.value = generateCalendar(currentDt)
+}
+
 watch(
   () => props.tz,
   (tz) => {
@@ -99,33 +124,24 @@ watch(
 )
 
 watch(
+  () => props.lang,
+  (lang) => {
+    if (lang) {
+      setLang(lang)
+    }
+  },
+  { immediate: true }
+)
+
+watch(
   props,
   ({ events }) => {
     if (events) {
-      eventsToShowInCalendar.value = props.events
-      let currentDt = ''
-
-      if (timezone.value === 'utc') {
-        currentDt = currentDate.value.toFormat('yyyy-MM-dd', { locale: timezone.value })
-      } else {
-        currentDt = currentDate.value.toFormat('yyyy-MM-dd')
-      }
-      monthDays.value = generateCalendar(currentDt)
+      regenerateCalendar()
     }
   },
   { immediate: true, deep: true }
 )
-
-const eventSelected = ref<KEvent>({
-  id: '',
-  title: '',
-  start_date: '',
-  description: ''
-})
-const calendarDaySelect = ref<MonthDays | null>(null)
-const dateRefs = ref<Record<string, any>>({})
-const openEventsDetailDialog = ref(false)
-const dialogPositionToRender = ref({ x: 0, y: 0 })
 
 const eventClicked = ({
   mauseEvent,

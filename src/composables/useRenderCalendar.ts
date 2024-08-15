@@ -1,16 +1,16 @@
 import type { DayCalendar, MonthDays } from '@/types/Calendar';
 import type { KEvent, KEventCalendarRender } from '@/types/Events';
-import { DateTime, Interval, Settings } from 'luxon';
+import { DateTime, Interval } from 'luxon';
 import { computed, ref } from "vue";
+import useConfig from './useConfig';
 import useDate from './useDate';
 const monthDays = ref<MonthDays[]>([])
 const eventsToShowInCalendar = ref<KEvent[]>([])
 const currentDate = ref(DateTime.utc())
 
-Settings.defaultLocale = 'es';
-
 export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void) {
   const { today, timezone } = useDate()
+  const { lang } = useConfig();
 
   const getWeekDays = () => {
     const start = DateTime.utc().startOf('week');
@@ -20,7 +20,7 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
     let currentDay = start;
 
     while (currentDay <= end) {
-      days.push(currentDay.setLocale('es').toFormat('ccc'));
+      days.push(currentDay.setLocale(lang.value).toFormat('ccc'));
       currentDay = currentDay.plus({ days: 1 });
     }
 
@@ -113,7 +113,9 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
   }
 
   const title = computed(() => {
-    return DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('MMMM yyyy');
+    return DateTime.fromJSDate(currentDate.value.toJSDate())
+      .setLocale(lang.value)
+      .toFormat('MMMM yyyy');
   })
 
   const nextMonth = () => {

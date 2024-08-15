@@ -4,6 +4,7 @@ import KAlendar from './components/KAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
 
+const lang = ref<string>('en')
 const events = ref<KEvent[]>([
   {
     id: '16',
@@ -78,10 +79,16 @@ const duplicateRandomEvent = () => {
     >
       Generate random event
     </button>
+    <button
+      class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+      @click="lang = lang === 'es' ? 'en' : 'es'"
+    >
+      Change to {{ lang === 'es' ? 'English' : 'Spanish' }}
+    </button>
   </header>
 
   <main class="p-4">
-    <k-alendar tz="utc" :events @delete="deleteEvent" @edit="editEvent" />
+    <k-alendar tz="utc" :lang :events @delete="deleteEvent" @edit="editEvent" />
   </main>
 </template>
 
