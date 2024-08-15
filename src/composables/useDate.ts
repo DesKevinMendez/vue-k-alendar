@@ -1,16 +1,20 @@
 import { DateTime, type DateTimeFormatOptions } from "luxon";
-import { computed } from "vue";
+import { computed, ref } from "vue";
+const timezone = ref()
+
 export default function useDate() {
+
   const formatDate = (date: string, formatStr: DateTimeFormatOptions) => {
-    return DateTime.fromISO(date).setZone('utc').toLocaleString(formatStr);
+    return DateTime.fromISO(date, { setZone: timezone.value }).toLocaleString(formatStr);
   }
 
-  const todayUTC = computed(() => {
-    return DateTime.utc().toISODate();
+  const today = computed(() => {
+    return DateTime.now().toISODate();
   })
 
   return {
     formatDate,
-    todayUTC
+    today,
+    timezone
   }
 }

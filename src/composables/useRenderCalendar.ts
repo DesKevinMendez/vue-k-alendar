@@ -10,8 +10,7 @@ const currentDate = ref(DateTime.utc())
 Settings.defaultLocale = 'es';
 
 export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void) {
-
-  const { todayUTC } = useDate()
+  const { today, timezone } = useDate()
 
   const getWeekDays = () => {
     const start = DateTime.utc().startOf('week');
@@ -61,9 +60,9 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
     endDate
   }: { startDate: string, endDate: string }): boolean => {
 
-    const dateToCheck = DateTime.fromISO(date);
-    const start = DateTime.fromISO(startDate, { zone: 'utc' });
-    const end = DateTime.fromISO(endDate, { zone: 'utc' });
+    const dateToCheck = DateTime.fromISO(date, { zone: timezone.value });
+    const start = DateTime.fromISO(startDate, { zone: timezone.value });
+    const end = DateTime.fromISO(endDate, { zone: timezone.value });
 
     const interval = Interval.fromDateTimes(start, end);
     return interval.contains(dateToCheck);
@@ -75,8 +74,8 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
 
       const fillEvents: KEventCalendarRender[] = [];
 
-      const currentDay = DateTime.fromISO(day);
-      const targetDate = DateTime.fromISO(date);
+      const currentDay = DateTime.fromISO(day, { zone: timezone.value });
+      const targetDate = DateTime.fromISO(date, { zone: timezone.value });
 
       eventsToShowInCalendarMutated.value.forEach(event => {
         if (event.end_date &&
@@ -99,7 +98,7 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
         classToButton.push('other-month-date');
       }
 
-      if (currentDay.hasSame(DateTime.fromISO(todayUTC.value), 'day')) {
+      if (currentDay.hasSame(DateTime.fromISO(today.value), 'day')) {
         classToButton.push('selected')
       }
 
@@ -138,9 +137,9 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
   const toToday = () => {
     currentDate.value = DateTime.utc()
 
-    monthDays.value = generateCalendar(todayUTC.value)
+    monthDays.value = generateCalendar(today.value)
 
-    emit('toToday', todayUTC.value)
+    emit('toToday', today.value)
   }
 
   return {

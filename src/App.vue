@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import KAlendar from './components/KAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
-import { ref } from 'vue'
 
 const events = ref<KEvent[]>([
   {
@@ -81,7 +81,7 @@ const duplicateRandomEvent = () => {
   </header>
 
   <main class="p-4">
-    <k-alendar :events @delete="deleteEvent" @edit="editEvent" />
+    <k-alendar tz="utc" :events @delete="deleteEvent" @edit="editEvent" />
   </main>
 </template>
 

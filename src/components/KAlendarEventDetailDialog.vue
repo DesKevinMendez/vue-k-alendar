@@ -122,7 +122,7 @@ import KAlendarDialog from './KAlendarDialog.vue'
 import KEventItem from './KEventItem.vue'
 import { DateTime } from 'luxon'
 
-const { formatDate } = useDate()
+const { formatDate, timezone } = useDate()
 const openDetail = defineModel<boolean>()
 const eventLocal = ref<KEvent | null>(null)
 const props = defineProps<{ event: KEvent | null; calendar: MonthDays | null }>()
@@ -159,7 +159,7 @@ const clickedEvent = ({ event: eventClck }: { event: KEvent }) => {
 }
 
 const hasTime = (date: string) => {
-  const dateTime = DateTime.fromISO(date)
+  const dateTime = DateTime.fromISO(date, { zone: timezone.value })
   return dateTime.isValid && (dateTime.hour !== 0 || dateTime.minute !== 0 || dateTime.second !== 0)
 }
 
@@ -186,7 +186,7 @@ const dates = computed(() => {
 </script>
 
 <style scoped lang="postcss">
-.k-alendar-button-edit-delete  {
+.k-alendar-button-edit-delete {
   @apply outline-none border-none bg-transparent cursor-pointer px-2 py-1;
 }
 .k-alendar-event-detail-main-wrapper {

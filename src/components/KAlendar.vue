@@ -64,6 +64,7 @@
 </template>
 
 <script setup lang="ts">
+import useDate from '@/composables/useDate'
 import useRenderCalendar from '@/composables/useRenderCalendar'
 import type { DayCalendar, MonthDays } from '@/types/Calendar'
 import type { KEvent, KEventDialogEmit } from '@/types/Events'
@@ -72,8 +73,9 @@ import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 import KEventItem from './KEventItem.vue'
 
 const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday', 'edit', 'delete'])
+const props = defineProps<{ events: KEvent[]; tz?: string }>()
+const { timezone } = useDate()
 
-const props = defineProps<{ events: KEvent[] }>()
 const {
   nextMonth,
   prevMonth,
@@ -87,15 +89,31 @@ const {
 } = useRenderCalendar(emit)
 
 watch(
+  () => props.tz,
+  (tz) => {
+    if (tz) {
+      timezone.value = tz
+    }
+  },
+  { immediate: true }
+)
+
+watch(
   props,
   ({ events }) => {
     if (events) {
-      eventsToShowInCalendar.value = events
-      const currentDt = currentDate.value.toFormat('yyyy-MM-dd', { locale: 'utc' })
+      eventsToShowInCalendar.value = props.events
+      let currentDt = ''
+
+      if (timezone.value === 'utc') {
+        currentDt = currentDate.value.toFormat('yyyy-MM-dd', { locale: timezone.value })
+      } else {
+        currentDt = currentDate.value.toFormat('yyyy-MM-dd')
+      }
       monthDays.value = generateCalendar(currentDt)
     }
   },
-  { deep: true, immediate: true }
+  { immediate: true, deep: true }
 )
 
 const eventSelected = ref<KEvent>({
