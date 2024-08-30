@@ -2,7 +2,7 @@
   <KAlendarDialog v-model="openDetail">
     <template #header>
       <div v-if="!isSeeMore" class="flex justify-between">
-        <button class="k-alendar-button-edit-delete" type="button" @click="edit">
+        <button class="k-alendar-button-edit-delete" v-if="showEditButton" type="button" @click="edit">
           <svg
             class="h-5 w-5 text-gray-600"
             aria-hidden="true"
@@ -20,7 +20,7 @@
             ></path>
           </svg>
         </button>
-        <button class="k-alendar-button-edit-delete" type="button" @click="deleteEvent">
+        <button class="k-alendar-button-edit-delete" v-if="showDeleteButton" type="button" @click="deleteEvent">
           <svg
             class="h-5 w-5 text-gray-600"
             aria-hidden="true"
@@ -125,10 +125,26 @@ import { DateTime } from 'luxon'
 const { formatDate, timezone } = useDate()
 const openDetail = defineModel<boolean>()
 const eventLocal = ref<KEvent | null>(null)
-const props = defineProps<{ event: KEvent | null; calendar: MonthDays | null }>()
+const props = defineProps<{
+  event: KEvent | null
+  calendar: MonthDays | null
+  canEdit?: boolean
+  canDelete?: boolean
+}>()
+
 const { event, calendar } = toRefs(props)
 const emit = defineEmits(['edit', 'delete'])
 const isSeeMore = computed(() => eventLocal.value?.id === 'more')
+
+
+const showDeleteButton = computed(() => {
+  return props.canDelete;
+})
+
+const showEditButton = computed(() => {
+  return props.canEdit;
+})
+
 watchEffect(() => {
   eventLocal.value = event.value
 })

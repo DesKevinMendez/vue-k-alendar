@@ -7,17 +7,9 @@
           <button type="button" class="k-alendar-navegation-left" @click="nextMonth">&rarr;</button>
         </div>
         <button type="button" class="k-alendar-today-button" @click="toToday">Ahora</button>
-        <div class="center-title">
-          <h2>{{ title }}</h2>
-        </div>
       </div>
-      <!-- <div class="center-title">
+      <div class="center-title">
         <h2>{{ title }}</h2>
-      </div> -->
-      <div class="right-buttons">
-        <!-- <button type="button" class="k-alendar-today-button">Mes</button>
-        <button type="button" class="k-alendar-today-button">Semana</button>
-        <button type="button" class="k-alendar-today-button">Día</button> -->
       </div>
     </header>
     <div class="k-alendar-days-container">
@@ -53,6 +45,8 @@
       v-model="openEventsDetailDialog"
       :event="eventSelected"
       :calendar="calendarDaySelect"
+      :canDelete="canDelete"
+      :canEdit="canEdit"
       @edit="edit"
       @delete="deleteEvent"
       :style="{
@@ -75,7 +69,15 @@ import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
 
 const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday', 'edit', 'delete'])
-const props = defineProps<{ events: KEvent[]; tz?: string; lang?: string }>()
+
+const props = defineProps<{
+  events: KEvent[]
+  tz?: string
+  lang?: string
+  canEdit?: boolean
+  canDelete?: boolean
+}>()
+
 const { timezone } = useDate()
 const { setLang } = useConfig()
 const { collision } = useDialog()
@@ -271,7 +273,6 @@ button {
   .center-title > h2 {
     @apply capitalize;
   }
-  .right-buttons,
   .left-buttons {
     @apply flex items-center space-x-2;
   }

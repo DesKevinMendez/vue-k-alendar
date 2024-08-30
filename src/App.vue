@@ -5,23 +5,10 @@ import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
 
 const lang = ref<string>('en')
+const canEdit = ref<boolean>(true)
+const canDelete = ref<boolean>(true)
+
 const events = ref<KEvent[]>([
-  // {
-  //   id: '16',
-  //   title: 'Event 16',
-  //   start_date: '2024-08-15',
-  //   autor: 'John Doe',
-  //   description:
-  //     'Lorem ipsun standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-  // },
-  // {
-  //   id: '20',
-  //   title: 'Event 20',
-  //   start_date: '2024-08-29T09:35:00.000000Z',
-  //   end_date: '2024-08-31T20:00:45.000000Z',
-  //   color: '#dc2626',
-  //   description: 'Evento con fecha y hora'
-  // },
   {
     id: '45',
     title: 'Event 45',
@@ -81,22 +68,45 @@ const duplicateRandomEvent = () => {
       <h1>K-alendar</h1>
       <KDarkModeButton />
     </div>
-    <button
-      class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
-      @click="duplicateRandomEvent"
-    >
-      Generate random event
-    </button>
-    <button
-      class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
-      @click="lang = lang === 'es' ? 'en' : 'es'"
-    >
-      Switch to {{ lang === 'es' ? 'English' : 'Spanish' }}
-    </button>
+    <div class="space-x-2">
+      <button
+        class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+        @click="duplicateRandomEvent"
+      >
+        Generate random event
+      </button>
+      <button
+        class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+        @click="lang = lang === 'es' ? 'en' : 'es'"
+      >
+        Switch to {{ lang === 'es' ? 'English' : 'Spanish' }}
+      </button>
+
+      <button
+        class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+        @click="canEdit = !canEdit"
+      >
+        Can edit: {{ canEdit ? 'Yes' : 'No' }}
+      </button>
+
+      <button
+        class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+        @click="canDelete = !canDelete"
+      >
+        Can delete: {{ canDelete ? 'Yes' : 'No' }}
+      </button>
+    </div>
   </header>
 
   <main class="p-4">
-    <k-alendar :lang :events @delete="deleteEvent" @edit="editEvent" />
+    <k-alendar
+      :can-edit="canEdit"
+      :can-delete="canDelete"
+      :lang
+      :events
+      @delete="deleteEvent"
+      @edit="editEvent"
+    />
   </main>
 </template>
 
