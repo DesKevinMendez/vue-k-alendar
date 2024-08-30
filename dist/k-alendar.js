@@ -5525,7 +5525,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
   for (const [s, r] of e)
     t[s] = r;
   return t;
-}, Ss = /* @__PURE__ */ $t(Yi, [["__scopeId", "data-v-2ec57e40"]]), ut = (n) => (Fs("data-v-0a3aeb8e"), n = n(), Ls(), n), Pi = {
+}, Ss = /* @__PURE__ */ $t(Yi, [["__scopeId", "data-v-2ec57e40"]]), ut = (n) => (Fs("data-v-cef93fb2"), n = n(), Ls(), n), Pi = {
   key: 0,
   class: "flex justify-between"
 }, Gi = /* @__PURE__ */ ut(() => /* @__PURE__ */ g("svg", {
@@ -5614,7 +5614,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
       var E;
       return ((E = i.value) == null ? void 0 : E.id) === "more";
     }), y = se(() => a.canDelete), w = se(() => a.canEdit), d = () => {
-      u("eventClicked", { event: a.event });
+      u("eventClicked", { event: i.value });
     };
     Vs(() => {
       i.value = o.value;
@@ -5713,7 +5713,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
       _: 1
     }, 8, ["modelValue"]));
   }
-}), ua = /* @__PURE__ */ $t(la, [["__scopeId", "data-v-0a3aeb8e"]]);
+}), ua = /* @__PURE__ */ $t(la, [["__scopeId", "data-v-cef93fb2"]]);
 function ca() {
   const n = (t) => {
     const s = t.getBoundingClientRect();
