@@ -6,15 +6,15 @@ import useConfig from './useConfig';
 import useDate from './useDate';
 const monthDays = ref<MonthDays[]>([])
 const eventsToShowInCalendar = ref<KEvent[]>([])
-const currentDate = ref(DateTime.utc())
+const currentDate = ref(DateTime.now())
 
 export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void) {
   const { today, timezone } = useDate()
   const { lang } = useConfig();
 
   const getWeekDays = () => {
-    const start = DateTime.utc().startOf('week');
-    const end = DateTime.utc().endOf('week');
+    const start = DateTime.now().startOf('week');
+    const end = DateTime.now().endOf('week');
 
     const days = [];
     let currentDay = start;
@@ -38,7 +38,7 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
 
   const generateDayOfTheMonth = (date: string) => {
     const [year, month, day] = date.split('-').map(Number);
-    const generateCalendarFromDate = DateTime.utc().set({ year, month, day });
+    const generateCalendarFromDate = DateTime.now().set({ year, month, day });
     const startOfMonth = generateCalendarFromDate.startOf('month');
     const endOfMonth = generateCalendarFromDate.endOf('month');
     const startOfWeek = startOfMonth.startOf('week');
@@ -137,7 +137,7 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
   }
 
   const toToday = () => {
-    currentDate.value = DateTime.utc()
+    currentDate.value = DateTime.now()
 
     monthDays.value = generateCalendar(today.value)
 
