@@ -17,68 +17,48 @@ export function useDialog() {
     let dialogPositionToRender = { x: 0, y: 0 }
 
     const targetPosition = target.getBoundingClientRect()
-    const positionBottomRight = {
-      x: targetPosition.right,
-      y: targetPosition.bottom
-    }
-    const positionBottomLeft = {
-      x: targetPosition.left - sizeOfDialog,
-      y: targetPosition.bottom
-    }
 
-    const positionTopRight = {
-      x: targetPosition.right,
-      y: targetPosition.top - sizeOfDialog
-    }
-
-    const positionTopLeft = {
-      x: targetPosition.left - sizeOfDialog,
-      y: targetPosition.top - sizeOfDialog
+    const positions = {
+      bottomRight: {
+        x: targetPosition.right,
+        y: targetPosition.bottom
+      },
+      bottomLeft: {
+        x: targetPosition.left - sizeOfDialog,
+        y: targetPosition.bottom
+      },
+      topRight: {
+        x: targetPosition.right,
+        y: targetPosition.top - sizeOfDialog
+      },
+      topLeft: {
+        x: targetPosition.left - sizeOfDialog,
+        y: targetPosition.top - sizeOfDialog
+      }
     }
 
     const { left, bottom, right, top } = calculateTheDistanceToScreen(target)
-    // console.log({ left, bottom, right, top })
 
-    /**
-     * Evaluar si no cabe en la izquierda, sino, lo renderiza en la parte inferior derecha
-     */
-    if (left < sizeOfDialog) {
-      dialogPositionToRender = { x: positionBottomRight.x, y: positionBottomRight.y }
-    }
+    const conditionsAndPositions = [
+      // Check if it doesn't fit on the left side; if not, render it at the bottom right.
+      { condition: left < sizeOfDialog, position: positions.bottomRight },
+      // Check if it doesn't fit on the right side; if not, render it at the bottom left.
+      { condition: right < sizeOfDialog, position: positions.bottomLeft },
+      // Check if it doesn't fit on the top side; if not, render it at the top right.
+      { condition: bottom < sizeOfDialog, position: positions.topLeft },
+      // Check if it doesn't fit on the bottom side; if not, render it at the top left.
+      { condition: top < sizeOfDialog, position: positions.bottomRight },
+      // Check if it doesn't fit on top and right; if not, render it at the bottom left.
+      { condition: top < sizeOfDialog && right < sizeOfDialog, position: positions.bottomLeft },
+      // Check if it doesn't fit on the left and botton; if not, render it at the top right.
+      {condition: left < sizeOfDialog && bottom < sizeOfDialog, position: positions.topRight},
 
-    /**
-     * Evaluar si no cabe en la derecha, sino, lo renderiza en la parte inferior izquierda
-     */
-    if (right < sizeOfDialog) {
-      dialogPositionToRender = { x: positionBottomLeft.x, y: positionBottomLeft.y }
-    }
+    ]
 
-    /**
-     * Cuando no cabe abajo, se renderiza en la parte superior izquierda
-     */
-    if (bottom < sizeOfDialog) {
-      dialogPositionToRender = { x: positionTopLeft.x, y: positionTopLeft.y }
-    }
-
-    /**
-     * Cuando no cabe arriba, pero si abajo
-     */
-    if (top < sizeOfDialog) {
-      dialogPositionToRender = { x: positionBottomRight.x, y: positionBottomRight.y }
-    }
-
-    /**
-     * Cuando no cabe arriba, ni a la derecha
-     */
-    if (top < sizeOfDialog && right < sizeOfDialog) {
-      dialogPositionToRender = { x: positionBottomLeft.x, y: positionBottomLeft.y }
-    }
-
-    /**
-     * Cuando no cabe ni abajo, ni a la izquierda, se renderiza en la parte superior derecha
-     */
-    if (left < sizeOfDialog && bottom < sizeOfDialog) {
-      dialogPositionToRender = { x: positionTopRight.x, y: positionTopRight.y }
+    for (const { condition, position } of conditionsAndPositions) {
+      if (condition) {
+        dialogPositionToRender = position
+      }
     }
 
     /**
@@ -87,7 +67,7 @@ export function useDialog() {
      */
     if (left < sizeOfDialog && bottom < sizeOfDialog && right < sizeOfDialog) {
       const diff = sizeOfDialog - right + 16
-      dialogPositionToRender = { x: positionBottomLeft.x + diff, y: positionTopLeft.y }
+      dialogPositionToRender = { x: positions.topLeft.x + diff, y: positions.topLeft.y }
     }
 
     /**
@@ -100,10 +80,7 @@ export function useDialog() {
       right > sizeOfDialog
     ) {
       const diff = sizeOfDialog - top + 16
-      dialogPositionToRender = {
-        x: positionBottomRight.x,
-        y: positionTopLeft.y + diff
-      }
+      dialogPositionToRender = { x: positions.bottomRight.x, y: positions.topLeft.y + diff }
     }
 
     /**
@@ -111,9 +88,10 @@ export function useDialog() {
      */
     if (top < sizeOfDialog && bottom < sizeOfDialog) {
       const diff = sizeOfDialog - top + 16
+
       dialogPositionToRender = {
-        x: positionBottomRight.x,
-        y: positionTopLeft.y + diff
+        x: positions.bottomRight.x,
+        y: positions.topLeft.y + diff
       }
     }
 
@@ -127,9 +105,10 @@ export function useDialog() {
       left > sizeOfDialog
     ) {
       const diff = sizeOfDialog - top + 16
+
       dialogPositionToRender = {
-        x: positionBottomLeft.x,
-        y: positionTopLeft.y + diff
+        x: positions.bottomLeft.x,
+        y: positions.topLeft.y + diff
       }
     }
 
@@ -142,7 +121,8 @@ export function useDialog() {
       top > sizeOfDialog &&
       bottom > sizeOfDialog
     ) {
-      dialogPositionToRender = { x: positionBottomRight.x, y: positionBottomRight.y }
+
+      dialogPositionToRender = { x: positions.bottomRight.x, y: positions.bottomRight.y }
     }
 
     return dialogPositionToRender;
