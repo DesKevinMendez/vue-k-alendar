@@ -424,7 +424,7 @@ class ie extends Le {
     const s = Us(this.name);
     let [r, i, a, o, l, u, h] = s.formatToParts ? Ys(s, t) : qs(s, t);
     o === "BC" && (r = -Math.abs(r) + 1);
-    const w = at({
+    const v = at({
       year: r,
       month: i,
       day: a,
@@ -435,7 +435,7 @@ class ie extends Le {
     });
     let d = +t;
     const p = d % 1e3;
-    return d -= p >= 0 ? p : 1e3 + p, (w - d) / (60 * 1e3);
+    return d -= p >= 0 ? p : 1e3 + p, (v - d) / (60 * 1e3);
   }
   /**
    * Return whether this Zone is equal to another zone
@@ -1553,7 +1553,7 @@ class Z {
     ), h = (d) => {
       const p = Z.macroTokenToFormatOpts(d);
       return p ? this.formatWithSystemDefault(e, p) : d;
-    }, y = (d) => s ? Er(e, d) : i({ era: d }, "era"), w = (d) => {
+    }, y = (d) => s ? Er(e, d) : i({ era: d }, "era"), v = (d) => {
       switch (d) {
         case "S":
           return this.num(e.millisecond);
@@ -1680,7 +1680,7 @@ class Z {
           return h(d);
       }
     };
-    return rn(Z.parseFormat(t), w);
+    return rn(Z.parseFormat(t), v);
   }
   formatDurationFromString(e, t) {
     const s = (l) => {
@@ -1779,17 +1779,17 @@ function $e(n, e) {
 }
 const _r = RegExp(`^T?${Vt.source}$`), Zr = /^-?P(?:(?:(-?\d{1,20}(?:\.\d{1,20})?)Y)?(?:(-?\d{1,20}(?:\.\d{1,20})?)M)?(?:(-?\d{1,20}(?:\.\d{1,20})?)W)?(?:(-?\d{1,20}(?:\.\d{1,20})?)D)?(?:T(?:(-?\d{1,20}(?:\.\d{1,20})?)H)?(?:(-?\d{1,20}(?:\.\d{1,20})?)M)?(?:(-?\d{1,20})(?:[.,](-?\d{1,20}))?S)?)?)$/;
 function Ar(n) {
-  const [e, t, s, r, i, a, o, l, u] = n, h = e[0] === "-", y = l && l[0] === "-", w = (d, p = !1) => d !== void 0 && (p || d && h) ? -d : d;
+  const [e, t, s, r, i, a, o, l, u] = n, h = e[0] === "-", y = l && l[0] === "-", v = (d, p = !1) => d !== void 0 && (p || d && h) ? -d : d;
   return [
     {
-      years: w(de(t)),
-      months: w(de(s)),
-      weeks: w(de(r)),
-      days: w(de(i)),
-      hours: w(de(a)),
-      minutes: w(de(o)),
-      seconds: w(de(l), l === "-0"),
-      milliseconds: w(bt(u), y)
+      years: v(de(t)),
+      months: v(de(s)),
+      weeks: v(de(r)),
+      days: v(de(i)),
+      hours: v(de(a)),
+      minutes: v(de(o)),
+      seconds: v(de(l), l === "-0"),
+      milliseconds: v(bt(u), y)
     }
   ];
 }
@@ -1829,9 +1829,9 @@ function Hr(n) {
     u,
     h,
     y
-  ] = n, w = Lt(e, r, s, t, i, a, o);
+  ] = n, v = Lt(e, r, s, t, i, a, o);
   let d;
-  return l ? d = Rr[l] : u ? d = 0 : d = ot(h, y), [w, new A(d)];
+  return l ? d = Rr[l] : u ? d = 0 : d = ot(h, y), [v, new A(d)];
 }
 function qr(n) {
   return n.replace(/\([^()]*\)|[\n\t]/g, " ").replace(/(\s\s+)/g, " ").trim();
@@ -3297,7 +3297,7 @@ function Oi(n) {
   return n.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
 }
 function Si(n, e) {
-  const t = B(e), s = B(e, "{2}"), r = B(e, "{3}"), i = B(e, "{4}"), a = B(e, "{6}"), o = B(e, "{1,2}"), l = B(e, "{1,3}"), u = B(e, "{1,6}"), h = B(e, "{1,9}"), y = B(e, "{2,4}"), w = B(e, "{4,6}"), d = (S) => ({ regex: RegExp(Oi(S.val)), deser: ([C]) => C, literal: !0 }), x = ((S) => {
+  const t = B(e), s = B(e, "{2}"), r = B(e, "{3}"), i = B(e, "{4}"), a = B(e, "{6}"), o = B(e, "{1,2}"), l = B(e, "{1,3}"), u = B(e, "{1,6}"), h = B(e, "{1,9}"), y = B(e, "{2,4}"), v = B(e, "{4,6}"), d = (S) => ({ regex: RegExp(Oi(S.val)), deser: ([C]) => C, literal: !0 }), x = ((S) => {
     if (n.literal)
       return d(S);
     switch (S.val) {
@@ -3312,7 +3312,7 @@ function Si(n, e) {
       case "yyyy":
         return O(i);
       case "yyyyy":
-        return O(w);
+        return O(v);
       case "yyyyyy":
         return O(a);
       case "M":
@@ -3977,12 +3977,12 @@ class f {
     const s = ue(t.zone, N.defaultZone);
     if (!s.isValid)
       return f.invalid(Ce(s));
-    const r = D.fromObject(t), i = nt(e, yn), { minDaysInFirstWeek: a, startOfWeek: o } = tn(i, r), l = N.now(), u = m(t.specificOffset) ? s.offset(l) : t.specificOffset, h = !m(i.ordinal), y = !m(i.year), w = !m(i.month) || !m(i.day), d = y || w, p = i.weekYear || i.weekNumber;
+    const r = D.fromObject(t), i = nt(e, yn), { minDaysInFirstWeek: a, startOfWeek: o } = tn(i, r), l = N.now(), u = m(t.specificOffset) ? s.offset(l) : t.specificOffset, h = !m(i.ordinal), y = !m(i.year), v = !m(i.month) || !m(i.day), d = y || v, p = i.weekYear || i.weekNumber;
     if ((d || h) && p)
       throw new Te(
         "Can't mix weekYear/weekNumber units with year/month/day or ordinals"
       );
-    if (w && h)
+    if (v && h)
       throw new Te("Can't mix ordinal dates with month/day");
     const x = p || i.weekday && !d;
     let S, C, $ = He(l, u);
@@ -4621,8 +4621,8 @@ class f {
       s,
       r
     ) : m(t.ordinal) ? (y = { ...this.toObject(), ...t }, m(t.day) && (y.day = Math.min(tt(y.year, y.month), y.day))) : y = en({ ...ht(this.c), ...t });
-    const [w, d] = je(y, this.o, this.zone);
-    return fe(this, { ts: w, o: d });
+    const [v, d] = je(y, this.o, this.zone);
+    return fe(this, { ts: v, o: d });
   }
   /**
    * Add a period of time to this DateTime and return the resulting DateTime
@@ -5525,7 +5525,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
   for (const [s, r] of e)
     t[s] = r;
   return t;
-}, Ss = /* @__PURE__ */ $t(Yi, [["__scopeId", "data-v-2ec57e40"]]), ut = (n) => (Fs("data-v-cef93fb2"), n = n(), Ls(), n), Pi = {
+}, Ss = /* @__PURE__ */ $t(Yi, [["__scopeId", "data-v-2ec57e40"]]), ut = (n) => (Fs("data-v-1006a853"), n = n(), Ls(), n), Pi = {
   key: 0,
   class: "flex justify-between"
 }, Gi = /* @__PURE__ */ ut(() => /* @__PURE__ */ g("svg", {
@@ -5613,8 +5613,8 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
     const { formatDate: t, timezone: s } = zt(), r = Tn(n, "modelValue"), i = Y(null), a = n, { event: o, calendar: l } = Cs(a), u = e, h = se(() => {
       var E;
       return ((E = i.value) == null ? void 0 : E.id) === "more";
-    }), y = se(() => a.canDelete), w = se(() => a.canEdit), d = () => {
-      u("eventClicked", { event: i.value });
+    }), y = se(() => a.canDelete), v = se(() => a.canEdit), d = () => {
+      u("eventClicked", { closeDialog: p, event: i.value });
     };
     Vs(() => {
       i.value = o.value;
@@ -5656,7 +5656,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
             g("time", { datetime: $.value }, re($.value), 9, Qi)
           ])
         ])) : (b(), W("div", Pi, [
-          w.value ? (b(), W("button", {
+          v.value ? (b(), W("button", {
             key: 0,
             class: "k-alendar-button-edit-delete",
             type: "button",
@@ -5676,9 +5676,9 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
           h.value ? (b(), W("section", aa, [
             g("div", oa, [
               g("ul", null, [
-                (b(!0), W(Ge, null, Be(C.value, (v) => (b(), pt(Ss, {
-                  key: v.id,
-                  event: v,
+                (b(!0), W(Ge, null, Be(C.value, (k) => (b(), pt(Ss, {
+                  key: k.id,
+                  event: k,
                   calendar: ee(l),
                   onEventClicked: R
                 }, null, 8, ["event", "calendar"]))), 128))
@@ -5713,7 +5713,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
       _: 1
     }, 8, ["modelValue"]));
   }
-}), ua = /* @__PURE__ */ $t(la, [["__scopeId", "data-v-cef93fb2"]]);
+}), ua = /* @__PURE__ */ $t(la, [["__scopeId", "data-v-1006a853"]]);
 function ca() {
   const n = (t) => {
     const s = t.getBoundingClientRect();
@@ -5757,28 +5757,28 @@ function ca() {
       // Check if it doesn't fit on the left and botton; if not, render it at the top right.
       { condition: o < 400 && l < 400, position: a.topRight }
     ];
-    for (const { condition: w, position: d } of y)
-      w && (r = d);
+    for (const { condition: v, position: d } of y)
+      v && (r = d);
     if (o < 400 && l < 400 && u < 400) {
-      const w = 400 - u + 16;
-      r = { x: a.topLeft.x + w, y: a.topLeft.y };
+      const v = 400 - u + 16;
+      r = { x: a.topLeft.x + v, y: a.topLeft.y };
     }
     if (o < 400 && h < 400 && l < 400 && u > 400) {
-      const w = 400 - h + 16;
-      r = { x: a.bottomRight.x, y: a.topLeft.y + w };
+      const v = 400 - h + 16;
+      r = { x: a.bottomRight.x, y: a.topLeft.y + v };
     }
     if (h < 400 && l < 400) {
-      const w = 400 - h + 16;
+      const v = 400 - h + 16;
       r = {
         x: a.bottomRight.x,
-        y: a.topLeft.y + w
+        y: a.topLeft.y + v
       };
     }
     if (h < 400 && l < 400 && u < 400 && o > 400) {
-      const w = 400 - h + 16;
+      const v = 400 - h + 16;
       r = {
         x: a.bottomLeft.x,
-        y: a.topLeft.y + w
+        y: a.topLeft.y + v
       };
     }
     return o > 400 && u > 400 && h > 400 && l > 400 && (r = { x: a.bottomRight.x, y: a.bottomRight.y }), r;
@@ -5815,7 +5815,7 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       eventsToShowInCalendar: u,
       toToday: h,
       title: y,
-      generateCalendar: w,
+      generateCalendar: v,
       monthDays: d,
       getWeekDays: p,
       currentDate: x
@@ -5826,82 +5826,82 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       description: ""
     }), C = Y(null), $ = Y({}), R = Y(!1), L = Y({ x: 0, y: 0 }), te = () => {
       u.value = s.events;
-      let v = "";
-      r.value === "utc" ? v = x.value.toFormat("yyyy-MM-dd", { locale: r.value }) : v = x.value.toFormat("yyyy-MM-dd"), d.value = w(v);
+      let k = "";
+      r.value === "utc" ? k = x.value.toFormat("yyyy-MM-dd", { locale: r.value }) : k = x.value.toFormat("yyyy-MM-dd"), d.value = v(k);
     };
     Pe(
       () => s.tz,
-      (v) => {
-        v && (r.value = v);
+      (k) => {
+        k && (r.value = k);
       },
       { immediate: !0 }
     ), Pe(
       () => s.lang,
-      (v) => {
-        v && i(v);
+      (k) => {
+        k && i(k);
       },
       { immediate: !0 }
     ), Pe(
       s,
-      ({ events: v }) => {
-        v && te();
+      ({ events: k }) => {
+        k && te();
       },
       { immediate: !0, deep: !0 }
     );
-    const E = ({ event: v }) => {
-      t("eventDialogClicked", { event: s.events.find((M) => M.id = v.id) });
+    const E = ({ event: k, closeDialog: M }) => {
+      t("eventDialogClicked", { event: s.events.find((w) => w.id = k.id), closeDialog: M });
     }, V = ({
-      mauseEvent: v,
+      mauseEvent: k,
       event: M,
-      calendar: k
+      calendar: w
     }) => {
-      if (S.value = M, C.value = k, k.events.length > 0) {
-        let z = v.target;
+      if (S.value = M, C.value = w, w.events.length > 0) {
+        let z = k.target;
         z.tagName === "H3" && (z = z.parentElement), L.value = a(z), R.value = !0;
       }
       t("eventClicked", {
         event: s.events.find((z) => z.id = M.id),
-        calendar: k,
-        mauseEvent: v
+        calendar: w,
+        mauseEvent: k
       });
-    }, Q = ({ closeDialog: v, event: M }) => {
-      t("edit", { closeDialog: v, event: M });
-    }, H = ({ closeDialog: v, event: M }) => {
-      t("delete", { closeDialog: v, event: M });
-    }, X = (v) => {
+    }, Q = ({ closeDialog: k, event: M }) => {
+      t("edit", { closeDialog: k, event: M });
+    }, H = ({ closeDialog: k, event: M }) => {
+      t("delete", { closeDialog: k, event: M });
+    }, X = (k) => {
       var Zt;
-      const M = $.value[v];
-      let k = 0;
+      const M = $.value[k];
+      let w = 0;
       const z = 32, Ds = 8, Ms = 8;
       let _t = 0;
       if (M) {
-        k = M.clientHeight - Ms * 2;
+        w = M.clientHeight - Ms * 2;
         const Es = (Zt = M.querySelector("span.k-alendar-text")) == null ? void 0 : Zt.offsetHeight;
-        k -= Es || 0, _t = Math.floor(
-          k / (z + Ds)
+        w -= Es || 0, _t = Math.floor(
+          w / (z + Ds)
         );
       }
       return _t;
-    }, ye = (v, M) => {
-      const k = X(v), z = M.slice(0, k);
-      return M.length - k > 0 && z.splice(z.length - 1, 1, {
+    }, ye = (k, M) => {
+      const w = X(k), z = M.slice(0, w);
+      return M.length - w > 0 && z.splice(z.length - 1, 1, {
         id: "more",
-        title: `+${M.length + 1 - k}`,
+        title: `+${M.length + 1 - w}`,
         start_date: "",
         description: ""
       }), z;
-    }, _e = (v) => {
+    }, _e = (k) => {
       if (window.innerWidth < 768) {
-        const k = Math.floor((window.innerWidth - 400) / 2);
-        L.value = { x: k, y: 16 }, v.events.length > 0 && (v.events.length === 1 ? S.value = v.events[0] : S.value = {
+        const w = Math.floor((window.innerWidth - 400) / 2);
+        L.value = { x: w, y: 16 }, k.events.length > 0 && (k.events.length === 1 ? S.value = k.events[0] : S.value = {
           id: "more",
-          title: `+${v.events.length} eventos`,
+          title: `+${k.events.length} eventos`,
           start_date: "",
           description: ""
-        }, C.value = v, R.value = !0);
+        }, C.value = k, R.value = !0);
       }
     };
-    return (v, M) => (b(), W("section", da, [
+    return (k, M) => (b(), W("section", da, [
       g("header", fa, [
         g("div", ha, [
           g("div", ma, [
@@ -5909,20 +5909,20 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
               type: "button",
               class: "k-alendar-navegation-prev",
               onClick: M[0] || (M[0] = //@ts-ignore
-              (...k) => ee(l) && ee(l)(...k))
+              (...w) => ee(l) && ee(l)(...w))
             }, "←"),
             g("button", {
               type: "button",
               class: "k-alendar-navegation-left",
               onClick: M[1] || (M[1] = //@ts-ignore
-              (...k) => ee(o) && ee(o)(...k))
+              (...w) => ee(o) && ee(o)(...w))
             }, "→")
           ]),
           g("button", {
             type: "button",
             class: "k-alendar-today-button",
             onClick: M[2] || (M[2] = //@ts-ignore
-            (...k) => ee(h) && ee(h)(...k))
+            (...w) => ee(h) && ee(h)(...w))
           }, "Ahora")
         ]),
         g("div", ya, [
@@ -5930,26 +5930,26 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
         ])
       ]),
       g("div", ga, [
-        (b(!0), W(Ge, null, Be(ee(p)(), (k) => (b(), W("div", { key: k }, re(k), 1))), 128))
+        (b(!0), W(Ge, null, Be(ee(p)(), (w) => (b(), W("div", { key: w }, re(w), 1))), 128))
       ]),
       g("div", wa, [
-        (b(!0), W(Ge, null, Be(ee(d), (k) => (b(), W("div", {
-          key: k.day.toString(),
-          onClick: (z) => _e(k),
-          class: Ws([k.class, "date"]),
+        (b(!0), W(Ge, null, Be(ee(d), (w) => (b(), W("div", {
+          key: w.day.toString(),
+          onClick: (z) => _e(w),
+          class: Ws([w.class, "date"]),
           ref_for: !0,
-          ref: (z) => $.value[k.day] = z
+          ref: (z) => $.value[w.day] = z
         }, [
           g("div", pa, [
-            g("span", ka, re(k.text), 1),
-            k.events.length > 0 ? (b(), W("span", Ta)) : ke("", !0)
+            g("span", ka, re(w.text), 1),
+            w.events.length > 0 ? (b(), W("span", Ta)) : ke("", !0)
           ]),
-          k.events.length > 0 ? (b(), W("div", Oa, [
+          w.events.length > 0 ? (b(), W("div", Oa, [
             g("ul", null, [
-              (b(!0), W(Ge, null, Be(ye(k.day, k.events), (z) => (b(), pt(Ss, {
+              (b(!0), W(Ge, null, Be(ye(w.day, w.events), (z) => (b(), pt(Ss, {
                 key: z.id,
                 event: z,
-                calendar: k,
+                calendar: w,
                 onEventClicked: V
               }, null, 8, ["event", "calendar"]))), 128))
             ])
@@ -5958,11 +5958,11 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       ]),
       zs(ua, {
         modelValue: R.value,
-        "onUpdate:modelValue": M[3] || (M[3] = (k) => R.value = k),
+        "onUpdate:modelValue": M[3] || (M[3] = (w) => R.value = w),
         event: S.value,
         calendar: C.value,
-        canDelete: v.canDelete,
-        canEdit: v.canEdit,
+        canDelete: k.canDelete,
+        canEdit: k.canEdit,
         onEventClicked: E,
         onEdit: Q,
         onDelete: H,
@@ -5973,7 +5973,7 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       }, null, 8, ["modelValue", "event", "calendar", "canDelete", "canEdit", "style"])
     ]));
   }
-}), Ma = /* @__PURE__ */ $t(Sa, [["__scopeId", "data-v-8a775f32"]]);
+}), Ma = /* @__PURE__ */ $t(Sa, [["__scopeId", "data-v-fdb502ba"]]);
 export {
   Ma as KAlendar
 };
