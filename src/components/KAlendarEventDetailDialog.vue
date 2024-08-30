@@ -146,7 +146,7 @@ const showEditButton = computed(() => {
 })
 
 const eventClicked = () => {
-  emit('eventClicked', { event: props.event })
+  emit('eventClicked', { event: eventLocal.value })
 }
 
 watchEffect(() => {
