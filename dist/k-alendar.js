@@ -5849,7 +5849,7 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       { immediate: !0, deep: !0 }
     );
     const E = ({ event: v }) => {
-      t("eventDialogClicked", { event: v });
+      t("eventDialogClicked", { event: s.events.find((M) => M.id = v.id) });
     }, V = ({
       mauseEvent: v,
       event: M,
@@ -5973,7 +5973,7 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       }, null, 8, ["modelValue", "event", "calendar", "canDelete", "canEdit", "style"])
     ]));
   }
-}), Ma = /* @__PURE__ */ $t(Sa, [["__scopeId", "data-v-1c693c81"]]);
+}), Ma = /* @__PURE__ */ $t(Sa, [["__scopeId", "data-v-8a775f32"]]);
 export {
   Ma as KAlendar
 };
