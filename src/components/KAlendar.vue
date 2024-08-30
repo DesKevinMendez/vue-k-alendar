@@ -47,6 +47,7 @@
       :calendar="calendarDaySelect"
       :canDelete="canDelete"
       :canEdit="canEdit"
+      @eventClicked="eventClickedFromDialog"
       @edit="edit"
       @delete="deleteEvent"
       :style="{
@@ -68,7 +69,15 @@ import KEventItem from './KEventItem.vue'
 import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
 
-const emit = defineEmits(['nextMonth', 'prevMonth', 'toToday', 'edit', 'delete', 'eventClicked'])
+const emit = defineEmits([
+  'nextMonth',
+  'prevMonth',
+  'toToday',
+  'edit',
+  'delete',
+  'eventClicked',
+  'eventDialogClicked'
+])
 
 const props = defineProps<{
   events: KEvent[]
@@ -147,6 +156,10 @@ watch(
   { immediate: true, deep: true }
 )
 
+const eventClickedFromDialog = ({ event }: { event: KEvent }) => {
+  emit('eventDialogClicked', { event })
+}
+
 const eventClicked = ({
   mauseEvent,
   event,
@@ -172,7 +185,11 @@ const eventClicked = ({
     openEventsDetailDialog.value = true
   }
 
-  emit('eventClicked', { event, calendar, mauseEvent })
+  emit('eventClicked', {
+    event: props.events.find((e) => (e.id = event.id)),
+    calendar,
+    mauseEvent
+  })
 }
 
 const edit = ({ closeDialog, event }: KEventDialogEmit) => {

@@ -47,7 +47,7 @@
     </template>
     <template #default>
       <section v-if="!isSeeMore" class="k-alendar-event-detail-main-wrapper">
-        <div class="title">
+        <div class="title" @click="eventClicked">
           <span
             class="circle"
             v-if="eventLocal?.color"
@@ -133,7 +133,7 @@ const props = defineProps<{
 }>()
 
 const { event, calendar } = toRefs(props)
-const emit = defineEmits(['edit', 'delete'])
+const emit = defineEmits(['edit', 'delete', 'eventClicked'])
 const isSeeMore = computed(() => eventLocal.value?.id === 'more')
 
 
@@ -144,6 +144,10 @@ const showDeleteButton = computed(() => {
 const showEditButton = computed(() => {
   return props.canEdit;
 })
+
+const eventClicked = () => {
+  emit('eventClicked', { event: props.event })
+}
 
 watchEffect(() => {
   eventLocal.value = event.value
@@ -209,7 +213,7 @@ const dates = computed(() => {
   @apply flex flex-col min-h-full;
 }
 .title {
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-2 cursor-pointer;
   span.circle {
     @apply w-4 h-4 rounded-full;
   }
