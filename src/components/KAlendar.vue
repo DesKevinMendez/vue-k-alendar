@@ -156,8 +156,8 @@ watch(
   { immediate: true, deep: true }
 )
 
-const eventClickedFromDialog = ({ event }: { event: KEvent }) => {
-  emit('eventDialogClicked', { event: props.events.find((e) => (e.id = event.id)) })
+const eventClickedFromDialog = ({ event, closeDialog }: KEventDialogEmit) => {
+  emit('eventDialogClicked', { event: props.events.find((e) => (e.id = event.id)), closeDialog })
 }
 
 const eventClicked = ({

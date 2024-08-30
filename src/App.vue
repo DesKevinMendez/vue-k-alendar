@@ -55,7 +55,8 @@ const duplicateRandomEvent = () => {
     title: titles[Math.floor(Math.random() * titles.length)],
     start_date: `2024-${month}-${randomDay}`,
     description: 'Description of random event',
-    color: randomColor
+    color: randomColor,
+    autor: 'Kevin Méndez'
   }
 
   events.value.push({ ...randomEvent, id: String(Math.random()) })

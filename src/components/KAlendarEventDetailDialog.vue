@@ -2,7 +2,12 @@
   <KAlendarDialog v-model="openDetail">
     <template #header>
       <div v-if="!isSeeMore" class="flex justify-between">
-        <button class="k-alendar-button-edit-delete" v-if="showEditButton" type="button" @click="edit">
+        <button
+          class="k-alendar-button-edit-delete"
+          v-if="showEditButton"
+          type="button"
+          @click="edit"
+        >
           <svg
             class="h-5 w-5 text-gray-600"
             aria-hidden="true"
@@ -20,7 +25,12 @@
             ></path>
           </svg>
         </button>
-        <button class="k-alendar-button-edit-delete" v-if="showDeleteButton" type="button" @click="deleteEvent">
+        <button
+          class="k-alendar-button-edit-delete"
+          v-if="showDeleteButton"
+          type="button"
+          @click="deleteEvent"
+        >
           <svg
             class="h-5 w-5 text-gray-600"
             aria-hidden="true"
@@ -136,17 +146,16 @@ const { event, calendar } = toRefs(props)
 const emit = defineEmits(['edit', 'delete', 'eventClicked'])
 const isSeeMore = computed(() => eventLocal.value?.id === 'more')
 
-
 const showDeleteButton = computed(() => {
-  return props.canDelete;
+  return props.canDelete
 })
 
 const showEditButton = computed(() => {
-  return props.canEdit;
+  return props.canEdit
 })
 
 const eventClicked = () => {
-  emit('eventClicked', { event: eventLocal.value })
+  emit('eventClicked', { closeDialog, event: eventLocal.value })
 }
 
 watchEffect(() => {
@@ -235,9 +244,12 @@ const dates = computed(() => {
   }
 }
 
+.content {
+  @apply flex-1;
+}
 .content,
 .autor {
-  @apply mt-4 grid grid-cols-12 gap-2 flex-1;
+  @apply mt-4 grid grid-cols-12 gap-2;
   svg {
     @apply h-5 w-5 text-gray-600 col-span-1 dark:text-gray-300;
   }
