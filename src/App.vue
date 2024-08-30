@@ -22,14 +22,14 @@ const events = ref<KEvent[]>([
   //   color: '#dc2626',
   //   description: 'Evento con fecha y hora'
   // },
-  // {
-  //   id: '45',
-  //   title: 'Event 45',
-  //   start_date: '2024-08-06T21:35:55.000000Z',
-  //   end_date: '2024-08-06T23:35:55.000000Z',
-  //   color: '#92400e',
-  //   description: 'Evento con fecha y hora'
-  // },
+  {
+    id: '45',
+    title: 'Event 45',
+    start_date: '2024-08-06T21:35:55.000000Z',
+    end_date: '2024-08-06T23:35:55.000000Z',
+    color: '#92400e',
+    description: 'Evento con fecha y hora'
+  },
   {
     id: '9cc69d03-7215-41e2-966a-9c787b690223',
     title: 'Dto',
@@ -91,12 +91,12 @@ const duplicateRandomEvent = () => {
       class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
       @click="lang = lang === 'es' ? 'en' : 'es'"
     >
-      Change to {{ lang === 'es' ? 'English' : 'Spanish' }}
+      Switch to {{ lang === 'es' ? 'English' : 'Spanish' }}
     </button>
   </header>
 
   <main class="p-4">
-    <k-alendar tz="America/El_Salvador" :lang :events @delete="deleteEvent" @edit="editEvent" />
+    <k-alendar :lang :events @delete="deleteEvent" @edit="editEvent" />
   </main>
 </template>
 

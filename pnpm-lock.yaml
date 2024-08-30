@@ -64,6 +64,9 @@ devDependencies:
   jsdom:
     specifier: ^24.1.0
     version: 24.1.1
+  mockdate:
+    specifier: ^3.0.5
+    version: 3.0.5
   npm-run-all2:
     specifier: ^6.2.0
     version: 6.2.2
@@ -4024,6 +4027,10 @@ packages:
       pathe: 1.1.2
       pkg-types: 1.1.3
       ufo: 1.5.4
+    dev: true
+
+  /mockdate@3.0.5:
+    resolution: {integrity: sha512-iniQP4rj1FhBdBYS/+eQv7j1tadJ9lJtdzgOpvsOHng/GbcDh2Fhdeq+ZRldrPYdXvCyfFUmFeEwEGXZB5I/AQ==}
     dev: true
 
   /mrmime@2.0.0:
