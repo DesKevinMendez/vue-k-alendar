@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import KAlendar from './components/KAlendar.vue'
+import KAlendar from '@/components/KAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
 

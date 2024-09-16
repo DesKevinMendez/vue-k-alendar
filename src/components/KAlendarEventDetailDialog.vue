@@ -128,8 +128,8 @@ import useDate from '@/composables/useDate'
 import type { MonthDays } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
 import { computed, ref, toRefs, watchEffect } from 'vue'
-import KAlendarDialog from './KAlendarDialog.vue'
-import KEventItem from './KEventItem.vue'
+import KAlendarDialog from '@/components/KAlendarDialog.vue'
+import KEventItem from '@/components/KEventItem.vue'
 import { DateTime } from 'luxon'
 
 const { formatDate, timezone } = useDate()

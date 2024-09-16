@@ -65,7 +65,7 @@ import type { DayCalendar, MonthDays } from '@/types/Calendar'
 import type { KEvent, KEventDialogEmit } from '@/types/Events'
 import { ref, watch } from 'vue'
 import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
-import KEventItem from './KEventItem.vue'
+import KEventItem from '@/components/KEventItem.vue'
 import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
 
