@@ -5525,7 +5525,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
   for (const [s, r] of e)
     t[s] = r;
   return t;
-}, Ss = /* @__PURE__ */ $t(Yi, [["__scopeId", "data-v-2ec57e40"]]), ut = (n) => (Fs("data-v-1006a853"), n = n(), Ls(), n), Pi = {
+}, Ss = /* @__PURE__ */ $t(Yi, [["__scopeId", "data-v-2ec57e40"]]), ut = (n) => (Fs("data-v-d6f11f78"), n = n(), Ls(), n), Pi = {
   key: 0,
   class: "flex justify-between"
 }, Gi = /* @__PURE__ */ ut(() => /* @__PURE__ */ g("svg", {
@@ -5713,7 +5713,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
       _: 1
     }, 8, ["modelValue"]));
   }
-}), ua = /* @__PURE__ */ $t(la, [["__scopeId", "data-v-1006a853"]]);
+}), ua = /* @__PURE__ */ $t(la, [["__scopeId", "data-v-d6f11f78"]]);
 function ca() {
   const n = (t) => {
     const s = t.getBoundingClientRect();
@@ -5973,7 +5973,7 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       }, null, 8, ["modelValue", "event", "calendar", "canDelete", "canEdit", "style"])
     ]));
   }
-}), Ma = /* @__PURE__ */ $t(Sa, [["__scopeId", "data-v-fdb502ba"]]);
+}), Ma = /* @__PURE__ */ $t(Sa, [["__scopeId", "data-v-efc9bb34"]]);
 export {
   Ma as KAlendar
 };
