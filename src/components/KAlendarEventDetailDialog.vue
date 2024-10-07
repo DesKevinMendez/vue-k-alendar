@@ -185,6 +185,7 @@ const eventOf = computed(() => {
 
 const clickedEvent = ({ event: eventClck }: { event: KEvent }) => {
   eventLocal.value = eventClck
+  emit('eventClicked', { closeDialog, event: eventLocal.value })
 }
 
 const hasTime = (date: string) => {

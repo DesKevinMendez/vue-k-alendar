@@ -241,10 +241,9 @@ const howEventsShouldRender = (day: string, events: KEvent[]) => {
 }
 
 const selectThisDate = (calendar: MonthDays) => {
-  /**
-   * cuando es mobile < 768px
-   */
-  if (window.innerWidth < 768) {
+  const isMobile = window.innerWidth < 768
+
+  if (isMobile) {
     const sizeOfDialog = 400
     const x = Math.floor((window.innerWidth - sizeOfDialog) / 2)
     dialogPositionToRender.value = { x, y: 16 }
@@ -252,6 +251,13 @@ const selectThisDate = (calendar: MonthDays) => {
     if (calendar.events.length > 0) {
       if (calendar.events.length === 1) {
         eventSelected.value = calendar.events[0]
+
+        emit('eventClicked', {
+          event: eventSelected.value,
+          calendar,
+          mauseEvent: null
+        })
+
       } else {
         eventSelected.value = {
           id: 'more',
@@ -260,6 +266,7 @@ const selectThisDate = (calendar: MonthDays) => {
           description: ''
         }
       }
+
       calendarDaySelect.value = calendar
       openEventsDetailDialog.value = true
     }
