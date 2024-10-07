@@ -241,13 +241,20 @@ const howEventsShouldRender = (day: string, events: KEvent[]) => {
 }
 
 const selectThisDate = (calendar: MonthDays) => {
-  /**
-   * cuando es mobile < 768px
-   */
-  if (window.innerWidth < 768) {
+  const isMobile = window.innerWidth < 768
+
+  if (isMobile) {
     const sizeOfDialog = 400
     const x = Math.floor((window.innerWidth - sizeOfDialog) / 2)
     dialogPositionToRender.value = { x, y: 16 }
+    if (calendar.events.length === 1) {
+      emit('eventClicked', {
+        event: calendar.events[0],
+        calendar,
+        mauseEvent: null
+      })
+      openEventsDetailDialog.value = true
+    }
 
     if (calendar.events.length > 0) {
       if (calendar.events.length === 1) {
