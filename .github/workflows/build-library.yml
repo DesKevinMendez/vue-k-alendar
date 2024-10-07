@@ -3,7 +3,8 @@ name: docs
 on:
   # trigger deployment on every push to main branch
   push:
-    branches: [main]
+    # branches: [main]
+    branches: [click-on-date]
   # trigger deployment manually
   workflow_dispatch:
 
