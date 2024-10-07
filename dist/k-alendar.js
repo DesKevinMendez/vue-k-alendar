@@ -1,4 +1,4 @@
-import { ref as Y, readonly as Is, computed as se, defineComponent as st, useModel as Tn, watch as Pe, onMounted as Ns, onUnmounted as xs, openBlock as b, createElementBlock as W, withModifiers as bs, createElementVNode as g, renderSlot as ct, normalizeStyle as Et, toDisplayString as re, mergeModels as At, toRefs as Cs, watchEffect as Vs, createBlock as pt, withCtx as Rt, createCommentVNode as ke, Fragment as Ge, renderList as Be, unref as ee, pushScopeId as Fs, popScopeId as Ls, normalizeClass as Ws, createVNode as zs } from "vue";
+import { ref as Y, readonly as Is, computed as se, defineComponent as st, useModel as Tn, watch as Pe, onMounted as Ns, onUnmounted as xs, openBlock as b, createElementBlock as z, withModifiers as bs, createElementVNode as g, renderSlot as ct, normalizeStyle as Et, toDisplayString as re, mergeModels as At, toRefs as Cs, watchEffect as Vs, createBlock as pt, withCtx as Rt, createCommentVNode as ke, Fragment as Ge, renderList as Be, unref as ee, pushScopeId as Fs, popScopeId as Ls, normalizeClass as Ws, createVNode as zs } from "vue";
 class me extends Error {
 }
 class $s extends me {
@@ -424,7 +424,7 @@ class ie extends Le {
     const s = Us(this.name);
     let [r, i, a, o, l, u, h] = s.formatToParts ? Ys(s, t) : qs(s, t);
     o === "BC" && (r = -Math.abs(r) + 1);
-    const v = at({
+    const p = at({
       year: r,
       month: i,
       day: a,
@@ -434,8 +434,8 @@ class ie extends Le {
       millisecond: 0
     });
     let d = +t;
-    const p = d % 1e3;
-    return d -= p >= 0 ? p : 1e3 + p, (v - d) / (60 * 1e3);
+    const w = d % 1e3;
+    return d -= w >= 0 ? w : 1e3 + w, (p - d) / (60 * 1e3);
   }
   /**
    * Return whether this Zone is equal to another zone
@@ -551,7 +551,7 @@ class nr {
       return this.inf.format(t);
     } else {
       const t = this.floor ? Math.floor(e) : Ct(e, 3);
-      return F(t, this.padTo);
+      return L(t, this.padTo);
     }
   }
 }
@@ -1253,7 +1253,7 @@ function G(n, e, t) {
 function gr(n, e) {
   return n - e * Math.floor(n / e);
 }
-function F(n, e = 2) {
+function L(n, e = 2) {
   const t = n < 0;
   let s;
   return t ? s = "-" + ("" + -n).padStart(e, "0") : s = ("" + n).padStart(e, "0"), s;
@@ -1347,11 +1347,11 @@ function Ve(n, e) {
   const t = Math.trunc(Math.abs(n / 60)), s = Math.trunc(Math.abs(n % 60)), r = n >= 0 ? "+" : "-";
   switch (e) {
     case "short":
-      return `${r}${F(t, 2)}:${F(s, 2)}`;
+      return `${r}${L(t, 2)}:${L(s, 2)}`;
     case "narrow":
       return `${r}${t}${s > 0 ? `:${s}` : ""}`;
     case "techie":
-      return `${r}${F(t, 2)}${F(s, 2)}`;
+      return `${r}${L(t, 2)}${L(s, 2)}`;
     default:
       throw new RangeError(`Value format ${e} is out of range for property format`);
   }
@@ -1542,18 +1542,18 @@ class Z {
   }
   num(e, t = 0) {
     if (this.opts.forceSimple)
-      return F(e, t);
+      return L(e, t);
     const s = { ...this.opts };
     return t > 0 && (s.padTo = t), this.loc.numberFormatter(s).format(e);
   }
   formatDateTimeFromString(e, t) {
-    const s = this.loc.listingMode() === "en", r = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory", i = (d, p) => this.loc.extract(e, d, p), a = (d) => e.isOffsetFixed && e.offset === 0 && d.allowZ ? "Z" : e.isValid ? e.zone.formatOffset(e.ts, d.format) : "", o = () => s ? Sr(e) : i({ hour: "numeric", hourCycle: "h12" }, "dayperiod"), l = (d, p) => s ? Mr(e, d) : i(p ? { month: d } : { month: d, day: "numeric" }, "month"), u = (d, p) => s ? Dr(e, d) : i(
-      p ? { weekday: d } : { weekday: d, month: "long", day: "numeric" },
+    const s = this.loc.listingMode() === "en", r = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory", i = (d, w) => this.loc.extract(e, d, w), a = (d) => e.isOffsetFixed && e.offset === 0 && d.allowZ ? "Z" : e.isValid ? e.zone.formatOffset(e.ts, d.format) : "", o = () => s ? Sr(e) : i({ hour: "numeric", hourCycle: "h12" }, "dayperiod"), l = (d, w) => s ? Mr(e, d) : i(w ? { month: d } : { month: d, day: "numeric" }, "month"), u = (d, w) => s ? Dr(e, d) : i(
+      w ? { weekday: d } : { weekday: d, month: "long", day: "numeric" },
       "weekday"
     ), h = (d) => {
-      const p = Z.macroTokenToFormatOpts(d);
-      return p ? this.formatWithSystemDefault(e, p) : d;
-    }, y = (d) => s ? Er(e, d) : i({ era: d }, "era"), v = (d) => {
+      const w = Z.macroTokenToFormatOpts(d);
+      return w ? this.formatWithSystemDefault(e, w) : d;
+    }, y = (d) => s ? Er(e, d) : i({ era: d }, "era"), p = (d) => {
       switch (d) {
         case "S":
           return this.num(e.millisecond);
@@ -1680,7 +1680,7 @@ class Z {
           return h(d);
       }
     };
-    return rn(Z.parseFormat(t), v);
+    return rn(Z.parseFormat(t), p);
   }
   formatDurationFromString(e, t) {
     const s = (l) => {
@@ -1779,17 +1779,17 @@ function $e(n, e) {
 }
 const _r = RegExp(`^T?${Vt.source}$`), Zr = /^-?P(?:(?:(-?\d{1,20}(?:\.\d{1,20})?)Y)?(?:(-?\d{1,20}(?:\.\d{1,20})?)M)?(?:(-?\d{1,20}(?:\.\d{1,20})?)W)?(?:(-?\d{1,20}(?:\.\d{1,20})?)D)?(?:T(?:(-?\d{1,20}(?:\.\d{1,20})?)H)?(?:(-?\d{1,20}(?:\.\d{1,20})?)M)?(?:(-?\d{1,20})(?:[.,](-?\d{1,20}))?S)?)?)$/;
 function Ar(n) {
-  const [e, t, s, r, i, a, o, l, u] = n, h = e[0] === "-", y = l && l[0] === "-", v = (d, p = !1) => d !== void 0 && (p || d && h) ? -d : d;
+  const [e, t, s, r, i, a, o, l, u] = n, h = e[0] === "-", y = l && l[0] === "-", p = (d, w = !1) => d !== void 0 && (w || d && h) ? -d : d;
   return [
     {
-      years: v(de(t)),
-      months: v(de(s)),
-      weeks: v(de(r)),
-      days: v(de(i)),
-      hours: v(de(a)),
-      minutes: v(de(o)),
-      seconds: v(de(l), l === "-0"),
-      milliseconds: v(bt(u), y)
+      years: p(de(t)),
+      months: p(de(s)),
+      weeks: p(de(r)),
+      days: p(de(i)),
+      hours: p(de(a)),
+      minutes: p(de(o)),
+      seconds: p(de(l), l === "-0"),
+      milliseconds: p(bt(u), y)
     }
   ];
 }
@@ -1829,9 +1829,9 @@ function Hr(n) {
     u,
     h,
     y
-  ] = n, v = Lt(e, r, s, t, i, a, o);
+  ] = n, p = Lt(e, r, s, t, i, a, o);
   let d;
-  return l ? d = Rr[l] : u ? d = 0 : d = ot(h, y), [v, new A(d)];
+  return l ? d = Rr[l] : u ? d = 0 : d = ot(h, y), [p, new A(d)];
 }
 function qr(n) {
   return n.replace(/\([^()]*\)|[\n\t]/g, " ").replace(/(\s\s+)/g, " ").trim();
@@ -3271,7 +3271,7 @@ function vi(n, e, t, s) {
   return u.length > 0 ? T.fromMillis(l, s).shiftTo(...u).plus(h) : h;
 }
 const pi = "missing Intl.DateTimeFormat.formatToParts support";
-function O(n, e = (t) => t) {
+function S(n, e = (t) => t) {
   return { regex: n, deser: ([t]) => e(lr(t)) };
 }
 const ki = " ", hs = `[ ${ki}]`, ms = new RegExp(hs, "g");
@@ -3297,91 +3297,91 @@ function Oi(n) {
   return n.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
 }
 function Si(n, e) {
-  const t = B(e), s = B(e, "{2}"), r = B(e, "{3}"), i = B(e, "{4}"), a = B(e, "{6}"), o = B(e, "{1,2}"), l = B(e, "{1,3}"), u = B(e, "{1,6}"), h = B(e, "{1,9}"), y = B(e, "{2,4}"), v = B(e, "{4,6}"), d = (S) => ({ regex: RegExp(Oi(S.val)), deser: ([C]) => C, literal: !0 }), x = ((S) => {
+  const t = B(e), s = B(e, "{2}"), r = B(e, "{3}"), i = B(e, "{4}"), a = B(e, "{6}"), o = B(e, "{1,2}"), l = B(e, "{1,3}"), u = B(e, "{1,6}"), h = B(e, "{1,9}"), y = B(e, "{2,4}"), p = B(e, "{4,6}"), d = (O) => ({ regex: RegExp(Oi(O.val)), deser: ([C]) => C, literal: !0 }), x = ((O) => {
     if (n.literal)
-      return d(S);
-    switch (S.val) {
+      return d(O);
+    switch (O.val) {
       case "G":
         return J(e.eras("short"), 0);
       case "GG":
         return J(e.eras("long"), 0);
       case "y":
-        return O(u);
+        return S(u);
       case "yy":
-        return O(y, Mt);
+        return S(y, Mt);
       case "yyyy":
-        return O(i);
+        return S(i);
       case "yyyyy":
-        return O(v);
+        return S(p);
       case "yyyyyy":
-        return O(a);
+        return S(a);
       case "M":
-        return O(o);
+        return S(o);
       case "MM":
-        return O(s);
+        return S(s);
       case "MMM":
         return J(e.months("short", !0), 1);
       case "MMMM":
         return J(e.months("long", !0), 1);
       case "L":
-        return O(o);
+        return S(o);
       case "LL":
-        return O(s);
+        return S(s);
       case "LLL":
         return J(e.months("short", !1), 1);
       case "LLLL":
         return J(e.months("long", !1), 1);
       case "d":
-        return O(o);
+        return S(o);
       case "dd":
-        return O(s);
+        return S(s);
       case "o":
-        return O(l);
+        return S(l);
       case "ooo":
-        return O(r);
+        return S(r);
       case "HH":
-        return O(s);
+        return S(s);
       case "H":
-        return O(o);
+        return S(o);
       case "hh":
-        return O(s);
+        return S(s);
       case "h":
-        return O(o);
+        return S(o);
       case "mm":
-        return O(s);
+        return S(s);
       case "m":
-        return O(o);
+        return S(o);
       case "q":
-        return O(o);
+        return S(o);
       case "qq":
-        return O(s);
+        return S(s);
       case "s":
-        return O(o);
+        return S(o);
       case "ss":
-        return O(s);
+        return S(s);
       case "S":
-        return O(l);
+        return S(l);
       case "SSS":
-        return O(r);
+        return S(r);
       case "u":
         return Ue(h);
       case "uu":
         return Ue(o);
       case "uuu":
-        return O(t);
+        return S(t);
       case "a":
         return J(e.meridiems(), 0);
       case "kkkk":
-        return O(i);
+        return S(i);
       case "kk":
-        return O(y, Mt);
+        return S(y, Mt);
       case "W":
-        return O(o);
+        return S(o);
       case "WW":
-        return O(s);
+        return S(s);
       case "E":
       case "c":
-        return O(t);
+        return S(t);
       case "EEE":
         return J(e.weekdays("short", !1), 1);
       case "EEEE":
@@ -3400,7 +3400,7 @@ function Si(n, e) {
       case " ":
         return Ue(/[^\S\n\r]/);
       default:
-        return d(S);
+        return d(O);
     }
   })(n) || {
     invalidReason: pi
@@ -3678,11 +3678,11 @@ function qe(n, e, t = !0) {
 function vt(n, e) {
   const t = n.c.year > 9999 || n.c.year < 0;
   let s = "";
-  return t && n.c.year >= 0 && (s += "+"), s += F(n.c.year, t ? 6 : 4), e ? (s += "-", s += F(n.c.month), s += "-", s += F(n.c.day)) : (s += F(n.c.month), s += F(n.c.day)), s;
+  return t && n.c.year >= 0 && (s += "+"), s += L(n.c.year, t ? 6 : 4), e ? (s += "-", s += L(n.c.month), s += "-", s += L(n.c.day)) : (s += L(n.c.month), s += L(n.c.day)), s;
 }
 function mn(n, e, t, s, r, i) {
-  let a = F(n.c.hour);
-  return e ? (a += ":", a += F(n.c.minute), (n.c.millisecond !== 0 || n.c.second !== 0 || !t) && (a += ":")) : a += F(n.c.minute), (n.c.millisecond !== 0 || n.c.second !== 0 || !t) && (a += F(n.c.second), (n.c.millisecond !== 0 || !s) && (a += ".", a += F(n.c.millisecond, 3))), r && (n.isOffsetFixed && n.offset === 0 && !i ? a += "Z" : n.o < 0 ? (a += "-", a += F(Math.trunc(-n.o / 60)), a += ":", a += F(Math.trunc(-n.o % 60))) : (a += "+", a += F(Math.trunc(n.o / 60)), a += ":", a += F(Math.trunc(n.o % 60)))), i && (a += "[" + n.zone.ianaName + "]"), a;
+  let a = L(n.c.hour);
+  return e ? (a += ":", a += L(n.c.minute), (n.c.millisecond !== 0 || n.c.second !== 0 || !t) && (a += ":")) : a += L(n.c.minute), (n.c.millisecond !== 0 || n.c.second !== 0 || !t) && (a += L(n.c.second), (n.c.millisecond !== 0 || !s) && (a += ".", a += L(n.c.millisecond, 3))), r && (n.isOffsetFixed && n.offset === 0 && !i ? a += "Z" : n.o < 0 ? (a += "-", a += L(Math.trunc(-n.o / 60)), a += ":", a += L(Math.trunc(-n.o % 60))) : (a += "+", a += L(Math.trunc(n.o / 60)), a += ":", a += L(Math.trunc(n.o % 60)))), i && (a += "[" + n.zone.ianaName + "]"), a;
 }
 const ks = {
   month: 1,
@@ -3977,22 +3977,22 @@ class f {
     const s = ue(t.zone, N.defaultZone);
     if (!s.isValid)
       return f.invalid(Ce(s));
-    const r = D.fromObject(t), i = nt(e, yn), { minDaysInFirstWeek: a, startOfWeek: o } = tn(i, r), l = N.now(), u = m(t.specificOffset) ? s.offset(l) : t.specificOffset, h = !m(i.ordinal), y = !m(i.year), v = !m(i.month) || !m(i.day), d = y || v, p = i.weekYear || i.weekNumber;
-    if ((d || h) && p)
+    const r = D.fromObject(t), i = nt(e, yn), { minDaysInFirstWeek: a, startOfWeek: o } = tn(i, r), l = N.now(), u = m(t.specificOffset) ? s.offset(l) : t.specificOffset, h = !m(i.ordinal), y = !m(i.year), p = !m(i.month) || !m(i.day), d = y || p, w = i.weekYear || i.weekNumber;
+    if ((d || h) && w)
       throw new Te(
         "Can't mix weekYear/weekNumber units with year/month/day or ordinals"
       );
-    if (v && h)
+    if (p && h)
       throw new Te("Can't mix ordinal dates with month/day");
-    const x = p || i.weekday && !d;
-    let S, C, $ = He(l, u);
-    x ? (S = Li, C = Vi, $ = et($, a, o)) : h ? (S = Wi, C = Fi, $ = ht($)) : (S = Ts, C = ks);
+    const x = w || i.weekday && !d;
+    let O, C, $ = He(l, u);
+    x ? (O = Li, C = Vi, $ = et($, a, o)) : h ? (O = Wi, C = Fi, $ = ht($)) : (O = Ts, C = ks);
     let R = !1;
-    for (const X of S) {
+    for (const X of O) {
       const ye = i[X];
       m(ye) ? R ? i[X] = C[X] : i[X] = $[X] : R = !0;
     }
-    const L = x ? cr(i, a, o) : h ? dr(i) : Pn(i), te = L || Gn(i);
+    const W = x ? cr(i, a, o) : h ? dr(i) : Pn(i), te = W || Gn(i);
     if (te)
       return f.invalid(te);
     const E = x ? Xt(i, a, o) : h ? en(i) : i, [V, Q] = je(E, u, s), H = new f({
@@ -4621,8 +4621,8 @@ class f {
       s,
       r
     ) : m(t.ordinal) ? (y = { ...this.toObject(), ...t }, m(t.day) && (y.day = Math.min(tt(y.year, y.month), y.day))) : y = en({ ...ht(this.c), ...t });
-    const [v, d] = je(y, this.o, this.zone);
-    return fe(this, { ts: v, o: d });
+    const [p, d] = je(y, this.o, this.zone);
+    return fe(this, { ts: p, o: d });
   }
   /**
    * Add a period of time to this DateTime and return the resulting DateTime
@@ -5379,40 +5379,40 @@ function zt() {
 const Ye = Y([]), kn = Y([]), ne = Y(f.now());
 function Zi(n) {
   const { today: e, timezone: t } = zt(), { lang: s } = Wt(), r = () => {
-    const d = f.now().startOf("week"), p = f.now().endOf("week"), x = [];
-    let S = d;
-    for (; S <= p; )
-      x.push(S.setLocale(s.value).toFormat("ccc")), S = S.plus({ days: 1 });
+    const d = f.now().startOf("week"), w = f.now().endOf("week"), x = [];
+    let O = d;
+    for (; O <= w; )
+      x.push(O.setLocale(s.value).toFormat("ccc")), O = O.plus({ days: 1 });
     return x;
   }, i = se(() => kn.value.map((d) => ({
     ...d,
     date_calendar_to_render: d.start_date
   }))), a = (d) => {
-    const [p, x, S] = d.split("-").map(Number), C = f.now().set({ year: p, month: x, day: S }), $ = C.startOf("month"), R = C.endOf("month"), L = $.startOf("week"), te = R.endOf("week"), E = [];
-    let V = L;
+    const [w, x, O] = d.split("-").map(Number), C = f.now().set({ year: w, month: x, day: O }), $ = C.startOf("month"), R = C.endOf("month"), W = $.startOf("week"), te = R.endOf("week"), E = [];
+    let V = W;
     for (; V <= te; )
       E.push(V.toISODate()), V = V.plus({ days: 1 });
     return E;
   }, o = (d, {
-    startDate: p,
+    startDate: w,
     endDate: x
   }) => {
-    const S = f.fromISO(d, { zone: t.value }), C = f.fromISO(p, { zone: t.value }), $ = f.fromISO(x, { zone: t.value });
-    return I.fromDateTimes(C, $).contains(S);
-  }, l = (d) => a(d).map((p) => {
-    const x = [], S = [], C = f.fromISO(p, { zone: t.value }), $ = f.fromISO(d, { zone: t.value });
-    i.value.forEach((L) => {
-      L.end_date && o(p, {
-        startDate: L.start_date,
-        endDate: L.end_date
-      }) ? S.push({ ...L, date_calendar_to_render: p }) : S.push(L);
+    const O = f.fromISO(d, { zone: t.value }), C = f.fromISO(w, { zone: t.value }), $ = f.fromISO(x, { zone: t.value });
+    return I.fromDateTimes(C, $).contains(O);
+  }, l = (d) => a(d).map((w) => {
+    const x = [], O = [], C = f.fromISO(w, { zone: t.value }), $ = f.fromISO(d, { zone: t.value });
+    i.value.forEach((W) => {
+      W.end_date && o(w, {
+        startDate: W.start_date,
+        endDate: W.end_date
+      }) ? O.push({ ...W, date_calendar_to_render: w }) : O.push(W);
     });
-    const R = S.filter((L) => C.hasSame(f.fromISO(L.date_calendar_to_render), "day"));
+    const R = O.filter((W) => C.hasSame(f.fromISO(W.date_calendar_to_render), "day"));
     return C.hasSame($, "month") || x.push("other-month-date"), C.hasSame(f.fromISO(e.value), "day") && x.push("selected"), {
-      day: p,
+      day: w,
       class: x.join(" "),
       events: R || [],
-      text: f.fromISO(p).day.toString()
+      text: f.fromISO(w).day.toString()
     };
   }), u = se(() => f.fromJSDate(ne.value.toJSDate()).setLocale(s.value).toFormat("MMMM yyyy"));
   return {
@@ -5475,7 +5475,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
     const s = () => {
       e.value = !1;
     };
-    return (r, i) => (b(), W("dialog", {
+    return (r, i) => (b(), z("dialog", {
       ref_key: "dialog",
       ref: t,
       id: "k-alendar-dialog",
@@ -5511,7 +5511,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
     const t = e, s = n, r = (i) => {
       t("eventClicked", { mauseEvent: i, event: s.event, calendar: s.calendar });
     };
-    return (i, a) => (b(), W("li", {
+    return (i, a) => (b(), z("li", {
       style: Et({
         "background-color": i.event.id === "more" ? "gray" : i.event.color ? i.event.color : "#374151"
       }),
@@ -5525,7 +5525,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
   for (const [s, r] of e)
     t[s] = r;
   return t;
-}, Ss = /* @__PURE__ */ $t(Yi, [["__scopeId", "data-v-2ec57e40"]]), ut = (n) => (Fs("data-v-d6f11f78"), n = n(), Ls(), n), Pi = {
+}, Ss = /* @__PURE__ */ $t(Yi, [["__scopeId", "data-v-2ec57e40"]]), ut = (n) => (Fs("data-v-b9419714"), n = n(), Ls(), n), Pi = {
   key: 0,
   class: "flex justify-between"
 }, Gi = /* @__PURE__ */ ut(() => /* @__PURE__ */ g("svg", {
@@ -5613,18 +5613,18 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
     const { formatDate: t, timezone: s } = zt(), r = Tn(n, "modelValue"), i = Y(null), a = n, { event: o, calendar: l } = Cs(a), u = e, h = se(() => {
       var E;
       return ((E = i.value) == null ? void 0 : E.id) === "more";
-    }), y = se(() => a.canDelete), v = se(() => a.canEdit), d = () => {
-      u("eventClicked", { closeDialog: p, event: i.value });
+    }), y = se(() => a.canDelete), p = se(() => a.canEdit), d = () => {
+      u("eventClicked", { closeDialog: w, event: i.value });
     };
     Vs(() => {
       i.value = o.value;
     });
-    const p = () => {
+    const w = () => {
       r.value = !1;
     }, x = () => {
-      u("edit", { closeDialog: p, event: i.value });
-    }, S = () => {
-      u("delete", { closeDialog: p, event: i.value });
+      u("edit", { closeDialog: w, event: i.value });
+    }, O = () => {
+      u("delete", { closeDialog: w, event: i.value });
     }, C = se(() => {
       var E;
       return (E = l.value) == null ? void 0 : E.events;
@@ -5633,15 +5633,15 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
       const E = (V = l.value) == null ? void 0 : V.day;
       return E ? t(E, f.DATE_FULL) : "";
     }), R = ({ event: E }) => {
-      i.value = E;
-    }, L = (E) => {
+      i.value = E, u("eventClicked", { closeDialog: w, event: i.value });
+    }, W = (E) => {
       const V = f.fromISO(E, { zone: s.value });
       return V.isValid && (V.hour !== 0 || V.minute !== 0 || V.second !== 0);
     }, te = se(() => {
       if (!i.value || !i.value.start_date) return "";
-      const E = L(i.value.start_date) ? f.DATETIME_MED : f.DATE_FULL;
+      const E = W(i.value.start_date) ? f.DATETIME_MED : f.DATE_FULL;
       if (i.value.end_date) {
-        const V = L(i.value.end_date) ? f.DATETIME_MED : f.DATE_FULL, Q = t(i.value.start_date, E), H = t(i.value.end_date, V);
+        const V = W(i.value.end_date) ? f.DATETIME_MED : f.DATE_FULL, Q = t(i.value.start_date, E), H = t(i.value.end_date, V);
         return `${Q} - ${H}`;
       }
       return `${t(i.value.start_date, E)}`;
@@ -5651,45 +5651,45 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
       "onUpdate:modelValue": V[0] || (V[0] = (Q) => r.value = Q)
     }, {
       header: Rt(() => [
-        h.value ? (b(), W("div", Ki, [
+        h.value ? (b(), z("div", Ki, [
           g("span", null, [
             g("time", { datetime: $.value }, re($.value), 9, Qi)
           ])
-        ])) : (b(), W("div", Pi, [
-          v.value ? (b(), W("button", {
+        ])) : (b(), z("div", Pi, [
+          p.value ? (b(), z("button", {
             key: 0,
             class: "k-alendar-button-edit-delete",
             type: "button",
             onClick: x
           }, Bi)) : ke("", !0),
-          y.value ? (b(), W("button", {
+          y.value ? (b(), z("button", {
             key: 1,
             class: "k-alendar-button-edit-delete",
             type: "button",
-            onClick: S
+            onClick: O
           }, ji)) : ke("", !0)
         ]))
       ]),
       default: Rt(() => {
         var Q, H, X, ye, _e;
         return [
-          h.value ? (b(), W("section", aa, [
+          h.value ? (b(), z("section", aa, [
             g("div", oa, [
               g("ul", null, [
-                (b(!0), W(Ge, null, Be(C.value, (k) => (b(), pt(Ss, {
-                  key: k.id,
-                  event: k,
+                (b(!0), z(Ge, null, Be(C.value, (v) => (b(), pt(Ss, {
+                  key: v.id,
+                  event: v,
                   calendar: ee(l),
                   onEventClicked: R
                 }, null, 8, ["event", "calendar"]))), 128))
               ])
             ])
-          ])) : (b(), W("section", Xi, [
+          ])) : (b(), z("section", Xi, [
             g("div", {
               class: "title",
               onClick: d
             }, [
-              (Q = i.value) != null && Q.color ? (b(), W("span", {
+              (Q = i.value) != null && Q.color ? (b(), z("span", {
                 key: 0,
                 class: "circle",
                 style: Et({ backgroundColor: i.value.color })
@@ -5699,7 +5699,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
             g("div", ea, [
               g("time", { datetime: te.value }, re(te.value), 9, ta)
             ]),
-            (X = i.value) != null && X.autor ? (b(), W("div", na, [
+            (X = i.value) != null && X.autor ? (b(), z("div", na, [
               sa,
               g("p", null, re((ye = i.value) == null ? void 0 : ye.autor), 1)
             ])) : ke("", !0),
@@ -5713,7 +5713,7 @@ const Ai = ["open"], Ri = /* @__PURE__ */ g("svg", {
       _: 1
     }, 8, ["modelValue"]));
   }
-}), ua = /* @__PURE__ */ $t(la, [["__scopeId", "data-v-d6f11f78"]]);
+}), ua = /* @__PURE__ */ $t(la, [["__scopeId", "data-v-b9419714"]]);
 function ca() {
   const n = (t) => {
     const s = t.getBoundingClientRect();
@@ -5757,28 +5757,28 @@ function ca() {
       // Check if it doesn't fit on the left and botton; if not, render it at the top right.
       { condition: o < 400 && l < 400, position: a.topRight }
     ];
-    for (const { condition: v, position: d } of y)
-      v && (r = d);
+    for (const { condition: p, position: d } of y)
+      p && (r = d);
     if (o < 400 && l < 400 && u < 400) {
-      const v = 400 - u + 16;
-      r = { x: a.topLeft.x + v, y: a.topLeft.y };
+      const p = 400 - u + 16;
+      r = { x: a.topLeft.x + p, y: a.topLeft.y };
     }
     if (o < 400 && h < 400 && l < 400 && u > 400) {
-      const v = 400 - h + 16;
-      r = { x: a.bottomRight.x, y: a.topLeft.y + v };
+      const p = 400 - h + 16;
+      r = { x: a.bottomRight.x, y: a.topLeft.y + p };
     }
     if (h < 400 && l < 400) {
-      const v = 400 - h + 16;
+      const p = 400 - h + 16;
       r = {
         x: a.bottomRight.x,
-        y: a.topLeft.y + v
+        y: a.topLeft.y + p
       };
     }
     if (h < 400 && l < 400 && u < 400 && o > 400) {
-      const v = 400 - h + 16;
+      const p = 400 - h + 16;
       r = {
         x: a.bottomLeft.x,
-        y: a.topLeft.y + v
+        y: a.topLeft.y + p
       };
     }
     return o > 400 && u > 400 && h > 400 && l > 400 && (r = { x: a.bottomRight.x, y: a.bottomRight.y }), r;
@@ -5815,93 +5815,97 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       eventsToShowInCalendar: u,
       toToday: h,
       title: y,
-      generateCalendar: v,
+      generateCalendar: p,
       monthDays: d,
-      getWeekDays: p,
+      getWeekDays: w,
       currentDate: x
-    } = Zi(t), S = Y({
+    } = Zi(t), O = Y({
       id: "",
       title: "",
       start_date: "",
       description: ""
-    }), C = Y(null), $ = Y({}), R = Y(!1), L = Y({ x: 0, y: 0 }), te = () => {
+    }), C = Y(null), $ = Y({}), R = Y(!1), W = Y({ x: 0, y: 0 }), te = () => {
       u.value = s.events;
-      let k = "";
-      r.value === "utc" ? k = x.value.toFormat("yyyy-MM-dd", { locale: r.value }) : k = x.value.toFormat("yyyy-MM-dd"), d.value = v(k);
+      let v = "";
+      r.value === "utc" ? v = x.value.toFormat("yyyy-MM-dd", { locale: r.value }) : v = x.value.toFormat("yyyy-MM-dd"), d.value = p(v);
     };
     Pe(
       () => s.tz,
-      (k) => {
-        k && (r.value = k);
+      (v) => {
+        v && (r.value = v);
       },
       { immediate: !0 }
     ), Pe(
       () => s.lang,
-      (k) => {
-        k && i(k);
+      (v) => {
+        v && i(v);
       },
       { immediate: !0 }
     ), Pe(
       s,
-      ({ events: k }) => {
-        k && te();
+      ({ events: v }) => {
+        v && te();
       },
       { immediate: !0, deep: !0 }
     );
-    const E = ({ event: k, closeDialog: M }) => {
-      t("eventDialogClicked", { event: s.events.find((w) => w.id = k.id), closeDialog: M });
+    const E = ({ event: v, closeDialog: M }) => {
+      t("eventDialogClicked", { event: s.events.find((k) => k.id = v.id), closeDialog: M });
     }, V = ({
-      mauseEvent: k,
+      mauseEvent: v,
       event: M,
-      calendar: w
+      calendar: k
     }) => {
-      if (S.value = M, C.value = w, w.events.length > 0) {
-        let z = k.target;
-        z.tagName === "H3" && (z = z.parentElement), L.value = a(z), R.value = !0;
+      if (O.value = M, C.value = k, k.events.length > 0) {
+        let F = v.target;
+        F.tagName === "H3" && (F = F.parentElement), W.value = a(F), R.value = !0;
       }
       t("eventClicked", {
-        event: s.events.find((z) => z.id = M.id),
-        calendar: w,
-        mauseEvent: k
+        event: s.events.find((F) => F.id = M.id),
+        calendar: k,
+        mauseEvent: v
       });
-    }, Q = ({ closeDialog: k, event: M }) => {
-      t("edit", { closeDialog: k, event: M });
-    }, H = ({ closeDialog: k, event: M }) => {
-      t("delete", { closeDialog: k, event: M });
-    }, X = (k) => {
+    }, Q = ({ closeDialog: v, event: M }) => {
+      t("edit", { closeDialog: v, event: M });
+    }, H = ({ closeDialog: v, event: M }) => {
+      t("delete", { closeDialog: v, event: M });
+    }, X = (v) => {
       var Zt;
-      const M = $.value[k];
-      let w = 0;
-      const z = 32, Ds = 8, Ms = 8;
+      const M = $.value[v];
+      let k = 0;
+      const F = 32, Ds = 8, Ms = 8;
       let _t = 0;
       if (M) {
-        w = M.clientHeight - Ms * 2;
+        k = M.clientHeight - Ms * 2;
         const Es = (Zt = M.querySelector("span.k-alendar-text")) == null ? void 0 : Zt.offsetHeight;
-        w -= Es || 0, _t = Math.floor(
-          w / (z + Ds)
+        k -= Es || 0, _t = Math.floor(
+          k / (F + Ds)
         );
       }
       return _t;
-    }, ye = (k, M) => {
-      const w = X(k), z = M.slice(0, w);
-      return M.length - w > 0 && z.splice(z.length - 1, 1, {
+    }, ye = (v, M) => {
+      const k = X(v), F = M.slice(0, k);
+      return M.length - k > 0 && F.splice(F.length - 1, 1, {
         id: "more",
-        title: `+${M.length + 1 - w}`,
+        title: `+${M.length + 1 - k}`,
         start_date: "",
         description: ""
-      }), z;
-    }, _e = (k) => {
+      }), F;
+    }, _e = (v) => {
       if (window.innerWidth < 768) {
-        const w = Math.floor((window.innerWidth - 400) / 2);
-        L.value = { x: w, y: 16 }, k.events.length > 0 && (k.events.length === 1 ? S.value = k.events[0] : S.value = {
+        const F = Math.floor((window.innerWidth - 400) / 2);
+        W.value = { x: F, y: 16 }, v.events.length > 0 && (v.events.length === 1 ? (O.value = v.events[0], t("eventClicked", {
+          event: O.value,
+          calendar: v,
+          mauseEvent: null
+        })) : O.value = {
           id: "more",
-          title: `+${k.events.length} eventos`,
+          title: `+${v.events.length} eventos`,
           start_date: "",
           description: ""
-        }, C.value = k, R.value = !0);
+        }, C.value = v, R.value = !0);
       }
     };
-    return (k, M) => (b(), W("section", da, [
+    return (v, M) => (b(), z("section", da, [
       g("header", fa, [
         g("div", ha, [
           g("div", ma, [
@@ -5909,20 +5913,20 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
               type: "button",
               class: "k-alendar-navegation-prev",
               onClick: M[0] || (M[0] = //@ts-ignore
-              (...w) => ee(l) && ee(l)(...w))
+              (...k) => ee(l) && ee(l)(...k))
             }, "←"),
             g("button", {
               type: "button",
               class: "k-alendar-navegation-left",
               onClick: M[1] || (M[1] = //@ts-ignore
-              (...w) => ee(o) && ee(o)(...w))
+              (...k) => ee(o) && ee(o)(...k))
             }, "→")
           ]),
           g("button", {
             type: "button",
             class: "k-alendar-today-button",
             onClick: M[2] || (M[2] = //@ts-ignore
-            (...w) => ee(h) && ee(h)(...w))
+            (...k) => ee(h) && ee(h)(...k))
           }, "Ahora")
         ]),
         g("div", ya, [
@@ -5930,26 +5934,26 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
         ])
       ]),
       g("div", ga, [
-        (b(!0), W(Ge, null, Be(ee(p)(), (w) => (b(), W("div", { key: w }, re(w), 1))), 128))
+        (b(!0), z(Ge, null, Be(ee(w)(), (k) => (b(), z("div", { key: k }, re(k), 1))), 128))
       ]),
       g("div", wa, [
-        (b(!0), W(Ge, null, Be(ee(d), (w) => (b(), W("div", {
-          key: w.day.toString(),
-          onClick: (z) => _e(w),
-          class: Ws([w.class, "date"]),
+        (b(!0), z(Ge, null, Be(ee(d), (k) => (b(), z("div", {
+          key: k.day.toString(),
+          onClick: (F) => _e(k),
+          class: Ws([k.class, "date"]),
           ref_for: !0,
-          ref: (z) => $.value[w.day] = z
+          ref: (F) => $.value[k.day] = F
         }, [
           g("div", pa, [
-            g("span", ka, re(w.text), 1),
-            w.events.length > 0 ? (b(), W("span", Ta)) : ke("", !0)
+            g("span", ka, re(k.text), 1),
+            k.events.length > 0 ? (b(), z("span", Ta)) : ke("", !0)
           ]),
-          w.events.length > 0 ? (b(), W("div", Oa, [
+          k.events.length > 0 ? (b(), z("div", Oa, [
             g("ul", null, [
-              (b(!0), W(Ge, null, Be(ye(w.day, w.events), (z) => (b(), pt(Ss, {
-                key: z.id,
-                event: z,
-                calendar: w,
+              (b(!0), z(Ge, null, Be(ye(k.day, k.events), (F) => (b(), pt(Ss, {
+                key: F.id,
+                event: F,
+                calendar: k,
                 onEventClicked: V
               }, null, 8, ["event", "calendar"]))), 128))
             ])
@@ -5958,22 +5962,22 @@ const da = { class: "k-alendar-wrapper-container" }, fa = { class: "k-alendar-he
       ]),
       zs(ua, {
         modelValue: R.value,
-        "onUpdate:modelValue": M[3] || (M[3] = (w) => R.value = w),
-        event: S.value,
+        "onUpdate:modelValue": M[3] || (M[3] = (k) => R.value = k),
+        event: O.value,
         calendar: C.value,
-        canDelete: k.canDelete,
-        canEdit: k.canEdit,
+        canDelete: v.canDelete,
+        canEdit: v.canEdit,
         onEventClicked: E,
         onEdit: Q,
         onDelete: H,
         style: Et({
-          top: `${L.value.y}px`,
-          left: `${L.value.x}px`
+          top: `${W.value.y}px`,
+          left: `${W.value.x}px`
         })
       }, null, 8, ["modelValue", "event", "calendar", "canDelete", "canEdit", "style"])
     ]));
   }
-}), Ma = /* @__PURE__ */ $t(Sa, [["__scopeId", "data-v-efc9bb34"]]);
+}), Ma = /* @__PURE__ */ $t(Sa, [["__scopeId", "data-v-8be43666"]]);
 export {
   Ma as KAlendar
 };
