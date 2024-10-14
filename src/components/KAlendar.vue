@@ -48,6 +48,7 @@
       :canDelete="canDelete"
       :canEdit="canEdit"
       @eventClicked="eventClickedFromDialog"
+      @eventTitleClicked="eventTitleClicked"
       @edit="edit"
       @delete="deleteEvent"
       :style="{
@@ -76,7 +77,8 @@ const emit = defineEmits([
   'edit',
   'delete',
   'eventClicked',
-  'eventDialogClicked'
+  'eventDialogClicked',
+  'eventTitleClicked'
 ])
 
 const props = defineProps<{
@@ -158,6 +160,9 @@ watch(
 
 const eventClickedFromDialog = ({ event, closeDialog }: KEventDialogEmit) => {
   emit('eventDialogClicked', { event: props.events.find((e) => (e.id = event.id)), closeDialog })
+}
+const eventTitleClicked = ({ event, closeDialog }: KEventDialogEmit) => {
+  emit('eventTitleClicked', { event: props.events.find((e) => (e.id = event.id)), closeDialog })
 }
 
 const eventClicked = ({
