@@ -12,6 +12,7 @@ declare const _default: import('vue').DefineComponent<__VLS_TypePropsToOption<{
     toToday: (...args: any[]) => void;
     eventClicked: (...args: any[]) => void;
     edit: (...args: any[]) => void;
+    eventTitleClicked: (...args: any[]) => void;
     eventDialogClicked: (...args: any[]) => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_TypePropsToOption<{
     events: KEvent[];
@@ -23,6 +24,7 @@ declare const _default: import('vue').DefineComponent<__VLS_TypePropsToOption<{
     onEventClicked?: ((...args: any[]) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;
     onEdit?: ((...args: any[]) => any) | undefined;
+    onEventTitleClicked?: ((...args: any[]) => any) | undefined;
     onNextMonth?: ((...args: any[]) => any) | undefined;
     onPrevMonth?: ((...args: any[]) => any) | undefined;
     onToToday?: ((...args: any[]) => any) | undefined;

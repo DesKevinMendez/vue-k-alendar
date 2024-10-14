@@ -14,11 +14,13 @@ declare const _default: import('vue').DefineComponent<__VLS_TypePropsToOption<__
     delete: (...args: any[]) => void;
     eventClicked: (...args: any[]) => void;
     edit: (...args: any[]) => void;
+    eventTitleClicked: (...args: any[]) => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_TypePropsToOption<__VLS_PublicProps>>> & {
     "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
     onEventClicked?: ((...args: any[]) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;
     onEdit?: ((...args: any[]) => any) | undefined;
+    onEventTitleClicked?: ((...args: any[]) => any) | undefined;
 }, {}, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
