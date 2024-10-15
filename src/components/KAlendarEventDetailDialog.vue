@@ -1,5 +1,5 @@
 <template>
-  <KAlendarDialog v-model="openDetail">
+  <KDialog v-model="openDetail">
     <template #header>
       <div v-if="!isSeeMore" class="flex justify-between">
         <ButtonEdit v-if="canEdit" @click="edit" />
@@ -34,7 +34,7 @@
         </div>
       </section>
     </template>
-  </KAlendarDialog>
+  </KDialog>
 </template>
 
 <script setup lang="ts">
@@ -42,7 +42,7 @@ import useDate from '@/composables/useDate'
 import type { MonthDays } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
 import { computed, ref, toRefs, watchEffect } from 'vue'
-import KAlendarDialog from '@/components/KAlendarDialog.vue'
+import KDialog from '@/components/Reusable/KDialog.vue'
 import KEventItem from '@/components/KEventItem.vue'
 import { DateTime } from 'luxon'
 import ButtonEdit from './Buttons/ButtonEdit.vue'

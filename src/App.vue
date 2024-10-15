@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import KAlendar from '@/components/KAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
@@ -62,6 +62,12 @@ const duplicateRandomEvent = () => {
 
   events.value.push({ ...randomEvent, id: String(Math.random()) })
 }
+
+onMounted(() => {
+  for (let i = 0; i < 15; i++) {
+    duplicateRandomEvent()
+  }
+})
 </script>
 
 <template>
