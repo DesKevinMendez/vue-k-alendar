@@ -8,8 +8,6 @@ const eventSelected = ref<KEvent>({
   description: ''
 })
 
-
-
 export default function useEvent() {
 
   return {

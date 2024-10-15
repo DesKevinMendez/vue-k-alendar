@@ -5,6 +5,10 @@ const dialogPositionToRender = ref({ x: 0, y: 0 })
 
 export function useDialog() {
 
+  const closeDialog = () => {
+    openEventsDetailDialog.value = false
+  }
+
   const calculateTheDistanceToScreen = (element: HTMLElement) => {
     const rect = element.getBoundingClientRect()
     const distance = {
@@ -132,5 +136,5 @@ export function useDialog() {
     return dialogPositionToRender;
   }
 
-  return { collision, openEventsDetailDialog, dialogPositionToRender }
+  return { collision, openEventsDetailDialog, dialogPositionToRender, closeDialog }
 }

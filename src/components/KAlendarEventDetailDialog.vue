@@ -13,12 +13,12 @@
     </template>
     <template #default>
       <section v-if="!isSeeMore" class="k-alendar-event-detail-main-wrapper">
-        <EDTitle v-if="eventLocal?.title" :event="eventLocal" @click="eventTitleClicked" />
+        <EDTitle v-if="eventSelected?.title" :event="eventSelected" @click="eventTitleClicked" />
         <div class="dates">
           <time :datetime="dates">{{ dates }}</time>
         </div>
-        <EDAutor v-if="eventLocal?.autor" :autor="eventLocal.autor" />
-        <EDContent v-if="eventLocal?.description" :content="eventLocal.description" />
+        <EDAutor v-if="eventSelected?.autor" :autor="eventSelected.autor" />
+        <EDContent v-if="eventSelected?.description" :content="eventSelected.description" />
       </section>
       <section v-else>
         <div class="events">
@@ -27,7 +27,7 @@
               v-for="event in allEvents"
               :key="event.id"
               :event="event"
-              :calendar="calendar"
+              :calendar="calendarDaySelect"
               @eventClicked="clickedEvent"
             />
           </ul>
@@ -38,30 +38,30 @@
 </template>
 
 <script setup lang="ts">
-import useDate from '@/composables/useDate'
-import type { MonthDays } from '@/types/Calendar'
-import type { KEvent } from '@/types/Events'
-import { computed, ref, toRefs, watchEffect } from 'vue'
-import KDialog from '@/components/Reusable/KDialog.vue'
 import KEventItem from '@/components/KEventItem.vue'
+import KDialog from '@/components/Reusable/KDialog.vue'
+import useDate from '@/composables/useDate'
+import useEvent from '@/composables/useEvent'
+import useRenderCalendar from '@/composables/useRenderCalendar'
+import type { KEvent } from '@/types/Events'
 import { DateTime } from 'luxon'
-import ButtonEdit from './Buttons/ButtonEdit.vue'
+import { computed } from 'vue'
 import ButtonDelete from './Buttons/ButtonDelete.vue'
+import ButtonEdit from './Buttons/ButtonEdit.vue'
 import EDAutor from './EventDialog/EDAutor.vue'
 import EDContent from './EventDialog/EDContent.vue'
 import EDTitle from './EventDialog/EDTitle.vue'
 
 const { formatDate } = useDate()
+const { eventSelected } = useEvent()
+const { calendarDaySelect } = useRenderCalendar()
 const openDetail = defineModel<boolean>()
-const eventLocal = ref<KEvent | null>(null)
-const props = defineProps<{
-  event: KEvent | null
-  calendar: MonthDays | null
+
+defineProps<{
   canEdit?: boolean
   canDelete?: boolean
 }>()
 
-const { event, calendar } = toRefs(props)
 const emit = defineEmits(['edit', 'delete', 'eventClicked', 'eventTitleClicked'])
 
 const hasTime = (date: string) => {
@@ -69,10 +69,10 @@ const hasTime = (date: string) => {
   return dateTime.isValid && (dateTime.hour !== 0 || dateTime.minute !== 0 || dateTime.second !== 0)
 }
 
-const isSeeMore = computed(() => eventLocal.value?.id === 'more')
-const allEvents = computed(() => calendar.value?.events)
+const isSeeMore = computed(() => eventSelected.value?.id === 'more')
+const allEvents = computed(() => calendarDaySelect.value?.events)
 const eventOf = computed(() => {
-  const day = calendar.value?.day
+  const day = calendarDaySelect.value?.day
   if (day) {
     return formatDate(day, DateTime.DATE_FULL)
   }
@@ -80,50 +80,41 @@ const eventOf = computed(() => {
 })
 
 const dates = computed(() => {
-  if (!eventLocal.value || !eventLocal.value.start_date) return ''
+  if (!eventSelected.value || !eventSelected.value.start_date) return ''
 
-  const startFormat = hasTime(eventLocal.value.start_date)
+  const startFormat = hasTime(eventSelected.value.start_date)
     ? DateTime.DATETIME_MED
     : DateTime.DATE_FULL
 
-  if (eventLocal.value.end_date) {
-    const endFormat = hasTime(eventLocal.value.end_date)
+  if (eventSelected.value.end_date) {
+    const endFormat = hasTime(eventSelected.value.end_date)
       ? DateTime.DATETIME_MED
       : DateTime.DATE_FULL
 
-    const start = formatDate(eventLocal.value.start_date, startFormat)
-    const end = formatDate(eventLocal.value.end_date, endFormat)
+    const start = formatDate(eventSelected.value.start_date, startFormat)
+    const end = formatDate(eventSelected.value.end_date, endFormat)
 
     return `${start} - ${end}`
   }
 
-  return `${formatDate(eventLocal.value.start_date, startFormat)}`
+  return `${formatDate(eventSelected.value.start_date, startFormat)}`
 })
-
-watchEffect(() => {
-  eventLocal.value = event.value
-})
-
-
-const closeDialog = () => {
-  openDetail.value = false
-}
 
 const eventTitleClicked = () => {
-  emit('eventTitleClicked', { closeDialog, event: eventLocal.value })
+  emit('eventTitleClicked', eventSelected.value)
 }
 
 const edit = () => {
-  emit('edit', { closeDialog, event: eventLocal.value })
+  emit('edit', eventSelected.value)
 }
 
 const deleteEvent = () => {
-  emit('delete', { closeDialog, event: eventLocal.value })
+  emit('delete', eventSelected.value)
 }
 
-const clickedEvent = ({ event: eventClck }: { event: KEvent }) => {
-  eventLocal.value = eventClck
-  emit('eventClicked', { closeDialog, event: eventLocal.value })
+const clickedEvent = ({ event }: { event: KEvent }) => {
+  eventSelected.value = event
+  emit('eventClicked', event)
 }
 </script>
 

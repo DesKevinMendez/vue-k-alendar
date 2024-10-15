@@ -47,7 +47,8 @@
   },
   "types": "./dist/types/src/index.d.ts",
   "dependencies": {
-    "luxon": "^3.5.0"
+    "luxon": "^3.5.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
@@ -55,6 +56,7 @@
     "@types/jsdom": "^21.1.7",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20.14.5",
+    "@types/uuid": "^10.0.0",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",

@@ -9,8 +9,6 @@
     <CIndex />
     <KAlendarEventDetailDialog
       v-model="openEventsDetailDialog"
-      :event="eventSelected"
-      :calendar="calendarDaySelect"
       :canDelete="canDelete"
       :canEdit="canEdit"
       @eventClicked="eventClickedFromDialog"
@@ -28,9 +26,8 @@
 <script setup lang="ts">
 import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
-import useEvent from '@/composables/useEvent'
 import useRenderCalendar from '@/composables/useRenderCalendar'
-import type { KEvent, KEventDialogEmit } from '@/types/Events'
+import type { KEvent } from '@/types/Events'
 import { watch } from 'vue'
 import CDays from './Calendar/CDays.vue'
 import CHeader from './Calendar/CHeader.vue'
@@ -41,7 +38,6 @@ const emit = defineEmits([
   'delete',
   'edit',
   'eventClicked',
-  'eventDialogClicked',
   'eventTitleClicked',
   'nextMonth',
   'prevMonth',
@@ -56,10 +52,8 @@ const props = defineProps<{
 }>()
 
 const { setLang } = useConfig()
-const { eventSelected } = useEvent()
-const { openEventsDetailDialog, dialogPositionToRender } = useDialog()
-const { eventsToShowInCalendar, generateCalendar, monthDays, currentDate, calendarDaySelect } =
-  useRenderCalendar()
+const { openEventsDetailDialog, dialogPositionToRender, closeDialog } = useDialog()
+const { eventsToShowInCalendar, generateCalendar, monthDays, currentDate } = useRenderCalendar()
 
 const handlePrevMonth = (date: string) => {
   emit('prevMonth', date)
@@ -98,20 +92,20 @@ watch(
   { immediate: true, deep: true }
 )
 
-const eventClickedFromDialog = ({ event, closeDialog }: KEventDialogEmit) => {
-  emit('eventDialogClicked', { event: props.events.find((e) => (e.id = event.id)), closeDialog })
+const eventClickedFromDialog = (event: KEvent) => {
+  emit('eventClicked', event)
 }
 
-const eventTitleClicked = ({ event, closeDialog }: KEventDialogEmit) => {
-  emit('eventTitleClicked', { event: props.events.find((e) => (e.id = event.id)), closeDialog })
+const eventTitleClicked = (event: KEvent) => {
+  emit('eventTitleClicked', { event, closeDialog })
 }
 
-const edit = ({ closeDialog, event }: KEventDialogEmit) => {
-  emit('edit', { closeDialog, event })
+const edit = (event: KEvent) => {
+  emit('edit', { event, closeDialog })
 }
 
-const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
-  emit('delete', { closeDialog, event })
+const deleteEvent = (event: KEvent) => {
+  emit('delete', { event, closeDialog })
 }
 </script>
 
