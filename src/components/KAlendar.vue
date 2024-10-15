@@ -6,7 +6,7 @@
       @handleToToday="handleToToday"
     />
     <CDays />
-    <CIndex @eventClicked="eventClicked" />
+    <CIndex />
     <KAlendarEventDetailDialog
       v-model="openEventsDetailDialog"
       :event="eventSelected"
@@ -31,7 +31,6 @@ import useDate from '@/composables/useDate'
 import { useDialog } from '@/composables/useDialog'
 import useEvent from '@/composables/useEvent'
 import useRenderCalendar from '@/composables/useRenderCalendar'
-import type { MonthDays } from '@/types/Calendar'
 import type { KEvent, KEventDialogEmit } from '@/types/Events'
 import { watch } from 'vue'
 import CDays from './Calendar/CDays.vue'
@@ -64,18 +63,6 @@ const { eventSelected } = useEvent()
 const { openEventsDetailDialog, dialogPositionToRender } = useDialog()
 const { eventsToShowInCalendar, generateCalendar, monthDays, currentDate, calendarDaySelect } =
   useRenderCalendar()
-
-const eventClicked = ({
-  event,
-  calendar,
-  mauseEvent
-}: {
-  event: KEvent
-  calendar: MonthDays
-  mauseEvent: MouseEvent | null
-}) => {
-  emit('eventClicked', { event, calendar, mauseEvent })
-}
 
 const handlePrevMonth = (date: string) => {
   emit('prevMonth', date)
@@ -155,13 +142,6 @@ const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
 
 button {
   @apply hover:bg-[#ebeef5] transition-colors dark:hover:bg-slate-600;
-}
-
-.k-alendar-span-container {
-  @apply flex justify-between items-center w-full;
-  .k-alendar-text {
-    @apply font-bold;
-  }
 }
 
 .other-month-date {
