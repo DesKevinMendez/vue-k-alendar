@@ -7,6 +7,7 @@ import useDate from './useDate';
 const monthDays = ref<MonthDays[]>([])
 const eventsToShowInCalendar = ref<KEvent[]>([])
 const currentDate = ref(DateTime.now())
+const calendarDaySelect = ref<MonthDays | null>(null)
 
 export default function useRenderCalendar() {
   const { today, timezone } = useDate()
@@ -105,6 +106,7 @@ export default function useRenderCalendar() {
 
   return {
     eventsToShowInCalendar,
+    calendarDaySelect,
     title, monthDays,
     generateCalendar,
     currentDate

@@ -6,32 +6,7 @@
       @handleToToday="handleToToday"
     />
     <CDays />
-    <div class="k-alendar-container">
-      <div
-        v-for="calendar in monthDays"
-        :key="calendar.day.toString()"
-        @click="selectThisDate(calendar)"
-        :class="calendar.class"
-        class="date"
-        :ref="(el) => (dateRefs[calendar.day] = el)"
-      >
-        <div class="k-alendar-span-container">
-          <span class="k-alendar-text">{{ calendar.text }}</span>
-          <span class="point" v-if="calendar.events.length > 0" />
-        </div>
-        <div class="events" v-if="calendar.events.length > 0">
-          <ul>
-            <KEventItem
-              v-for="event in howEventsShouldRender(calendar.day, calendar.events)"
-              :key="event.id"
-              :event="event"
-              :calendar
-              @eventClicked="eventClicked"
-            />
-          </ul>
-        </div>
-      </div>
-    </div>
+    <CIndex @eventClicked="eventClicked" />
     <KAlendarEventDetailDialog
       v-model="openEventsDetailDialog"
       :event="eventSelected"
@@ -51,17 +26,18 @@
 </template>
 
 <script setup lang="ts">
-import useDate from '@/composables/useDate'
-import useRenderCalendar from '@/composables/useRenderCalendar'
-import type { DayCalendar, MonthDays } from '@/types/Calendar'
-import type { KEvent, KEventDialogEmit } from '@/types/Events'
-import { ref, watch } from 'vue'
-import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
-import KEventItem from '@/components/KEventItem.vue'
 import useConfig from '@/composables/useConfig'
+import useDate from '@/composables/useDate'
 import { useDialog } from '@/composables/useDialog'
+import useEvent from '@/composables/useEvent'
+import useRenderCalendar from '@/composables/useRenderCalendar'
+import type { MonthDays } from '@/types/Calendar'
+import type { KEvent, KEventDialogEmit } from '@/types/Events'
+import { watch } from 'vue'
 import CDays from './Calendar/CDays.vue'
 import CHeader from './Calendar/CHeader.vue'
+import CIndex from './Calendar/CIndex.vue'
+import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 
 const emit = defineEmits([
   'delete',
@@ -84,21 +60,22 @@ const props = defineProps<{
 
 const { timezone } = useDate()
 const { setLang } = useConfig()
-const { collision } = useDialog()
-
-const { eventsToShowInCalendar, generateCalendar, monthDays, currentDate } =
+const { eventSelected } = useEvent()
+const { openEventsDetailDialog, dialogPositionToRender } = useDialog()
+const { eventsToShowInCalendar, generateCalendar, monthDays, currentDate, calendarDaySelect } =
   useRenderCalendar()
 
-const eventSelected = ref<KEvent>({
-  id: '',
-  title: '',
-  start_date: '',
-  description: ''
-})
-const calendarDaySelect = ref<MonthDays | null>(null)
-const dateRefs = ref<Record<string, any>>({})
-const openEventsDetailDialog = ref(false)
-const dialogPositionToRender = ref({ x: 0, y: 0 })
+const eventClicked = ({
+  event,
+  calendar,
+  mauseEvent
+}: {
+  event: KEvent
+  calendar: MonthDays
+  mauseEvent: MouseEvent | null
+}) => {
+  emit('eventClicked', { event, calendar, mauseEvent })
+}
 
 const handlePrevMonth = (date: string) => {
   emit('prevMonth', date)
@@ -162,116 +139,12 @@ const eventTitleClicked = ({ event, closeDialog }: KEventDialogEmit) => {
   emit('eventTitleClicked', { event: props.events.find((e) => (e.id = event.id)), closeDialog })
 }
 
-const eventClicked = ({
-  mauseEvent,
-  event,
-  calendar
-}: {
-  mauseEvent: MouseEvent
-  event: KEvent
-  day: string
-  calendar: DayCalendar
-}) => {
-  eventSelected.value = event
-  calendarDaySelect.value = calendar
-
-  if (calendar.events.length > 0) {
-    let target = mauseEvent.target as HTMLElement
-
-    if (target.tagName === 'H3') {
-      target = target.parentElement as HTMLElement
-    }
-
-    dialogPositionToRender.value = collision(target)
-
-    openEventsDetailDialog.value = true
-  }
-
-  emit('eventClicked', {
-    event: props.events.find((e) => (e.id = event.id)),
-    calendar,
-    mauseEvent
-  })
-}
-
 const edit = ({ closeDialog, event }: KEventDialogEmit) => {
   emit('edit', { closeDialog, event })
 }
 
 const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
   emit('delete', { closeDialog, event })
-}
-
-const calculateEventsThatCanBeRender = (day: string) => {
-  const dateDiv: HTMLDivElement | null = dateRefs.value[day]
-  let heightOfEventParent = 0
-  const heightOfLiElement = 32
-  const paddingTopOfLiElement = 8
-  const paddingOfDateDiv = 8
-
-  let totalOfEventsThatCanRender = 0
-
-  if (dateDiv) {
-    heightOfEventParent = dateDiv.clientHeight - paddingOfDateDiv * 2
-
-    const sizeOfSpan = (dateDiv.querySelector('span.k-alendar-text') as HTMLSpanElement)
-      ?.offsetHeight
-    heightOfEventParent -= sizeOfSpan || 0
-    totalOfEventsThatCanRender = Math.floor(
-      heightOfEventParent / (heightOfLiElement + paddingTopOfLiElement)
-    )
-  }
-
-  return totalOfEventsThatCanRender
-}
-
-const howEventsShouldRender = (day: string, events: KEvent[]) => {
-  const totalOfEventsThatCanRender = calculateEventsThatCanBeRender(day)
-
-  const eventsToRender = events.slice(0, totalOfEventsThatCanRender)
-
-  if (events.length - totalOfEventsThatCanRender > 0) {
-    eventsToRender.splice(eventsToRender.length - 1, 1, {
-      id: 'more',
-      title: `+${events.length + 1 - totalOfEventsThatCanRender}`,
-      start_date: '',
-      description: ''
-    })
-  }
-
-  return eventsToRender
-}
-
-const selectThisDate = (calendar: MonthDays) => {
-  const isMobile = window.innerWidth < 768
-
-  if (isMobile) {
-    const sizeOfDialog = 400
-    const x = Math.floor((window.innerWidth - sizeOfDialog) / 2)
-    dialogPositionToRender.value = { x, y: 16 }
-
-    if (calendar.events.length > 0) {
-      if (calendar.events.length === 1) {
-        eventSelected.value = calendar.events[0]
-
-        emit('eventClicked', {
-          event: eventSelected.value,
-          calendar,
-          mauseEvent: null
-        })
-      } else {
-        eventSelected.value = {
-          id: 'more',
-          title: `+${calendar.events.length} eventos`,
-          start_date: '',
-          description: ''
-        }
-      }
-
-      calendarDaySelect.value = calendar
-      openEventsDetailDialog.value = true
-    }
-  }
 }
 </script>
 
@@ -284,15 +157,6 @@ button {
   @apply hover:bg-[#ebeef5] transition-colors dark:hover:bg-slate-600;
 }
 
-.k-alendar-container {
-  @apply grid gap-1 auto-rows-auto;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-
-.k-alendar-container > * {
-  aspect-ratio: 1 / 1;
-}
-
 .k-alendar-span-container {
   @apply flex justify-between items-center w-full;
   .k-alendar-text {
@@ -300,25 +164,8 @@ button {
   }
 }
 
-.date {
-  @apply flex items-start justify-start p-2 cursor-pointer flex-col relative rounded-sm
-  hover:bg-[#ebeef5] dark:hover:bg-slate-600;
-  @apply border border-gray-200 dark:border-slate-600;
-}
-
 .other-month-date {
   @apply text-gray-400;
-}
-
-.events {
-  @apply w-full hidden md:block;
-  ul {
-    @apply list-none space-y-2;
-  }
-}
-
-.point {
-  @apply w-2 h-2 bg-blue-500 rounded-full md:hidden;
 }
 
 .selected {
