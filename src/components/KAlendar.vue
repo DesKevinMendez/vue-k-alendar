@@ -3,18 +3,16 @@
     <header class="k-alendar-header-container">
       <div class="left-buttons">
         <div class="navegation-buttons">
-          <button type="button" class="k-alendar-navegation-prev" @click="prevMonth">&larr;</button>
-          <button type="button" class="k-alendar-navegation-left" @click="nextMonth">&rarr;</button>
+          <ButtonPrevMonth @click="prevMonth" />
+          <ButtonNextMonth @click="nextMonth" />
         </div>
-        <button type="button" class="k-alendar-today-button" @click="toToday">Ahora</button>
+        <ButtonTodayMonth @click="toToday" />
       </div>
       <div class="center-title">
         <h2>{{ title }}</h2>
       </div>
     </header>
-    <div class="k-alendar-days-container">
-      <div v-for="day in getWeekDays()" :key="day">{{ day }}</div>
-    </div>
+    <CDays />
     <div class="k-alendar-container">
       <div
         v-for="calendar in monthDays"
@@ -69,6 +67,10 @@ import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 import KEventItem from '@/components/KEventItem.vue'
 import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
+import ButtonPrevMonth from './Buttons/ButtonPrevMonth.vue'
+import ButtonNextMonth from './Buttons/ButtonNextMonth.vue'
+import ButtonTodayMonth from './Buttons/ButtonTodayMonth.vue'
+import CDays from './Calendar/CDays.vue'
 
 const emit = defineEmits([
   'nextMonth',
@@ -101,7 +103,6 @@ const {
   title,
   generateCalendar,
   monthDays,
-  getWeekDays,
   currentDate
 } = useRenderCalendar(emit)
 
@@ -288,12 +289,6 @@ button {
   @apply hover:bg-[#ebeef5] transition-colors dark:hover:bg-slate-600;
 }
 
-.k-alendar-days-container {
-  @apply grid gap-1 auto-rows-auto border border-gray-200 rounded-sm text-center capitalize
-  dark:border-gray-600;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-
 .k-alendar-container {
   @apply grid gap-1 auto-rows-auto;
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -306,17 +301,6 @@ button {
   }
   .left-buttons {
     @apply flex items-center space-x-2;
-  }
-
-  .k-alendar-navegation-prev {
-    @apply px-2 py-1 border border-gray-200 rounded-l-md rounded-r-none w-16
-    lg:p-2
-    dark:border-slate-600;
-  }
-  .k-alendar-navegation-left {
-    @apply px-2 py-1 border border-gray-200 rounded-r-md w-16 transition-colors duration-200
-    lg:p-2
-    dark:border-slate-500;
   }
 }
 
@@ -355,10 +339,5 @@ button {
 .selected {
   @apply bg-[#ebeef5] text-inherit p-2
   dark:bg-slate-700;
-}
-.k-alendar-today-button {
-  @apply px-2 py-1 border border-gray-200 rounded-md
-  lg:p-2
-  dark:border-slate-600;
 }
 </style>

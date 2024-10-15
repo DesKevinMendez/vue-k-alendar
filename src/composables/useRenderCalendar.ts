@@ -12,21 +12,6 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
   const { today, timezone } = useDate()
   const { lang } = useConfig();
 
-  const getWeekDays = () => {
-    const start = DateTime.now().startOf('week');
-    const end = DateTime.now().endOf('week');
-
-    const days = [];
-    let currentDay = start;
-
-    while (currentDay <= end) {
-      days.push(currentDay.setLocale(lang.value).toFormat('ccc'));
-      currentDay = currentDay.plus({ days: 1 });
-    }
-
-    return days;
-  };
-
   const eventsToShowInCalendarMutated = computed(() => {
     return eventsToShowInCalendar.value.map((event) => {
       return {
@@ -148,7 +133,7 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
     nextMonth, prevMonth,
     eventsToShowInCalendar,
     toToday, title, monthDays,
-    getWeekDays, generateCalendar,
+    generateCalendar,
     currentDate
   }
 }
