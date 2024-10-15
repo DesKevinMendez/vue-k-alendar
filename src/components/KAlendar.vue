@@ -1,17 +1,10 @@
 <template>
   <section class="k-alendar-wrapper-container">
-    <header class="k-alendar-header-container">
-      <div class="left-buttons">
-        <div>
-          <ButtonPrevMonth @handle="handlePrevMonth" />
-          <ButtonNextMonth @handle="handleNextMonth" />
-        </div>
-        <ButtonTodayMonth @handle="handleToToday" />
-      </div>
-      <div class="center-title">
-        <h2>{{ title }}</h2>
-      </div>
-    </header>
+    <CHeader
+      @handlePrevMonth="handlePrevMonth"
+      @handleNextMonth="handleNextMonth"
+      @handleToToday="handleToToday"
+    />
     <CDays />
     <div class="k-alendar-container">
       <div
@@ -67,10 +60,8 @@ import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
 import KEventItem from '@/components/KEventItem.vue'
 import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
-import ButtonPrevMonth from './Buttons/ButtonPrevMonth.vue'
-import ButtonNextMonth from './Buttons/ButtonNextMonth.vue'
-import ButtonTodayMonth from './Buttons/ButtonTodayMonth.vue'
 import CDays from './Calendar/CDays.vue'
+import CHeader from './Calendar/CHeader.vue'
 
 const emit = defineEmits([
   'delete',
@@ -80,7 +71,7 @@ const emit = defineEmits([
   'eventTitleClicked',
   'nextMonth',
   'prevMonth',
-  'toToday',
+  'toToday'
 ])
 
 const props = defineProps<{
@@ -95,7 +86,7 @@ const { timezone } = useDate()
 const { setLang } = useConfig()
 const { collision } = useDialog()
 
-const { eventsToShowInCalendar, title, generateCalendar, monthDays, currentDate } =
+const { eventsToShowInCalendar, generateCalendar, monthDays, currentDate } =
   useRenderCalendar()
 
 const eventSelected = ref<KEvent>({
@@ -296,16 +287,6 @@ button {
 .k-alendar-container {
   @apply grid gap-1 auto-rows-auto;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-
-.k-alendar-header-container {
-  @apply flex justify-between space-y-2 items-center sm:space-y-0;
-  .center-title > h2 {
-    @apply capitalize;
-  }
-  .left-buttons {
-    @apply flex items-center space-x-2;
-  }
 }
 
 .k-alendar-container > * {
