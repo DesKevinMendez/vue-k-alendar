@@ -28,12 +28,13 @@ const events = ref<KEvent[]>([
 ])
 
 const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
+  console.log('delete', event);
   events.value = events.value.filter((e) => e.id !== event.id)
   closeDialog()
 }
 
 const editEvent = ({ closeDialog, event }: KEventDialogEmit) => {
-  console.log(event)
+  console.log('edit', event)
   closeDialog()
 }
 
