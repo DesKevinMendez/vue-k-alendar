@@ -122,8 +122,4 @@ button {
   @apply text-gray-400;
 }
 
-.selected {
-  @apply bg-[#ebeef5] text-inherit p-2
-  dark:bg-slate-700;
-}
 </style>

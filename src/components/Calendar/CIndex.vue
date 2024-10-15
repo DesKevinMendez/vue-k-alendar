@@ -167,4 +167,9 @@ const howEventsShouldRender = (day: string, events: KEvent[]) => {
 .point {
   @apply w-2 h-2 bg-blue-500 rounded-full md:hidden;
 }
+
+.selected {
+  @apply bg-[#ebeef5] text-inherit p-2
+  dark:bg-slate-700;
+}
 </style>
