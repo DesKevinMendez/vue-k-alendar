@@ -8,7 +8,7 @@ const monthDays = ref<MonthDays[]>([])
 const eventsToShowInCalendar = ref<KEvent[]>([])
 const currentDate = ref(DateTime.now())
 
-export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void) {
+export default function useRenderCalendar() {
   const { today, timezone } = useDate()
   const { lang } = useConfig();
 
@@ -103,36 +103,9 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
       .toFormat('MMMM yyyy');
   })
 
-  const nextMonth = () => {
-    currentDate.value = currentDate.value.plus({ months: 1 })
-
-    const next = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd');
-    monthDays.value = generateCalendar(next)
-
-    emit('nextMonth', next)
-  }
-
-  const prevMonth = () => {
-    currentDate.value = currentDate.value.minus({ months: 1 })
-    const prev = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd');
-
-    monthDays.value = generateCalendar(prev)
-
-    emit('prevMonth', prev)
-  }
-
-  const toToday = () => {
-    currentDate.value = DateTime.now()
-
-    monthDays.value = generateCalendar(today.value)
-
-    emit('toToday', today.value)
-  }
-
   return {
-    nextMonth, prevMonth,
     eventsToShowInCalendar,
-    toToday, title, monthDays,
+    title, monthDays,
     generateCalendar,
     currentDate
   }

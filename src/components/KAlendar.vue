@@ -2,11 +2,11 @@
   <section class="k-alendar-wrapper-container">
     <header class="k-alendar-header-container">
       <div class="left-buttons">
-        <div class="navegation-buttons">
-          <ButtonPrevMonth @click="prevMonth" />
-          <ButtonNextMonth @click="nextMonth" />
+        <div>
+          <ButtonPrevMonth @handle="handlePrevMonth" />
+          <ButtonNextMonth @handle="handleNextMonth" />
         </div>
-        <ButtonTodayMonth @click="toToday" />
+        <ButtonTodayMonth @handle="handleToToday" />
       </div>
       <div class="center-title">
         <h2>{{ title }}</h2>
@@ -73,14 +73,14 @@ import ButtonTodayMonth from './Buttons/ButtonTodayMonth.vue'
 import CDays from './Calendar/CDays.vue'
 
 const emit = defineEmits([
+  'delete',
+  'edit',
+  'eventClicked',
+  'eventDialogClicked',
+  'eventTitleClicked',
   'nextMonth',
   'prevMonth',
   'toToday',
-  'edit',
-  'delete',
-  'eventClicked',
-  'eventDialogClicked',
-  'eventTitleClicked'
 ])
 
 const props = defineProps<{
@@ -95,16 +95,8 @@ const { timezone } = useDate()
 const { setLang } = useConfig()
 const { collision } = useDialog()
 
-const {
-  nextMonth,
-  prevMonth,
-  eventsToShowInCalendar,
-  toToday,
-  title,
-  generateCalendar,
-  monthDays,
-  currentDate
-} = useRenderCalendar(emit)
+const { eventsToShowInCalendar, title, generateCalendar, monthDays, currentDate } =
+  useRenderCalendar()
 
 const eventSelected = ref<KEvent>({
   id: '',
@@ -116,6 +108,18 @@ const calendarDaySelect = ref<MonthDays | null>(null)
 const dateRefs = ref<Record<string, any>>({})
 const openEventsDetailDialog = ref(false)
 const dialogPositionToRender = ref({ x: 0, y: 0 })
+
+const handlePrevMonth = (date: string) => {
+  emit('prevMonth', date)
+}
+
+const handleNextMonth = (date: string) => {
+  emit('nextMonth', date)
+}
+
+const handleToToday = (date: string) => {
+  emit('toToday', date)
+}
 
 const regenerateCalendar = () => {
   eventsToShowInCalendar.value = props.events
@@ -162,6 +166,7 @@ watch(
 const eventClickedFromDialog = ({ event, closeDialog }: KEventDialogEmit) => {
   emit('eventDialogClicked', { event: props.events.find((e) => (e.id = event.id)), closeDialog })
 }
+
 const eventTitleClicked = ({ event, closeDialog }: KEventDialogEmit) => {
   emit('eventTitleClicked', { event: props.events.find((e) => (e.id = event.id)), closeDialog })
 }
@@ -263,7 +268,6 @@ const selectThisDate = (calendar: MonthDays) => {
           calendar,
           mauseEvent: null
         })
-
       } else {
         eventSelected.value = {
           id: 'more',
