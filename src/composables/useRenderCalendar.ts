@@ -10,7 +10,7 @@ const currentDate = ref(DateTime.now())
 const calendarDaySelect = ref<MonthDays | null>(null)
 
 export default function useRenderCalendar() {
-  const { today, timezone } = useDate()
+  const { today } = useDate()
   const { lang } = useConfig();
 
   const eventsToShowInCalendarMutated = computed(() => {
@@ -46,9 +46,9 @@ export default function useRenderCalendar() {
     endDate
   }: { startDate: string, endDate: string }): boolean => {
 
-    const dateToCheck = DateTime.fromISO(date, { zone: timezone.value });
-    const start = DateTime.fromISO(startDate, { zone: timezone.value });
-    const end = DateTime.fromISO(endDate, { zone: timezone.value });
+    const dateToCheck = DateTime.fromISO(date,);
+    const start = DateTime.fromISO(startDate,);
+    const end = DateTime.fromISO(endDate,);
 
     const interval = Interval.fromDateTimes(start, end);
     return interval.contains(dateToCheck);
@@ -60,8 +60,8 @@ export default function useRenderCalendar() {
 
       const fillEvents: KEventCalendarRender[] = [];
 
-      const currentDay = DateTime.fromISO(day, { zone: timezone.value });
-      const targetDate = DateTime.fromISO(date, { zone: timezone.value });
+      const currentDay = DateTime.fromISO(day,);
+      const targetDate = DateTime.fromISO(date,);
 
       eventsToShowInCalendarMutated.value.forEach(event => {
         if (event.end_date &&

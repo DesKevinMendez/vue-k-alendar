@@ -51,7 +51,7 @@ import EDAutor from './EventDialog/EDAutor.vue'
 import EDContent from './EventDialog/EDContent.vue'
 import EDTitle from './EventDialog/EDTitle.vue'
 
-const { formatDate, timezone } = useDate()
+const { formatDate } = useDate()
 const openDetail = defineModel<boolean>()
 const eventLocal = ref<KEvent | null>(null)
 const props = defineProps<{
@@ -65,7 +65,7 @@ const { event, calendar } = toRefs(props)
 const emit = defineEmits(['edit', 'delete', 'eventClicked', 'eventTitleClicked'])
 
 const hasTime = (date: string) => {
-  const dateTime = DateTime.fromISO(date, { zone: timezone.value })
+  const dateTime = DateTime.fromISO(date)
   return dateTime.isValid && (dateTime.hour !== 0 || dateTime.minute !== 0 || dateTime.second !== 0)
 }
 

@@ -27,7 +27,6 @@
 
 <script setup lang="ts">
 import useConfig from '@/composables/useConfig'
-import useDate from '@/composables/useDate'
 import { useDialog } from '@/composables/useDialog'
 import useEvent from '@/composables/useEvent'
 import useRenderCalendar from '@/composables/useRenderCalendar'
@@ -51,13 +50,11 @@ const emit = defineEmits([
 
 const props = defineProps<{
   events: KEvent[]
-  tz?: string
   lang?: string
   canEdit?: boolean
   canDelete?: boolean
 }>()
 
-const { timezone } = useDate()
 const { setLang } = useConfig()
 const { eventSelected } = useEvent()
 const { openEventsDetailDialog, dialogPositionToRender } = useDialog()
@@ -78,25 +75,8 @@ const handleToToday = (date: string) => {
 
 const regenerateCalendar = () => {
   eventsToShowInCalendar.value = props.events
-  let currentDt = ''
-
-  if (timezone.value === 'utc') {
-    currentDt = currentDate.value.toFormat('yyyy-MM-dd', { locale: timezone.value })
-  } else {
-    currentDt = currentDate.value.toFormat('yyyy-MM-dd')
-  }
-  monthDays.value = generateCalendar(currentDt)
+  monthDays.value = generateCalendar(currentDate.value.toFormat('yyyy-MM-dd'))
 }
-
-watch(
-  () => props.tz,
-  (tz) => {
-    if (tz) {
-      timezone.value = tz
-    }
-  },
-  { immediate: true }
-)
 
 watch(
   () => props.lang,
