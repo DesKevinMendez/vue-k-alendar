@@ -1,4 +1,4 @@
-name: docs
+name: build-library
 
 on:
   # trigger deployment on every push to main branch
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  docs:
+  build-library:
     runs-on: ubuntu-latest
 
     steps:
