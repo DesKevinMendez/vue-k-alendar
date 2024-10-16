@@ -3,8 +3,8 @@ name: docs
 on:
   # trigger deployment on every push to main branch
   push:
-    branches: [main]
-    # branches: [click-on-date]
+    # branches: [main]
+    branches: [refactor-components-structure]
   # trigger deployment manually
   workflow_dispatch:
 
