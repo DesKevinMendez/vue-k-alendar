@@ -53,6 +53,10 @@ const selectThisDate = (calendar: MonthDays) => {
     if (calendar.events.length > 0) {
       if (calendar.events.length === 1) {
         eventSelected.value = calendar.events[0]
+
+        if (calendar.events[0].id != 'more') {
+          emit('eventClicked', calendar.events[0])
+        }
       } else {
         eventSelected.value = {
           id: 'more',

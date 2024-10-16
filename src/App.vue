@@ -62,6 +62,8 @@ const eventClicked = (event: KEventDialogEmit) => {
 
 const eventTitleClicked = (event: KEventDialogEmit) => {
   console.log('eventTitleClicked', event)
+
+  event.closeDialog()
 }
 
 onMounted(() => {
