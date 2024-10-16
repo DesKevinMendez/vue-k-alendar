@@ -41,11 +41,11 @@
   "exports": {
     ".": {
       "import": "./dist/k-alendar.js",
-      "require": "./dist/k-alendar.umd.cjs"
+      "require": "./dist/k-alendar.umd.cjs",
+      "types": "./dist/types/src/index.d.ts"
     },
     "./style.css": "./dist/style.css"
   },
-  "types": "./dist/types/src/index.d.ts",
   "dependencies": {
     "luxon": "^3.5.0",
     "uuid": "^10.0.0"
