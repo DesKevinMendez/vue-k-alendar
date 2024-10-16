@@ -1,8 +1,4 @@
-import { MonthDays } from '../types/Calendar';
-import { KEvent } from '../types/Events';
 declare let __VLS_typeProps: {
-    event: KEvent | null;
-    calendar: MonthDays | null;
     canEdit?: boolean;
     canDelete?: boolean;
 };
@@ -16,8 +12,8 @@ declare const _default: import('vue').DefineComponent<__VLS_TypePropsToOption<__
     edit: (...args: any[]) => void;
     eventTitleClicked: (...args: any[]) => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_TypePropsToOption<__VLS_PublicProps>>> & {
-    "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
     onEventClicked?: ((...args: any[]) => any) | undefined;
+    "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
     onDelete?: ((...args: any[]) => any) | undefined;
     onEdit?: ((...args: any[]) => any) | undefined;
     onEventTitleClicked?: ((...args: any[]) => any) | undefined;

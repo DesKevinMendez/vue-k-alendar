@@ -1,9 +1,7 @@
 import { DayCalendar, MonthDays } from '../types/Calendar';
 import { KEvent } from '../types/Events';
 import { DateTime, Interval } from 'luxon';
-export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void): {
-    nextMonth: () => void;
-    prevMonth: () => void;
+export default function useRenderCalendar(): {
     eventsToShowInCalendar: import('vue').Ref<{
         id: string;
         title: string;
@@ -21,7 +19,33 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
         autor?: string | undefined;
         color?: string | undefined;
     }[]>;
-    toToday: () => void;
+    calendarDaySelect: import('vue').Ref<{
+        day: string;
+        class: string;
+        events: {
+            id: string;
+            title: string;
+            start_date: string;
+            end_date?: string | null | undefined;
+            description: string;
+            autor?: string | undefined;
+            color?: string | undefined;
+        }[];
+        text: string;
+    } | null, MonthDays | {
+        day: string;
+        class: string;
+        events: {
+            id: string;
+            title: string;
+            start_date: string;
+            end_date?: string | null | undefined;
+            description: string;
+            autor?: string | undefined;
+            color?: string | undefined;
+        }[];
+        text: string;
+    } | null>;
     title: import('vue').ComputedRef<string>;
     monthDays: import('vue').Ref<{
         day: string;
@@ -50,7 +74,6 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
         }[];
         text: string;
     }[]>;
-    getWeekDays: () => string[];
     generateCalendar: (date: string) => DayCalendar[];
     currentDate: import('vue').Ref<{
         get: (unit: keyof DateTime<boolean>) => number;
