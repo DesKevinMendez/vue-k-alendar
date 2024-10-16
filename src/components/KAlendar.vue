@@ -6,7 +6,7 @@
       @handleToToday="handleToToday"
     />
     <CDays />
-    <CIndex />
+    <CIndex  @eventClicked="eventClickedFromDialog" />
     <KAlendarEventDetailDialog
       v-model="openEventsDetailDialog"
       :canDelete="canDelete"
