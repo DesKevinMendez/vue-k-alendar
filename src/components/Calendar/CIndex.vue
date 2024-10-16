@@ -181,4 +181,8 @@ const howEventsShouldRender = (day: string, events: KEvent[]) => {
   @apply bg-[#ebeef5] text-inherit p-2
   dark:bg-slate-700;
 }
+
+.other-month-date {
+  @apply text-gray-400;
+}
 </style>

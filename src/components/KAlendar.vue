@@ -118,8 +118,4 @@ button {
   @apply hover:bg-[#ebeef5] transition-colors dark:hover:bg-slate-600;
 }
 
-.other-month-date {
-  @apply text-gray-400;
-}
-
 </style>
