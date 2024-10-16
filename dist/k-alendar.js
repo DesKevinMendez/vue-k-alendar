@@ -5684,7 +5684,7 @@ const Bi = /* @__PURE__ */ W({
       ], 10, Ji))), 128))
     ]));
   }
-}), ta = /* @__PURE__ */ $(ea, [["__scopeId", "data-v-11fef46f"]]), na = ["open"], sa = /* @__PURE__ */ S("svg", {
+}), ta = /* @__PURE__ */ $(ea, [["__scopeId", "data-v-ebcbf5ae"]]), na = ["open"], sa = /* @__PURE__ */ S("svg", {
   "aria-hidden": "true",
   focusable: "false",
   "data-prefix": "fas",
@@ -6040,7 +6040,7 @@ const ka = /* @__PURE__ */ $(ma, [["render", va], ["__scopeId", "data-v-bf161d91
       }, null, 8, ["modelValue", "canDelete", "canEdit", "style"])
     ]));
   }
-}), Ba = /* @__PURE__ */ $(Ya, [["__scopeId", "data-v-14ffd450"]]);
+}), Ba = /* @__PURE__ */ $(Ya, [["__scopeId", "data-v-3b717708"]]);
 export {
   Ba as KAlendar
 };
