@@ -1,5 +1,13 @@
+import { ref } from "vue"
+
+const openEventsDetailDialog = ref(false)
+const dialogPositionToRender = ref({ x: 0, y: 0 })
 
 export function useDialog() {
+
+  const closeDialog = () => {
+    openEventsDetailDialog.value = false
+  }
 
   const calculateTheDistanceToScreen = (element: HTMLElement) => {
     const rect = element.getBoundingClientRect()
@@ -128,5 +136,5 @@ export function useDialog() {
     return dialogPositionToRender;
   }
 
-  return { collision }
+  return { collision, openEventsDetailDialog, dialogPositionToRender, closeDialog }
 }

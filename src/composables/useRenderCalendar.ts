@@ -7,25 +7,11 @@ import useDate from './useDate';
 const monthDays = ref<MonthDays[]>([])
 const eventsToShowInCalendar = ref<KEvent[]>([])
 const currentDate = ref(DateTime.now())
+const calendarDaySelect = ref<MonthDays | null>(null)
 
-export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth" | "toToday", ...args: any) => void) {
-  const { today, timezone } = useDate()
+export default function useRenderCalendar() {
+  const { today } = useDate()
   const { lang } = useConfig();
-
-  const getWeekDays = () => {
-    const start = DateTime.now().startOf('week');
-    const end = DateTime.now().endOf('week');
-
-    const days = [];
-    let currentDay = start;
-
-    while (currentDay <= end) {
-      days.push(currentDay.setLocale(lang.value).toFormat('ccc'));
-      currentDay = currentDay.plus({ days: 1 });
-    }
-
-    return days;
-  };
 
   const eventsToShowInCalendarMutated = computed(() => {
     return eventsToShowInCalendar.value.map((event) => {
@@ -60,9 +46,9 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
     endDate
   }: { startDate: string, endDate: string }): boolean => {
 
-    const dateToCheck = DateTime.fromISO(date, { zone: timezone.value });
-    const start = DateTime.fromISO(startDate, { zone: timezone.value });
-    const end = DateTime.fromISO(endDate, { zone: timezone.value });
+    const dateToCheck = DateTime.fromISO(date,);
+    const start = DateTime.fromISO(startDate,);
+    const end = DateTime.fromISO(endDate,);
 
     const interval = Interval.fromDateTimes(start, end);
     return interval.contains(dateToCheck);
@@ -74,8 +60,8 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
 
       const fillEvents: KEventCalendarRender[] = [];
 
-      const currentDay = DateTime.fromISO(day, { zone: timezone.value });
-      const targetDate = DateTime.fromISO(date, { zone: timezone.value });
+      const currentDay = DateTime.fromISO(day,);
+      const targetDate = DateTime.fromISO(date,);
 
       eventsToShowInCalendarMutated.value.forEach(event => {
         if (event.end_date &&
@@ -118,37 +104,11 @@ export default function useRenderCalendar(emit: (event: "nextMonth" | "prevMonth
       .toFormat('MMMM yyyy');
   })
 
-  const nextMonth = () => {
-    currentDate.value = currentDate.value.plus({ months: 1 })
-
-    const next = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd');
-    monthDays.value = generateCalendar(next)
-
-    emit('nextMonth', next)
-  }
-
-  const prevMonth = () => {
-    currentDate.value = currentDate.value.minus({ months: 1 })
-    const prev = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd');
-
-    monthDays.value = generateCalendar(prev)
-
-    emit('prevMonth', prev)
-  }
-
-  const toToday = () => {
-    currentDate.value = DateTime.now()
-
-    monthDays.value = generateCalendar(today.value)
-
-    emit('toToday', today.value)
-  }
-
   return {
-    nextMonth, prevMonth,
     eventsToShowInCalendar,
-    toToday, title, monthDays,
-    getWeekDays, generateCalendar,
+    calendarDaySelect,
+    title, monthDays,
+    generateCalendar,
     currentDate
   }
 }

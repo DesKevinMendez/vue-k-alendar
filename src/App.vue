@@ -1,43 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import KAlendar from '@/components/KAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
-
+import { v4 as uuidv4 } from 'uuid'
 const lang = ref<string>('en')
 const canEdit = ref<boolean>(true)
 const canDelete = ref<boolean>(true)
 
-const events = ref<KEvent[]>([
-  {
-    id: '45',
-    title: 'Event 45',
-    start_date: '2024-08-06T21:35:55.000000Z',
-    end_date: '2024-08-06T23:35:55.000000Z',
-    color: '#92400e',
-    description: 'Evento con fecha y hora'
-  },
-  {
-    id: '9cc69d03-7215-41e2-966a-9c787b690223',
-    title: 'Dto',
-    description: 'Das',
-    color: '#a02222',
-    start_date: '2024-08-16T00:35:00.000000Z',
-    end_date: '2024-08-17T00:35:00.000000Z'
-  }
-])
+const events = ref<KEvent[]>([])
 
 const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
+  console.log('delete', event)
   events.value = events.value.filter((e) => e.id !== event.id)
   closeDialog()
 }
 
 const editEvent = ({ closeDialog, event }: KEventDialogEmit) => {
-  console.log(event)
+  console.log('edit', event)
   closeDialog()
 }
 
-const duplicateRandomEvent = () => {
+const duplicateRandomEvent = (event = events.value.length + 1) => {
   let randomDay: string | number = Math.floor(Math.random() * 30) + 1
   let month: string | number = new Date().getMonth() + 1
   const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`
@@ -49,18 +33,44 @@ const duplicateRandomEvent = () => {
     month = `0${month}`
   }
 
-  const titles = ['Event 1', 'Event 2', 'Event 3', 'Event 4', 'Event 5']
-
   const randomEvent = {
-    title: titles[Math.floor(Math.random() * titles.length)],
+    title: `Event ${event}`,
     start_date: `2024-${month}-${randomDay}`,
     description: 'Description of random event',
     color: randomColor,
     autor: 'Kevin Méndez'
   }
 
-  events.value.push({ ...randomEvent, id: String(Math.random()) })
+  events.value.push({ ...randomEvent, id: uuidv4() })
 }
+
+const prevMonth = (date: string) => {
+  console.log('prevMonth', date)
+}
+
+const nextMonth = (date: string) => {
+  console.log('nextMonth', date)
+}
+
+const toToday = (date: string) => {
+  console.log('toToday', date)
+}
+
+const eventClicked = (event: KEventDialogEmit) => {
+  console.log('eventClicked', event)
+}
+
+const eventTitleClicked = (event: KEventDialogEmit) => {
+  console.log('eventTitleClicked', event)
+
+  event.closeDialog()
+}
+
+onMounted(() => {
+  for (let i = 0; i < 30; i++) {
+    duplicateRandomEvent(i + 1)
+  }
+})
 </script>
 
 <template>
@@ -72,7 +82,7 @@ const duplicateRandomEvent = () => {
     <div class="space-x-2">
       <button
         class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
-        @click="duplicateRandomEvent"
+        @click="duplicateRandomEvent()"
       >
         Generate random event
       </button>
@@ -105,6 +115,11 @@ const duplicateRandomEvent = () => {
       :can-delete="canDelete"
       :lang
       :events
+      @toToday="toToday"
+      @eventClicked="eventClicked"
+      @eventTitleClicked="eventTitleClicked"
+      @prevMonth="prevMonth"
+      @nextMonth="nextMonth"
       @delete="deleteEvent"
       @edit="editEvent"
     />
