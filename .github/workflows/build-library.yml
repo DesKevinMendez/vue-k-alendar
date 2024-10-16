@@ -3,8 +3,7 @@ name: build-library
 on:
   # trigger deployment on every push to main branch
   push:
-    # branches: [main]
-    branches: [refactor-components-structure]
+    branches: [main]
   # trigger deployment manually
   workflow_dispatch:
 
