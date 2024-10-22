@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DesKevinMendez/k-alendar"
+    "url": "https://github.com/DesKevinMendez/vue-k-alendar"
   },
   "bugs": {
-    "url": "https://github.com/DesKevinMendez/k-alendar/issues"
+    "url": "https://github.com/DesKevinMendez/vue-k-alendar/issues"
   },
   "keywords": [
     "calendar",
