@@ -1,5 +1,5 @@
 {
-  "name": "k-alendar",
+  "name": "@deskevinmendez/vue-k-alendar",
   "version": "0.0.1",
   "description": "A simple calendar component for Vue 3",
   "license": "Apache-2.0",
