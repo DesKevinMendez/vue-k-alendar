@@ -22,9 +22,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "KAlendar",
+      name: "VueKAlendar",
       // the name of the output files when the build is run
-      fileName: "k-alendar",
+      fileName: "vue-k-alendar",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
