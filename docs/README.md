@@ -4,6 +4,17 @@
 
 The `@deskevinmendez/vue-k-alendar` is a simple calendar created without dependencies for printing events in a calendar.
 
+<div style="margin: 0 auto;">
+  <img src="./.vuepress/public/img/dark-mode.png" alt="DarkMode" width="300">
+  <img src="./.vuepress/public/img/light-mode.png" alt="LightMode" width="300">
+</div>
+
+Mobile support
+
+<div style="display:flex; gap: 16px; justify-content:center;">
+  <img src="./.vuepress/public/img/mobile-version.png" alt="MobileVersion" width="300">
+</div>
+
 ## Installation
 
 - Pnpm
@@ -44,7 +55,7 @@ npm  install @deskevinmendez/vue-k-alendar
 <script>
 import { ref } from 'vue'
 import KAlendar from '@deskevinmendez/vue-k-alendar'
-import "@deskevinmendez/vue-k-alendar/style.css";
+import '@deskevinmendez/vue-k-alendar/style.css'
 
 export default {
   components: {
@@ -107,7 +118,6 @@ export default {
 </script>
 ```
 
-
 ## Dark mode support
 
 The calendar component has been created with tailwind, and support the dark mode of the tailwind by default
@@ -136,6 +146,7 @@ The calendar component has been created with tailwind, and support the dark mode
 ## Typescript
 
 The events should be a type of
+
 ```ts
 export type KEvent = {
   id: string
@@ -149,7 +160,7 @@ export type KEvent = {
 ```
 
 ::: tip
- Use the import `import { type KEvent } from "@deskevinmendez/vue-k-alendar";`
+Use the import `import { type KEvent } from "@deskevinmendez/vue-k-alendar";`
 :::
 
 The emits returns a type `KEventDialogEmit`
@@ -160,6 +171,7 @@ export type KEventDialogEmit = {
   closeDialog: () => void
 }
 ```
+
 ::: tip
 and you can import as `import { type KEventDialogEmit } from "@deskevinmendez/vue-k-alendar";`
 :::
