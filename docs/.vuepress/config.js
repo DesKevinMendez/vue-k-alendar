@@ -4,6 +4,8 @@ import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   bundler: viteBundler(),
-  theme: defaultTheme(),
+  theme: defaultTheme({
+    repo: 'deskevinmendez/vue-k-alendar',
+  }),
   base: 'vue-k-alendar'
 })
