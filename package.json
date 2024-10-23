@@ -47,10 +47,10 @@
     "./style.css": "./dist/style.css"
   },
   "dependencies": {
-    "luxon": "^3.5.0",
-    "uuid": "^10.0.0"
+    "luxon": "^3.5.0"
   },
   "devDependencies": {
+    "uuid": "^10.0.0",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/jsdom": "^21.1.7",
