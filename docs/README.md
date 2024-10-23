@@ -108,6 +108,10 @@ export default {
 ```
 
 
+## Dark mode support
+
+The calendar component has been created with tailwind, and support the dark mode of the tailwind by default
+
 ## Props
 
 | Prop Name   | Type    | Default       | Description                                    |
