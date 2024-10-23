@@ -1,14 +1,18 @@
 <template>
-  <button type="button" class="k-alendar-today-button" @click="handleClick">Ahora</button>
+  <button type="button" class="k-alendar-today-button" @click="handleClick">{{ text }}</button>
 </template>
 
 <script setup lang="ts">
+import useConfig from '@/composables/useConfig'
 import useDate from '@/composables/useDate'
 import useRenderCalendar from '@/composables/useRenderCalendar'
+import { translations } from '@/locales/traductions';
 import { DateTime } from 'luxon'
+import { computed } from 'vue';
 const emit = defineEmits(['handle'])
 const { currentDate, monthDays, generateCalendar } = useRenderCalendar()
 const { today } = useDate()
+const { lang } = useConfig()
 
 const handleClick = () => {
   currentDate.value = DateTime.now()
@@ -17,6 +21,10 @@ const handleClick = () => {
 
   emit('handle', today.value)
 }
+
+const text = computed(() => {
+  return translations[lang.value].buttons.today || 'Today'
+})
 </script>
 
 <style scoped lang="postcss">
