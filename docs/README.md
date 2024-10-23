@@ -1,4 +1,4 @@
-# Doc
+# Docs
 
 ## What is vue-k-alendar
 
