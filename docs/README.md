@@ -48,7 +48,7 @@ npm  install @deskevinmendez/vue-k-alendar
     @edit="handleEdit"
     @delete="handleDelete"
     @eventClicked="handleEventClicked"
-    @eventDialogClicked="handleEventDialogClicked"
+    @eventTitleClicked="handleEventTitleClicked"
   />
 </template>
 
@@ -99,7 +99,7 @@ export default {
       console.log('Event clicked:', event)
     }
 
-    const handleEventDialogClicked = (event) => {
+    const handleEventTitleClicked = (event) => {
       console.log('Event dialog clicked:', event)
     }
 
@@ -111,7 +111,7 @@ export default {
       handleEdit,
       handleDelete,
       handleEventClicked,
-      handleEventDialogClicked
+      handleEventTitleClicked
     }
   }
 }
