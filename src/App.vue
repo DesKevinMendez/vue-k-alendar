@@ -76,7 +76,7 @@ onMounted(() => {
 <template>
   <header>
     <div class="flex justify-between p-4">
-      <h1>K-alendar</h1>
+      <h1>vue-K-alendar</h1>
       <KDarkModeButton />
     </div>
     <div class="space-x-2">
