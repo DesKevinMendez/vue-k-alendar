@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CHeader > should render the component 1`] = `
+"<header data-v-0a815d1e="" class="k-alendar-header-container">
+  <div data-v-0a815d1e="" class="left-buttons">
+    <div data-v-0a815d1e=""><button data-v-11092de0="" data-v-0a815d1e="" type="button" class="k-alendar-navegation-prev">←</button><button data-v-f3d09f65="" data-v-0a815d1e="" type="button" class="k-alendar-navegation-left">→</button></div><button data-v-8f6b2986="" data-v-0a815d1e="" type="button" class="k-alendar-today-button">Today</button>
+  </div>
+  <div data-v-0a815d1e="" class="center-title">
+    <h2 data-v-0a815d1e="">October 2024</h2>
+  </div>
+</header>"
+`;

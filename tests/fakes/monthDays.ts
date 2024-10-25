@@ -1,4 +1,6 @@
-export const Date2024Oct23 = [
+import type { MonthDays } from "@/types";
+
+export const Date2024Oct23: MonthDays[] = [
   {
     day: '2024-09-30',
     class: 'other-month-date',
@@ -16,7 +18,6 @@ export const Date2024Oct23 = [
         color: '#677d73',
         autor: 'Kevin Méndez',
         id: 'a5ad72d6-1ab2-47a7-8870-73df8b2c6dc8',
-        date_calendar_to_render: '2024-10-01'
       }
     ],
     text: '1'
@@ -32,7 +33,6 @@ export const Date2024Oct23 = [
         color: '#12b8cc',
         autor: 'Kevin Méndez',
         id: 'b130c21b-86e6-40a6-b325-61c25dab829d',
-        date_calendar_to_render: '2024-10-02'
       }
     ],
     text: '2'
@@ -66,7 +66,6 @@ export const Date2024Oct23 = [
         color: '#818b42',
         autor: 'Kevin Méndez',
         id: '7ebbc894-3959-4ee5-9597-124ac7aad759',
-        date_calendar_to_render: '2024-10-06'
       }
     ],
     text: '6'
@@ -82,7 +81,6 @@ export const Date2024Oct23 = [
         color: '#4a60ba',
         autor: 'Kevin Méndez',
         id: 'edbddb32-28ec-4248-8b8c-fb742c50cb79',
-        date_calendar_to_render: '2024-10-07'
       },
       {
         title: 'Event 20',
@@ -91,7 +89,6 @@ export const Date2024Oct23 = [
         color: '#6b88ff',
         autor: 'Kevin Méndez',
         id: 'd1082c1c-54c6-4d8d-859e-23f65ae5c21e',
-        date_calendar_to_render: '2024-10-07'
       }
     ],
     text: '7'
@@ -107,7 +104,6 @@ export const Date2024Oct23 = [
         color: '#2b460c',
         autor: 'Kevin Méndez',
         id: 'ca070f65-c412-4b11-851f-257fb404fe0a',
-        date_calendar_to_render: '2024-10-08'
       }
     ],
     text: '8'
@@ -123,7 +119,6 @@ export const Date2024Oct23 = [
         color: '#4fd3a5',
         autor: 'Kevin Méndez',
         id: 'b7944b8f-3f45-4591-a1fe-47879c434a44',
-        date_calendar_to_render: '2024-10-09'
       },
       {
         title: 'Event 26',
@@ -132,7 +127,6 @@ export const Date2024Oct23 = [
         color: '#135cf7',
         autor: 'Kevin Méndez',
         id: 'edbf1502-4bfc-470a-a688-5ea058dfab8c',
-        date_calendar_to_render: '2024-10-09'
       }
     ],
     text: '9'
@@ -160,7 +154,6 @@ export const Date2024Oct23 = [
         color: '#216d21',
         autor: 'Kevin Méndez',
         id: '95a6f342-178f-4e63-89f6-b25e03d63184',
-        date_calendar_to_render: '2024-10-12'
       }
     ],
     text: '12'
@@ -176,7 +169,6 @@ export const Date2024Oct23 = [
         color: '#fe36d9',
         autor: 'Kevin Méndez',
         id: 'ffee34f5-5ebb-487d-ab21-61f42edbc1df',
-        date_calendar_to_render: '2024-10-13'
       }
     ],
     text: '13'
@@ -192,7 +184,6 @@ export const Date2024Oct23 = [
         color: '#ec6ebe',
         autor: 'Kevin Méndez',
         id: '4a133014-1aef-4476-8113-f8a36cdf6312',
-        date_calendar_to_render: '2024-10-14'
       },
       {
         title: 'Event 3',
@@ -201,7 +192,6 @@ export const Date2024Oct23 = [
         color: '#edf203',
         autor: 'Kevin Méndez',
         id: '15e8387e-f087-43d8-b648-1577c4110225',
-        date_calendar_to_render: '2024-10-14'
       },
       {
         title: 'Event 23',
@@ -210,7 +200,6 @@ export const Date2024Oct23 = [
         color: '#d9097e',
         autor: 'Kevin Méndez',
         id: 'a65cece5-8a91-4b34-8401-297411ebebdd',
-        date_calendar_to_render: '2024-10-14'
       }
     ],
     text: '14'
@@ -226,7 +215,6 @@ export const Date2024Oct23 = [
         color: '#1cce9e',
         autor: 'Kevin Méndez',
         id: 'e591c21d-f5fa-4c8e-b0e8-47d8005018af',
-        date_calendar_to_render: '2024-10-15'
       }
     ],
     text: '15'
@@ -242,7 +230,6 @@ export const Date2024Oct23 = [
         color: '#da18bd',
         autor: 'Kevin Méndez',
         id: '7bdef976-04cd-43f5-9c94-14fb866e73d3',
-        date_calendar_to_render: '2024-10-16'
       }
     ],
     text: '16'
@@ -258,7 +245,6 @@ export const Date2024Oct23 = [
         color: '#4496bd',
         autor: 'Kevin Méndez',
         id: '584a69c7-e74d-4feb-9efa-5b200db88251',
-        date_calendar_to_render: '2024-10-17'
       },
       {
         title: 'Event 13',
@@ -267,7 +253,6 @@ export const Date2024Oct23 = [
         color: '#37ea07',
         autor: 'Kevin Méndez',
         id: 'c5874ab9-5cf5-4245-b1fd-ddd62a81937d',
-        date_calendar_to_render: '2024-10-17'
       }
     ],
     text: '17'
@@ -295,7 +280,6 @@ export const Date2024Oct23 = [
         color: '#44915',
         autor: 'Kevin Méndez',
         id: '8f273581-c125-4a40-8c0c-7bd56b09f5c1',
-        date_calendar_to_render: '2024-10-20'
       },
       {
         title: 'Event 30',
@@ -304,7 +288,6 @@ export const Date2024Oct23 = [
         color: '#b8c4ff',
         autor: 'Kevin Méndez',
         id: '2fb2d4b6-eb2b-4a22-9868-ed22be72980d',
-        date_calendar_to_render: '2024-10-20'
       }
     ],
     text: '20'
@@ -320,7 +303,6 @@ export const Date2024Oct23 = [
         color: '#d7890',
         autor: 'Kevin Méndez',
         id: '6b2d2fa3-bbff-4875-92da-d647615013be',
-        date_calendar_to_render: '2024-10-21'
       }
     ],
     text: '21'
@@ -342,7 +324,6 @@ export const Date2024Oct23 = [
         color: '#c13b15',
         autor: 'Kevin Méndez',
         id: 'df50b361-4697-4863-af81-57f8ae349744',
-        date_calendar_to_render: '2024-10-23'
       },
       {
         title: 'Event 15',
@@ -351,7 +332,6 @@ export const Date2024Oct23 = [
         color: '#a9fe84',
         autor: 'Kevin Méndez',
         id: '0f5ae98f-cb55-40bb-b913-61287a1cd593',
-        date_calendar_to_render: '2024-10-23'
       }
     ],
     text: '23'
@@ -367,7 +347,6 @@ export const Date2024Oct23 = [
         color: '#3cade7',
         autor: 'Kevin Méndez',
         id: 'ac1f3bcb-61c7-4851-a875-c621095a61a5',
-        date_calendar_to_render: '2024-10-24'
       }
     ],
     text: '24'
@@ -383,7 +362,6 @@ export const Date2024Oct23 = [
         color: '#72a93c',
         autor: 'Kevin Méndez',
         id: '2be39400-e584-47cc-9f96-4b658bdf03d0',
-        date_calendar_to_render: '2024-10-25'
       },
       {
         title: 'Event 19',
@@ -392,7 +370,6 @@ export const Date2024Oct23 = [
         color: '#78b2bd',
         autor: 'Kevin Méndez',
         id: '8889f9ff-9c19-4620-a1fb-69628d37d4fc',
-        date_calendar_to_render: '2024-10-25'
       },
       {
         title: 'Event 21',
@@ -401,7 +378,6 @@ export const Date2024Oct23 = [
         color: '#417a43',
         autor: 'Kevin Méndez',
         id: '9c034481-4ed2-4567-88fd-7e2193e13d81',
-        date_calendar_to_render: '2024-10-25'
       }
     ],
     text: '25'
@@ -417,7 +393,6 @@ export const Date2024Oct23 = [
         color: '#a32924',
         autor: 'Kevin Méndez',
         id: '04d61b63-d6e5-4fa6-9451-3cc77e07639e',
-        date_calendar_to_render: '2024-10-26'
       }
     ],
     text: '26'
@@ -433,7 +408,6 @@ export const Date2024Oct23 = [
         color: '#d814c8',
         autor: 'Kevin Méndez',
         id: '26cc13a2-9678-40ff-96af-9f63eefeccd3',
-        date_calendar_to_render: '2024-10-27'
       }
     ],
     text: '27'
@@ -455,7 +429,6 @@ export const Date2024Oct23 = [
         color: '#bfc5d9',
         autor: 'Kevin Méndez',
         id: 'ae35c007-65a3-4902-b5ba-0abf6ad0e099',
-        date_calendar_to_render: '2024-10-29'
       }
     ],
     text: '29'
@@ -471,7 +444,6 @@ export const Date2024Oct23 = [
         color: '#bc87',
         autor: 'Kevin Méndez',
         id: '4de62d0c-a520-4d44-84b9-8f29b20068de',
-        date_calendar_to_render: '2024-10-30'
       }
     ],
     text: '30'

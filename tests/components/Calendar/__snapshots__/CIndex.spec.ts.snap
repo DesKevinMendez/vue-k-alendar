@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CIndex > should render the component 1`] = `"<div data-v-6548dee6="" class="k-alendar-container"></div>"`;

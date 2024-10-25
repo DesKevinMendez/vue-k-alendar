@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CDays > should render the component 1`] = `
+"<div data-v-a8a4dcb5="" class="k-alendar-days-container">
+  <div data-v-a8a4dcb5="">Mon</div>
+  <div data-v-a8a4dcb5="">Tue</div>
+  <div data-v-a8a4dcb5="">Wed</div>
+  <div data-v-a8a4dcb5="">Thu</div>
+  <div data-v-a8a4dcb5="">Fri</div>
+  <div data-v-a8a4dcb5="">Sat</div>
+  <div data-v-a8a4dcb5="">Sun</div>
+</div>"
+`;
