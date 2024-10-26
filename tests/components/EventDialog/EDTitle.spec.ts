@@ -28,11 +28,6 @@ describe('EDTitle', () => {
     vi.clearAllMocks();
   });
 
-  it('should render the component', async () => {
-    expect(wrapper.html()).toMatchSnapshot();
-
-  });
-
   describe('snapshot', () => {
     beforeEach(() => {
       vi.clearAllMocks();

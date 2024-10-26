@@ -1,6 +1,6 @@
 <template>
   <dialog
-    ref="dialog"
+    ref="dialogRef"
     id="k-alendar-dialog"
     modal-mode="mega"
     class="k-alendar-dialog"
@@ -39,27 +39,27 @@
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 
 const openDialog = defineModel<boolean>()
-const dialog = ref<HTMLDialogElement | null>(null)
+const dialogRef = ref<HTMLDialogElement | null>(null)
 
 watch(openDialog, (value) => {
-  if (dialog.value && value) {
-    dialog.value.showModal()
-  } else if (dialog.value) {
-    dialog.value.close()
+  if (dialogRef.value && value) {
+    dialogRef.value.showModal()
+  } else if (dialogRef.value) {
+    dialogRef.value.close()
   }
 })
 
 onMounted(() => {
-  if (dialog.value) {
-    dialog.value.addEventListener('close', () => {
+  if (dialogRef.value) {
+    dialogRef.value.addEventListener('close', () => {
       close()
     })
   }
 })
 
 onUnmounted(() => {
-  if (dialog.value) {
-    dialog.value.removeEventListener('close', () => {
+  if (dialogRef.value) {
+    dialogRef.value.removeEventListener('close', () => {
       close()
     })
   }
@@ -68,6 +68,9 @@ onUnmounted(() => {
 const close = () => {
   openDialog.value = false
 }
+
+// Note: Why do we have to expose component properties in this way for testing access? 😵‍💫
+defineExpose({ openDialog })
 </script>
 
 <style lang="postcss">
@@ -101,7 +104,7 @@ const close = () => {
   animation-timing-function: var(--ease-squish-3);
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.5);
 }
-.k-alendar-button-close  {
+.k-alendar-button-close {
   @apply px-2 py-2 outline-none border-none bg-transparent cursor-pointer;
 }
 
