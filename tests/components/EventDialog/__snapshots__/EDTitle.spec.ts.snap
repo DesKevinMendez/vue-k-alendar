@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`EDTitle > should render the component 1`] = `
+"<div data-v-3f995ea3="" class="title"><span data-v-3f995ea3="" class="circle" style="background-color: rgb(254, 54, 217);"></span>
+  <h2 data-v-3f995ea3="">Event 1</h2>
+</div>"
+`;
+
+exports[`EDTitle > snapshot > event is null 1`] = `
+"<div data-v-3f995ea3="" class="title">
+  <!--v-if-->
+  <h2 data-v-3f995ea3=""></h2>
+</div>"
+`;
+
+exports[`EDTitle > snapshot > should render the component 1`] = `
+"<div data-v-3f995ea3="" class="title"><span data-v-3f995ea3="" class="circle" style="background-color: rgb(254, 54, 217);"></span>
+  <h2 data-v-3f995ea3="">Event 1</h2>
+</div>"
+`;
