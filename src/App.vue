@@ -24,6 +24,7 @@ const editEvent = ({ closeDialog, event }: KEventDialogEmit) => {
 const duplicateRandomEvent = (event = events.value.length + 1) => {
   let randomDay: string | number = Math.floor(Math.random() * 30) + 1
   let month: string | number = new Date().getMonth() + 1
+  const year = new Date().getFullYear()
   const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`
   if (randomDay < 10) {
     randomDay = `0${randomDay}`
@@ -35,7 +36,7 @@ const duplicateRandomEvent = (event = events.value.length + 1) => {
 
   const randomEvent = {
     title: `Event ${event}`,
-    start_date: `2024-${month}-${randomDay}`,
+    start_date: `${year}-${month}-${randomDay}`,
     description: 'Description of random event',
     color: randomColor,
     autor: 'Kevin Méndez'
