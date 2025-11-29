@@ -49,6 +49,7 @@ npm  install @deskevinmendez/vue-k-alendar
     @delete="handleDelete"
     @eventClicked="handleEventClicked"
     @eventTitleClicked="handleEventTitleClicked"
+    @plusEventCountClicked="handlePlusEventCountClicked"
   />
 </template>
 
@@ -103,6 +104,10 @@ export default {
       console.log('Event dialog clicked:', event)
     }
 
+    const handlePlusEventCountClicked = ({ events }) => {
+      console.log('Plus event count clicked:', events)
+    }
+
     return {
       events,
       handleNextMonth,
@@ -124,24 +129,26 @@ The calendar component has been created with tailwind, and support the dark mode
 
 ## Props
 
-| Prop Name   | Type    | Default       | Description                                    |
-| ----------- | ------- | ------------- | ---------------------------------------------- |
-| `lang`      | String  | `'en'`        | Language for the calendar (e.g., 'en', 'es').  |
-| `events`    | Array   | `[]`          | List of events to display in the calendar.     |
-| `canEdit`   | Boolean | `'undefined'` | Show/hidden icon of the edit in event detail   |
-| `canDelete` | Boolean | `'undefined'` | Show/hidden icon of the delete in event detail |
+| Prop Name          | Type    | Default       | Description                                    |
+| ------------------ | ------- | ------------- | ---------------------------------------------- |
+| `lang`             | String  | `'en'`        | Language for the calendar (e.g., 'en', 'es').  |
+| `events`           | Array   | `[]`          | List of events to display in the calendar.     |
+| `canEdit`          | Boolean | `'undefined'` | Show/hidden icon of the edit in event detail   |
+| `canDelete`        | Boolean | `'undefined'` | Show/hidden icon of the delete in event detail |
+| `withDefaultModal` | Boolean | `'true'`      | Show/hidden the default modal in the calendar. |
 
 ## Events
 
-| Event Name          | Description                                              |
-| ------------------- | -------------------------------------------------------- |
-| `nextMonth`         | Emitted when the user navigates to the next month.       |
-| `prevMonth`         | Emitted when the user navigates to the previous month.   |
-| `toToday`           | Emitted when the user navigates to the current month.    |
-| `edit`              | Emitted when an event is edited.                         |
-| `delete`            | Emitted when an event is deleted.                        |
-| `eventClicked`      | Emitted when an event is clicked.                        |
-| `eventTitleClicked` | Emitted when the name of the event in dialog is clicked. |
+| Event Name              | Description                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| `nextMonth`             | Emitted when the user navigates to the next month.           |
+| `prevMonth`             | Emitted when the user navigates to the previous month.       |
+| `toToday`               | Emitted when the user navigates to the current month.        |
+| `edit`                  | Emitted when an event is edited.                             |
+| `delete`                | Emitted when an event is deleted.                            |
+| `eventClicked`          | Emitted when an event is clicked.                            |
+| `eventTitleClicked`     | Emitted when the name of the event in dialog is clicked.     |
+| `plusEventCountClicked` | Emitted when the user clicks on the plus icon in the dialog. |
 
 ## Typescript
 
