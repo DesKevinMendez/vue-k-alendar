@@ -136,7 +136,7 @@ export default function useRenderCalendar(): {
         minus: (duration: import('luxon').DurationLike) => DateTime<true>;
         startOf: (unit: import('luxon').DateTimeUnit, opts?: import('luxon')._UseLocaleWeekOption | undefined) => DateTime<true>;
         endOf: (unit: import('luxon').DateTimeUnit, opts?: import('luxon')._UseLocaleWeekOption | undefined) => DateTime<true>;
-        toFormat: (fmt: string, opts?: import('luxon').LocaleOptions | undefined) => string;
+        toFormat: (format: string, options?: import('luxon').LocaleOptions | undefined) => string;
         toLocaleString: (formatOpts?: Intl.DateTimeFormatOptions | undefined, opts?: import('luxon').LocaleOptions | undefined) => string;
         toLocaleParts: (opts?: Intl.DateTimeFormatOptions | undefined) => Intl.DateTimeFormatPart[];
         toISO: (opts?: import('luxon').ToISOTimeOptions | undefined) => string;
@@ -227,7 +227,7 @@ export default function useRenderCalendar(): {
         minus: (duration: import('luxon').DurationLike) => DateTime<true>;
         startOf: (unit: import('luxon').DateTimeUnit, opts?: import('luxon')._UseLocaleWeekOption | undefined) => DateTime<true>;
         endOf: (unit: import('luxon').DateTimeUnit, opts?: import('luxon')._UseLocaleWeekOption | undefined) => DateTime<true>;
-        toFormat: (fmt: string, opts?: import('luxon').LocaleOptions | undefined) => string;
+        toFormat: (format: string, options?: import('luxon').LocaleOptions | undefined) => string;
         toLocaleString: (formatOpts?: Intl.DateTimeFormatOptions | undefined, opts?: import('luxon').LocaleOptions | undefined) => string;
         toLocaleParts: (opts?: Intl.DateTimeFormatOptions | undefined) => Intl.DateTimeFormatPart[];
         toISO: (opts?: import('luxon').ToISOTimeOptions | undefined) => string;

@@ -1,169 +1,169 @@
-import { ref as J, readonly as Ts, computed as se, defineComponent as W, openBlock as k, createElementBlock as E, Fragment as Pe, renderList as Be, toDisplayString as G, createElementVNode as S, createVNode as oe, unref as A, normalizeStyle as Ot, normalizeClass as Os, createCommentVNode as te, createBlock as X, useModel as mn, watch as mt, onMounted as Ss, onUnmounted as Ds, withModifiers as Ms, renderSlot as it, pushScopeId as Qe, popScopeId as Xe, mergeModels as Vt, withCtx as Ct, isRef as Es } from "vue";
-class ue extends Error {
+import { ref as G, readonly as Ds, computed as se, defineComponent as W, createElementBlock as x, openBlock as k, Fragment as qe, renderList as Pe, toDisplayString as B, createElementVNode as D, createVNode as ye, unref as Z, normalizeStyle as Mt, normalizeClass as Ms, createCommentVNode as Q, createBlock as K, useModel as wn, watch as ft, onMounted as Es, onUnmounted as xs, withModifiers as Is, renderSlot as nt, mergeModels as Lt, withCtx as $t, isRef as bs } from "vue";
+class le extends Error {
 }
-class Is extends ue {
+class Ns extends le {
   constructor(e) {
     super(`Invalid DateTime: ${e.toMessage()}`);
   }
 }
-class bs extends ue {
+class Cs extends le {
   constructor(e) {
     super(`Invalid Interval: ${e.toMessage()}`);
   }
 }
-class Ns extends ue {
+class Vs extends le {
   constructor(e) {
     super(`Invalid Duration: ${e.toMessage()}`);
   }
 }
-class ye extends ue {
+class me extends le {
 }
-class yn extends ue {
+class vn extends le {
   constructor(e) {
     super(`Invalid unit ${e}`);
   }
 }
-class V extends ue {
+class V extends le {
 }
-class K extends ue {
+class ee extends le {
   constructor() {
     super("Zone is an abstract class");
   }
 }
-const c = "numeric", B = "short", L = "long", Ge = {
-  year: c,
-  month: c,
-  day: c
-}, gn = {
-  year: c,
-  month: B,
-  day: c
-}, _s = {
-  year: c,
-  month: B,
-  day: c,
-  weekday: B
-}, wn = {
-  year: c,
-  month: L,
-  day: c
+const d = "numeric", Y = "short", $ = "long", Ye = {
+  year: d,
+  month: d,
+  day: d
 }, pn = {
-  year: c,
-  month: L,
-  day: c,
-  weekday: L
-}, vn = {
-  hour: c,
-  minute: c
+  year: d,
+  month: Y,
+  day: d
+}, _s = {
+  year: d,
+  month: Y,
+  day: d,
+  weekday: Y
 }, kn = {
-  hour: c,
-  minute: c,
-  second: c
+  year: d,
+  month: $,
+  day: d
 }, Tn = {
-  hour: c,
-  minute: c,
-  second: c,
-  timeZoneName: B
+  year: d,
+  month: $,
+  day: d,
+  weekday: $
 }, On = {
-  hour: c,
-  minute: c,
-  second: c,
-  timeZoneName: L
+  hour: d,
+  minute: d
 }, Sn = {
-  hour: c,
-  minute: c,
-  hourCycle: "h23"
+  hour: d,
+  minute: d,
+  second: d
 }, Dn = {
-  hour: c,
-  minute: c,
-  second: c,
-  hourCycle: "h23"
+  hour: d,
+  minute: d,
+  second: d,
+  timeZoneName: Y
 }, Mn = {
-  hour: c,
-  minute: c,
-  second: c,
-  hourCycle: "h23",
-  timeZoneName: B
+  hour: d,
+  minute: d,
+  second: d,
+  timeZoneName: $
 }, En = {
-  hour: c,
-  minute: c,
-  second: c,
-  hourCycle: "h23",
-  timeZoneName: L
-}, In = {
-  year: c,
-  month: c,
-  day: c,
-  hour: c,
-  minute: c
-}, bn = {
-  year: c,
-  month: c,
-  day: c,
-  hour: c,
-  minute: c,
-  second: c
-}, Nn = {
-  year: c,
-  month: B,
-  day: c,
-  hour: c,
-  minute: c
-}, _n = {
-  year: c,
-  month: B,
-  day: c,
-  hour: c,
-  minute: c,
-  second: c
-}, xs = {
-  year: c,
-  month: B,
-  day: c,
-  weekday: B,
-  hour: c,
-  minute: c
+  hour: d,
+  minute: d,
+  hourCycle: "h23"
 }, xn = {
-  year: c,
-  month: L,
-  day: c,
-  hour: c,
-  minute: c,
-  timeZoneName: B
-}, Vn = {
-  year: c,
-  month: L,
-  day: c,
-  hour: c,
-  minute: c,
-  second: c,
-  timeZoneName: B
+  hour: d,
+  minute: d,
+  second: d,
+  hourCycle: "h23"
+}, In = {
+  hour: d,
+  minute: d,
+  second: d,
+  hourCycle: "h23",
+  timeZoneName: Y
+}, bn = {
+  hour: d,
+  minute: d,
+  second: d,
+  hourCycle: "h23",
+  timeZoneName: $
+}, Nn = {
+  year: d,
+  month: d,
+  day: d,
+  hour: d,
+  minute: d
 }, Cn = {
-  year: c,
-  month: L,
-  day: c,
-  weekday: L,
-  hour: c,
-  minute: c,
-  timeZoneName: L
+  year: d,
+  month: d,
+  day: d,
+  hour: d,
+  minute: d,
+  second: d
+}, Vn = {
+  year: d,
+  month: Y,
+  day: d,
+  hour: d,
+  minute: d
+}, _n = {
+  year: d,
+  month: Y,
+  day: d,
+  hour: d,
+  minute: d,
+  second: d
+}, Fs = {
+  year: d,
+  month: Y,
+  day: d,
+  weekday: Y,
+  hour: d,
+  minute: d
 }, Fn = {
-  year: c,
-  month: L,
-  day: c,
-  weekday: L,
-  hour: c,
-  minute: c,
-  second: c,
-  timeZoneName: L
+  year: d,
+  month: $,
+  day: d,
+  hour: d,
+  minute: d,
+  timeZoneName: Y
+}, Ln = {
+  year: d,
+  month: $,
+  day: d,
+  hour: d,
+  minute: d,
+  second: d,
+  timeZoneName: Y
+}, $n = {
+  year: d,
+  month: $,
+  day: d,
+  weekday: $,
+  hour: d,
+  minute: d,
+  timeZoneName: $
+}, Wn = {
+  year: d,
+  month: $,
+  day: d,
+  weekday: $,
+  hour: d,
+  minute: d,
+  second: d,
+  timeZoneName: $
 };
-class xe {
+class Ce {
   /**
    * The type of zone
    * @abstract
    * @type {string}
    */
   get type() {
-    throw new K();
+    throw new ee();
   }
   /**
    * The name of this zone.
@@ -171,7 +171,7 @@ class xe {
    * @type {string}
    */
   get name() {
-    throw new K();
+    throw new ee();
   }
   /**
    * The IANA name of this zone.
@@ -188,7 +188,7 @@ class xe {
    * @type {boolean}
    */
   get isUniversal() {
-    throw new K();
+    throw new ee();
   }
   /**
    * Returns the offset's common name (such as EST) at the specified timestamp
@@ -200,7 +200,7 @@ class xe {
    * @return {string}
    */
   offsetName(e, t) {
-    throw new K();
+    throw new ee();
   }
   /**
    * Returns the offset's value as a string
@@ -211,7 +211,7 @@ class xe {
    * @return {string}
    */
   formatOffset(e, t) {
-    throw new K();
+    throw new ee();
   }
   /**
    * Return the offset in minutes for this zone at the specified timestamp.
@@ -220,7 +220,7 @@ class xe {
    * @return {number}
    */
   offset(e) {
-    throw new K();
+    throw new ee();
   }
   /**
    * Return whether this Zone is equal to another zone
@@ -229,7 +229,7 @@ class xe {
    * @return {boolean}
    */
   equals(e) {
-    throw new K();
+    throw new ee();
   }
   /**
    * Return whether this Zone is valid.
@@ -237,17 +237,17 @@ class xe {
    * @type {boolean}
    */
   get isValid() {
-    throw new K();
+    throw new ee();
   }
 }
-let at = null;
-class et extends xe {
+let st = null;
+class je extends Ce {
   /**
    * Get a singleton instance of the local zone
    * @return {SystemZone}
    */
   static get instance() {
-    return at === null && (at = new et()), at;
+    return st === null && (st = new je()), st;
   }
   /** @override **/
   get type() {
@@ -263,11 +263,11 @@ class et extends xe {
   }
   /** @override **/
   offsetName(e, { format: t, locale: s }) {
-    return Un(e, t, s);
+    return Gn(e, t, s);
   }
   /** @override **/
   formatOffset(e, t) {
-    return Ne(this.offset(e), t);
+    return be(this.offset(e), t);
   }
   /** @override **/
   offset(e) {
@@ -282,9 +282,10 @@ class et extends xe {
     return !0;
   }
 }
-let He = {};
-function Vs(n) {
-  return He[n] || (He[n] = new Intl.DateTimeFormat("en-US", {
+const ht = /* @__PURE__ */ new Map();
+function Ls(n) {
+  let e = ht.get(n);
+  return e === void 0 && (e = new Intl.DateTimeFormat("en-US", {
     hour12: !1,
     timeZone: n,
     year: "numeric",
@@ -294,9 +295,9 @@ function Vs(n) {
     minute: "2-digit",
     second: "2-digit",
     era: "short"
-  })), He[n];
+  }), ht.set(n, e)), e;
 }
-const Cs = {
+const $s = {
   year: 0,
   month: 1,
   day: 2,
@@ -305,33 +306,34 @@ const Cs = {
   minute: 5,
   second: 6
 };
-function Fs(n, e) {
-  const t = n.format(e).replace(/\u200E/g, ""), s = /(\d+)\/(\d+)\/(\d+) (AD|BC),? (\d+):(\d+):(\d+)/.exec(t), [, r, i, a, o, l, u, d] = s;
-  return [a, r, i, o, l, u, d];
+function Ws(n, e) {
+  const t = n.format(e).replace(/\u200E/g, ""), s = /(\d+)\/(\d+)\/(\d+) (AD|BC),? (\d+):(\d+):(\d+)/.exec(t), [, r, i, o, a, l, u, c] = s;
+  return [o, r, i, a, l, u, c];
 }
-function $s(n, e) {
+function zs(n, e) {
   const t = n.formatToParts(e), s = [];
   for (let r = 0; r < t.length; r++) {
-    const { type: i, value: a } = t[r], o = Cs[i];
-    i === "era" ? s[o] = a : w(o) || (s[o] = parseInt(a, 10));
+    const { type: i, value: o } = t[r], a = $s[i];
+    i === "era" ? s[a] = o : w(a) || (s[a] = parseInt(o, 10));
   }
   return s;
 }
-let Le = {};
-class j extends xe {
+const rt = /* @__PURE__ */ new Map();
+class X extends Ce {
   /**
    * @param {string} name - Zone name
    * @return {IANAZone}
    */
   static create(e) {
-    return Le[e] || (Le[e] = new j(e)), Le[e];
+    let t = rt.get(e);
+    return t === void 0 && rt.set(e, t = new X(e)), t;
   }
   /**
    * Reset local caches. Should only be necessary in testing scenarios.
    * @return {void}
    */
   static resetCache() {
-    Le = {}, He = {};
+    rt.clear(), ht.clear();
   }
   /**
    * Returns whether the provided string is a valid specifier. This only checks the string's format, not that the specifier identifies a known zone; see isValidZone for that.
@@ -362,7 +364,7 @@ class j extends xe {
     }
   }
   constructor(e) {
-    super(), this.zoneName = e, this.valid = j.isValidZone(e);
+    super(), this.zoneName = e, this.valid = X.isValidZone(e);
   }
   /**
    * The type of zone. `iana` for all instances of `IANAZone`.
@@ -399,7 +401,7 @@ class j extends xe {
    * @return {string}
    */
   offsetName(e, { format: t, locale: s }) {
-    return Un(e, t, s, this.name);
+    return Gn(e, t, s, this.name);
   }
   /**
    * Returns the offset's value as a string
@@ -410,7 +412,7 @@ class j extends xe {
    * @return {string}
    */
   formatOffset(e, t) {
-    return Ne(this.offset(e), t);
+    return be(this.offset(e), t);
   }
   /**
    * Return the offset in minutes for this zone at the specified timestamp.
@@ -419,23 +421,24 @@ class j extends xe {
    * @return {number}
    */
   offset(e) {
+    if (!this.valid) return NaN;
     const t = new Date(e);
     if (isNaN(t)) return NaN;
-    const s = Vs(this.name);
-    let [r, i, a, o, l, u, d] = s.formatToParts ? $s(s, t) : Fs(s, t);
-    o === "BC" && (r = -Math.abs(r) + 1);
-    const v = nt({
+    const s = Ls(this.name);
+    let [r, i, o, a, l, u, c] = s.formatToParts ? zs(s, t) : Ws(s, t);
+    a === "BC" && (r = -Math.abs(r) + 1);
+    const p = Qe({
       year: r,
       month: i,
-      day: a,
+      day: o,
       hour: l === 24 ? 0 : l,
       minute: u,
-      second: d,
+      second: c,
       millisecond: 0
     });
-    let h = +t;
-    const g = h % 1e3;
-    return h -= g >= 0 ? g : 1e3 + g, (v - h) / (60 * 1e3);
+    let f = +t;
+    const g = f % 1e3;
+    return f -= g >= 0 ? g : 1e3 + g, (p - f) / (60 * 1e3);
   }
   /**
    * Return whether this Zone is equal to another zone
@@ -455,44 +458,49 @@ class j extends xe {
     return this.valid;
   }
 }
-let Ft = {};
-function Ls(n, e = {}) {
+let Wt = {};
+function Zs(n, e = {}) {
   const t = JSON.stringify([n, e]);
-  let s = Ft[t];
-  return s || (s = new Intl.ListFormat(n, e), Ft[t] = s), s;
+  let s = Wt[t];
+  return s || (s = new Intl.ListFormat(n, e), Wt[t] = s), s;
 }
-let yt = {};
-function gt(n, e = {}) {
+const mt = /* @__PURE__ */ new Map();
+function yt(n, e = {}) {
   const t = JSON.stringify([n, e]);
-  let s = yt[t];
-  return s || (s = new Intl.DateTimeFormat(n, e), yt[t] = s), s;
+  let s = mt.get(t);
+  return s === void 0 && (s = new Intl.DateTimeFormat(n, e), mt.set(t, s)), s;
 }
-let wt = {};
-function Ws(n, e = {}) {
+const gt = /* @__PURE__ */ new Map();
+function As(n, e = {}) {
   const t = JSON.stringify([n, e]);
-  let s = wt[t];
-  return s || (s = new Intl.NumberFormat(n, e), wt[t] = s), s;
+  let s = gt.get(t);
+  return s === void 0 && (s = new Intl.NumberFormat(n, e), gt.set(t, s)), s;
 }
-let pt = {};
-function zs(n, e = {}) {
+const wt = /* @__PURE__ */ new Map();
+function Rs(n, e = {}) {
   const { base: t, ...s } = e, r = JSON.stringify([n, s]);
-  let i = pt[r];
-  return i || (i = new Intl.RelativeTimeFormat(n, e), pt[r] = i), i;
+  let i = wt.get(r);
+  return i === void 0 && (i = new Intl.RelativeTimeFormat(n, e), wt.set(r, i)), i;
 }
-let Ie = null;
-function As() {
-  return Ie || (Ie = new Intl.DateTimeFormat().resolvedOptions().locale, Ie);
+let Ee = null;
+function Hs() {
+  return Ee || (Ee = new Intl.DateTimeFormat().resolvedOptions().locale, Ee);
 }
-let $t = {};
-function Zs(n) {
-  let e = $t[n];
+const vt = /* @__PURE__ */ new Map();
+function zn(n) {
+  let e = vt.get(n);
+  return e === void 0 && (e = new Intl.DateTimeFormat(n).resolvedOptions(), vt.set(n, e)), e;
+}
+const pt = /* @__PURE__ */ new Map();
+function Us(n) {
+  let e = pt.get(n);
   if (!e) {
     const t = new Intl.Locale(n);
-    e = "getWeekInfo" in t ? t.getWeekInfo() : t.weekInfo, $t[n] = e;
+    e = "getWeekInfo" in t ? t.getWeekInfo() : t.weekInfo, "minimalDays" in e || (e = { ...Zn, ...e }), pt.set(n, e);
   }
   return e;
 }
-function Rs(n) {
+function qs(n) {
   const e = n.indexOf("-x-");
   e !== -1 && (n = n.substring(0, e));
   const t = n.indexOf("-u-");
@@ -501,48 +509,48 @@ function Rs(n) {
   {
     let s, r;
     try {
-      s = gt(n).resolvedOptions(), r = n;
+      s = yt(n).resolvedOptions(), r = n;
     } catch {
       const l = n.substring(0, t);
-      s = gt(l).resolvedOptions(), r = l;
+      s = yt(l).resolvedOptions(), r = l;
     }
-    const { numberingSystem: i, calendar: a } = s;
-    return [r, i, a];
+    const { numberingSystem: i, calendar: o } = s;
+    return [r, i, o];
   }
 }
-function Hs(n, e, t) {
+function Ps(n, e, t) {
   return (t || e) && (n.includes("-u-") || (n += "-u"), t && (n += `-ca-${t}`), e && (n += `-nu-${e}`)), n;
 }
-function Us(n) {
+function Ys(n) {
   const e = [];
   for (let t = 1; t <= 12; t++) {
-    const s = f.utc(2009, t, 1);
+    const s = h.utc(2009, t, 1);
     e.push(n(s));
   }
   return e;
 }
-function qs(n) {
+function Bs(n) {
   const e = [];
   for (let t = 1; t <= 7; t++) {
-    const s = f.utc(2016, 11, 13 + t);
+    const s = h.utc(2016, 11, 13 + t);
     e.push(n(s));
   }
   return e;
 }
-function We(n, e, t, s) {
+function $e(n, e, t, s) {
   const r = n.listingMode();
   return r === "error" ? null : r === "en" ? t(e) : s(e);
 }
-function Ys(n) {
-  return n.numberingSystem && n.numberingSystem !== "latn" ? !1 : n.numberingSystem === "latn" || !n.locale || n.locale.startsWith("en") || new Intl.DateTimeFormat(n.intl).resolvedOptions().numberingSystem === "latn";
+function Gs(n) {
+  return n.numberingSystem && n.numberingSystem !== "latn" ? !1 : n.numberingSystem === "latn" || !n.locale || n.locale.startsWith("en") || zn(n.locale).numberingSystem === "latn";
 }
-class Ps {
+class Js {
   constructor(e, t, s) {
     this.padTo = s.padTo || 0, this.floor = s.floor || !1;
-    const { padTo: r, floor: i, ...a } = s;
-    if (!t || Object.keys(a).length > 0) {
-      const o = { useGrouping: !1, ...s };
-      s.padTo > 0 && (o.minimumIntegerDigits = s.padTo), this.inf = Ws(e, o);
+    const { padTo: r, floor: i, ...o } = s;
+    if (!t || Object.keys(o).length > 0) {
+      const a = { useGrouping: !1, ...s };
+      s.padTo > 0 && (a.minimumIntegerDigits = s.padTo), this.inf = As(e, a);
     }
   }
   format(e) {
@@ -550,23 +558,23 @@ class Ps {
       const t = this.floor ? Math.floor(e) : e;
       return this.inf.format(t);
     } else {
-      const t = this.floor ? Math.floor(e) : It(e, 3);
-      return _(t, this.padTo);
+      const t = this.floor ? Math.floor(e) : Nt(e, 3);
+      return N(t, this.padTo);
     }
   }
 }
-class Bs {
+class js {
   constructor(e, t, s) {
     this.opts = s, this.originalZone = void 0;
     let r;
     if (this.opts.timeZone)
       this.dt = e;
     else if (e.zone.type === "fixed") {
-      const a = -1 * (e.offset / 60), o = a >= 0 ? `Etc/GMT+${a}` : `Etc/GMT${a}`;
-      e.offset !== 0 && j.create(o).valid ? (r = o, this.dt = e) : (r = "UTC", this.dt = e.offset === 0 ? e : e.setZone("UTC").plus({ minutes: e.offset }), this.originalZone = e.zone);
+      const o = -1 * (e.offset / 60), a = o >= 0 ? `Etc/GMT+${o}` : `Etc/GMT${o}`;
+      e.offset !== 0 && X.create(a).valid ? (r = a, this.dt = e) : (r = "UTC", this.dt = e.offset === 0 ? e : e.setZone("UTC").plus({ minutes: e.offset }), this.originalZone = e.zone);
     } else e.zone.type === "system" ? this.dt = e : e.zone.type === "iana" ? (this.dt = e, r = e.zone.name) : (r = "UTC", this.dt = e.setZone("UTC").plus({ minutes: e.offset }), this.originalZone = e.zone);
     const i = { ...this.opts };
-    i.timeZone = i.timeZone || r, this.dtf = gt(t, i);
+    i.timeZone = i.timeZone || r, this.dtf = yt(t, i);
   }
   format() {
     return this.originalZone ? this.formatToParts().map(({ value: e }) => e).join("") : this.dtf.format(this.dt.toJSDate());
@@ -591,25 +599,25 @@ class Bs {
     return this.dtf.resolvedOptions();
   }
 }
-class Gs {
+class Ks {
   constructor(e, t, s) {
-    this.opts = { style: "long", ...s }, !t && Rn() && (this.rtf = zs(e, s));
+    this.opts = { style: "long", ...s }, !t && Yn() && (this.rtf = Rs(e, s));
   }
   format(e, t) {
-    return this.rtf ? this.rtf.format(e, t) : wr(t, e, this.opts.numeric, this.opts.style !== "long");
+    return this.rtf ? this.rtf.format(e, t) : pr(t, e, this.opts.numeric, this.opts.style !== "long");
   }
   formatToParts(e, t) {
     return this.rtf ? this.rtf.formatToParts(e, t) : [];
   }
 }
-const Js = {
+const Zn = {
   firstDay: 1,
   minimalDays: 4,
   weekend: [6, 7]
 };
-class D {
+class E {
   static fromOpts(e) {
-    return D.create(
+    return E.create(
       e.locale,
       e.numberingSystem,
       e.outputCalendar,
@@ -618,32 +626,32 @@ class D {
     );
   }
   static create(e, t, s, r, i = !1) {
-    const a = e || N.defaultLocale, o = a || (i ? "en-US" : As()), l = t || N.defaultNumberingSystem, u = s || N.defaultOutputCalendar, d = vt(r) || N.defaultWeekSettings;
-    return new D(o, l, u, d, a);
+    const o = e || b.defaultLocale, a = o || (i ? "en-US" : Hs()), l = t || b.defaultNumberingSystem, u = s || b.defaultOutputCalendar, c = Tt(r) || b.defaultWeekSettings;
+    return new E(a, l, u, c, o);
   }
   static resetCache() {
-    Ie = null, yt = {}, wt = {}, pt = {};
+    Ee = null, mt.clear(), gt.clear(), wt.clear(), vt.clear(), pt.clear();
   }
   static fromObject({ locale: e, numberingSystem: t, outputCalendar: s, weekSettings: r } = {}) {
-    return D.create(e, t, s, r);
+    return E.create(e, t, s, r);
   }
   constructor(e, t, s, r, i) {
-    const [a, o, l] = Rs(e);
-    this.locale = a, this.numberingSystem = t || o || null, this.outputCalendar = s || l || null, this.weekSettings = r, this.intl = Hs(this.locale, this.numberingSystem, this.outputCalendar), this.weekdaysCache = { format: {}, standalone: {} }, this.monthsCache = { format: {}, standalone: {} }, this.meridiemCache = null, this.eraCache = {}, this.specifiedLocale = i, this.fastNumbersCached = null;
+    const [o, a, l] = qs(e);
+    this.locale = o, this.numberingSystem = t || a || null, this.outputCalendar = s || l || null, this.weekSettings = r, this.intl = Ps(this.locale, this.numberingSystem, this.outputCalendar), this.weekdaysCache = { format: {}, standalone: {} }, this.monthsCache = { format: {}, standalone: {} }, this.meridiemCache = null, this.eraCache = {}, this.specifiedLocale = i, this.fastNumbersCached = null;
   }
   get fastNumbers() {
-    return this.fastNumbersCached == null && (this.fastNumbersCached = Ys(this)), this.fastNumbersCached;
+    return this.fastNumbersCached == null && (this.fastNumbersCached = Gs(this)), this.fastNumbersCached;
   }
   listingMode() {
     const e = this.isEnglish(), t = (this.numberingSystem === null || this.numberingSystem === "latn") && (this.outputCalendar === null || this.outputCalendar === "gregory");
     return e && t ? "en" : "intl";
   }
   clone(e) {
-    return !e || Object.getOwnPropertyNames(e).length === 0 ? this : D.create(
+    return !e || Object.getOwnPropertyNames(e).length === 0 ? this : E.create(
       e.locale || this.specifiedLocale,
       e.numberingSystem || this.numberingSystem,
       e.outputCalendar || this.outputCalendar,
-      vt(e.weekSettings) || this.weekSettings,
+      Tt(e.weekSettings) || this.weekSettings,
       e.defaultToEN || !1
     );
   }
@@ -654,28 +662,34 @@ class D {
     return this.clone({ ...e, defaultToEN: !1 });
   }
   months(e, t = !1) {
-    return We(this, e, Pn, () => {
-      const s = t ? { month: e, day: "numeric" } : { month: e }, r = t ? "format" : "standalone";
-      return this.monthsCache[r][e] || (this.monthsCache[r][e] = Us((i) => this.extract(i, s, "month"))), this.monthsCache[r][e];
+    return $e(this, e, Kn, () => {
+      const s = this.intl === "ja" || this.intl.startsWith("ja-");
+      t &= !s;
+      const r = t ? { month: e, day: "numeric" } : { month: e }, i = t ? "format" : "standalone";
+      if (!this.monthsCache[i][e]) {
+        const o = s ? (a) => this.dtFormatter(a, r).format() : (a) => this.extract(a, r, "month");
+        this.monthsCache[i][e] = Ys(o);
+      }
+      return this.monthsCache[i][e];
     });
   }
   weekdays(e, t = !1) {
-    return We(this, e, Jn, () => {
+    return $e(this, e, es, () => {
       const s = t ? { weekday: e, year: "numeric", month: "long", day: "numeric" } : { weekday: e }, r = t ? "format" : "standalone";
-      return this.weekdaysCache[r][e] || (this.weekdaysCache[r][e] = qs(
+      return this.weekdaysCache[r][e] || (this.weekdaysCache[r][e] = Bs(
         (i) => this.extract(i, s, "weekday")
       )), this.weekdaysCache[r][e];
     });
   }
   meridiems() {
-    return We(
+    return $e(
       this,
       void 0,
-      () => jn,
+      () => ts,
       () => {
         if (!this.meridiemCache) {
           const e = { hour: "numeric", hourCycle: "h12" };
-          this.meridiemCache = [f.utc(2016, 11, 13, 9), f.utc(2016, 11, 13, 19)].map(
+          this.meridiemCache = [h.utc(2016, 11, 13, 9), h.utc(2016, 11, 13, 19)].map(
             (t) => this.extract(t, e, "dayperiod")
           );
         }
@@ -684,34 +698,34 @@ class D {
     );
   }
   eras(e) {
-    return We(this, e, Kn, () => {
+    return $e(this, e, ns, () => {
       const t = { era: e };
-      return this.eraCache[e] || (this.eraCache[e] = [f.utc(-40, 1, 1), f.utc(2017, 1, 1)].map(
+      return this.eraCache[e] || (this.eraCache[e] = [h.utc(-40, 1, 1), h.utc(2017, 1, 1)].map(
         (s) => this.extract(s, t, "era")
       )), this.eraCache[e];
     });
   }
   extract(e, t, s) {
-    const r = this.dtFormatter(e, t), i = r.formatToParts(), a = i.find((o) => o.type.toLowerCase() === s);
-    return a ? a.value : null;
+    const r = this.dtFormatter(e, t), i = r.formatToParts(), o = i.find((a) => a.type.toLowerCase() === s);
+    return o ? o.value : null;
   }
   numberFormatter(e = {}) {
-    return new Ps(this.intl, e.forceSimple || this.fastNumbers, e);
+    return new Js(this.intl, e.forceSimple || this.fastNumbers, e);
   }
   dtFormatter(e, t = {}) {
-    return new Bs(e, this.intl, t);
+    return new js(e, this.intl, t);
   }
   relFormatter(e = {}) {
-    return new Gs(this.intl, this.isEnglish(), e);
+    return new Ks(this.intl, this.isEnglish(), e);
   }
   listFormatter(e = {}) {
-    return Ls(this.intl, e);
+    return Zs(this.intl, e);
   }
   isEnglish() {
-    return this.locale === "en" || this.locale.toLowerCase() === "en-us" || new Intl.DateTimeFormat(this.intl).resolvedOptions().locale.startsWith("en-us");
+    return this.locale === "en" || this.locale.toLowerCase() === "en-us" || zn(this.intl).locale.startsWith("en-us");
   }
   getWeekSettings() {
-    return this.weekSettings ? this.weekSettings : Hn() ? Zs(this.locale) : Js;
+    return this.weekSettings ? this.weekSettings : Bn() ? Us(this.locale) : Zn;
   }
   getStartOfWeek() {
     return this.getWeekSettings().firstDay;
@@ -729,14 +743,14 @@ class D {
     return `Locale(${this.locale}, ${this.numberingSystem}, ${this.outputCalendar})`;
   }
 }
-let ot = null;
-class F extends xe {
+let it = null;
+class F extends Ce {
   /**
    * Get a singleton instance of UTC
    * @return {FixedOffsetZone}
    */
   static get utcInstance() {
-    return ot === null && (ot = new F(0)), ot;
+    return it === null && (it = new F(0)), it;
   }
   /**
    * Get an instance with a specified offset
@@ -758,7 +772,7 @@ class F extends xe {
     if (e) {
       const t = e.match(/^utc(?:([+-]\d{1,2})(?::(\d{2}))?)?$/i);
       if (t)
-        return new F(st(t[1], t[2]));
+        return new F(Xe(t[1], t[2]));
     }
     return null;
   }
@@ -780,7 +794,7 @@ class F extends xe {
    * @type {string}
    */
   get name() {
-    return this.fixed === 0 ? "UTC" : `UTC${Ne(this.fixed, "narrow")}`;
+    return this.fixed === 0 ? "UTC" : `UTC${be(this.fixed, "narrow")}`;
   }
   /**
    * The IANA name of this zone, i.e. `Etc/UTC` or `Etc/GMT+/-nn`
@@ -789,7 +803,7 @@ class F extends xe {
    * @type {string}
    */
   get ianaName() {
-    return this.fixed === 0 ? "Etc/UTC" : `Etc/GMT${Ne(-this.fixed, "narrow")}`;
+    return this.fixed === 0 ? "Etc/UTC" : `Etc/GMT${be(-this.fixed, "narrow")}`;
   }
   /**
    * Returns the offset's common name at the specified timestamp.
@@ -809,7 +823,7 @@ class F extends xe {
    * @return {string}
    */
   formatOffset(e, t) {
-    return Ne(this.fixed, t);
+    return be(this.fixed, t);
   }
   /**
    * Returns whether the offset is known to be fixed for the whole year:
@@ -849,7 +863,7 @@ class F extends xe {
     return !0;
   }
 }
-class js extends xe {
+class Qs extends Ce {
   constructor(e) {
     super(), this.zoneName = e;
   }
@@ -889,14 +903,14 @@ class js extends xe {
 function ne(n, e) {
   if (w(n) || n === null)
     return e;
-  if (n instanceof xe)
+  if (n instanceof Ce)
     return n;
-  if (nr(n)) {
+  if (rr(n)) {
     const t = n.toLowerCase();
-    return t === "default" ? e : t === "local" || t === "system" ? et.instance : t === "utc" || t === "gmt" ? F.utcInstance : F.parseSpecifier(t) || j.create(n);
-  } else return re(n) ? F.instance(n) : typeof n == "object" && "offset" in n && typeof n.offset == "function" ? n : new js(n);
+    return t === "default" ? e : t === "local" || t === "system" ? je.instance : t === "utc" || t === "gmt" ? F.utcInstance : F.parseSpecifier(t) || X.create(n);
+  } else return re(n) ? F.instance(n) : typeof n == "object" && "offset" in n && typeof n.offset == "function" ? n : new Qs(n);
 }
-const St = {
+const Et = {
   arab: "[٠-٩]",
   arabext: "[۰-۹]",
   bali: "[᭐-᭙]",
@@ -918,7 +932,7 @@ const St = {
   thai: "[๐-๙]",
   tibt: "[༠-༩]",
   latn: "\\d"
-}, Lt = {
+}, zt = {
   arab: [1632, 1641],
   arabext: [1776, 1785],
   bali: [6992, 7001],
@@ -938,41 +952,44 @@ const St = {
   telu: [3174, 3183],
   thai: [3664, 3673],
   tibt: [3872, 3881]
-}, Ks = St.hanidec.replace(/[\[|\]]/g, "").split("");
-function Qs(n) {
+}, Xs = Et.hanidec.replace(/[\[|\]]/g, "").split("");
+function er(n) {
   let e = parseInt(n, 10);
   if (isNaN(e)) {
     e = "";
     for (let t = 0; t < n.length; t++) {
       const s = n.charCodeAt(t);
-      if (n[t].search(St.hanidec) !== -1)
-        e += Ks.indexOf(n[t]);
+      if (n[t].search(Et.hanidec) !== -1)
+        e += Xs.indexOf(n[t]);
       else
-        for (const r in Lt) {
-          const [i, a] = Lt[r];
-          s >= i && s <= a && (e += s - i);
+        for (const r in zt) {
+          const [i, o] = zt[r];
+          s >= i && s <= o && (e += s - i);
         }
     }
     return parseInt(e, 10);
   } else
     return e;
 }
-let me = {};
-function Xs() {
-  me = {};
+const kt = /* @__PURE__ */ new Map();
+function tr() {
+  kt.clear();
 }
-function q({ numberingSystem: n }, e = "") {
+function U({ numberingSystem: n }, e = "") {
   const t = n || "latn";
-  return me[t] || (me[t] = {}), me[t][e] || (me[t][e] = new RegExp(`${St[t]}${e}`)), me[t][e];
+  let s = kt.get(t);
+  s === void 0 && (s = /* @__PURE__ */ new Map(), kt.set(t, s));
+  let r = s.get(e);
+  return r === void 0 && (r = new RegExp(`${Et[t]}${e}`), s.set(e, r)), r;
 }
-let Wt = () => Date.now(), zt = "system", At = null, Zt = null, Rt = null, Ht = 60, Ut, qt = null;
-class N {
+let Zt = () => Date.now(), At = "system", Rt = null, Ht = null, Ut = null, qt = 60, Pt, Yt = null;
+class b {
   /**
    * Get the callback for returning the current timestamp.
    * @type {function}
    */
   static get now() {
-    return Wt;
+    return Zt;
   }
   /**
    * Set the callback for returning the current timestamp.
@@ -982,7 +999,7 @@ class N {
    * @example Settings.now = () => 0 // always pretend it's Jan 1, 1970 at midnight in UTC time
    */
   static set now(e) {
-    Wt = e;
+    Zt = e;
   }
   /**
    * Set the default time zone to create DateTimes in. Does not affect existing instances.
@@ -990,7 +1007,7 @@ class N {
    * @type {string}
    */
   static set defaultZone(e) {
-    zt = e;
+    At = e;
   }
   /**
    * Get the default time zone object currently used to create DateTimes. Does not affect existing instances.
@@ -998,49 +1015,49 @@ class N {
    * @type {Zone}
    */
   static get defaultZone() {
-    return ne(zt, et.instance);
+    return ne(At, je.instance);
   }
   /**
    * Get the default locale to create DateTimes with. Does not affect existing instances.
    * @type {string}
    */
   static get defaultLocale() {
-    return At;
+    return Rt;
   }
   /**
    * Set the default locale to create DateTimes with. Does not affect existing instances.
    * @type {string}
    */
   static set defaultLocale(e) {
-    At = e;
+    Rt = e;
   }
   /**
    * Get the default numbering system to create DateTimes with. Does not affect existing instances.
    * @type {string}
    */
   static get defaultNumberingSystem() {
-    return Zt;
+    return Ht;
   }
   /**
    * Set the default numbering system to create DateTimes with. Does not affect existing instances.
    * @type {string}
    */
   static set defaultNumberingSystem(e) {
-    Zt = e;
+    Ht = e;
   }
   /**
    * Get the default output calendar to create DateTimes with. Does not affect existing instances.
    * @type {string}
    */
   static get defaultOutputCalendar() {
-    return Rt;
+    return Ut;
   }
   /**
    * Set the default output calendar to create DateTimes with. Does not affect existing instances.
    * @type {string}
    */
   static set defaultOutputCalendar(e) {
-    Rt = e;
+    Ut = e;
   }
   /**
    * @typedef {Object} WeekSettings
@@ -1052,7 +1069,7 @@ class N {
    * @return {WeekSettings|null}
    */
   static get defaultWeekSettings() {
-    return qt;
+    return Yt;
   }
   /**
    * Allows overriding the default locale week settings, i.e. the start of the week, the weekend and
@@ -1062,14 +1079,14 @@ class N {
    * @param {WeekSettings|null} weekSettings
    */
   static set defaultWeekSettings(e) {
-    qt = vt(e);
+    Yt = Tt(e);
   }
   /**
    * Get the cutoff year for whether a 2-digit year string is interpreted in the current or previous century. Numbers higher than the cutoff will be considered to mean 19xx and numbers lower or equal to the cutoff will be considered 20xx.
    * @type {number}
    */
   static get twoDigitCutoffYear() {
-    return Ht;
+    return qt;
   }
   /**
    * Set the cutoff year for whether a 2-digit year string is interpreted in the current or previous century. Numbers higher than the cutoff will be considered to mean 19xx and numbers lower or equal to the cutoff will be considered 20xx.
@@ -1081,28 +1098,28 @@ class N {
    * @example Settings.twoDigitCutoffYear = 2050 // ALSO interpreted as 50
    */
   static set twoDigitCutoffYear(e) {
-    Ht = e % 100;
+    qt = e % 100;
   }
   /**
    * Get whether Luxon will throw when it encounters invalid DateTimes, Durations, or Intervals
    * @type {boolean}
    */
   static get throwOnInvalid() {
-    return Ut;
+    return Pt;
   }
   /**
    * Set whether Luxon will throw when it encounters invalid DateTimes, Durations, or Intervals
    * @type {boolean}
    */
   static set throwOnInvalid(e) {
-    Ut = e;
+    Pt = e;
   }
   /**
    * Reset Luxon's global caches. Should only be necessary in testing scenarios.
    * @return {void}
    */
   static resetCaches() {
-    D.resetCache(), j.resetCache(), f.resetCache(), Xs();
+    E.resetCache(), X.resetCache(), h.resetCache(), tr();
   }
 }
 class P {
@@ -1113,53 +1130,53 @@ class P {
     return this.explanation ? `${this.reason}: ${this.explanation}` : this.reason;
   }
 }
-const $n = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334], Ln = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
-function Z(n, e) {
+const An = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334], Rn = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
+function A(n, e) {
   return new P(
     "unit out of range",
     `you specified ${e} (of type ${typeof e}) as a ${n}, which is invalid`
   );
 }
-function Dt(n, e, t) {
+function xt(n, e, t) {
   const s = new Date(Date.UTC(n, e - 1, t));
   n < 100 && n >= 0 && s.setUTCFullYear(s.getUTCFullYear() - 1900);
   const r = s.getUTCDay();
   return r === 0 ? 7 : r;
 }
-function Wn(n, e, t) {
-  return t + (Ve(n) ? Ln : $n)[e - 1];
+function Hn(n, e, t) {
+  return t + (Ve(n) ? Rn : An)[e - 1];
 }
-function zn(n, e) {
-  const t = Ve(n) ? Ln : $n, s = t.findIndex((i) => i < e), r = e - t[s];
+function Un(n, e) {
+  const t = Ve(n) ? Rn : An, s = t.findIndex((i) => i < e), r = e - t[s];
   return { month: s + 1, day: r };
 }
-function Mt(n, e) {
+function It(n, e) {
   return (n - e + 7) % 7 + 1;
 }
-function Je(n, e = 4, t = 1) {
-  const { year: s, month: r, day: i } = n, a = Wn(s, r, i), o = Mt(Dt(s, r, i), t);
-  let l = Math.floor((a - o + 14 - e) / 7), u;
-  return l < 1 ? (u = s - 1, l = _e(u, e, t)) : l > _e(s, e, t) ? (u = s + 1, l = 1) : u = s, { weekYear: u, weekNumber: l, weekday: o, ...rt(n) };
+function Be(n, e = 4, t = 1) {
+  const { year: s, month: r, day: i } = n, o = Hn(s, r, i), a = It(xt(s, r, i), t);
+  let l = Math.floor((o - a + 14 - e) / 7), u;
+  return l < 1 ? (u = s - 1, l = Ne(u, e, t)) : l > Ne(s, e, t) ? (u = s + 1, l = 1) : u = s, { weekYear: u, weekNumber: l, weekday: a, ...et(n) };
 }
-function Yt(n, e = 4, t = 1) {
-  const { weekYear: s, weekNumber: r, weekday: i } = n, a = Mt(Dt(s, 1, e), t), o = ge(s);
-  let l = r * 7 + i - a - 7 + e, u;
-  l < 1 ? (u = s - 1, l += ge(u)) : l > o ? (u = s + 1, l -= ge(s)) : u = s;
-  const { month: d, day: m } = zn(u, l);
-  return { year: u, month: d, day: m, ...rt(n) };
+function Bt(n, e = 4, t = 1) {
+  const { weekYear: s, weekNumber: r, weekday: i } = n, o = It(xt(s, 1, e), t), a = ge(s);
+  let l = r * 7 + i - o - 7 + e, u;
+  l < 1 ? (u = s - 1, l += ge(u)) : l > a ? (u = s + 1, l -= ge(s)) : u = s;
+  const { month: c, day: m } = Un(u, l);
+  return { year: u, month: c, day: m, ...et(n) };
 }
-function lt(n) {
-  const { year: e, month: t, day: s } = n, r = Wn(e, t, s);
-  return { year: e, ordinal: r, ...rt(n) };
+function at(n) {
+  const { year: e, month: t, day: s } = n, r = Hn(e, t, s);
+  return { year: e, ordinal: r, ...et(n) };
 }
-function Pt(n) {
-  const { year: e, ordinal: t } = n, { month: s, day: r } = zn(e, t);
-  return { year: e, month: s, day: r, ...rt(n) };
+function Gt(n) {
+  const { year: e, ordinal: t } = n, { month: s, day: r } = Un(e, t);
+  return { year: e, month: s, day: r, ...et(n) };
 }
-function Bt(n, e) {
+function Jt(n, e) {
   if (!w(n.localWeekday) || !w(n.localWeekNumber) || !w(n.localWeekYear)) {
     if (!w(n.weekday) || !w(n.weekNumber) || !w(n.weekYear))
-      throw new ye(
+      throw new me(
         "Cannot mix locale-based week fields with ISO-based week fields"
       );
     return w(n.localWeekday) || (n.weekday = n.localWeekday), w(n.localWeekNumber) || (n.weekNumber = n.localWeekNumber), w(n.localWeekYear) || (n.weekYear = n.localWeekYear), delete n.localWeekday, delete n.localWeekNumber, delete n.localWeekYear, {
@@ -1169,25 +1186,25 @@ function Bt(n, e) {
   } else
     return { minDaysInFirstWeek: 4, startOfWeek: 1 };
 }
-function er(n, e = 4, t = 1) {
-  const s = tt(n.weekYear), r = R(
+function nr(n, e = 4, t = 1) {
+  const s = Ke(n.weekYear), r = R(
     n.weekNumber,
     1,
-    _e(n.weekYear, e, t)
+    Ne(n.weekYear, e, t)
   ), i = R(n.weekday, 1, 7);
-  return s ? r ? i ? !1 : Z("weekday", n.weekday) : Z("week", n.weekNumber) : Z("weekYear", n.weekYear);
+  return s ? r ? i ? !1 : A("weekday", n.weekday) : A("week", n.weekNumber) : A("weekYear", n.weekYear);
 }
-function tr(n) {
-  const e = tt(n.year), t = R(n.ordinal, 1, ge(n.year));
-  return e ? t ? !1 : Z("ordinal", n.ordinal) : Z("year", n.year);
+function sr(n) {
+  const e = Ke(n.year), t = R(n.ordinal, 1, ge(n.year));
+  return e ? t ? !1 : A("ordinal", n.ordinal) : A("year", n.year);
 }
-function An(n) {
-  const e = tt(n.year), t = R(n.month, 1, 12), s = R(n.day, 1, je(n.year, n.month));
-  return e ? t ? s ? !1 : Z("day", n.day) : Z("month", n.month) : Z("year", n.year);
+function qn(n) {
+  const e = Ke(n.year), t = R(n.month, 1, 12), s = R(n.day, 1, Ge(n.year, n.month));
+  return e ? t ? s ? !1 : A("day", n.day) : A("month", n.month) : A("year", n.year);
 }
-function Zn(n) {
-  const { hour: e, minute: t, second: s, millisecond: r } = n, i = R(e, 0, 23) || e === 24 && t === 0 && s === 0 && r === 0, a = R(t, 0, 59), o = R(s, 0, 59), l = R(r, 0, 999);
-  return i ? a ? o ? l ? !1 : Z("millisecond", r) : Z("second", s) : Z("minute", t) : Z("hour", e);
+function Pn(n) {
+  const { hour: e, minute: t, second: s, millisecond: r } = n, i = R(e, 0, 23) || e === 24 && t === 0 && s === 0 && r === 0, o = R(t, 0, 59), a = R(s, 0, 59), l = R(r, 0, 999);
+  return i ? o ? a ? l ? !1 : A("millisecond", r) : A("second", s) : A("minute", t) : A("hour", e);
 }
 function w(n) {
   return typeof n > "u";
@@ -1195,46 +1212,46 @@ function w(n) {
 function re(n) {
   return typeof n == "number";
 }
-function tt(n) {
+function Ke(n) {
   return typeof n == "number" && n % 1 === 0;
 }
-function nr(n) {
+function rr(n) {
   return typeof n == "string";
 }
-function sr(n) {
+function ir(n) {
   return Object.prototype.toString.call(n) === "[object Date]";
 }
-function Rn() {
+function Yn() {
   try {
     return typeof Intl < "u" && !!Intl.RelativeTimeFormat;
   } catch {
     return !1;
   }
 }
-function Hn() {
+function Bn() {
   try {
     return typeof Intl < "u" && !!Intl.Locale && ("weekInfo" in Intl.Locale.prototype || "getWeekInfo" in Intl.Locale.prototype);
   } catch {
     return !1;
   }
 }
-function rr(n) {
+function ar(n) {
   return Array.isArray(n) ? n : [n];
 }
-function Gt(n, e, t) {
+function jt(n, e, t) {
   if (n.length !== 0)
     return n.reduce((s, r) => {
       const i = [e(r), r];
       return s && t(s[0], i[0]) === s[0] ? s : i;
     }, null)[1];
 }
-function ir(n, e) {
+function or(n, e) {
   return e.reduce((t, s) => (t[s] = n[s], t), {});
 }
-function pe(n, e) {
+function ve(n, e) {
   return Object.prototype.hasOwnProperty.call(n, e);
 }
-function vt(n) {
+function Tt(n) {
   if (n == null)
     return null;
   if (typeof n != "object")
@@ -1248,17 +1265,17 @@ function vt(n) {
   };
 }
 function R(n, e, t) {
-  return tt(n) && n >= e && n <= t;
+  return Ke(n) && n >= e && n <= t;
 }
-function ar(n, e) {
+function lr(n, e) {
   return n - e * Math.floor(n / e);
 }
-function _(n, e = 2) {
+function N(n, e = 2) {
   const t = n < 0;
   let s;
   return t ? s = "-" + ("" + -n).padStart(e, "0") : s = ("" + n).padStart(e, "0"), s;
 }
-function ee(n) {
+function te(n) {
   if (!(w(n) || n === null || n === ""))
     return parseInt(n, 10);
 }
@@ -1266,15 +1283,28 @@ function ie(n) {
   if (!(w(n) || n === null || n === ""))
     return parseFloat(n);
 }
-function Et(n) {
+function bt(n) {
   if (!(w(n) || n === null || n === "")) {
     const e = parseFloat("0." + n) * 1e3;
     return Math.floor(e);
   }
 }
-function It(n, e, t = !1) {
+function Nt(n, e, t = "round") {
   const s = 10 ** e;
-  return (t ? Math.trunc : Math.round)(n * s) / s;
+  switch (t) {
+    case "expand":
+      return n > 0 ? Math.ceil(n * s) / s : Math.floor(n * s) / s;
+    case "trunc":
+      return Math.trunc(n * s) / s;
+    case "round":
+      return Math.round(n * s) / s;
+    case "floor":
+      return Math.floor(n * s) / s;
+    case "ceil":
+      return Math.ceil(n * s) / s;
+    default:
+      throw new RangeError(`Value rounding ${t} is out of range`);
+  }
 }
 function Ve(n) {
   return n % 4 === 0 && (n % 100 !== 0 || n % 400 === 0);
@@ -1282,11 +1312,11 @@ function Ve(n) {
 function ge(n) {
   return Ve(n) ? 366 : 365;
 }
-function je(n, e) {
-  const t = ar(e - 1, 12) + 1, s = n + (e - t) / 12;
+function Ge(n, e) {
+  const t = lr(e - 1, 12) + 1, s = n + (e - t) / 12;
   return t === 2 ? Ve(s) ? 29 : 28 : [31, null, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][t - 1];
 }
-function nt(n) {
+function Qe(n) {
   let e = Date.UTC(
     n.year,
     n.month - 1,
@@ -1298,17 +1328,17 @@ function nt(n) {
   );
   return n.year < 100 && n.year >= 0 && (e = new Date(e), e.setUTCFullYear(n.year, n.month - 1, n.day)), +e;
 }
-function Jt(n, e, t) {
-  return -Mt(Dt(n, 1, e), t) + e - 1;
+function Kt(n, e, t) {
+  return -It(xt(n, 1, e), t) + e - 1;
 }
-function _e(n, e = 4, t = 1) {
-  const s = Jt(n, e, t), r = Jt(n + 1, e, t);
+function Ne(n, e = 4, t = 1) {
+  const s = Kt(n, e, t), r = Kt(n + 1, e, t);
   return (ge(n) - s + r) / 7;
 }
-function kt(n) {
-  return n > 99 ? n : n > N.twoDigitCutoffYear ? 1900 + n : 2e3 + n;
+function Ot(n) {
+  return n > 99 ? n : n > b.twoDigitCutoffYear ? 1900 + n : 2e3 + n;
 }
-function Un(n, e, t, s = null) {
+function Gn(n, e, t, s = null) {
   const r = new Date(n), i = {
     hourCycle: "h23",
     year: "numeric",
@@ -1318,48 +1348,48 @@ function Un(n, e, t, s = null) {
     minute: "2-digit"
   };
   s && (i.timeZone = s);
-  const a = { timeZoneName: e, ...i }, o = new Intl.DateTimeFormat(t, a).formatToParts(r).find((l) => l.type.toLowerCase() === "timezonename");
-  return o ? o.value : null;
+  const o = { timeZoneName: e, ...i }, a = new Intl.DateTimeFormat(t, o).formatToParts(r).find((l) => l.type.toLowerCase() === "timezonename");
+  return a ? a.value : null;
 }
-function st(n, e) {
+function Xe(n, e) {
   let t = parseInt(n, 10);
   Number.isNaN(t) && (t = 0);
   const s = parseInt(e, 10) || 0, r = t < 0 || Object.is(t, -0) ? -s : s;
   return t * 60 + r;
 }
-function qn(n) {
+function Jn(n) {
   const e = Number(n);
-  if (typeof n == "boolean" || n === "" || Number.isNaN(e))
+  if (typeof n == "boolean" || n === "" || !Number.isFinite(e))
     throw new V(`Invalid unit value ${n}`);
   return e;
 }
-function Ke(n, e) {
+function Je(n, e) {
   const t = {};
   for (const s in n)
-    if (pe(n, s)) {
+    if (ve(n, s)) {
       const r = n[s];
       if (r == null) continue;
-      t[e(s)] = qn(r);
+      t[e(s)] = Jn(r);
     }
   return t;
 }
-function Ne(n, e) {
+function be(n, e) {
   const t = Math.trunc(Math.abs(n / 60)), s = Math.trunc(Math.abs(n % 60)), r = n >= 0 ? "+" : "-";
   switch (e) {
     case "short":
-      return `${r}${_(t, 2)}:${_(s, 2)}`;
+      return `${r}${N(t, 2)}:${N(s, 2)}`;
     case "narrow":
       return `${r}${t}${s > 0 ? `:${s}` : ""}`;
     case "techie":
-      return `${r}${_(t, 2)}${_(s, 2)}`;
+      return `${r}${N(t, 2)}${N(s, 2)}`;
     default:
       throw new RangeError(`Value format ${e} is out of range for property format`);
   }
 }
-function rt(n) {
-  return ir(n, ["hour", "minute", "second", "millisecond"]);
+function et(n) {
+  return or(n, ["hour", "minute", "second", "millisecond"]);
 }
-const or = [
+const ur = [
   "January",
   "February",
   "March",
@@ -1372,7 +1402,7 @@ const or = [
   "October",
   "November",
   "December"
-], Yn = [
+], jn = [
   "Jan",
   "Feb",
   "Mar",
@@ -1385,15 +1415,15 @@ const or = [
   "Oct",
   "Nov",
   "Dec"
-], lr = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
-function Pn(n) {
+], cr = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+function Kn(n) {
   switch (n) {
     case "narrow":
-      return [...lr];
+      return [...cr];
     case "short":
-      return [...Yn];
+      return [...jn];
     case "long":
-      return [...or];
+      return [...ur];
     case "numeric":
       return ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
     case "2-digit":
@@ -1402,7 +1432,7 @@ function Pn(n) {
       return null;
   }
 }
-const Bn = [
+const Qn = [
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -1410,47 +1440,47 @@ const Bn = [
   "Friday",
   "Saturday",
   "Sunday"
-], Gn = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], ur = ["M", "T", "W", "T", "F", "S", "S"];
-function Jn(n) {
+], Xn = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], dr = ["M", "T", "W", "T", "F", "S", "S"];
+function es(n) {
   switch (n) {
     case "narrow":
-      return [...ur];
+      return [...dr];
     case "short":
-      return [...Gn];
+      return [...Xn];
     case "long":
-      return [...Bn];
+      return [...Qn];
     case "numeric":
       return ["1", "2", "3", "4", "5", "6", "7"];
     default:
       return null;
   }
 }
-const jn = ["AM", "PM"], cr = ["Before Christ", "Anno Domini"], dr = ["BC", "AD"], fr = ["B", "A"];
-function Kn(n) {
+const ts = ["AM", "PM"], fr = ["Before Christ", "Anno Domini"], hr = ["BC", "AD"], mr = ["B", "A"];
+function ns(n) {
   switch (n) {
     case "narrow":
-      return [...fr];
+      return [...mr];
     case "short":
-      return [...dr];
+      return [...hr];
     case "long":
-      return [...cr];
+      return [...fr];
     default:
       return null;
   }
 }
-function hr(n) {
-  return jn[n.hour < 12 ? 0 : 1];
-}
-function mr(n, e) {
-  return Jn(e)[n.weekday - 1];
-}
-function yr(n, e) {
-  return Pn(e)[n.month - 1];
+function yr(n) {
+  return ts[n.hour < 12 ? 0 : 1];
 }
 function gr(n, e) {
-  return Kn(e)[n.year < 0 ? 0 : 1];
+  return es(e)[n.weekday - 1];
 }
-function wr(n, e, t = "always", s = !1) {
+function wr(n, e) {
+  return Kn(e)[n.month - 1];
+}
+function vr(n, e) {
+  return ns(e)[n.year < 0 ? 0 : 1];
+}
+function pr(n, e, t = "always", s = !1) {
   const r = {
     years: ["year", "yr."],
     quarters: ["quarter", "qtr."],
@@ -1472,52 +1502,55 @@ function wr(n, e, t = "always", s = !1) {
         return m ? "today" : `this ${r[n][0]}`;
     }
   }
-  const a = Object.is(e, -0) || e < 0, o = Math.abs(e), l = o === 1, u = r[n], d = s ? l ? u[1] : u[2] || u[1] : l ? r[n][0] : n;
-  return a ? `${o} ${d} ago` : `in ${o} ${d}`;
+  const o = Object.is(e, -0) || e < 0, a = Math.abs(e), l = a === 1, u = r[n], c = s ? l ? u[1] : u[2] || u[1] : l ? r[n][0] : n;
+  return o ? `${a} ${c} ago` : `in ${a} ${c}`;
 }
-function jt(n, e) {
+function Qt(n, e) {
   let t = "";
   for (const s of n)
     s.literal ? t += s.val : t += e(s.val);
   return t;
 }
-const pr = {
-  D: Ge,
-  DD: gn,
-  DDD: wn,
-  DDDD: pn,
-  t: vn,
-  tt: kn,
-  ttt: Tn,
-  tttt: On,
-  T: Sn,
-  TT: Dn,
-  TTT: Mn,
-  TTTT: En,
-  f: In,
-  ff: Nn,
-  fff: xn,
-  ffff: Cn,
-  F: bn,
+const kr = {
+  D: Ye,
+  DD: pn,
+  DDD: kn,
+  DDDD: Tn,
+  t: On,
+  tt: Sn,
+  ttt: Dn,
+  tttt: Mn,
+  T: En,
+  TT: xn,
+  TTT: In,
+  TTTT: bn,
+  f: Nn,
+  ff: Vn,
+  fff: Fn,
+  ffff: $n,
+  F: Cn,
   FF: _n,
-  FFF: Vn,
-  FFFF: Fn
+  FFF: Ln,
+  FFFF: Wn
 };
-class C {
+class _ {
   static create(e, t = {}) {
-    return new C(e, t);
+    return new _(e, t);
   }
   static parseFormat(e) {
     let t = null, s = "", r = !1;
     const i = [];
-    for (let a = 0; a < e.length; a++) {
-      const o = e.charAt(a);
-      o === "'" ? (s.length > 0 && i.push({ literal: r || /^\s+$/.test(s), val: s }), t = null, s = "", r = !r) : r || o === t ? s += o : (s.length > 0 && i.push({ literal: /^\s+$/.test(s), val: s }), s = o, t = o);
+    for (let o = 0; o < e.length; o++) {
+      const a = e.charAt(o);
+      a === "'" ? ((s.length > 0 || r) && i.push({
+        literal: r || /^\s+$/.test(s),
+        val: s === "" ? "'" : s
+      }), t = null, s = "", r = !r) : r || a === t ? s += a : (s.length > 0 && i.push({ literal: /^\s+$/.test(s), val: s }), s = a, t = a);
     }
     return s.length > 0 && i.push({ literal: r || /^\s+$/.test(s), val: s }), i;
   }
   static macroTokenToFormatOpts(e) {
-    return pr[e];
+    return kr[e];
   }
   constructor(e, t) {
     this.opts = t, this.loc = e, this.systemLoc = null;
@@ -1540,21 +1573,21 @@ class C {
   resolvedOptions(e, t) {
     return this.dtFormatter(e, t).resolvedOptions();
   }
-  num(e, t = 0) {
+  num(e, t = 0, s = void 0) {
     if (this.opts.forceSimple)
-      return _(e, t);
-    const s = { ...this.opts };
-    return t > 0 && (s.padTo = t), this.loc.numberFormatter(s).format(e);
+      return N(e, t);
+    const r = { ...this.opts };
+    return t > 0 && (r.padTo = t), s && (r.signDisplay = s), this.loc.numberFormatter(r).format(e);
   }
   formatDateTimeFromString(e, t) {
-    const s = this.loc.listingMode() === "en", r = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory", i = (h, g) => this.loc.extract(e, h, g), a = (h) => e.isOffsetFixed && e.offset === 0 && h.allowZ ? "Z" : e.isValid ? e.zone.formatOffset(e.ts, h.format) : "", o = () => s ? hr(e) : i({ hour: "numeric", hourCycle: "h12" }, "dayperiod"), l = (h, g) => s ? yr(e, h) : i(g ? { month: h } : { month: h, day: "numeric" }, "month"), u = (h, g) => s ? mr(e, h) : i(
-      g ? { weekday: h } : { weekday: h, month: "long", day: "numeric" },
+    const s = this.loc.listingMode() === "en", r = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory", i = (f, g) => this.loc.extract(e, f, g), o = (f) => e.isOffsetFixed && e.offset === 0 && f.allowZ ? "Z" : e.isValid ? e.zone.formatOffset(e.ts, f.format) : "", a = () => s ? yr(e) : i({ hour: "numeric", hourCycle: "h12" }, "dayperiod"), l = (f, g) => s ? wr(e, f) : i(g ? { month: f } : { month: f, day: "numeric" }, "month"), u = (f, g) => s ? gr(e, f) : i(
+      g ? { weekday: f } : { weekday: f, month: "long", day: "numeric" },
       "weekday"
-    ), d = (h) => {
-      const g = C.macroTokenToFormatOpts(h);
-      return g ? this.formatWithSystemDefault(e, g) : h;
-    }, m = (h) => s ? gr(e, h) : i({ era: h }, "era"), v = (h) => {
-      switch (h) {
+    ), c = (f) => {
+      const g = _.macroTokenToFormatOpts(f);
+      return g ? this.formatWithSystemDefault(e, g) : f;
+    }, m = (f) => s ? vr(e, f) : i({ era: f }, "era"), p = (f) => {
+      switch (f) {
         case "S":
           return this.num(e.millisecond);
         case "u":
@@ -1581,11 +1614,11 @@ class C {
         case "HH":
           return this.num(e.hour, 2);
         case "Z":
-          return a({ format: "narrow", allowZ: this.opts.allowZ });
+          return o({ format: "narrow", allowZ: this.opts.allowZ });
         case "ZZ":
-          return a({ format: "short", allowZ: this.opts.allowZ });
+          return o({ format: "short", allowZ: this.opts.allowZ });
         case "ZZZ":
-          return a({ format: "techie", allowZ: this.opts.allowZ });
+          return o({ format: "techie", allowZ: this.opts.allowZ });
         case "ZZZZ":
           return e.zone.offsetName(e.ts, { format: "short", locale: this.loc.locale });
         case "ZZZZZ":
@@ -1593,7 +1626,7 @@ class C {
         case "z":
           return e.zoneName;
         case "a":
-          return o();
+          return a();
         case "d":
           return r ? i({ day: "numeric" }, "day") : this.num(e.day);
         case "dd":
@@ -1677,53 +1710,63 @@ class C {
         case "x":
           return this.num(e.ts);
         default:
-          return d(h);
+          return c(f);
       }
     };
-    return jt(C.parseFormat(t), v);
+    return Qt(_.parseFormat(t), p);
   }
   formatDurationFromString(e, t) {
-    const s = (l) => {
-      switch (l[0]) {
+    const s = this.opts.signMode === "negativeLargestOnly" ? -1 : 1, r = (c) => {
+      switch (c[0]) {
         case "S":
-          return "millisecond";
+          return "milliseconds";
         case "s":
-          return "second";
+          return "seconds";
         case "m":
-          return "minute";
+          return "minutes";
         case "h":
-          return "hour";
+          return "hours";
         case "d":
-          return "day";
+          return "days";
         case "w":
-          return "week";
+          return "weeks";
         case "M":
-          return "month";
+          return "months";
         case "y":
-          return "year";
+          return "years";
         default:
           return null;
       }
-    }, r = (l) => (u) => {
-      const d = s(u);
-      return d ? this.num(l.get(d), u.length) : u;
-    }, i = C.parseFormat(t), a = i.reduce(
-      (l, { literal: u, val: d }) => u ? l : l.concat(d),
+    }, i = (c, m) => (p) => {
+      const f = r(p);
+      if (f) {
+        const g = m.isNegativeDuration && f !== m.largestUnit ? s : 1;
+        let O;
+        return this.opts.signMode === "negativeLargestOnly" && f !== m.largestUnit ? O = "never" : this.opts.signMode === "all" ? O = "always" : O = "auto", this.num(c.get(f) * g, p.length, O);
+      } else
+        return p;
+    }, o = _.parseFormat(t), a = o.reduce(
+      (c, { literal: m, val: p }) => m ? c : c.concat(p),
       []
-    ), o = e.shiftTo(...a.map(s).filter((l) => l));
-    return jt(i, r(o));
+    ), l = e.shiftTo(...a.map(r).filter((c) => c)), u = {
+      isNegativeDuration: l < 0,
+      // this relies on "collapsed" being based on "shiftTo", which builds up the object
+      // in order
+      largestUnit: Object.keys(l.values)[0]
+    };
+    return Qt(o, i(l, u));
   }
 }
-const Qn = /[A-Za-z_+-]{1,256}(?::?\/[A-Za-z0-9_+-]{1,256}(?:\/[A-Za-z0-9_+-]{1,256})?)?/;
-function ve(...n) {
+const ss = /[A-Za-z_+-]{1,256}(?::?\/[A-Za-z0-9_+-]{1,256}(?:\/[A-Za-z0-9_+-]{1,256})?)?/;
+function pe(...n) {
   const e = n.reduce((t, s) => t + s.source, "");
   return RegExp(`^${e}$`);
 }
 function ke(...n) {
   return (e) => n.reduce(
     ([t, s, r], i) => {
-      const [a, o, l] = i(e, r);
-      return [{ ...t, ...a }, o || s, l];
+      const [o, a, l] = i(e, r);
+      return [{ ...t, ...o }, a || s, l];
     },
     [{}, null, 1]
   ).slice(0, 2);
@@ -1738,23 +1781,23 @@ function Te(n, ...e) {
   }
   return [null, null];
 }
-function Xn(...n) {
+function rs(...n) {
   return (e, t) => {
     const s = {};
     let r;
     for (r = 0; r < n.length; r++)
-      s[n[r]] = ee(e[t + r]);
+      s[n[r]] = te(e[t + r]);
     return [s, null, t + r];
   };
 }
-const es = /(?:(Z)|([+-]\d\d)(?::?(\d\d))?)/, vr = `(?:${es.source}?(?:\\[(${Qn.source})\\])?)?`, bt = /(\d\d)(?::?(\d\d)(?::?(\d\d)(?:[.,](\d{1,30}))?)?)?/, ts = RegExp(`${bt.source}${vr}`), Nt = RegExp(`(?:T${ts.source})?`), kr = /([+-]\d{6}|\d{4})(?:-?(\d\d)(?:-?(\d\d))?)?/, Tr = /(\d{4})-?W(\d\d)(?:-?(\d))?/, Or = /(\d{4})-?(\d{3})/, Sr = Xn("weekYear", "weekNumber", "weekDay"), Dr = Xn("year", "ordinal"), Mr = /(\d{4})-(\d\d)-(\d\d)/, ns = RegExp(
-  `${bt.source} ?(?:${es.source}|(${Qn.source}))?`
-), Er = RegExp(`(?: ${ns.source})?`);
+const is = /(?:([Zz])|([+-]\d\d)(?::?(\d\d))?)/, Tr = `(?:${is.source}?(?:\\[(${ss.source})\\])?)?`, Ct = /(\d\d)(?::?(\d\d)(?::?(\d\d)(?:[.,](\d{1,30}))?)?)?/, as = RegExp(`${Ct.source}${Tr}`), Vt = RegExp(`(?:[Tt]${as.source})?`), Or = /([+-]\d{6}|\d{4})(?:-?(\d\d)(?:-?(\d\d))?)?/, Sr = /(\d{4})-?W(\d\d)(?:-?(\d))?/, Dr = /(\d{4})-?(\d{3})/, Mr = rs("weekYear", "weekNumber", "weekDay"), Er = rs("year", "ordinal"), xr = /(\d{4})-(\d\d)-(\d\d)/, os = RegExp(
+  `${Ct.source} ?(?:${is.source}|(${ss.source}))?`
+), Ir = RegExp(`(?: ${os.source})?`);
 function we(n, e, t) {
   const s = n[e];
-  return w(s) ? t : ee(s);
+  return w(s) ? t : te(s);
 }
-function Ir(n, e) {
+function br(n, e) {
   return [{
     year: we(n, e),
     month: we(n, e + 1, 1),
@@ -1766,34 +1809,34 @@ function Oe(n, e) {
     hours: we(n, e, 0),
     minutes: we(n, e + 1, 0),
     seconds: we(n, e + 2, 0),
-    milliseconds: Et(n[e + 3])
+    milliseconds: bt(n[e + 3])
   }, null, e + 4];
 }
-function Ce(n, e) {
-  const t = !n[e] && !n[e + 1], s = st(n[e + 1], n[e + 2]), r = t ? null : F.instance(s);
+function _e(n, e) {
+  const t = !n[e] && !n[e + 1], s = Xe(n[e + 1], n[e + 2]), r = t ? null : F.instance(s);
   return [{}, r, e + 3];
 }
 function Fe(n, e) {
-  const t = n[e] ? j.create(n[e]) : null;
+  const t = n[e] ? X.create(n[e]) : null;
   return [{}, t, e + 1];
 }
-const br = RegExp(`^T?${bt.source}$`), Nr = /^-?P(?:(?:(-?\d{1,20}(?:\.\d{1,20})?)Y)?(?:(-?\d{1,20}(?:\.\d{1,20})?)M)?(?:(-?\d{1,20}(?:\.\d{1,20})?)W)?(?:(-?\d{1,20}(?:\.\d{1,20})?)D)?(?:T(?:(-?\d{1,20}(?:\.\d{1,20})?)H)?(?:(-?\d{1,20}(?:\.\d{1,20})?)M)?(?:(-?\d{1,20})(?:[.,](-?\d{1,20}))?S)?)?)$/;
-function _r(n) {
-  const [e, t, s, r, i, a, o, l, u] = n, d = e[0] === "-", m = l && l[0] === "-", v = (h, g = !1) => h !== void 0 && (g || h && d) ? -h : h;
+const Nr = RegExp(`^T?${Ct.source}$`), Cr = /^-?P(?:(?:(-?\d{1,20}(?:\.\d{1,20})?)Y)?(?:(-?\d{1,20}(?:\.\d{1,20})?)M)?(?:(-?\d{1,20}(?:\.\d{1,20})?)W)?(?:(-?\d{1,20}(?:\.\d{1,20})?)D)?(?:T(?:(-?\d{1,20}(?:\.\d{1,20})?)H)?(?:(-?\d{1,20}(?:\.\d{1,20})?)M)?(?:(-?\d{1,20})(?:[.,](-?\d{1,20}))?S)?)?)$/;
+function Vr(n) {
+  const [e, t, s, r, i, o, a, l, u] = n, c = e[0] === "-", m = l && l[0] === "-", p = (f, g = !1) => f !== void 0 && (g || f && c) ? -f : f;
   return [
     {
-      years: v(ie(t)),
-      months: v(ie(s)),
-      weeks: v(ie(r)),
-      days: v(ie(i)),
-      hours: v(ie(a)),
-      minutes: v(ie(o)),
-      seconds: v(ie(l), l === "-0"),
-      milliseconds: v(Et(u), m)
+      years: p(ie(t)),
+      months: p(ie(s)),
+      weeks: p(ie(r)),
+      days: p(ie(i)),
+      hours: p(ie(o)),
+      minutes: p(ie(a)),
+      seconds: p(ie(l), l === "-0"),
+      milliseconds: p(bt(u), m)
     }
   ];
 }
-const xr = {
+const _r = {
   GMT: 0,
   EDT: -4 * 60,
   EST: -5 * 60,
@@ -1804,18 +1847,18 @@ const xr = {
   PDT: -7 * 60,
   PST: -8 * 60
 };
-function _t(n, e, t, s, r, i, a) {
-  const o = {
-    year: e.length === 2 ? kt(ee(e)) : ee(e),
-    month: Yn.indexOf(t) + 1,
-    day: ee(s),
-    hour: ee(r),
-    minute: ee(i)
+function _t(n, e, t, s, r, i, o) {
+  const a = {
+    year: e.length === 2 ? Ot(te(e)) : te(e),
+    month: jn.indexOf(t) + 1,
+    day: te(s),
+    hour: te(r),
+    minute: te(i)
   };
-  return a && (o.second = ee(a)), n && (o.weekday = n.length > 3 ? Bn.indexOf(n) + 1 : Gn.indexOf(n) + 1), o;
+  return o && (a.second = te(o)), n && (a.weekday = n.length > 3 ? Qn.indexOf(n) + 1 : Xn.indexOf(n) + 1), a;
 }
-const Vr = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|(?:([+-]\d\d)(\d\d)))$/;
-function Cr(n) {
+const Fr = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|(?:([+-]\d\d)(\d\d)))$/;
+function Lr(n) {
   const [
     ,
     e,
@@ -1823,88 +1866,88 @@ function Cr(n) {
     s,
     r,
     i,
-    a,
     o,
+    a,
     l,
     u,
-    d,
+    c,
     m
-  ] = n, v = _t(e, r, s, t, i, a, o);
-  let h;
-  return l ? h = xr[l] : u ? h = 0 : h = st(d, m), [v, new F(h)];
+  ] = n, p = _t(e, r, s, t, i, o, a);
+  let f;
+  return l ? f = _r[l] : u ? f = 0 : f = Xe(c, m), [p, new F(f)];
 }
-function Fr(n) {
+function $r(n) {
   return n.replace(/\([^()]*\)|[\n\t]/g, " ").replace(/(\s\s+)/g, " ").trim();
 }
-const $r = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\d\d) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4}) (\d\d):(\d\d):(\d\d) GMT$/, Lr = /^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), (\d\d)-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d\d) (\d\d):(\d\d):(\d\d) GMT$/, Wr = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( \d|\d\d) (\d\d):(\d\d):(\d\d) (\d{4})$/;
-function Kt(n) {
-  const [, e, t, s, r, i, a, o] = n;
-  return [_t(e, r, s, t, i, a, o), F.utcInstance];
+const Wr = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\d\d) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4}) (\d\d):(\d\d):(\d\d) GMT$/, zr = /^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), (\d\d)-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d\d) (\d\d):(\d\d):(\d\d) GMT$/, Zr = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( \d|\d\d) (\d\d):(\d\d):(\d\d) (\d{4})$/;
+function Xt(n) {
+  const [, e, t, s, r, i, o, a] = n;
+  return [_t(e, r, s, t, i, o, a), F.utcInstance];
 }
-function zr(n) {
-  const [, e, t, s, r, i, a, o] = n;
-  return [_t(e, o, t, s, r, i, a), F.utcInstance];
+function Ar(n) {
+  const [, e, t, s, r, i, o, a] = n;
+  return [_t(e, a, t, s, r, i, o), F.utcInstance];
 }
-const Ar = ve(kr, Nt), Zr = ve(Tr, Nt), Rr = ve(Or, Nt), Hr = ve(ts), ss = ke(
-  Ir,
+const Rr = pe(Or, Vt), Hr = pe(Sr, Vt), Ur = pe(Dr, Vt), qr = pe(as), ls = ke(
+  br,
   Oe,
-  Ce,
+  _e,
   Fe
-), Ur = ke(
-  Sr,
+), Pr = ke(
+  Mr,
   Oe,
-  Ce,
-  Fe
-), qr = ke(
-  Dr,
-  Oe,
-  Ce,
+  _e,
   Fe
 ), Yr = ke(
+  Er,
   Oe,
-  Ce,
+  _e,
+  Fe
+), Br = ke(
+  Oe,
+  _e,
   Fe
 );
-function Pr(n) {
-  return Te(
-    n,
-    [Ar, ss],
-    [Zr, Ur],
-    [Rr, qr],
-    [Hr, Yr]
-  );
-}
-function Br(n) {
-  return Te(Fr(n), [Vr, Cr]);
-}
 function Gr(n) {
   return Te(
     n,
-    [$r, Kt],
-    [Lr, Kt],
-    [Wr, zr]
+    [Rr, ls],
+    [Hr, Pr],
+    [Ur, Yr],
+    [qr, Br]
   );
 }
 function Jr(n) {
-  return Te(n, [Nr, _r]);
+  return Te($r(n), [Fr, Lr]);
 }
-const jr = ke(Oe);
-function Kr(n) {
-  return Te(n, [br, jr]);
-}
-const Qr = ve(Mr, Er), Xr = ve(ns), ei = ke(
-  Oe,
-  Ce,
-  Fe
-);
-function ti(n) {
+function jr(n) {
   return Te(
     n,
-    [Qr, ss],
-    [Xr, ei]
+    [Wr, Xt],
+    [zr, Xt],
+    [Zr, Ar]
   );
 }
-const Qt = "Invalid Duration", rs = {
+function Kr(n) {
+  return Te(n, [Cr, Vr]);
+}
+const Qr = ke(Oe);
+function Xr(n) {
+  return Te(n, [Nr, Qr]);
+}
+const ei = pe(xr, Ir), ti = pe(os), ni = ke(
+  Oe,
+  _e,
+  Fe
+);
+function si(n) {
+  return Te(
+    n,
+    [ei, ls],
+    [ti, ni]
+  );
+}
+const en = "Invalid Duration", us = {
   weeks: {
     days: 7,
     hours: 7 * 24,
@@ -1921,7 +1964,7 @@ const Qt = "Invalid Duration", rs = {
   hours: { minutes: 60, seconds: 60 * 60, milliseconds: 60 * 60 * 1e3 },
   minutes: { seconds: 60, milliseconds: 60 * 1e3 },
   seconds: { milliseconds: 1e3 }
-}, ni = {
+}, ri = {
   years: {
     quarters: 4,
     months: 12,
@@ -1949,8 +1992,8 @@ const Qt = "Invalid Duration", rs = {
     seconds: 30 * 24 * 60 * 60,
     milliseconds: 30 * 24 * 60 * 60 * 1e3
   },
-  ...rs
-}, z = 146097 / 400, de = 146097 / 4800, si = {
+  ...us
+}, z = 146097 / 400, de = 146097 / 4800, ii = {
   years: {
     quarters: 4,
     months: 12,
@@ -1978,8 +2021,8 @@ const Qt = "Invalid Duration", rs = {
     seconds: de * 24 * 60 * 60,
     milliseconds: de * 24 * 60 * 60 * 1e3
   },
-  ...rs
-}, le = [
+  ...us
+}, oe = [
   "years",
   "quarters",
   "months",
@@ -1989,8 +2032,8 @@ const Qt = "Invalid Duration", rs = {
   "minutes",
   "seconds",
   "milliseconds"
-], ri = le.slice(0).reverse();
-function Q(n, e, t = !1) {
+], ai = oe.slice(0).reverse();
+function j(n, e, t = !1) {
   const s = {
     values: t ? e.values : { ...n.values, ...e.values || {} },
     loc: n.loc.clone(e.loc),
@@ -1999,23 +2042,23 @@ function Q(n, e, t = !1) {
   };
   return new T(s);
 }
-function is(n, e) {
+function cs(n, e) {
   let t = e.milliseconds ?? 0;
-  for (const s of ri.slice(1))
+  for (const s of ai.slice(1))
     e[s] && (t += e[s] * n[s].milliseconds);
   return t;
 }
-function Xt(n, e) {
-  const t = is(n, e) < 0 ? -1 : 1;
-  le.reduceRight((s, r) => {
+function tn(n, e) {
+  const t = cs(n, e) < 0 ? -1 : 1;
+  oe.reduceRight((s, r) => {
     if (w(e[r]))
       return s;
     if (s) {
-      const i = e[s] * t, a = n[r][s], o = Math.floor(i / a);
-      e[r] += o * t, e[s] -= o * a * t;
+      const i = e[s] * t, o = n[r][s], a = Math.floor(i / o);
+      e[r] += a * t, e[s] -= a * o * t;
     }
     return r;
-  }, null), le.reduce((s, r) => {
+  }, null), oe.reduce((s, r) => {
     if (w(e[r]))
       return s;
     if (s) {
@@ -2025,7 +2068,7 @@ function Xt(n, e) {
     return r;
   }, null);
 }
-function ii(n) {
+function nn(n) {
   const e = {};
   for (const [t, s] of Object.entries(n))
     s !== 0 && (e[t] = s);
@@ -2037,8 +2080,8 @@ class T {
    */
   constructor(e) {
     const t = e.conversionAccuracy === "longterm" || !1;
-    let s = t ? si : ni;
-    e.matrix && (s = e.matrix), this.values = e.values, this.loc = e.loc || D.create(), this.conversionAccuracy = t ? "longterm" : "casual", this.invalid = e.invalid || null, this.matrix = s, this.isLuxonDuration = !0;
+    let s = t ? ii : ri;
+    e.matrix && (s = e.matrix), this.values = e.values, this.loc = e.loc || E.create(), this.conversionAccuracy = t ? "longterm" : "casual", this.invalid = e.invalid || null, this.matrix = s, this.isLuxonDuration = !0;
   }
   /**
    * Create Duration from a number of milliseconds.
@@ -2078,8 +2121,8 @@ class T {
         `Duration.fromObject: argument expected to be an object, got ${e === null ? "null" : typeof e}`
       );
     return new T({
-      values: Ke(e, T.normalizeUnit),
-      loc: D.fromObject(t),
+      values: Je(e, T.normalizeUnit),
+      loc: E.fromObject(t),
       conversionAccuracy: t.conversionAccuracy,
       matrix: t.matrix
     });
@@ -2120,7 +2163,7 @@ class T {
    * @return {Duration}
    */
   static fromISO(e, t) {
-    const [s] = Jr(e);
+    const [s] = Kr(e);
     return s ? T.fromObject(s, t) : T.invalid("unparsable", `the input "${e}" can't be parsed as ISO 8601`);
   }
   /**
@@ -2140,7 +2183,7 @@ class T {
    * @return {Duration}
    */
   static fromISOTime(e, t) {
-    const [s] = Kr(e);
+    const [s] = Xr(e);
     return s ? T.fromObject(s, t) : T.invalid("unparsable", `the input "${e}" can't be parsed as ISO 8601`);
   }
   /**
@@ -2153,8 +2196,8 @@ class T {
     if (!e)
       throw new V("need to specify a reason the Duration is invalid");
     const s = e instanceof P ? e : new P(e, t);
-    if (N.throwOnInvalid)
-      throw new Ns(s);
+    if (b.throwOnInvalid)
+      throw new Vs(s);
     return new T({ invalid: s });
   }
   /**
@@ -2181,7 +2224,7 @@ class T {
       millisecond: "milliseconds",
       milliseconds: "milliseconds"
     }[e && e.toLowerCase()];
-    if (!t) throw new yn(e);
+    if (!t) throw new vn(e);
     return t;
   }
   /**
@@ -2224,9 +2267,13 @@ class T {
    * @param {string} fmt - the format string
    * @param {Object} opts - options
    * @param {boolean} [opts.floor=true] - floor numerical values
+   * @param {'negative'|'all'|'negativeLargestOnly'} [opts.signMode=negative] - How to handle signs
    * @example Duration.fromObject({ years: 1, days: 6, seconds: 2 }).toFormat("y d s") //=> "1 6 2"
    * @example Duration.fromObject({ years: 1, days: 6, seconds: 2 }).toFormat("yy dd sss") //=> "01 06 002"
    * @example Duration.fromObject({ years: 1, days: 6, seconds: 2 }).toFormat("M S") //=> "12 518402000"
+   * @example Duration.fromObject({ days: 6, seconds: 2 }).toFormat("d s", { signMode: "all" }) //=> "+6 +2"
+   * @example Duration.fromObject({ days: -6, seconds: -2 }).toFormat("d s", { signMode: "all" }) //=> "-6 -2"
+   * @example Duration.fromObject({ days: -6, seconds: -2 }).toFormat("d s", { signMode: "negativeLargestOnly" }) //=> "-6 2"
    * @return {string}
    */
   toFormat(e, t = {}) {
@@ -2234,7 +2281,7 @@ class T {
       ...t,
       floor: t.round !== !1 && t.floor !== !1
     };
-    return this.isValid ? C.create(this.loc, s).formatDurationFromString(this, e) : Qt;
+    return this.isValid ? _.create(this.loc, s).formatDurationFromString(this, e) : en;
   }
   /**
    * Returns a string representation of a Duration with all units included.
@@ -2242,21 +2289,23 @@ class T {
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
    * @param {Object} opts - Formatting options. Accepts the same keys as the options parameter of the native `Intl.NumberFormat` constructor, as well as `listStyle`.
    * @param {string} [opts.listStyle='narrow'] - How to format the merged list. Corresponds to the `style` property of the options parameter of the native `Intl.ListFormat` constructor.
+   * @param {boolean} [opts.showZeros=true] - Show all units previously used by the duration even if they are zero
    * @example
    * ```js
-   * var dur = Duration.fromObject({ days: 1, hours: 5, minutes: 6 })
-   * dur.toHuman() //=> '1 day, 5 hours, 6 minutes'
-   * dur.toHuman({ listStyle: "long" }) //=> '1 day, 5 hours, and 6 minutes'
-   * dur.toHuman({ unitDisplay: "short" }) //=> '1 day, 5 hr, 6 min'
+   * var dur = Duration.fromObject({ months: 1, weeks: 0, hours: 5, minutes: 6 })
+   * dur.toHuman() //=> '1 month, 0 weeks, 5 hours, 6 minutes'
+   * dur.toHuman({ listStyle: "long" }) //=> '1 month, 0 weeks, 5 hours, and 6 minutes'
+   * dur.toHuman({ unitDisplay: "short" }) //=> '1 mth, 0 wks, 5 hr, 6 min'
+   * dur.toHuman({ showZeros: false }) //=> '1 month, 5 hours, 6 minutes'
    * ```
    */
   toHuman(e = {}) {
-    if (!this.isValid) return Qt;
-    const t = le.map((s) => {
-      const r = this.values[s];
-      return w(r) ? null : this.loc.numberFormatter({ style: "unit", unitDisplay: "long", ...e, unit: s.slice(0, -1) }).format(r);
-    }).filter((s) => s);
-    return this.loc.listFormatter({ type: "conjunction", style: e.listStyle || "narrow", ...e }).format(t);
+    if (!this.isValid) return en;
+    const t = e.showZeros !== !1, s = oe.map((r) => {
+      const i = this.values[r];
+      return w(i) || i === 0 && !t ? null : this.loc.numberFormatter({ style: "unit", unitDisplay: "long", ...e, unit: r.slice(0, -1) }).format(i);
+    }).filter((r) => r);
+    return this.loc.listFormatter({ type: "conjunction", style: e.listStyle || "narrow", ...e }).format(s);
   }
   /**
    * Returns a JavaScript object with this Duration's values.
@@ -2279,7 +2328,7 @@ class T {
   toISO() {
     if (!this.isValid) return null;
     let e = "P";
-    return this.years !== 0 && (e += this.years + "Y"), (this.months !== 0 || this.quarters !== 0) && (e += this.months + this.quarters * 3 + "M"), this.weeks !== 0 && (e += this.weeks + "W"), this.days !== 0 && (e += this.days + "D"), (this.hours !== 0 || this.minutes !== 0 || this.seconds !== 0 || this.milliseconds !== 0) && (e += "T"), this.hours !== 0 && (e += this.hours + "H"), this.minutes !== 0 && (e += this.minutes + "M"), (this.seconds !== 0 || this.milliseconds !== 0) && (e += It(this.seconds + this.milliseconds / 1e3, 3) + "S"), e === "P" && (e += "T0S"), e;
+    return this.years !== 0 && (e += this.years + "Y"), (this.months !== 0 || this.quarters !== 0) && (e += this.months + this.quarters * 3 + "M"), this.weeks !== 0 && (e += this.weeks + "W"), this.days !== 0 && (e += this.days + "D"), (this.hours !== 0 || this.minutes !== 0 || this.seconds !== 0 || this.milliseconds !== 0) && (e += "T"), this.hours !== 0 && (e += this.hours + "H"), this.minutes !== 0 && (e += this.minutes + "M"), (this.seconds !== 0 || this.milliseconds !== 0) && (e += Nt(this.seconds + this.milliseconds / 1e3, 3) + "S"), e === "P" && (e += "T0S"), e;
   }
   /**
    * Returns an ISO 8601-compliant string representation of this Duration, formatted as a time of day.
@@ -2307,7 +2356,7 @@ class T {
       format: "extended",
       ...e,
       includeOffset: !1
-    }, f.fromMillis(t, { zone: "UTC" }).toISOTime(e));
+    }, h.fromMillis(t, { zone: "UTC" }).toISOTime(e));
   }
   /**
    * Returns an ISO 8601 representation of this Duration appropriate for use in JSON.
@@ -2335,7 +2384,7 @@ class T {
    * @return {number}
    */
   toMillis() {
-    return this.isValid ? is(this.matrix, this.values) : NaN;
+    return this.isValid ? cs(this.matrix, this.values) : NaN;
   }
   /**
    * Returns an milliseconds value of this Duration. Alias of {@link toMillis}
@@ -2352,9 +2401,9 @@ class T {
   plus(e) {
     if (!this.isValid) return this;
     const t = T.fromDurationLike(e), s = {};
-    for (const r of le)
-      (pe(t.values, r) || pe(this.values, r)) && (s[r] = t.get(r) + this.get(r));
-    return Q(this, { values: s }, !0);
+    for (const r of oe)
+      (ve(t.values, r) || ve(this.values, r)) && (s[r] = t.get(r) + this.get(r));
+    return j(this, { values: s }, !0);
   }
   /**
    * Make this Duration shorter by the specified amount. Return a newly-constructed Duration.
@@ -2377,8 +2426,8 @@ class T {
     if (!this.isValid) return this;
     const t = {};
     for (const s of Object.keys(this.values))
-      t[s] = qn(e(this.values[s], s));
-    return Q(this, { values: t }, !0);
+      t[s] = Jn(e(this.values[s], s));
+    return j(this, { values: t }, !0);
   }
   /**
    * Get the value of unit.
@@ -2400,8 +2449,8 @@ class T {
    */
   set(e) {
     if (!this.isValid) return this;
-    const t = { ...this.values, ...Ke(e, T.normalizeUnit) };
-    return Q(this, { values: t });
+    const t = { ...this.values, ...Je(e, T.normalizeUnit) };
+    return j(this, { values: t });
   }
   /**
    * "Set" the locale and/or numberingSystem.  Returns a newly-constructed Duration.
@@ -2409,8 +2458,8 @@ class T {
    * @return {Duration}
    */
   reconfigure({ locale: e, numberingSystem: t, conversionAccuracy: s, matrix: r } = {}) {
-    const a = { loc: this.loc.clone({ locale: e, numberingSystem: t }), matrix: r, conversionAccuracy: s };
-    return Q(this, a);
+    const o = { loc: this.loc.clone({ locale: e, numberingSystem: t }), matrix: r, conversionAccuracy: s };
+    return j(this, o);
   }
   /**
    * Return the length of the duration in the specified unit.
@@ -2441,7 +2490,7 @@ class T {
   normalize() {
     if (!this.isValid) return this;
     const e = this.toObject();
-    return Xt(this.matrix, e), Q(this, { values: e }, !0);
+    return tn(this.matrix, e), j(this, { values: e }, !0);
   }
   /**
    * Rescale units to its largest representation
@@ -2450,8 +2499,8 @@ class T {
    */
   rescale() {
     if (!this.isValid) return this;
-    const e = ii(this.normalize().shiftToAll().toObject());
-    return Q(this, { values: e }, !0);
+    const e = nn(this.normalize().shiftToAll().toObject());
+    return j(this, { values: e }, !0);
   }
   /**
    * Convert this Duration into its representation in a different set of units.
@@ -2462,22 +2511,22 @@ class T {
     if (!this.isValid) return this;
     if (e.length === 0)
       return this;
-    e = e.map((a) => T.normalizeUnit(a));
+    e = e.map((o) => T.normalizeUnit(o));
     const t = {}, s = {}, r = this.toObject();
     let i;
-    for (const a of le)
-      if (e.indexOf(a) >= 0) {
-        i = a;
-        let o = 0;
+    for (const o of oe)
+      if (e.indexOf(o) >= 0) {
+        i = o;
+        let a = 0;
         for (const u in s)
-          o += this.matrix[u][a] * s[u], s[u] = 0;
-        re(r[a]) && (o += r[a]);
-        const l = Math.trunc(o);
-        t[a] = l, s[a] = (o * 1e3 - l * 1e3) / 1e3;
-      } else re(r[a]) && (s[a] = r[a]);
-    for (const a in s)
-      s[a] !== 0 && (t[i] += a === i ? s[a] : s[a] / this.matrix[i][a]);
-    return Xt(this.matrix, t), Q(this, { values: t }, !0);
+          a += this.matrix[u][o] * s[u], s[u] = 0;
+        re(r[o]) && (a += r[o]);
+        const l = Math.trunc(a);
+        t[o] = l, s[o] = (a * 1e3 - l * 1e3) / 1e3;
+      } else re(r[o]) && (s[o] = r[o]);
+    for (const o in s)
+      s[o] !== 0 && (t[i] += o === i ? s[o] : s[o] / this.matrix[i][o]);
+    return tn(this.matrix, t), j(this, { values: t }, !0);
   }
   /**
    * Shift this Duration to all available units.
@@ -2506,7 +2555,17 @@ class T {
     const e = {};
     for (const t of Object.keys(this.values))
       e[t] = this.values[t] === 0 ? 0 : -this.values[t];
-    return Q(this, { values: e }, !0);
+    return j(this, { values: e }, !0);
+  }
+  /**
+   * Removes all units with values equal to 0 from this Duration.
+   * @example Duration.fromObject({ years: 2, days: 0, hours: 0, minutes: 0 }).removeZeros().toObject() //=> { years: 2 }
+   * @return {Duration}
+   */
+  removeZeros() {
+    if (!this.isValid) return this;
+    const e = nn(this.values);
+    return j(this, { values: e }, !0);
   }
   /**
    * Get the years.
@@ -2605,20 +2664,20 @@ class T {
     function t(s, r) {
       return s === void 0 || s === 0 ? r === void 0 || r === 0 : s === r;
     }
-    for (const s of le)
+    for (const s of oe)
       if (!t(this.values[s], e.values[s]))
         return !1;
     return !0;
   }
 }
 const fe = "Invalid Interval";
-function ai(n, e) {
-  return !n || !n.isValid ? b.invalid("missing or invalid start") : !e || !e.isValid ? b.invalid("missing or invalid end") : e < n ? b.invalid(
+function oi(n, e) {
+  return !n || !n.isValid ? I.invalid("missing or invalid start") : !e || !e.isValid ? I.invalid("missing or invalid end") : e < n ? I.invalid(
     "end before start",
     `The end of an interval must be after its start, but you had start=${n.toISO()} and end=${e.toISO()}`
   ) : null;
 }
-class b {
+class I {
   /**
    * @private
    */
@@ -2635,9 +2694,9 @@ class b {
     if (!e)
       throw new V("need to specify a reason the Interval is invalid");
     const s = e instanceof P ? e : new P(e, t);
-    if (N.throwOnInvalid)
-      throw new bs(s);
-    return new b({ invalid: s });
+    if (b.throwOnInvalid)
+      throw new Cs(s);
+    return new I({ invalid: s });
   }
   /**
    * Create an Interval from a start DateTime and an end DateTime. Inclusive of the start but not the end.
@@ -2646,8 +2705,8 @@ class b {
    * @return {Interval}
    */
   static fromDateTimes(e, t) {
-    const s = Ee(e), r = Ee(t), i = ai(s, r);
-    return i ?? new b({
+    const s = Me(e), r = Me(t), i = oi(s, r);
+    return i ?? new I({
       start: s,
       end: r
     });
@@ -2659,8 +2718,8 @@ class b {
    * @return {Interval}
    */
   static after(e, t) {
-    const s = T.fromDurationLike(t), r = Ee(e);
-    return b.fromDateTimes(r, r.plus(s));
+    const s = T.fromDurationLike(t), r = Me(e);
+    return I.fromDateTimes(r, r.plus(s));
   }
   /**
    * Create an Interval from an end DateTime and a Duration to extend backwards to.
@@ -2669,8 +2728,8 @@ class b {
    * @return {Interval}
    */
   static before(e, t) {
-    const s = T.fromDurationLike(t), r = Ee(e);
-    return b.fromDateTimes(r.minus(s), r);
+    const s = T.fromDurationLike(t), r = Me(e);
+    return I.fromDateTimes(r.minus(s), r);
   }
   /**
    * Create an Interval from an ISO 8601 string.
@@ -2683,31 +2742,31 @@ class b {
   static fromISO(e, t) {
     const [s, r] = (e || "").split("/", 2);
     if (s && r) {
-      let i, a;
+      let i, o;
       try {
-        i = f.fromISO(s, t), a = i.isValid;
+        i = h.fromISO(s, t), o = i.isValid;
       } catch {
-        a = !1;
+        o = !1;
       }
-      let o, l;
+      let a, l;
       try {
-        o = f.fromISO(r, t), l = o.isValid;
+        a = h.fromISO(r, t), l = a.isValid;
       } catch {
         l = !1;
       }
-      if (a && l)
-        return b.fromDateTimes(i, o);
-      if (a) {
+      if (o && l)
+        return I.fromDateTimes(i, a);
+      if (o) {
         const u = T.fromISO(r, t);
         if (u.isValid)
-          return b.after(i, u);
+          return I.after(i, u);
       } else if (l) {
         const u = T.fromISO(s, t);
         if (u.isValid)
-          return b.before(o, u);
+          return I.before(a, u);
       }
     }
-    return b.invalid("unparsable", `the input "${e}" can't be parsed as ISO 8601`);
+    return I.invalid("unparsable", `the input "${e}" can't be parsed as ISO 8601`);
   }
   /**
    * Check if an object is an Interval. Works across context boundaries
@@ -2725,11 +2784,19 @@ class b {
     return this.isValid ? this.s : null;
   }
   /**
-   * Returns the end of the Interval
+   * Returns the end of the Interval. This is the first instant which is not part of the interval
+   * (Interval is half-open).
    * @type {DateTime}
    */
   get end() {
     return this.isValid ? this.e : null;
+  }
+  /**
+   * Returns the last DateTime included in the interval (since end is not part of the interval)
+   * @type {DateTime}
+   */
+  get lastDateTime() {
+    return this.isValid && this.e ? this.e.minus(1) : null;
   }
   /**
    * Returns whether this Interval's end is at least its start, meaning that the Interval isn't 'backwards'.
@@ -2822,7 +2889,7 @@ class b {
    * @return {Interval}
    */
   set({ start: e, end: t } = {}) {
-    return this.isValid ? b.fromDateTimes(e || this.s, t || this.e) : this;
+    return this.isValid ? I.fromDateTimes(e || this.s, t || this.e) : this;
   }
   /**
    * Split this Interval at each of the specified DateTimes
@@ -2831,11 +2898,11 @@ class b {
    */
   splitAt(...e) {
     if (!this.isValid) return [];
-    const t = e.map(Ee).filter((a) => this.contains(a)).sort((a, o) => a.toMillis() - o.toMillis()), s = [];
+    const t = e.map(Me).filter((o) => this.contains(o)).sort((o, a) => o.toMillis() - a.toMillis()), s = [];
     let { s: r } = this, i = 0;
     for (; r < this.e; ) {
-      const a = t[i] || this.e, o = +a > +this.e ? this.e : a;
-      s.push(b.fromDateTimes(r, o)), r = o, i += 1;
+      const o = t[i] || this.e, a = +o > +this.e ? this.e : o;
+      s.push(I.fromDateTimes(r, a)), r = a, i += 1;
     }
     return s;
   }
@@ -2850,12 +2917,12 @@ class b {
     if (!this.isValid || !t.isValid || t.as("milliseconds") === 0)
       return [];
     let { s } = this, r = 1, i;
-    const a = [];
+    const o = [];
     for (; s < this.e; ) {
-      const o = this.start.plus(t.mapUnits((l) => l * r));
-      i = +o > +this.e ? this.e : o, a.push(b.fromDateTimes(s, i)), s = i, r += 1;
+      const a = this.start.plus(t.mapUnits((l) => l * r));
+      i = +a > +this.e ? this.e : a, o.push(I.fromDateTimes(s, i)), s = i, r += 1;
     }
-    return a;
+    return o;
   }
   /**
    * Split this Interval into the specified number of smaller intervals.
@@ -2915,7 +2982,7 @@ class b {
   intersection(e) {
     if (!this.isValid) return this;
     const t = this.s > e.s ? this.s : e.s, s = this.e < e.e ? this.e : e.e;
-    return t >= s ? null : b.fromDateTimes(t, s);
+    return t >= s ? null : I.fromDateTimes(t, s);
   }
   /**
    * Return an Interval representing the union of this Interval and the specified Interval.
@@ -2926,17 +2993,20 @@ class b {
   union(e) {
     if (!this.isValid) return this;
     const t = this.s < e.s ? this.s : e.s, s = this.e > e.e ? this.e : e.e;
-    return b.fromDateTimes(t, s);
+    return I.fromDateTimes(t, s);
   }
   /**
-   * Merge an array of Intervals into a equivalent minimal set of Intervals.
+   * Merge an array of Intervals into an equivalent minimal set of Intervals.
    * Combines overlapping and adjacent Intervals.
+   * The resulting array will contain the Intervals in ascending order, that is, starting with the earliest Interval
+   * and ending with the latest.
+   *
    * @param {Array} intervals
    * @return {Array}
    */
   static merge(e) {
     const [t, s] = e.sort((r, i) => r.s - i.s).reduce(
-      ([r, i], a) => i ? i.overlaps(a) || i.abutsStart(a) ? [r, i.union(a)] : [r.concat([i]), a] : [r, a],
+      ([r, i], o) => i ? i.overlaps(o) || i.abutsStart(o) ? [r, i.union(o)] : [r.concat([i]), o] : [r, o],
       [[], null]
     );
     return s && t.push(s), t;
@@ -2951,10 +3021,10 @@ class b {
     const r = [], i = e.map((l) => [
       { time: l.s, type: "s" },
       { time: l.e, type: "e" }
-    ]), a = Array.prototype.concat(...i), o = a.sort((l, u) => l.time - u.time);
-    for (const l of o)
-      s += l.type === "s" ? 1 : -1, s === 1 ? t = l.time : (t && +t != +l.time && r.push(b.fromDateTimes(t, l.time)), t = null);
-    return b.merge(r);
+    ]), o = Array.prototype.concat(...i), a = o.sort((l, u) => l.time - u.time);
+    for (const l of a)
+      s += l.type === "s" ? 1 : -1, s === 1 ? t = l.time : (t && +t != +l.time && r.push(I.fromDateTimes(t, l.time)), t = null);
+    return I.merge(r);
   }
   /**
    * Return an Interval representing the span of time in this Interval that doesn't overlap with any of the specified Intervals.
@@ -2962,7 +3032,7 @@ class b {
    * @return {Array}
    */
   difference(...e) {
-    return b.xor([this].concat(e)).map((t) => this.intersection(t)).filter((t) => t && !t.isEmpty());
+    return I.xor([this].concat(e)).map((t) => this.intersection(t)).filter((t) => t && !t.isEmpty());
   }
   /**
    * Returns a string representation of this Interval appropriate for debugging.
@@ -2996,8 +3066,8 @@ class b {
    * @example Interval.fromISO('2022-11-07T17:00Z/2022-11-07T19:00Z').toLocaleString({ weekday: 'short', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }); //=> Mon, Nov 07, 6:00 – 8:00 p
    * @return {string}
    */
-  toLocaleString(e = Ge, t = {}) {
-    return this.isValid ? C.create(this.s.loc.clone(t), e).formatInterval(this) : fe;
+  toLocaleString(e = Ye, t = {}) {
+    return this.isValid ? _.create(this.s.loc.clone(t), e).formatInterval(this) : fe;
   }
   /**
    * Returns an ISO 8601-compliant string representation of this Interval.
@@ -3064,17 +3134,17 @@ class b {
    * @example Interval.fromDateTimes(dt1, dt2).mapEndpoints(endpoint => endpoint.plus({ hours: 2 }))
    */
   mapEndpoints(e) {
-    return b.fromDateTimes(e(this.s), e(this.e));
+    return I.fromDateTimes(e(this.s), e(this.e));
   }
 }
-class ze {
+class We {
   /**
    * Return whether the specified zone contains a DST.
    * @param {string|Zone} [zone='local'] - Zone to check. Defaults to the environment's local zone.
    * @return {boolean}
    */
-  static hasDST(e = N.defaultZone) {
-    const t = f.now().setZone(e).set({ month: 12 });
+  static hasDST(e = b.defaultZone) {
+    const t = h.now().setZone(e).set({ month: 12 });
     return !e.isUniversal && t.offset !== t.set({ month: 6 }).offset;
   }
   /**
@@ -3083,7 +3153,7 @@ class ze {
    * @return {boolean}
    */
   static isValidIANAZone(e) {
-    return j.isValidZone(e);
+    return X.isValidZone(e);
   }
   /**
    * Converts the input into a {@link Zone} instance.
@@ -3100,7 +3170,7 @@ class ze {
    * @return {Zone}
    */
   static normalizeZone(e) {
-    return ne(e, N.defaultZone);
+    return ne(e, b.defaultZone);
   }
   /**
    * Get the weekday on which the week starts according to the given locale.
@@ -3110,7 +3180,7 @@ class ze {
    * @returns {number} the start of the week, 1 for Monday through 7 for Sunday
    */
   static getStartOfWeek({ locale: e = null, locObj: t = null } = {}) {
-    return (t || D.create(e)).getStartOfWeek();
+    return (t || E.create(e)).getStartOfWeek();
   }
   /**
    * Get the minimum number of days necessary in a week before it is considered part of the next year according
@@ -3121,7 +3191,7 @@ class ze {
    * @returns {number}
    */
   static getMinimumDaysInFirstWeek({ locale: e = null, locObj: t = null } = {}) {
-    return (t || D.create(e)).getMinDaysInFirstWeek();
+    return (t || E.create(e)).getMinDaysInFirstWeek();
   }
   /**
    * Get the weekdays, which are considered the weekend according to the given locale
@@ -3131,7 +3201,7 @@ class ze {
    * @returns {number[]} an array of weekdays, 1 for Monday through 7 for Sunday
    */
   static getWeekendWeekdays({ locale: e = null, locObj: t = null } = {}) {
-    return (t || D.create(e)).getWeekendDays().slice();
+    return (t || E.create(e)).getWeekendDays().slice();
   }
   /**
    * Return an array of standalone month names.
@@ -3151,7 +3221,7 @@ class ze {
    * @return {Array}
    */
   static months(e = "long", { locale: t = null, numberingSystem: s = null, locObj: r = null, outputCalendar: i = "gregory" } = {}) {
-    return (r || D.create(t, s, i)).months(e);
+    return (r || E.create(t, s, i)).months(e);
   }
   /**
    * Return an array of format month names.
@@ -3167,7 +3237,7 @@ class ze {
    * @return {Array}
    */
   static monthsFormat(e = "long", { locale: t = null, numberingSystem: s = null, locObj: r = null, outputCalendar: i = "gregory" } = {}) {
-    return (r || D.create(t, s, i)).months(e, !0);
+    return (r || E.create(t, s, i)).months(e, !0);
   }
   /**
    * Return an array of standalone week names.
@@ -3184,7 +3254,7 @@ class ze {
    * @return {Array}
    */
   static weekdays(e = "long", { locale: t = null, numberingSystem: s = null, locObj: r = null } = {}) {
-    return (r || D.create(t, s, null)).weekdays(e);
+    return (r || E.create(t, s, null)).weekdays(e);
   }
   /**
    * Return an array of format week names.
@@ -3199,7 +3269,7 @@ class ze {
    * @return {Array}
    */
   static weekdaysFormat(e = "long", { locale: t = null, numberingSystem: s = null, locObj: r = null } = {}) {
-    return (r || D.create(t, s, null)).weekdays(e, !0);
+    return (r || E.create(t, s, null)).weekdays(e, !0);
   }
   /**
    * Return an array of meridiems.
@@ -3210,7 +3280,7 @@ class ze {
    * @return {Array}
    */
   static meridiems({ locale: e = null } = {}) {
-    return D.create(e).meridiems();
+    return E.create(e).meridiems();
   }
   /**
    * Return an array of eras, such as ['BC', 'AD']. The locale can be specified, but the calendar system is always Gregorian.
@@ -3223,7 +3293,7 @@ class ze {
    * @return {Array}
    */
   static eras(e = "short", { locale: t = null } = {}) {
-    return D.create(t, null, "gregory").eras(e);
+    return E.create(t, null, "gregory").eras(e);
   }
   /**
    * Return the set of available features in this environment.
@@ -3235,14 +3305,14 @@ class ze {
    * @return {Object}
    */
   static features() {
-    return { relative: Rn(), localeWeek: Hn() };
+    return { relative: Yn(), localeWeek: Bn() };
   }
 }
-function en(n, e) {
+function sn(n, e) {
   const t = (r) => r.toUTC(0, { keepLocalTime: !0 }).startOf("day").valueOf(), s = t(e) - t(n);
   return Math.floor(T.fromMillis(s).as("days"));
 }
-function oi(n, e, t) {
+function li(n, e, t) {
   const s = [
     ["years", (l, u) => u.year - l.year],
     ["quarters", (l, u) => u.quarter - l.quarter + (u.year - l.year) * 4],
@@ -3250,164 +3320,164 @@ function oi(n, e, t) {
     [
       "weeks",
       (l, u) => {
-        const d = en(l, u);
-        return (d - d % 7) / 7;
+        const c = sn(l, u);
+        return (c - c % 7) / 7;
       }
     ],
-    ["days", en]
+    ["days", sn]
   ], r = {}, i = n;
-  let a, o;
+  let o, a;
   for (const [l, u] of s)
-    t.indexOf(l) >= 0 && (a = l, r[l] = u(n, e), o = i.plus(r), o > e ? (r[l]--, n = i.plus(r), n > e && (o = n, r[l]--, n = i.plus(r))) : n = o);
-  return [n, r, o, a];
+    t.indexOf(l) >= 0 && (o = l, r[l] = u(n, e), a = i.plus(r), a > e ? (r[l]--, n = i.plus(r), n > e && (a = n, r[l]--, n = i.plus(r))) : n = a);
+  return [n, r, a, o];
 }
-function li(n, e, t, s) {
-  let [r, i, a, o] = oi(n, e, t);
+function ui(n, e, t, s) {
+  let [r, i, o, a] = li(n, e, t);
   const l = e - r, u = t.filter(
     (m) => ["hours", "minutes", "seconds", "milliseconds"].indexOf(m) >= 0
   );
-  u.length === 0 && (a < e && (a = r.plus({ [o]: 1 })), a !== r && (i[o] = (i[o] || 0) + l / (a - r)));
-  const d = T.fromObject(i, s);
-  return u.length > 0 ? T.fromMillis(l, s).shiftTo(...u).plus(d) : d;
+  u.length === 0 && (o < e && (o = r.plus({ [a]: 1 })), o !== r && (i[a] = (i[a] || 0) + l / (o - r)));
+  const c = T.fromObject(i, s);
+  return u.length > 0 ? T.fromMillis(l, s).shiftTo(...u).plus(c) : c;
 }
-const ui = "missing Intl.DateTimeFormat.formatToParts support";
-function O(n, e = (t) => t) {
-  return { regex: n, deser: ([t]) => e(Qs(t)) };
+const ci = "missing Intl.DateTimeFormat.formatToParts support";
+function S(n, e = (t) => t) {
+  return { regex: n, deser: ([t]) => e(er(t)) };
 }
-const ci = " ", as = `[ ${ci}]`, os = new RegExp(as, "g");
-function di(n) {
-  return n.replace(/\./g, "\\.?").replace(os, as);
+const di = " ", ds = `[ ${di}]`, fs = new RegExp(ds, "g");
+function fi(n) {
+  return n.replace(/\./g, "\\.?").replace(fs, ds);
 }
-function tn(n) {
-  return n.replace(/\./g, "").replace(os, " ").toLowerCase();
+function rn(n) {
+  return n.replace(/\./g, "").replace(fs, " ").toLowerCase();
 }
-function Y(n, e) {
+function q(n, e) {
   return n === null ? null : {
-    regex: RegExp(n.map(di).join("|")),
-    deser: ([t]) => n.findIndex((s) => tn(t) === tn(s)) + e
+    regex: RegExp(n.map(fi).join("|")),
+    deser: ([t]) => n.findIndex((s) => rn(t) === rn(s)) + e
   };
 }
-function nn(n, e) {
-  return { regex: n, deser: ([, t, s]) => st(t, s), groups: e };
+function an(n, e) {
+  return { regex: n, deser: ([, t, s]) => Xe(t, s), groups: e };
 }
-function Ae(n) {
+function ze(n) {
   return { regex: n, deser: ([e]) => e };
 }
-function fi(n) {
+function hi(n) {
   return n.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
 }
-function hi(n, e) {
-  const t = q(e), s = q(e, "{2}"), r = q(e, "{3}"), i = q(e, "{4}"), a = q(e, "{6}"), o = q(e, "{1,2}"), l = q(e, "{1,3}"), u = q(e, "{1,6}"), d = q(e, "{1,9}"), m = q(e, "{2,4}"), v = q(e, "{4,6}"), h = (y) => ({ regex: RegExp(fi(y.val)), deser: ([p]) => p, literal: !0 }), I = ((y) => {
+function mi(n, e) {
+  const t = U(e), s = U(e, "{2}"), r = U(e, "{3}"), i = U(e, "{4}"), o = U(e, "{6}"), a = U(e, "{1,2}"), l = U(e, "{1,3}"), u = U(e, "{1,6}"), c = U(e, "{1,9}"), m = U(e, "{2,4}"), p = U(e, "{4,6}"), f = (y) => ({ regex: RegExp(hi(y.val)), deser: ([v]) => v, literal: !0 }), O = ((y) => {
     if (n.literal)
-      return h(y);
+      return f(y);
     switch (y.val) {
       case "G":
-        return Y(e.eras("short"), 0);
+        return q(e.eras("short"), 0);
       case "GG":
-        return Y(e.eras("long"), 0);
+        return q(e.eras("long"), 0);
       case "y":
-        return O(u);
+        return S(u);
       case "yy":
-        return O(m, kt);
+        return S(m, Ot);
       case "yyyy":
-        return O(i);
+        return S(i);
       case "yyyyy":
-        return O(v);
+        return S(p);
       case "yyyyyy":
-        return O(a);
+        return S(o);
       case "M":
-        return O(o);
+        return S(a);
       case "MM":
-        return O(s);
+        return S(s);
       case "MMM":
-        return Y(e.months("short", !0), 1);
+        return q(e.months("short", !0), 1);
       case "MMMM":
-        return Y(e.months("long", !0), 1);
+        return q(e.months("long", !0), 1);
       case "L":
-        return O(o);
+        return S(a);
       case "LL":
-        return O(s);
+        return S(s);
       case "LLL":
-        return Y(e.months("short", !1), 1);
+        return q(e.months("short", !1), 1);
       case "LLLL":
-        return Y(e.months("long", !1), 1);
+        return q(e.months("long", !1), 1);
       case "d":
-        return O(o);
+        return S(a);
       case "dd":
-        return O(s);
+        return S(s);
       case "o":
-        return O(l);
+        return S(l);
       case "ooo":
-        return O(r);
+        return S(r);
       case "HH":
-        return O(s);
+        return S(s);
       case "H":
-        return O(o);
+        return S(a);
       case "hh":
-        return O(s);
+        return S(s);
       case "h":
-        return O(o);
+        return S(a);
       case "mm":
-        return O(s);
+        return S(s);
       case "m":
-        return O(o);
+        return S(a);
       case "q":
-        return O(o);
+        return S(a);
       case "qq":
-        return O(s);
+        return S(s);
       case "s":
-        return O(o);
+        return S(a);
       case "ss":
-        return O(s);
+        return S(s);
       case "S":
-        return O(l);
+        return S(l);
       case "SSS":
-        return O(r);
+        return S(r);
       case "u":
-        return Ae(d);
+        return ze(c);
       case "uu":
-        return Ae(o);
+        return ze(a);
       case "uuu":
-        return O(t);
+        return S(t);
       case "a":
-        return Y(e.meridiems(), 0);
+        return q(e.meridiems(), 0);
       case "kkkk":
-        return O(i);
+        return S(i);
       case "kk":
-        return O(m, kt);
+        return S(m, Ot);
       case "W":
-        return O(o);
+        return S(a);
       case "WW":
-        return O(s);
+        return S(s);
       case "E":
       case "c":
-        return O(t);
+        return S(t);
       case "EEE":
-        return Y(e.weekdays("short", !1), 1);
+        return q(e.weekdays("short", !1), 1);
       case "EEEE":
-        return Y(e.weekdays("long", !1), 1);
+        return q(e.weekdays("long", !1), 1);
       case "ccc":
-        return Y(e.weekdays("short", !0), 1);
+        return q(e.weekdays("short", !0), 1);
       case "cccc":
-        return Y(e.weekdays("long", !0), 1);
+        return q(e.weekdays("long", !0), 1);
       case "Z":
       case "ZZ":
-        return nn(new RegExp(`([+-]${o.source})(?::(${s.source}))?`), 2);
+        return an(new RegExp(`([+-]${a.source})(?::(${s.source}))?`), 2);
       case "ZZZ":
-        return nn(new RegExp(`([+-]${o.source})(${s.source})?`), 2);
+        return an(new RegExp(`([+-]${a.source})(${s.source})?`), 2);
       case "z":
-        return Ae(/[a-z_+-/]{1,256}?/i);
+        return ze(/[a-z_+-/]{1,256}?/i);
       case " ":
-        return Ae(/[^\S\n\r]/);
+        return ze(/[^\S\n\r]/);
       default:
-        return h(y);
+        return f(y);
     }
   })(n) || {
-    invalidReason: ui
+    invalidReason: ci
   };
-  return I.token = n, I;
+  return O.token = n, O;
 }
-const mi = {
+const yi = {
   year: {
     "2-digit": "yy",
     numeric: "yyyyy"
@@ -3449,7 +3519,7 @@ const mi = {
     short: "ZZZ"
   }
 };
-function yi(n, e, t) {
+function gi(n, e, t) {
   const { type: s, value: r } = n;
   if (s === "literal") {
     const l = /^\s+$/.test(r);
@@ -3459,27 +3529,27 @@ function yi(n, e, t) {
     };
   }
   const i = e[s];
-  let a = s;
-  s === "hour" && (e.hour12 != null ? a = e.hour12 ? "hour12" : "hour24" : e.hourCycle != null ? e.hourCycle === "h11" || e.hourCycle === "h12" ? a = "hour12" : a = "hour24" : a = t.hour12 ? "hour12" : "hour24");
-  let o = mi[a];
-  if (typeof o == "object" && (o = o[i]), o)
+  let o = s;
+  s === "hour" && (e.hour12 != null ? o = e.hour12 ? "hour12" : "hour24" : e.hourCycle != null ? e.hourCycle === "h11" || e.hourCycle === "h12" ? o = "hour12" : o = "hour24" : o = t.hour12 ? "hour12" : "hour24");
+  let a = yi[o];
+  if (typeof a == "object" && (a = a[i]), a)
     return {
       literal: !1,
-      val: o
+      val: a
     };
 }
-function gi(n) {
+function wi(n) {
   return [`^${n.map((t) => t.regex).reduce((t, s) => `${t}(${s.source})`, "")}$`, n];
 }
-function wi(n, e, t) {
+function vi(n, e, t) {
   const s = n.match(e);
   if (s) {
     const r = {};
     let i = 1;
-    for (const a in t)
-      if (pe(t, a)) {
-        const o = t[a], l = o.groups ? o.groups + 1 : 1;
-        !o.literal && o.token && (r[o.token.val[0]] = o.deser(s.slice(i, i + l))), i += l;
+    for (const o in t)
+      if (ve(t, o)) {
+        const a = t[o], l = a.groups ? a.groups + 1 : 1;
+        !a.literal && a.token && (r[a.token.val[0]] = a.deser(s.slice(i, i + l))), i += l;
       }
     return [s, r];
   } else
@@ -3520,36 +3590,36 @@ function pi(n) {
     }
   };
   let t = null, s;
-  return w(n.z) || (t = j.create(n.z)), w(n.Z) || (t || (t = new F(n.Z)), s = n.Z), w(n.q) || (n.M = (n.q - 1) * 3 + 1), w(n.h) || (n.h < 12 && n.a === 1 ? n.h += 12 : n.h === 12 && n.a === 0 && (n.h = 0)), n.G === 0 && n.y && (n.y = -n.y), w(n.u) || (n.S = Et(n.u)), [Object.keys(n).reduce((i, a) => {
-    const o = e(a);
-    return o && (i[o] = n[a]), i;
+  return w(n.z) || (t = X.create(n.z)), w(n.Z) || (t || (t = new F(n.Z)), s = n.Z), w(n.q) || (n.M = (n.q - 1) * 3 + 1), w(n.h) || (n.h < 12 && n.a === 1 ? n.h += 12 : n.h === 12 && n.a === 0 && (n.h = 0)), n.G === 0 && n.y && (n.y = -n.y), w(n.u) || (n.S = bt(n.u)), [Object.keys(n).reduce((i, o) => {
+    const a = e(o);
+    return a && (i[a] = n[o]), i;
   }, {}), t, s];
 }
-let ut = null;
-function vi() {
-  return ut || (ut = f.fromMillis(1555555555555)), ut;
+let ot = null;
+function ki() {
+  return ot || (ot = h.fromMillis(1555555555555)), ot;
 }
-function ki(n, e) {
+function Ti(n, e) {
   if (n.literal)
     return n;
-  const t = C.macroTokenToFormatOpts(n.val), s = ds(t, e);
+  const t = _.macroTokenToFormatOpts(n.val), s = gs(t, e);
   return s == null || s.includes(void 0) ? n : s;
 }
-function ls(n, e) {
-  return Array.prototype.concat(...n.map((t) => ki(t, e)));
+function hs(n, e) {
+  return Array.prototype.concat(...n.map((t) => Ti(t, e)));
 }
-class us {
+class ms {
   constructor(e, t) {
-    if (this.locale = e, this.format = t, this.tokens = ls(C.parseFormat(t), e), this.units = this.tokens.map((s) => hi(s, e)), this.disqualifyingUnit = this.units.find((s) => s.invalidReason), !this.disqualifyingUnit) {
-      const [s, r] = gi(this.units);
+    if (this.locale = e, this.format = t, this.tokens = hs(_.parseFormat(t), e), this.units = this.tokens.map((s) => mi(s, e)), this.disqualifyingUnit = this.units.find((s) => s.invalidReason), !this.disqualifyingUnit) {
+      const [s, r] = wi(this.units);
       this.regex = RegExp(s, "i"), this.handlers = r;
     }
   }
   explainFromTokens(e) {
     if (this.isValid) {
-      const [t, s] = wi(e, this.regex, this.handlers), [r, i, a] = s ? pi(s) : [null, null, void 0];
-      if (pe(s, "a") && pe(s, "H"))
-        throw new ye(
+      const [t, s] = vi(e, this.regex, this.handlers), [r, i, o] = s ? pi(s) : [null, null, void 0];
+      if (ve(s, "a") && ve(s, "H"))
+        throw new me(
           "Can't include meridiem when specifying 24-hour format"
         );
       return {
@@ -3560,7 +3630,7 @@ class us {
         matches: s,
         result: r,
         zone: i,
-        specificOffset: a
+        specificOffset: o
       };
     } else
       return { input: e, tokens: this.tokens, invalidReason: this.invalidReason };
@@ -3572,28 +3642,28 @@ class us {
     return this.disqualifyingUnit ? this.disqualifyingUnit.invalidReason : null;
   }
 }
-function cs(n, e, t) {
-  return new us(n, t).explainFromTokens(e);
+function ys(n, e, t) {
+  return new ms(n, t).explainFromTokens(e);
 }
-function Ti(n, e, t) {
-  const { result: s, zone: r, specificOffset: i, invalidReason: a } = cs(n, e, t);
-  return [s, r, i, a];
+function Oi(n, e, t) {
+  const { result: s, zone: r, specificOffset: i, invalidReason: o } = ys(n, e, t);
+  return [s, r, i, o];
 }
-function ds(n, e) {
+function gs(n, e) {
   if (!n)
     return null;
-  const s = C.create(e, n).dtFormatter(vi()), r = s.formatToParts(), i = s.resolvedOptions();
-  return r.map((a) => yi(a, n, i));
+  const s = _.create(e, n).dtFormatter(ki()), r = s.formatToParts(), i = s.resolvedOptions();
+  return r.map((o) => gi(o, n, i));
 }
-const ct = "Invalid DateTime", sn = 864e13;
-function be(n) {
+const lt = "Invalid DateTime", on = 864e13;
+function xe(n) {
   return new P("unsupported zone", `the zone "${n.name}" is not supported`);
 }
-function dt(n) {
-  return n.weekData === null && (n.weekData = Je(n.c)), n.weekData;
+function ut(n) {
+  return n.weekData === null && (n.weekData = Be(n.c)), n.weekData;
 }
-function ft(n) {
-  return n.localWeekData === null && (n.localWeekData = Je(
+function ct(n) {
+  return n.localWeekData === null && (n.localWeekData = Be(
     n.c,
     n.loc.getMinDaysInFirstWeek(),
     n.loc.getStartOfWeek()
@@ -3608,9 +3678,9 @@ function ae(n, e) {
     loc: n.loc,
     invalid: n.invalid
   };
-  return new f({ ...t, ...e, old: t });
+  return new h({ ...t, ...e, old: t });
 }
-function fs(n, e, t) {
+function ws(n, e, t) {
   let s = n - e * 60 * 1e3;
   const r = t.offset(s);
   if (e === r)
@@ -3632,16 +3702,16 @@ function Ze(n, e) {
     millisecond: t.getUTCMilliseconds()
   };
 }
-function Ue(n, e, t) {
-  return fs(nt(n), e, t);
+function Re(n, e, t) {
+  return ws(Qe(n), e, t);
 }
-function rn(n, e) {
+function ln(n, e) {
   const t = n.o, s = n.c.year + Math.trunc(e.years), r = n.c.month + Math.trunc(e.months) + Math.trunc(e.quarters) * 3, i = {
     ...n.c,
     year: s,
     month: r,
-    day: Math.min(n.c.day, je(s, r)) + Math.trunc(e.days) + Math.trunc(e.weeks) * 7
-  }, a = T.fromObject({
+    day: Math.min(n.c.day, Ge(s, r)) + Math.trunc(e.days) + Math.trunc(e.weeks) * 7
+  }, o = T.fromObject({
     years: e.years - Math.trunc(e.years),
     quarters: e.quarters - Math.trunc(e.quarters),
     months: e.months - Math.trunc(e.months),
@@ -3651,60 +3721,82 @@ function rn(n, e) {
     minutes: e.minutes,
     seconds: e.seconds,
     milliseconds: e.milliseconds
-  }).as("milliseconds"), o = nt(i);
-  let [l, u] = fs(o, t, n.zone);
-  return a !== 0 && (l += a, u = n.zone.offset(l)), { ts: l, o: u };
+  }).as("milliseconds"), a = Qe(i);
+  let [l, u] = ws(a, t, n.zone);
+  return o !== 0 && (l += o, u = n.zone.offset(l)), { ts: l, o: u };
 }
 function he(n, e, t, s, r, i) {
-  const { setZone: a, zone: o } = t;
+  const { setZone: o, zone: a } = t;
   if (n && Object.keys(n).length !== 0 || e) {
-    const l = e || o, u = f.fromObject(n, {
+    const l = e || a, u = h.fromObject(n, {
       ...t,
       zone: l,
       specificOffset: i
     });
-    return a ? u : u.setZone(o);
+    return o ? u : u.setZone(a);
   } else
-    return f.invalid(
+    return h.invalid(
       new P("unparsable", `the input "${r}" can't be parsed as ${s}`)
     );
 }
-function Re(n, e, t = !0) {
-  return n.isValid ? C.create(D.create("en-US"), {
+function Ae(n, e, t = !0) {
+  return n.isValid ? _.create(E.create("en-US"), {
     allowZ: t,
     forceSimple: !0
   }).formatDateTimeFromString(n, e) : null;
 }
-function ht(n, e) {
-  const t = n.c.year > 9999 || n.c.year < 0;
-  let s = "";
-  return t && n.c.year >= 0 && (s += "+"), s += _(n.c.year, t ? 6 : 4), e ? (s += "-", s += _(n.c.month), s += "-", s += _(n.c.day)) : (s += _(n.c.month), s += _(n.c.day)), s;
+function dt(n, e, t) {
+  const s = n.c.year > 9999 || n.c.year < 0;
+  let r = "";
+  if (s && n.c.year >= 0 && (r += "+"), r += N(n.c.year, s ? 6 : 4), t === "year") return r;
+  if (e) {
+    if (r += "-", r += N(n.c.month), t === "month") return r;
+    r += "-";
+  } else if (r += N(n.c.month), t === "month") return r;
+  return r += N(n.c.day), r;
 }
-function an(n, e, t, s, r, i) {
-  let a = _(n.c.hour);
-  return e ? (a += ":", a += _(n.c.minute), (n.c.millisecond !== 0 || n.c.second !== 0 || !t) && (a += ":")) : a += _(n.c.minute), (n.c.millisecond !== 0 || n.c.second !== 0 || !t) && (a += _(n.c.second), (n.c.millisecond !== 0 || !s) && (a += ".", a += _(n.c.millisecond, 3))), r && (n.isOffsetFixed && n.offset === 0 && !i ? a += "Z" : n.o < 0 ? (a += "-", a += _(Math.trunc(-n.o / 60)), a += ":", a += _(Math.trunc(-n.o % 60))) : (a += "+", a += _(Math.trunc(n.o / 60)), a += ":", a += _(Math.trunc(n.o % 60)))), i && (a += "[" + n.zone.ianaName + "]"), a;
+function un(n, e, t, s, r, i, o) {
+  let a = !t || n.c.millisecond !== 0 || n.c.second !== 0, l = "";
+  switch (o) {
+    case "day":
+    case "month":
+    case "year":
+      break;
+    default:
+      if (l += N(n.c.hour), o === "hour") break;
+      if (e) {
+        if (l += ":", l += N(n.c.minute), o === "minute") break;
+        a && (l += ":", l += N(n.c.second));
+      } else {
+        if (l += N(n.c.minute), o === "minute") break;
+        a && (l += N(n.c.second));
+      }
+      if (o === "second") break;
+      a && (!s || n.c.millisecond !== 0) && (l += ".", l += N(n.c.millisecond, 3));
+  }
+  return r && (n.isOffsetFixed && n.offset === 0 && !i ? l += "Z" : n.o < 0 ? (l += "-", l += N(Math.trunc(-n.o / 60)), l += ":", l += N(Math.trunc(-n.o % 60))) : (l += "+", l += N(Math.trunc(n.o / 60)), l += ":", l += N(Math.trunc(n.o % 60)))), i && (l += "[" + n.zone.ianaName + "]"), l;
 }
-const hs = {
+const vs = {
   month: 1,
   day: 1,
   hour: 0,
   minute: 0,
   second: 0,
   millisecond: 0
-}, Oi = {
+}, Si = {
   weekNumber: 1,
   weekday: 1,
   hour: 0,
   minute: 0,
   second: 0,
   millisecond: 0
-}, Si = {
+}, Di = {
   ordinal: 1,
   hour: 0,
   minute: 0,
   second: 0,
   millisecond: 0
-}, ms = ["year", "month", "day", "hour", "minute", "second", "millisecond"], Di = [
+}, He = ["year", "month", "day", "hour", "minute", "second", "millisecond"], Mi = [
   "weekYear",
   "weekNumber",
   "weekday",
@@ -3712,8 +3804,8 @@ const hs = {
   "minute",
   "second",
   "millisecond"
-], Mi = ["year", "ordinal", "hour", "minute", "second", "millisecond"];
-function Ei(n) {
+], Ei = ["year", "ordinal", "hour", "minute", "second", "millisecond"];
+function Ue(n) {
   const e = {
     year: "year",
     years: "year",
@@ -3740,10 +3832,10 @@ function Ei(n) {
     weekyears: "weekYear",
     ordinal: "ordinal"
   }[n.toLowerCase()];
-  if (!e) throw new yn(n);
+  if (!e) throw new vn(n);
   return e;
 }
-function on(n) {
+function cn(n) {
   switch (n.toLowerCase()) {
     case "localweekday":
     case "localweekdays":
@@ -3755,64 +3847,69 @@ function on(n) {
     case "localweekyears":
       return "localWeekYear";
     default:
-      return Ei(n);
+      return Ue(n);
   }
 }
-function Ii(n) {
-  return Ye[n] || (qe === void 0 && (qe = N.now()), Ye[n] = n.offset(qe)), Ye[n];
+function xi(n) {
+  if (Ie === void 0 && (Ie = b.now()), n.type !== "iana")
+    return n.offset(Ie);
+  const e = n.name;
+  let t = St.get(e);
+  return t === void 0 && (t = n.offset(Ie), St.set(e, t)), t;
 }
-function ln(n, e) {
-  const t = ne(e.zone, N.defaultZone);
+function dn(n, e) {
+  const t = ne(e.zone, b.defaultZone);
   if (!t.isValid)
-    return f.invalid(be(t));
-  const s = D.fromObject(e);
+    return h.invalid(xe(t));
+  const s = E.fromObject(e);
   let r, i;
   if (w(n.year))
-    r = N.now();
+    r = b.now();
   else {
-    for (const l of ms)
-      w(n[l]) && (n[l] = hs[l]);
-    const a = An(n) || Zn(n);
-    if (a)
-      return f.invalid(a);
-    const o = Ii(t);
-    [r, i] = Ue(n, o, t);
+    for (const l of He)
+      w(n[l]) && (n[l] = vs[l]);
+    const o = qn(n) || Pn(n);
+    if (o)
+      return h.invalid(o);
+    const a = xi(t);
+    [r, i] = Re(n, a, t);
   }
-  return new f({ ts: r, zone: t, loc: s, o: i });
+  return new h({ ts: r, zone: t, loc: s, o: i });
 }
-function un(n, e, t) {
-  const s = w(t.round) ? !0 : t.round, r = (a, o) => (a = It(a, s || t.calendary ? 0 : 2, !0), e.loc.clone(t).relFormatter(t).format(a, o)), i = (a) => t.calendary ? e.hasSame(n, a) ? 0 : e.startOf(a).diff(n.startOf(a), a).get(a) : e.diff(n, a).get(a);
+function fn(n, e, t) {
+  const s = w(t.round) ? !0 : t.round, r = w(t.rounding) ? "trunc" : t.rounding, i = (a, l) => (a = Nt(a, s || t.calendary ? 0 : 2, t.calendary ? "round" : r), e.loc.clone(t).relFormatter(t).format(a, l)), o = (a) => t.calendary ? e.hasSame(n, a) ? 0 : e.startOf(a).diff(n.startOf(a), a).get(a) : e.diff(n, a).get(a);
   if (t.unit)
-    return r(i(t.unit), t.unit);
+    return i(o(t.unit), t.unit);
   for (const a of t.units) {
-    const o = i(a);
-    if (Math.abs(o) >= 1)
-      return r(o, a);
+    const l = o(a);
+    if (Math.abs(l) >= 1)
+      return i(l, a);
   }
-  return r(n > e ? -0 : 0, t.units[t.units.length - 1]);
+  return i(n > e ? -0 : 0, t.units[t.units.length - 1]);
 }
-function cn(n) {
+function hn(n) {
   let e = {}, t;
   return n.length > 0 && typeof n[n.length - 1] == "object" ? (e = n[n.length - 1], t = Array.from(n).slice(0, n.length - 1)) : t = Array.from(n), [e, t];
 }
-let qe, Ye = {};
-class f {
+let Ie;
+const St = /* @__PURE__ */ new Map();
+class h {
   /**
    * @access private
    */
   constructor(e) {
-    const t = e.zone || N.defaultZone;
-    let s = e.invalid || (Number.isNaN(e.ts) ? new P("invalid input") : null) || (t.isValid ? null : be(t));
-    this.ts = w(e.ts) ? N.now() : e.ts;
+    const t = e.zone || b.defaultZone;
+    let s = e.invalid || (Number.isNaN(e.ts) ? new P("invalid input") : null) || (t.isValid ? null : xe(t));
+    this.ts = w(e.ts) ? b.now() : e.ts;
     let r = null, i = null;
     if (!s)
       if (e.old && e.old.ts === this.ts && e.old.zone.equals(t))
         [r, i] = [e.old.c, e.old.o];
       else {
-        const o = re(e.o) && !e.old ? e.o : t.offset(this.ts);
-        r = Ze(this.ts, o), s = Number.isNaN(r.year) ? new P("invalid input") : null, r = s ? null : r, i = s ? null : o;
+        const a = re(e.o) && !e.old ? e.o : t.offset(this.ts);
+        r = Ze(this.ts, a), s = Number.isNaN(r.year) ? new P("invalid input") : null, r = s ? null : r, i = s ? null : a;
       }
-    this._zone = t, this.loc = e.loc || D.create(), this.invalid = s, this.weekData = null, this.localWeekData = null, this.c = r, this.o = i, this.isLuxonDateTime = !0;
+    this._zone = t, this.loc = e.loc || E.create(), this.invalid = s, this.weekData = null, this.localWeekData = null, this.c = r, this.o = i, this.isLuxonDateTime = !0;
   }
   // CONSTRUCT
   /**
@@ -3823,7 +3920,7 @@ class f {
    * @return {DateTime}
    */
   static now() {
-    return new f({});
+    return new h({});
   }
   /**
    * Create a local DateTime
@@ -3847,8 +3944,8 @@ class f {
    * @return {DateTime}
    */
   static local() {
-    const [e, t] = cn(arguments), [s, r, i, a, o, l, u] = t;
-    return ln({ year: s, month: r, day: i, hour: a, minute: o, second: l, millisecond: u }, e);
+    const [e, t] = hn(arguments), [s, r, i, o, a, l, u] = t;
+    return dn({ year: s, month: r, day: i, hour: o, minute: a, second: l, millisecond: u }, e);
   }
   /**
    * Create a DateTime in UTC
@@ -3876,8 +3973,8 @@ class f {
    * @return {DateTime}
    */
   static utc() {
-    const [e, t] = cn(arguments), [s, r, i, a, o, l, u] = t;
-    return e.zone = F.utcInstance, ln({ year: s, month: r, day: i, hour: a, minute: o, second: l, millisecond: u }, e);
+    const [e, t] = hn(arguments), [s, r, i, o, a, l, u] = t;
+    return e.zone = F.utcInstance, dn({ year: s, month: r, day: i, hour: o, minute: a, second: l, millisecond: u }, e);
   }
   /**
    * Create a DateTime from a JavaScript Date object. Uses the default zone.
@@ -3887,15 +3984,15 @@ class f {
    * @return {DateTime}
    */
   static fromJSDate(e, t = {}) {
-    const s = sr(e) ? e.valueOf() : NaN;
+    const s = ir(e) ? e.valueOf() : NaN;
     if (Number.isNaN(s))
-      return f.invalid("invalid input");
-    const r = ne(t.zone, N.defaultZone);
-    return r.isValid ? new f({
+      return h.invalid("invalid input");
+    const r = ne(t.zone, b.defaultZone);
+    return r.isValid ? new h({
       ts: s,
       zone: r,
-      loc: D.fromObject(t)
-    }) : f.invalid(be(r));
+      loc: E.fromObject(t)
+    }) : h.invalid(xe(r));
   }
   /**
    * Create a DateTime from a number of milliseconds since the epoch (meaning since 1 January 1970 00:00:00 UTC). Uses the default zone.
@@ -3910,10 +4007,10 @@ class f {
    */
   static fromMillis(e, t = {}) {
     if (re(e))
-      return e < -sn || e > sn ? f.invalid("Timestamp out of range") : new f({
+      return e < -on || e > on ? h.invalid("Timestamp out of range") : new h({
         ts: e,
-        zone: ne(t.zone, N.defaultZone),
-        loc: D.fromObject(t)
+        zone: ne(t.zone, b.defaultZone),
+        loc: E.fromObject(t)
       });
     throw new V(
       `fromMillis requires a numerical input, but received a ${typeof e} with value ${e}`
@@ -3932,10 +4029,10 @@ class f {
    */
   static fromSeconds(e, t = {}) {
     if (re(e))
-      return new f({
+      return new h({
         ts: e * 1e3,
-        zone: ne(t.zone, N.defaultZone),
-        loc: D.fromObject(t)
+        zone: ne(t.zone, b.defaultZone),
+        loc: E.fromObject(t)
       });
     throw new V("fromSeconds requires a numerical input");
   }
@@ -3974,37 +4071,37 @@ class f {
    */
   static fromObject(e, t = {}) {
     e = e || {};
-    const s = ne(t.zone, N.defaultZone);
+    const s = ne(t.zone, b.defaultZone);
     if (!s.isValid)
-      return f.invalid(be(s));
-    const r = D.fromObject(t), i = Ke(e, on), { minDaysInFirstWeek: a, startOfWeek: o } = Bt(i, r), l = N.now(), u = w(t.specificOffset) ? s.offset(l) : t.specificOffset, d = !w(i.ordinal), m = !w(i.year), v = !w(i.month) || !w(i.day), h = m || v, g = i.weekYear || i.weekNumber;
-    if ((h || d) && g)
-      throw new ye(
+      return h.invalid(xe(s));
+    const r = E.fromObject(t), i = Je(e, cn), { minDaysInFirstWeek: o, startOfWeek: a } = Jt(i, r), l = b.now(), u = w(t.specificOffset) ? s.offset(l) : t.specificOffset, c = !w(i.ordinal), m = !w(i.year), p = !w(i.month) || !w(i.day), f = m || p, g = i.weekYear || i.weekNumber;
+    if ((f || c) && g)
+      throw new me(
         "Can't mix weekYear/weekNumber units with year/month/day or ordinals"
       );
-    if (v && d)
-      throw new ye("Can't mix ordinal dates with month/day");
-    const I = g || i.weekday && !h;
-    let y, p, x = Ze(l, u);
-    I ? (y = Di, p = Oi, x = Je(x, a, o)) : d ? (y = Mi, p = Si, x = lt(x)) : (y = ms, p = hs);
+    if (p && c)
+      throw new me("Can't mix ordinal dates with month/day");
+    const O = g || i.weekday && !f;
+    let y, v, C = Ze(l, u);
+    O ? (y = Mi, v = Si, C = Be(C, o, a)) : c ? (y = Ei, v = Di, C = at(C)) : (y = He, v = vs);
     let H = !1;
-    for (const Me of y) {
-      const ks = i[Me];
-      w(ks) ? H ? i[Me] = p[Me] : i[Me] = x[Me] : H = !0;
+    for (const De of y) {
+      const Ss = i[De];
+      w(Ss) ? H ? i[De] = v[De] : i[De] = C[De] : H = !0;
     }
-    const M = I ? er(i, a, o) : d ? tr(i) : An(i), U = M || Zn(i);
-    if (U)
-      return f.invalid(U);
-    const Se = I ? Yt(i, a, o) : d ? Pt(i) : i, [ps, vs] = Ue(Se, u, s), De = new f({
-      ts: ps,
+    const J = O ? nr(i, o, a) : c ? sr(i) : qn(i), M = J || Pn(i);
+    if (M)
+      return h.invalid(M);
+    const ce = O ? Bt(i, o, a) : c ? Gt(i) : i, [tt, Os] = Re(ce, u, s), Se = new h({
+      ts: tt,
       zone: s,
-      o: vs,
+      o: Os,
       loc: r
     });
-    return i.weekday && h && e.weekday !== De.weekday ? f.invalid(
+    return i.weekday && f && e.weekday !== Se.weekday ? h.invalid(
       "mismatched weekday",
-      `you can't specify both a weekday of ${i.weekday} and a date of ${De.toISO()}`
-    ) : De.isValid ? De : f.invalid(De.invalid);
+      `you can't specify both a weekday of ${i.weekday} and a date of ${Se.toISO()}`
+    ) : Se.isValid ? Se : h.invalid(Se.invalid);
   }
   /**
    * Create a DateTime from an ISO 8601 string
@@ -4024,7 +4121,7 @@ class f {
    * @return {DateTime}
    */
   static fromISO(e, t = {}) {
-    const [s, r] = Pr(e);
+    const [s, r] = Gr(e);
     return he(s, r, t, "ISO 8601", e);
   }
   /**
@@ -4043,7 +4140,7 @@ class f {
    * @return {DateTime}
    */
   static fromRFC2822(e, t = {}) {
-    const [s, r] = Br(e);
+    const [s, r] = Jr(e);
     return he(s, r, t, "RFC 2822", e);
   }
   /**
@@ -4063,7 +4160,7 @@ class f {
    * @return {DateTime}
    */
   static fromHTTP(e, t = {}) {
-    const [s, r] = Gr(e);
+    const [s, r] = jr(e);
     return he(s, r, t, "HTTP", t);
   }
   /**
@@ -4083,18 +4180,18 @@ class f {
   static fromFormat(e, t, s = {}) {
     if (w(e) || w(t))
       throw new V("fromFormat requires an input string and a format");
-    const { locale: r = null, numberingSystem: i = null } = s, a = D.fromOpts({
+    const { locale: r = null, numberingSystem: i = null } = s, o = E.fromOpts({
       locale: r,
       numberingSystem: i,
       defaultToEN: !0
-    }), [o, l, u, d] = Ti(a, e, t);
-    return d ? f.invalid(d) : he(o, l, s, `format ${t}`, e, u);
+    }), [a, l, u, c] = Oi(o, e, t);
+    return c ? h.invalid(c) : he(a, l, s, `format ${t}`, e, u);
   }
   /**
    * @deprecated use fromFormat instead
    */
   static fromString(e, t, s = {}) {
-    return f.fromFormat(e, t, s);
+    return h.fromFormat(e, t, s);
   }
   /**
    * Create a DateTime from a SQL date, time, or datetime
@@ -4118,7 +4215,7 @@ class f {
    * @return {DateTime}
    */
   static fromSQL(e, t = {}) {
-    const [s, r] = ti(e);
+    const [s, r] = si(e);
     return he(s, r, t, "SQL", e);
   }
   /**
@@ -4131,9 +4228,9 @@ class f {
     if (!e)
       throw new V("need to specify a reason the DateTime is invalid");
     const s = e instanceof P ? e : new P(e, t);
-    if (N.throwOnInvalid)
-      throw new Is(s);
-    return new f({ invalid: s });
+    if (b.throwOnInvalid)
+      throw new Ns(s);
+    return new h({ invalid: s });
   }
   /**
    * Check if an object is an instance of DateTime. Works across context boundaries
@@ -4150,7 +4247,7 @@ class f {
    * @returns {string}
    */
   static parseFormatForOpts(e, t = {}) {
-    const s = ds(e, D.fromObject(t));
+    const s = gs(e, E.fromObject(t));
     return s ? s.map((r) => r ? r.val : null).join("") : null;
   }
   /**
@@ -4161,10 +4258,10 @@ class f {
    * @returns {string}
    */
   static expandFormat(e, t = {}) {
-    return ls(C.parseFormat(e), D.fromObject(t)).map((r) => r.val).join("");
+    return hs(_.parseFormat(e), E.fromObject(t)).map((r) => r.val).join("");
   }
   static resetCache() {
-    qe = void 0, Ye = {};
+    Ie = void 0, St.clear();
   }
   // INFO
   /**
@@ -4309,7 +4406,7 @@ class f {
    * @type {number}
    */
   get weekYear() {
-    return this.isValid ? dt(this).weekYear : NaN;
+    return this.isValid ? ut(this).weekYear : NaN;
   }
   /**
    * Get the week number of the week year (1-52ish).
@@ -4318,7 +4415,7 @@ class f {
    * @type {number}
    */
   get weekNumber() {
-    return this.isValid ? dt(this).weekNumber : NaN;
+    return this.isValid ? ut(this).weekNumber : NaN;
   }
   /**
    * Get the day of the week.
@@ -4328,7 +4425,7 @@ class f {
    * @type {number}
    */
   get weekday() {
-    return this.isValid ? dt(this).weekday : NaN;
+    return this.isValid ? ut(this).weekday : NaN;
   }
   /**
    * Returns true if this date is on a weekend according to the locale, false otherwise
@@ -4344,7 +4441,7 @@ class f {
    * @returns {number}
    */
   get localWeekday() {
-    return this.isValid ? ft(this).weekday : NaN;
+    return this.isValid ? ct(this).weekday : NaN;
   }
   /**
    * Get the week number of the week year according to the locale. Different locales assign week numbers differently,
@@ -4353,7 +4450,7 @@ class f {
    * @returns {number}
    */
   get localWeekNumber() {
-    return this.isValid ? ft(this).weekNumber : NaN;
+    return this.isValid ? ct(this).weekNumber : NaN;
   }
   /**
    * Get the week year according to the locale. Different locales assign week numbers (and therefor week years)
@@ -4361,7 +4458,7 @@ class f {
    * @returns {number}
    */
   get localWeekYear() {
-    return this.isValid ? ft(this).weekYear : NaN;
+    return this.isValid ? ct(this).weekYear : NaN;
   }
   /**
    * Get the ordinal (meaning the day of the year)
@@ -4369,7 +4466,7 @@ class f {
    * @type {number|DateTime}
    */
   get ordinal() {
-    return this.isValid ? lt(this.c).ordinal : NaN;
+    return this.isValid ? at(this.c).ordinal : NaN;
   }
   /**
    * Get the human readable short month name, such as 'Oct'.
@@ -4378,7 +4475,7 @@ class f {
    * @type {string}
    */
   get monthShort() {
-    return this.isValid ? ze.months("short", { locObj: this.loc })[this.month - 1] : null;
+    return this.isValid ? We.months("short", { locObj: this.loc })[this.month - 1] : null;
   }
   /**
    * Get the human readable long month name, such as 'October'.
@@ -4387,7 +4484,7 @@ class f {
    * @type {string}
    */
   get monthLong() {
-    return this.isValid ? ze.months("long", { locObj: this.loc })[this.month - 1] : null;
+    return this.isValid ? We.months("long", { locObj: this.loc })[this.month - 1] : null;
   }
   /**
    * Get the human readable short weekday, such as 'Mon'.
@@ -4396,7 +4493,7 @@ class f {
    * @type {string}
    */
   get weekdayShort() {
-    return this.isValid ? ze.weekdays("short", { locObj: this.loc })[this.weekday - 1] : null;
+    return this.isValid ? We.weekdays("short", { locObj: this.loc })[this.weekday - 1] : null;
   }
   /**
    * Get the human readable long weekday, such as 'Monday'.
@@ -4405,7 +4502,7 @@ class f {
    * @type {string}
    */
   get weekdayLong() {
-    return this.isValid ? ze.weekdays("long", { locObj: this.loc })[this.weekday - 1] : null;
+    return this.isValid ? We.weekdays("long", { locObj: this.loc })[this.weekday - 1] : null;
   }
   /**
    * Get the UTC offset of this DateTime in minutes
@@ -4462,11 +4559,11 @@ class f {
   getPossibleOffsets() {
     if (!this.isValid || this.isOffsetFixed)
       return [this];
-    const e = 864e5, t = 6e4, s = nt(this.c), r = this.zone.offset(s - e), i = this.zone.offset(s + e), a = this.zone.offset(s - r * t), o = this.zone.offset(s - i * t);
-    if (a === o)
+    const e = 864e5, t = 6e4, s = Qe(this.c), r = this.zone.offset(s - e), i = this.zone.offset(s + e), o = this.zone.offset(s - r * t), a = this.zone.offset(s - i * t);
+    if (o === a)
       return [this];
-    const l = s - a * t, u = s - o * t, d = Ze(l, a), m = Ze(u, o);
-    return d.hour === m.hour && d.minute === m.minute && d.second === m.second && d.millisecond === m.millisecond ? [ae(this, { ts: l }), ae(this, { ts: u })] : [this];
+    const l = s - o * t, u = s - a * t, c = Ze(l, o), m = Ze(u, a);
+    return c.hour === m.hour && c.minute === m.minute && c.second === m.second && c.millisecond === m.millisecond ? [ae(this, { ts: l }), ae(this, { ts: u })] : [this];
   }
   /**
    * Returns true if this DateTime is in a leap year, false otherwise
@@ -4484,7 +4581,7 @@ class f {
    * @type {number}
    */
   get daysInMonth() {
-    return je(this.year, this.month);
+    return Ge(this.year, this.month);
   }
   /**
    * Returns the number of days in this DateTime's year
@@ -4503,7 +4600,7 @@ class f {
    * @type {number}
    */
   get weeksInWeekYear() {
-    return this.isValid ? _e(this.weekYear) : NaN;
+    return this.isValid ? Ne(this.weekYear) : NaN;
   }
   /**
    * Returns the number of weeks in this DateTime's local week year
@@ -4512,7 +4609,7 @@ class f {
    * @type {number}
    */
   get weeksInLocalWeekYear() {
-    return this.isValid ? _e(
+    return this.isValid ? Ne(
       this.localWeekYear,
       this.loc.getMinDaysInFirstWeek(),
       this.loc.getStartOfWeek()
@@ -4525,7 +4622,7 @@ class f {
    * @return {Object}
    */
   resolvedLocaleOptions(e = {}) {
-    const { locale: t, numberingSystem: s, calendar: r } = C.create(
+    const { locale: t, numberingSystem: s, calendar: r } = _.create(
       this.loc.clone(e),
       e
     ).resolvedOptions(this);
@@ -4550,7 +4647,7 @@ class f {
    * @return {DateTime}
    */
   toLocal() {
-    return this.setZone(N.defaultZone);
+    return this.setZone(b.defaultZone);
   }
   /**
    * "Set" the DateTime's zone to specified zone. Returns a newly-constructed DateTime.
@@ -4562,17 +4659,17 @@ class f {
    * @return {DateTime}
    */
   setZone(e, { keepLocalTime: t = !1, keepCalendarTime: s = !1 } = {}) {
-    if (e = ne(e, N.defaultZone), e.equals(this.zone))
+    if (e = ne(e, b.defaultZone), e.equals(this.zone))
       return this;
     if (e.isValid) {
       let r = this.ts;
       if (t || s) {
-        const i = e.offset(this.ts), a = this.toObject();
-        [r] = Ue(a, i, e);
+        const i = e.offset(this.ts), o = this.toObject();
+        [r] = Re(o, i, e);
       }
       return ae(this, { ts: r, zone: e });
     } else
-      return f.invalid(be(e));
+      return h.invalid(xe(e));
   }
   /**
    * "Set" the locale, numberingSystem, or outputCalendar. Returns a newly-constructed DateTime.
@@ -4608,21 +4705,21 @@ class f {
    */
   set(e) {
     if (!this.isValid) return this;
-    const t = Ke(e, on), { minDaysInFirstWeek: s, startOfWeek: r } = Bt(t, this.loc), i = !w(t.weekYear) || !w(t.weekNumber) || !w(t.weekday), a = !w(t.ordinal), o = !w(t.year), l = !w(t.month) || !w(t.day), u = o || l, d = t.weekYear || t.weekNumber;
-    if ((u || a) && d)
-      throw new ye(
+    const t = Je(e, cn), { minDaysInFirstWeek: s, startOfWeek: r } = Jt(t, this.loc), i = !w(t.weekYear) || !w(t.weekNumber) || !w(t.weekday), o = !w(t.ordinal), a = !w(t.year), l = !w(t.month) || !w(t.day), u = a || l, c = t.weekYear || t.weekNumber;
+    if ((u || o) && c)
+      throw new me(
         "Can't mix weekYear/weekNumber units with year/month/day or ordinals"
       );
-    if (l && a)
-      throw new ye("Can't mix ordinal dates with month/day");
+    if (l && o)
+      throw new me("Can't mix ordinal dates with month/day");
     let m;
-    i ? m = Yt(
-      { ...Je(this.c, s, r), ...t },
+    i ? m = Bt(
+      { ...Be(this.c, s, r), ...t },
       s,
       r
-    ) : w(t.ordinal) ? (m = { ...this.toObject(), ...t }, w(t.day) && (m.day = Math.min(je(m.year, m.month), m.day))) : m = Pt({ ...lt(this.c), ...t });
-    const [v, h] = Ue(m, this.o, this.zone);
-    return ae(this, { ts: v, o: h });
+    ) : w(t.ordinal) ? (m = { ...this.toObject(), ...t }, w(t.day) && (m.day = Math.min(Ge(m.year, m.month), m.day))) : m = Gt({ ...at(this.c), ...t });
+    const [p, f] = Re(m, this.o, this.zone);
+    return ae(this, { ts: p, o: f });
   }
   /**
    * Add a period of time to this DateTime and return the resulting DateTime
@@ -4640,7 +4737,7 @@ class f {
   plus(e) {
     if (!this.isValid) return this;
     const t = T.fromDurationLike(e);
-    return ae(this, rn(this, t));
+    return ae(this, ln(this, t));
   }
   /**
    * Subtract a period of time to this DateTime and return the resulting DateTime
@@ -4651,7 +4748,7 @@ class f {
   minus(e) {
     if (!this.isValid) return this;
     const t = T.fromDurationLike(e).negate();
-    return ae(this, rn(this, t));
+    return ae(this, ln(this, t));
   }
   /**
    * "Set" this DateTime to the beginning of a unit of time.
@@ -4687,8 +4784,8 @@ class f {
     }
     if (r === "weeks")
       if (t) {
-        const i = this.loc.getStartOfWeek(), { weekday: a } = this;
-        a < i && (s.weekNumber = this.weekNumber - 1), s.weekday = i;
+        const i = this.loc.getStartOfWeek(), { weekday: o } = this;
+        o < i && (s.weekNumber = this.weekNumber - 1), s.weekday = i;
       } else
         s.weekday = 1;
     if (r === "quarters") {
@@ -4726,7 +4823,7 @@ class f {
    * @return {string}
    */
   toFormat(e, t = {}) {
-    return this.isValid ? C.create(this.loc.redefaultToEN(t)).formatDateTimeFromString(this, e) : ct;
+    return this.isValid ? _.create(this.loc.redefaultToEN(t)).formatDateTimeFromString(this, e) : lt;
   }
   /**
    * Returns a localized string representing this date. Accepts the same options as the Intl.DateTimeFormat constructor and any presets defined by Luxon, such as `DateTime.DATE_FULL` or `DateTime.TIME_SIMPLE`.
@@ -4747,8 +4844,8 @@ class f {
    * @example DateTime.now().toLocaleString({ hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }); //=> '11:32'
    * @return {string}
    */
-  toLocaleString(e = Ge, t = {}) {
-    return this.isValid ? C.create(this.loc.clone(t), e).formatDateTime(this) : ct;
+  toLocaleString(e = Ye, t = {}) {
+    return this.isValid ? _.create(this.loc.clone(t), e).formatDateTime(this) : lt;
   }
   /**
    * Returns an array of format "parts", meaning individual tokens along with metadata. This is allows callers to post-process individual sections of the formatted output.
@@ -4764,7 +4861,7 @@ class f {
    *                                   //=> ]
    */
   toLocaleParts(e = {}) {
-    return this.isValid ? C.create(this.loc.clone(e), e).formatDateTimeParts(this) : [];
+    return this.isValid ? _.create(this.loc.clone(e), e).formatDateTimeParts(this) : [];
   }
   /**
    * Returns an ISO 8601-compliant string representation of this DateTime
@@ -4774,35 +4871,50 @@ class f {
    * @param {boolean} [opts.includeOffset=true] - include the offset, such as 'Z' or '-04:00'
    * @param {boolean} [opts.extendedZone=false] - add the time zone format extension
    * @param {string} [opts.format='extended'] - choose between the basic and extended format
+   * @param {string} [opts.precision='milliseconds'] - truncate output to desired presicion: 'years', 'months', 'days', 'hours', 'minutes', 'seconds' or 'milliseconds'. When precision and suppressSeconds or suppressMilliseconds are used together, precision sets the maximum unit shown in the output, however seconds or milliseconds will still be suppressed if they are 0.
    * @example DateTime.utc(1983, 5, 25).toISO() //=> '1982-05-25T00:00:00.000Z'
    * @example DateTime.now().toISO() //=> '2017-04-22T20:47:05.335-04:00'
    * @example DateTime.now().toISO({ includeOffset: false }) //=> '2017-04-22T20:47:05.335'
    * @example DateTime.now().toISO({ format: 'basic' }) //=> '20170422T204705.335-0400'
-   * @return {string}
+   * @example DateTime.now().toISO({ precision: 'day' }) //=> '2017-04-22Z'
+   * @example DateTime.now().toISO({ precision: 'minute' }) //=> '2017-04-22T20:47Z'
+   * @return {string|null}
    */
   toISO({
     format: e = "extended",
     suppressSeconds: t = !1,
     suppressMilliseconds: s = !1,
     includeOffset: r = !0,
-    extendedZone: i = !1
+    extendedZone: i = !1,
+    precision: o = "milliseconds"
   } = {}) {
     if (!this.isValid)
       return null;
+    o = Ue(o);
     const a = e === "extended";
-    let o = ht(this, a);
-    return o += "T", o += an(this, a, t, s, r, i), o;
+    let l = dt(this, a, o);
+    return He.indexOf(o) >= 3 && (l += "T"), l += un(
+      this,
+      a,
+      t,
+      s,
+      r,
+      i,
+      o
+    ), l;
   }
   /**
    * Returns an ISO 8601-compliant string representation of this DateTime's date component
    * @param {Object} opts - options
    * @param {string} [opts.format='extended'] - choose between the basic and extended format
+   * @param {string} [opts.precision='day'] - truncate output to desired precision: 'years', 'months', or 'days'.
    * @example DateTime.utc(1982, 5, 25).toISODate() //=> '1982-05-25'
    * @example DateTime.utc(1982, 5, 25).toISODate({ format: 'basic' }) //=> '19820525'
-   * @return {string}
+   * @example DateTime.utc(1982, 5, 25).toISODate({ precision: 'month' }) //=> '1982-05'
+   * @return {string|null}
    */
-  toISODate({ format: e = "extended" } = {}) {
-    return this.isValid ? ht(this, e === "extended") : null;
+  toISODate({ format: e = "extended", precision: t = "day" } = {}) {
+    return this.isValid ? dt(this, e === "extended", Ue(t)) : null;
   }
   /**
    * Returns an ISO 8601-compliant string representation of this DateTime's week date
@@ -4810,7 +4922,7 @@ class f {
    * @return {string}
    */
   toISOWeekDate() {
-    return Re(this, "kkkk-'W'WW-c");
+    return Ae(this, "kkkk-'W'WW-c");
   }
   /**
    * Returns an ISO 8601-compliant string representation of this DateTime's time component
@@ -4821,10 +4933,12 @@ class f {
    * @param {boolean} [opts.extendedZone=true] - add the time zone format extension
    * @param {boolean} [opts.includePrefix=false] - include the `T` prefix
    * @param {string} [opts.format='extended'] - choose between the basic and extended format
+   * @param {string} [opts.precision='milliseconds'] - truncate output to desired presicion: 'hours', 'minutes', 'seconds' or 'milliseconds'. When precision and suppressSeconds or suppressMilliseconds are used together, precision sets the maximum unit shown in the output, however seconds or milliseconds will still be suppressed if they are 0.
    * @example DateTime.utc().set({ hour: 7, minute: 34 }).toISOTime() //=> '07:34:19.361Z'
    * @example DateTime.utc().set({ hour: 7, minute: 34, seconds: 0, milliseconds: 0 }).toISOTime({ suppressSeconds: true }) //=> '07:34Z'
    * @example DateTime.utc().set({ hour: 7, minute: 34 }).toISOTime({ format: 'basic' }) //=> '073419.361Z'
    * @example DateTime.utc().set({ hour: 7, minute: 34 }).toISOTime({ includePrefix: true }) //=> 'T07:34:19.361Z'
+   * @example DateTime.utc().set({ hour: 7, minute: 34, second: 56 }).toISOTime({ precision: 'minute' }) //=> '07:34Z'
    * @return {string}
    */
   toISOTime({
@@ -4833,16 +4947,18 @@ class f {
     includeOffset: s = !0,
     includePrefix: r = !1,
     extendedZone: i = !1,
-    format: a = "extended"
+    format: o = "extended",
+    precision: a = "milliseconds"
   } = {}) {
-    return this.isValid ? (r ? "T" : "") + an(
+    return this.isValid ? (a = Ue(a), (r && He.indexOf(a) >= 3 ? "T" : "") + un(
       this,
-      a === "extended",
+      o === "extended",
       t,
       e,
       s,
-      i
-    ) : null;
+      i,
+      a
+    )) : null;
   }
   /**
    * Returns an RFC 2822-compatible string representation of this DateTime
@@ -4851,7 +4967,7 @@ class f {
    * @return {string}
    */
   toRFC2822() {
-    return Re(this, "EEE, dd LLL yyyy HH:mm:ss ZZZ", !1);
+    return Ae(this, "EEE, dd LLL yyyy HH:mm:ss ZZZ", !1);
   }
   /**
    * Returns a string representation of this DateTime appropriate for use in HTTP headers. The output is always expressed in GMT.
@@ -4862,15 +4978,15 @@ class f {
    * @return {string}
    */
   toHTTP() {
-    return Re(this.toUTC(), "EEE, dd LLL yyyy HH:mm:ss 'GMT'");
+    return Ae(this.toUTC(), "EEE, dd LLL yyyy HH:mm:ss 'GMT'");
   }
   /**
    * Returns a string representation of this DateTime appropriate for use in SQL Date
    * @example DateTime.utc(2014, 7, 13).toSQLDate() //=> '2014-07-13'
-   * @return {string}
+   * @return {string|null}
    */
   toSQLDate() {
-    return this.isValid ? ht(this, !0) : null;
+    return this.isValid ? dt(this, !0) : null;
   }
   /**
    * Returns a string representation of this DateTime appropriate for use in SQL Time
@@ -4886,7 +5002,7 @@ class f {
    */
   toSQLTime({ includeOffset: e = !0, includeZone: t = !1, includeOffsetSpace: s = !0 } = {}) {
     let r = "HH:mm:ss.SSS";
-    return (t || e) && (s && (r += " "), t ? r += "z" : e && (r += "ZZ")), Re(this, r, !0);
+    return (t || e) && (s && (r += " "), t ? r += "z" : e && (r += "ZZ")), Ae(this, r, !0);
   }
   /**
    * Returns a string representation of this DateTime appropriate for use in SQL DateTime
@@ -4908,7 +5024,7 @@ class f {
    * @return {string}
    */
   toString() {
-    return this.isValid ? this.toISO() : ct;
+    return this.isValid ? this.toISO() : lt;
   }
   /**
    * Returns a string representation of this DateTime appropriate for the REPL.
@@ -4932,7 +5048,7 @@ class f {
     return this.isValid ? this.ts : NaN;
   }
   /**
-   * Returns the epoch seconds of this DateTime.
+   * Returns the epoch seconds (including milliseconds in the fractional part) of this DateTime.
    * @return {number}
    */
   toSeconds() {
@@ -4997,8 +5113,8 @@ class f {
   diff(e, t = "milliseconds", s = {}) {
     if (!this.isValid || !e.isValid)
       return T.invalid("created by diffing an invalid DateTime");
-    const r = { locale: this.locale, numberingSystem: this.numberingSystem, ...s }, i = rr(t).map(T.normalizeUnit), a = e.valueOf() > this.valueOf(), o = a ? this : e, l = a ? e : this, u = li(o, l, i, r);
-    return a ? u.negate() : u;
+    const r = { locale: this.locale, numberingSystem: this.numberingSystem, ...s }, i = ar(t).map(T.normalizeUnit), o = e.valueOf() > this.valueOf(), a = o ? this : e, l = o ? e : this, u = ui(a, l, i, r);
+    return o ? u.negate() : u;
   }
   /**
    * Return the difference between this DateTime and right now.
@@ -5009,15 +5125,15 @@ class f {
    * @return {Duration}
    */
   diffNow(e = "milliseconds", t = {}) {
-    return this.diff(f.now(), e, t);
+    return this.diff(h.now(), e, t);
   }
   /**
    * Return an Interval spanning between this DateTime and another DateTime
    * @param {DateTime} otherDateTime - the other end point of the Interval
-   * @return {Interval}
+   * @return {Interval|DateTime}
    */
   until(e) {
-    return this.isValid ? b.fromDateTimes(this, e) : this;
+    return this.isValid ? I.fromDateTimes(this, e) : this;
   }
   /**
    * Return whether this DateTime is in the same unit of time as another DateTime.
@@ -5047,12 +5163,13 @@ class f {
   }
   /**
    * Returns a string representation of a this time relative to now, such as "in two days". Can only internationalize if your
-   * platform supports Intl.RelativeTimeFormat. Rounds down by default.
+   * platform supports Intl.RelativeTimeFormat. Rounds towards zero by default.
    * @param {Object} options - options that affect the output
    * @param {DateTime} [options.base=DateTime.now()] - the DateTime to use as the basis to which this time is compared. Defaults to now.
    * @param {string} [options.style="long"] - the style of units, must be "long", "short", or "narrow"
    * @param {string|string[]} options.unit - use a specific unit or array of units; if omitted, or an array, the method will pick the best unit. Use an array or one of "years", "quarters", "months", "weeks", "days", "hours", "minutes", or "seconds"
    * @param {boolean} [options.round=true] - whether to round the numbers in the output.
+   * @param {string} [options.rounding="trunc"] - rounding method to use when rounding the numbers in the output. Can be "trunc" (toward zero), "expand" (away from zero), "round", "floor", or "ceil".
    * @param {number} [options.padding=0] - padding in milliseconds. This allows you to round up the result if it fits inside the threshold. Don't use in combination with {round: false} because the decimal output will include the padding.
    * @param {string} options.locale - override the locale of this DateTime
    * @param {string} options.numberingSystem - override the numberingSystem of this DateTime. The Intl system may choose not to honor this
@@ -5065,9 +5182,9 @@ class f {
    */
   toRelative(e = {}) {
     if (!this.isValid) return null;
-    const t = e.base || f.fromObject({}, { zone: this.zone }), s = e.padding ? this < t ? -e.padding : e.padding : 0;
+    const t = e.base || h.fromObject({}, { zone: this.zone }), s = e.padding ? this < t ? -e.padding : e.padding : 0;
     let r = ["years", "months", "days", "hours", "minutes", "seconds"], i = e.unit;
-    return Array.isArray(e.unit) && (r = e.unit, i = void 0), un(t, this.plus(s), {
+    return Array.isArray(e.unit) && (r = e.unit, i = void 0), fn(t, this.plus(s), {
       ...e,
       numeric: "always",
       units: r,
@@ -5088,7 +5205,7 @@ class f {
    * @example DateTime.now().minus({ days: 2 }).toRelativeCalendar() //=> "2 days ago"
    */
   toRelativeCalendar(e = {}) {
-    return this.isValid ? un(e.base || f.fromObject({}, { zone: this.zone }), this, {
+    return this.isValid ? fn(e.base || h.fromObject({}, { zone: this.zone }), this, {
       ...e,
       numeric: "auto",
       units: ["years", "months", "days"],
@@ -5101,9 +5218,9 @@ class f {
    * @return {DateTime} the min DateTime, or undefined if called with no argument
    */
   static min(...e) {
-    if (!e.every(f.isDateTime))
+    if (!e.every(h.isDateTime))
       throw new V("min requires all arguments be DateTimes");
-    return Gt(e, (t) => t.valueOf(), Math.min);
+    return jt(e, (t) => t.valueOf(), Math.min);
   }
   /**
    * Return the max of several date times
@@ -5111,9 +5228,9 @@ class f {
    * @return {DateTime} the max DateTime, or undefined if called with no argument
    */
   static max(...e) {
-    if (!e.every(f.isDateTime))
+    if (!e.every(h.isDateTime))
       throw new V("max requires all arguments be DateTimes");
-    return Gt(e, (t) => t.valueOf(), Math.max);
+    return jt(e, (t) => t.valueOf(), Math.max);
   }
   // MISC
   /**
@@ -5124,18 +5241,18 @@ class f {
    * @return {Object}
    */
   static fromFormatExplain(e, t, s = {}) {
-    const { locale: r = null, numberingSystem: i = null } = s, a = D.fromOpts({
+    const { locale: r = null, numberingSystem: i = null } = s, o = E.fromOpts({
       locale: r,
       numberingSystem: i,
       defaultToEN: !0
     });
-    return cs(a, e, t);
+    return ys(o, e, t);
   }
   /**
    * @deprecated use fromFormatExplain instead
    */
   static fromStringExplain(e, t, s = {}) {
-    return f.fromFormatExplain(e, t, s);
+    return h.fromFormatExplain(e, t, s);
   }
   /**
    * Build a parser for `fmt` using the given locale. This parser can be passed
@@ -5150,12 +5267,12 @@ class f {
    * @returns {TokenParser} - opaque object to be used
    */
   static buildFormatParser(e, t = {}) {
-    const { locale: s = null, numberingSystem: r = null } = t, i = D.fromOpts({
+    const { locale: s = null, numberingSystem: r = null } = t, i = E.fromOpts({
       locale: s,
       numberingSystem: r,
       defaultToEN: !0
     });
-    return new us(i, e);
+    return new ms(i, e);
   }
   /**
    * Create a DateTime from an input string and format parser.
@@ -5172,18 +5289,18 @@ class f {
       throw new V(
         "fromFormatParser requires an input string and a format parser"
       );
-    const { locale: r = null, numberingSystem: i = null } = s, a = D.fromOpts({
+    const { locale: r = null, numberingSystem: i = null } = s, o = E.fromOpts({
       locale: r,
       numberingSystem: i,
       defaultToEN: !0
     });
-    if (!a.equals(t.locale))
+    if (!o.equals(t.locale))
       throw new V(
-        `fromFormatParser called with a locale of ${a}, but the format parser was created for ${t.locale}`
+        `fromFormatParser called with a locale of ${o}, but the format parser was created for ${t.locale}`
       );
-    const { result: o, zone: l, specificOffset: u, invalidReason: d } = t.explainFromTokens(e);
-    return d ? f.invalid(d) : he(
-      o,
+    const { result: a, zone: l, specificOffset: u, invalidReason: c } = t.explainFromTokens(e);
+    return c ? h.invalid(c) : he(
+      a,
       l,
       s,
       `format ${t.format}`,
@@ -5197,14 +5314,14 @@ class f {
    * @type {Object}
    */
   static get DATE_SHORT() {
-    return Ge;
+    return Ye;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'Oct 14, 1983'
    * @type {Object}
    */
   static get DATE_MED() {
-    return gn;
+    return pn;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'Fri, Oct 14, 1983'
@@ -5218,91 +5335,91 @@ class f {
    * @type {Object}
    */
   static get DATE_FULL() {
-    return wn;
+    return kn;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'Tuesday, October 14, 1983'
    * @type {Object}
    */
   static get DATE_HUGE() {
-    return pn;
+    return Tn;
   }
   /**
    * {@link DateTime#toLocaleString} format like '09:30 AM'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get TIME_SIMPLE() {
-    return vn;
+    return On;
   }
   /**
    * {@link DateTime#toLocaleString} format like '09:30:23 AM'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get TIME_WITH_SECONDS() {
-    return kn;
+    return Sn;
   }
   /**
    * {@link DateTime#toLocaleString} format like '09:30:23 AM EDT'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get TIME_WITH_SHORT_OFFSET() {
-    return Tn;
+    return Dn;
   }
   /**
    * {@link DateTime#toLocaleString} format like '09:30:23 AM Eastern Daylight Time'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get TIME_WITH_LONG_OFFSET() {
-    return On;
+    return Mn;
   }
   /**
    * {@link DateTime#toLocaleString} format like '09:30', always 24-hour.
    * @type {Object}
    */
   static get TIME_24_SIMPLE() {
-    return Sn;
+    return En;
   }
   /**
    * {@link DateTime#toLocaleString} format like '09:30:23', always 24-hour.
    * @type {Object}
    */
   static get TIME_24_WITH_SECONDS() {
-    return Dn;
+    return xn;
   }
   /**
    * {@link DateTime#toLocaleString} format like '09:30:23 EDT', always 24-hour.
    * @type {Object}
    */
   static get TIME_24_WITH_SHORT_OFFSET() {
-    return Mn;
+    return In;
   }
   /**
    * {@link DateTime#toLocaleString} format like '09:30:23 Eastern Daylight Time', always 24-hour.
    * @type {Object}
    */
   static get TIME_24_WITH_LONG_OFFSET() {
-    return En;
+    return bn;
   }
   /**
    * {@link DateTime#toLocaleString} format like '10/14/1983, 9:30 AM'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_SHORT() {
-    return In;
+    return Nn;
   }
   /**
    * {@link DateTime#toLocaleString} format like '10/14/1983, 9:30:33 AM'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_SHORT_WITH_SECONDS() {
-    return bn;
+    return Cn;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'Oct 14, 1983, 9:30 AM'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_MED() {
-    return Nn;
+    return Vn;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'Oct 14, 1983, 9:30:33 AM'. Only 12-hour if the locale is.
@@ -5316,61 +5433,61 @@ class f {
    * @type {Object}
    */
   static get DATETIME_MED_WITH_WEEKDAY() {
-    return xs;
+    return Fs;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'October 14, 1983, 9:30 AM EDT'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_FULL() {
-    return xn;
+    return Fn;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'October 14, 1983, 9:30:33 AM EDT'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_FULL_WITH_SECONDS() {
-    return Vn;
+    return Ln;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'Friday, October 14, 1983, 9:30 AM Eastern Daylight Time'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_HUGE() {
-    return Cn;
+    return $n;
   }
   /**
    * {@link DateTime#toLocaleString} format like 'Friday, October 14, 1983, 9:30:33 AM Eastern Daylight Time'. Only 12-hour if the locale is.
    * @type {Object}
    */
   static get DATETIME_HUGE_WITH_SECONDS() {
-    return Fn;
+    return Wn;
   }
 }
-function Ee(n) {
-  if (f.isDateTime(n))
+function Me(n) {
+  if (h.isDateTime(n))
     return n;
   if (n && n.valueOf && re(n.valueOf()))
-    return f.fromJSDate(n);
+    return h.fromJSDate(n);
   if (n && typeof n == "object")
-    return f.fromObject(n);
+    return h.fromObject(n);
   throw new V(
     `Unknown datetime argument: ${n}, of type ${typeof n}`
   );
 }
-const ys = J("en"), bi = Ts(ys);
-function $e() {
+const ps = G("en"), Ii = Ds(ps);
+function Le() {
   return {
-    lang: bi,
+    lang: Ii,
     setLang: (e) => {
-      ys.value = e, N.defaultLocale = e;
+      ps.value = e, b.defaultLocale = e;
     }
   };
 }
-const dn = J(!1), Ni = J({ x: 0, y: 0 });
-function Tt() {
+const mn = G(!1), bi = G({ x: 0, y: 0 });
+function Dt() {
   const n = () => {
-    dn.value = !1;
+    mn.value = !1;
   }, e = (s) => {
     const r = s.getBoundingClientRect();
     return {
@@ -5382,163 +5499,163 @@ function Tt() {
   };
   return { collision: (s) => {
     let i = { x: 0, y: 0 };
-    const a = s.getBoundingClientRect(), o = {
+    const o = s.getBoundingClientRect(), a = {
       bottomRight: {
-        x: a.right,
-        y: a.bottom
+        x: o.right,
+        y: o.bottom
       },
       bottomLeft: {
-        x: a.left - 400,
-        y: a.bottom
+        x: o.left - 400,
+        y: o.bottom
       },
       topRight: {
-        x: a.right,
-        y: a.top - 400
+        x: o.right,
+        y: o.top - 400
       },
       topLeft: {
-        x: a.left - 400,
-        y: a.top - 400
+        x: o.left - 400,
+        y: o.top - 400
       }
-    }, { left: l, bottom: u, right: d, top: m } = e(s), v = [
+    }, { left: l, bottom: u, right: c, top: m } = e(s), p = [
       // Check if it doesn't fit on the left side; if not, render it at the bottom right.
-      { condition: l < 400, position: o.bottomRight },
+      { condition: l < 400, position: a.bottomRight },
       // Check if it doesn't fit on the right side; if not, render it at the bottom left.
-      { condition: d < 400, position: o.bottomLeft },
+      { condition: c < 400, position: a.bottomLeft },
       // Check if it doesn't fit on the top side; if not, render it at the top right.
-      { condition: u < 400, position: o.topLeft },
+      { condition: u < 400, position: a.topLeft },
       // Check if it doesn't fit on the bottom side; if not, render it at the top left.
-      { condition: m < 400, position: o.bottomRight },
+      { condition: m < 400, position: a.bottomRight },
       // Check if it doesn't fit on top and right; if not, render it at the bottom left.
-      { condition: m < 400 && d < 400, position: o.bottomLeft },
+      { condition: m < 400 && c < 400, position: a.bottomLeft },
       // Check if it doesn't fit on the left and botton; if not, render it at the top right.
-      { condition: l < 400 && u < 400, position: o.topRight }
+      { condition: l < 400 && u < 400, position: a.topRight }
     ];
-    for (const { condition: h, position: g } of v)
-      h && (i = g);
-    if (l < 400 && u < 400 && d < 400) {
-      const h = 400 - d + 16;
-      i = { x: o.topLeft.x + h, y: o.topLeft.y };
+    for (const { condition: f, position: g } of p)
+      f && (i = g);
+    if (l < 400 && u < 400 && c < 400) {
+      const f = 400 - c + 16;
+      i = { x: a.topLeft.x + f, y: a.topLeft.y };
     }
-    if (l < 400 && m < 400 && u < 400 && d > 400) {
-      const h = 400 - m + 16;
-      i = { x: o.bottomRight.x, y: o.topLeft.y + h };
+    if (l < 400 && m < 400 && u < 400 && c > 400) {
+      const f = 400 - m + 16;
+      i = { x: a.bottomRight.x, y: a.topLeft.y + f };
     }
     if (m < 400 && u < 400) {
-      const h = 400 - m + 16;
+      const f = 400 - m + 16;
       i = {
-        x: o.bottomRight.x,
-        y: o.topLeft.y + h
+        x: a.bottomRight.x,
+        y: a.topLeft.y + f
       };
     }
-    if (m < 400 && u < 400 && d < 400 && l > 400) {
-      const h = 400 - m + 16;
+    if (m < 400 && u < 400 && c < 400 && l > 400) {
+      const f = 400 - m + 16;
       i = {
-        x: o.bottomLeft.x,
-        y: o.topLeft.y + h
+        x: a.bottomLeft.x,
+        y: a.topLeft.y + f
       };
     }
-    return l > 400 && d > 400 && m > 400 && u > 400 && (i = { x: o.bottomRight.x, y: o.bottomRight.y }), i;
-  }, openEventsDetailDialog: dn, dialogPositionToRender: Ni, closeDialog: n };
+    return l > 400 && c > 400 && m > 400 && u > 400 && (i = { x: a.bottomRight.x, y: a.bottomRight.y }), i;
+  }, openEventsDetailDialog: mn, dialogPositionToRender: bi, closeDialog: n };
 }
-function xt() {
-  const { lang: n } = $e(), e = (s, r) => f.fromISO(s).setLocale(n.value).toLocaleString(r), t = se(() => f.now().toISODate());
+function Ft() {
+  const { lang: n } = Le(), e = (s, r) => h.fromISO(s).setLocale(n.value).toLocaleString(r), t = se(() => h.now().toISODate());
   return {
     formatDate: e,
     today: t
   };
 }
-const _i = J([]), fn = J([]), hn = J(f.now()), xi = J(null);
-function ce() {
-  const { today: n } = xt(), { lang: e } = $e(), t = se(() => fn.value.map((o) => ({
-    ...o,
-    date_calendar_to_render: o.start_date
-  }))), s = (o) => {
-    const [l, u, d] = o.split("-").map(Number), m = f.now().set({ year: l, month: u, day: d }), v = m.startOf("month"), h = m.endOf("month"), g = v.startOf("week"), I = h.endOf("week"), y = [];
-    let p = g;
-    for (; p <= I; )
-      y.push(p.toISODate()), p = p.plus({ days: 1 });
+const Ni = G([]), yn = G([]), gn = G(h.now()), Ci = G(null);
+function ue() {
+  const { today: n } = Ft(), { lang: e } = Le(), t = se(() => yn.value.map((a) => ({
+    ...a,
+    date_calendar_to_render: a.start_date
+  }))), s = (a) => {
+    const [l, u, c] = a.split("-").map(Number), m = h.now().set({ year: l, month: u, day: c }), p = m.startOf("month"), f = m.endOf("month"), g = p.startOf("week"), O = f.endOf("week"), y = [];
+    let v = g;
+    for (; v <= O; )
+      y.push(v.toISODate()), v = v.plus({ days: 1 });
     return y;
-  }, r = (o, {
+  }, r = (a, {
     startDate: l,
     endDate: u
   }) => {
-    const d = f.fromISO(o), m = f.fromISO(l), v = f.fromISO(u);
-    return b.fromDateTimes(m, v).contains(d);
-  }, i = (o) => s(o).map((l) => {
-    const u = [], d = [], m = f.fromISO(l), v = f.fromISO(o);
+    const c = h.fromISO(a), m = h.fromISO(l), p = h.fromISO(u);
+    return I.fromDateTimes(m, p).contains(c);
+  }, i = (a) => s(a).map((l) => {
+    const u = [], c = [], m = h.fromISO(l), p = h.fromISO(a);
     t.value.forEach((g) => {
       g.end_date && r(l, {
         startDate: g.start_date,
         endDate: g.end_date
-      }) ? d.push({ ...g, date_calendar_to_render: l }) : d.push(g);
+      }) ? c.push({ ...g, date_calendar_to_render: l }) : c.push(g);
     });
-    const h = d.filter((g) => m.hasSame(f.fromISO(g.date_calendar_to_render), "day"));
-    return m.hasSame(v, "month") || u.push("other-month-date"), m.hasSame(f.fromISO(n.value), "day") && u.push("selected"), {
+    const f = c.filter((g) => m.hasSame(h.fromISO(g.date_calendar_to_render), "day"));
+    return m.hasSame(p, "month") || u.push("other-month-date"), m.hasSame(h.fromISO(n.value), "day") && u.push("selected"), {
       day: l,
       class: u.join(" "),
-      events: h || [],
-      text: f.fromISO(l).day.toString()
+      events: f || [],
+      text: h.fromISO(l).day.toString()
     };
-  }), a = se(() => f.fromJSDate(hn.value.toJSDate()).setLocale(e.value).toFormat("MMMM yyyy"));
+  }), o = se(() => h.fromJSDate(gn.value.toJSDate()).setLocale(e.value).toFormat("MMMM yyyy"));
   return {
-    eventsToShowInCalendar: fn,
-    calendarDaySelect: xi,
-    title: a,
-    monthDays: _i,
+    eventsToShowInCalendar: yn,
+    calendarDaySelect: Ci,
+    title: o,
+    monthDays: Ni,
     generateCalendar: i,
-    currentDate: hn
+    currentDate: gn
   };
 }
-const Vi = { class: "k-alendar-days-container" }, Ci = /* @__PURE__ */ W({
+const Vi = { class: "k-alendar-days-container" }, _i = /* @__PURE__ */ W({
   __name: "CDays",
   setup(n) {
-    const { lang: e } = $e(), t = () => {
-      const s = f.now().startOf("week"), r = f.now().endOf("week"), i = [];
-      let a = s;
-      for (; a <= r; )
-        i.push(a.setLocale(e.value).toFormat("ccc")), a = a.plus({ days: 1 });
+    const { lang: e } = Le(), t = () => {
+      const s = h.now().startOf("week"), r = h.now().endOf("week"), i = [];
+      let o = s;
+      for (; o <= r; )
+        i.push(o.setLocale(e.value).toFormat("ccc")), o = o.plus({ days: 1 });
       return i;
     };
-    return (s, r) => (k(), E("div", Vi, [
-      (k(!0), E(Pe, null, Be(t(), (i) => (k(), E("div", { key: i }, G(i), 1))), 128))
+    return (s, r) => (k(), x("div", Vi, [
+      (k(!0), x(qe, null, Pe(t(), (i) => (k(), x("div", { key: i }, B(i), 1))), 128))
     ]));
   }
-}), $ = (n, e) => {
+}), L = (n, e) => {
   const t = n.__vccOpts || n;
   for (const [s, r] of e)
     t[s] = r;
   return t;
-}, Fi = /* @__PURE__ */ $(Ci, [["__scopeId", "data-v-dd3cd879"]]), $i = /* @__PURE__ */ W({
+}, Fi = /* @__PURE__ */ L(_i, [["__scopeId", "data-v-dd3cd879"]]), Li = /* @__PURE__ */ W({
   __name: "ButtonPrevMonth",
   emits: ["handle"],
   setup(n, { emit: e }) {
-    const t = e, { currentDate: s, monthDays: r, generateCalendar: i } = ce(), a = () => {
+    const t = e, { currentDate: s, monthDays: r, generateCalendar: i } = ue(), o = () => {
       s.value = s.value.minus({ months: 1 });
-      const o = f.fromJSDate(s.value.toJSDate()).toFormat("yyyy-MM-dd");
-      r.value = i(o), t("handle", o);
+      const a = h.fromJSDate(s.value.toJSDate()).toFormat("yyyy-MM-dd");
+      r.value = i(a), t("handle", a);
     };
-    return (o, l) => (k(), E("button", {
+    return (a, l) => (k(), x("button", {
       type: "button",
       class: "k-alendar-navegation-prev",
-      onClick: a
+      onClick: o
     }, "←"));
   }
-}), Li = /* @__PURE__ */ $($i, [["__scopeId", "data-v-9bfa9322"]]), Wi = /* @__PURE__ */ W({
+}), $i = /* @__PURE__ */ L(Li, [["__scopeId", "data-v-9bfa9322"]]), Wi = /* @__PURE__ */ W({
   __name: "ButtonNextMonth",
   emits: ["handle"],
   setup(n, { emit: e }) {
-    const { currentDate: t, monthDays: s, generateCalendar: r } = ce(), i = e, a = () => {
+    const { currentDate: t, monthDays: s, generateCalendar: r } = ue(), i = e, o = () => {
       t.value = t.value.plus({ months: 1 });
-      const o = f.fromJSDate(t.value.toJSDate()).toFormat("yyyy-MM-dd");
-      s.value = r(o), i("handle", o);
+      const a = h.fromJSDate(t.value.toJSDate()).toFormat("yyyy-MM-dd");
+      s.value = r(a), i("handle", a);
     };
-    return (o, l) => (k(), E("button", {
+    return (a, l) => (k(), x("button", {
       type: "button",
       class: "k-alendar-navegation-left",
-      onClick: a
+      onClick: o
     }, "→"));
   }
-}), zi = /* @__PURE__ */ $(Wi, [["__scopeId", "data-v-4b86600a"]]), Ai = {
+}), zi = /* @__PURE__ */ L(Wi, [["__scopeId", "data-v-4b86600a"]]), Zi = {
   en: {
     dayView: "Day",
     monthView: "Month",
@@ -5721,50 +5838,50 @@ const Vi = { class: "k-alendar-days-container" }, Ci = /* @__PURE__ */ W({
       today: "Täna"
     }
   }
-}, Zi = /* @__PURE__ */ W({
+}, Ai = /* @__PURE__ */ W({
   __name: "ButtonTodayMonth",
   emits: ["handle"],
   setup(n, { emit: e }) {
-    const t = e, { currentDate: s, monthDays: r, generateCalendar: i } = ce(), { today: a } = xt(), { lang: o } = $e(), l = () => {
-      s.value = f.now(), r.value = i(a.value), t("handle", a.value);
-    }, u = se(() => Ai[o.value].buttons.today || "Today");
-    return (d, m) => (k(), E("button", {
+    const t = e, { currentDate: s, monthDays: r, generateCalendar: i } = ue(), { today: o } = Ft(), { lang: a } = Le(), l = () => {
+      s.value = h.now(), r.value = i(o.value), t("handle", o.value);
+    }, u = se(() => Zi[a.value].buttons.today || "Today");
+    return (c, m) => (k(), x("button", {
       type: "button",
       class: "k-alendar-today-button",
       onClick: l
-    }, G(u.value), 1));
+    }, B(u.value), 1));
   }
-}), Ri = /* @__PURE__ */ $(Zi, [["__scopeId", "data-v-4da96950"]]), Hi = { class: "k-alendar-header-container" }, Ui = { class: "left-buttons" }, qi = { class: "center-title" }, Yi = /* @__PURE__ */ W({
+}), Ri = /* @__PURE__ */ L(Ai, [["__scopeId", "data-v-4da96950"]]), Hi = { class: "k-alendar-header-container" }, Ui = { class: "left-buttons" }, qi = { class: "center-title" }, Pi = /* @__PURE__ */ W({
   __name: "CHeader",
   emits: ["handlePrevMonth", "handleNextMonth", "handleToToday"],
   setup(n, { emit: e }) {
-    const { title: t } = ce(), s = e, r = (o) => {
-      s("handlePrevMonth", o);
-    }, i = (o) => {
-      s("handleNextMonth", o);
-    }, a = (o) => {
-      s("handleToToday", o);
+    const { title: t } = ue(), s = e, r = (a) => {
+      s("handlePrevMonth", a);
+    }, i = (a) => {
+      s("handleNextMonth", a);
+    }, o = (a) => {
+      s("handleToToday", a);
     };
-    return (o, l) => (k(), E("header", Hi, [
-      S("div", Ui, [
-        S("div", null, [
-          oe(Li, { onHandle: r }),
-          oe(zi, { onHandle: i })
+    return (a, l) => (k(), x("header", Hi, [
+      D("div", Ui, [
+        D("div", null, [
+          ye($i, { onHandle: r }),
+          ye(zi, { onHandle: i })
         ]),
-        oe(Ri, { onHandle: a })
+        ye(Ri, { onHandle: o })
       ]),
-      S("div", qi, [
-        S("h2", null, G(A(t)), 1)
+      D("div", qi, [
+        D("h2", null, B(Z(t)), 1)
       ])
     ]));
   }
-}), Pi = /* @__PURE__ */ $(Yi, [["__scopeId", "data-v-985876b4"]]), Bi = J({
+}), Yi = /* @__PURE__ */ L(Pi, [["__scopeId", "data-v-985876b4"]]), Bi = G({
   id: "",
   title: "",
   start_date: "",
   description: ""
 });
-function gs() {
+function ks() {
   return {
     eventSelected: Bi
   };
@@ -5780,16 +5897,16 @@ const Gi = /* @__PURE__ */ W({
     const t = e, s = n, r = (i) => {
       t("eventClicked", { mauseEvent: i, event: s.event, calendar: s.calendar });
     };
-    return (i, a) => (k(), E("li", {
-      style: Ot({
-        "background-color": i.event.id === "more" ? "gray" : i.event.color ? i.event.color : "#374151"
+    return (i, o) => (k(), x("li", {
+      style: Mt({
+        "background-color": n.event.id === "more" ? "gray" : n.event.color ? n.event.color : "#374151"
       }),
       onClick: r
     }, [
-      S("h3", null, G(i.event.title), 1)
+      D("h3", null, B(n.event.title), 1)
     ], 4));
   }
-}), ws = /* @__PURE__ */ $(Gi, [["__scopeId", "data-v-2ec57e40"]]), Ji = { class: "k-alendar-container" }, ji = ["onClick"], Ki = { class: "k-alendar-span-container" }, Qi = { class: "k-alendar-text" }, Xi = {
+}), Ts = /* @__PURE__ */ L(Gi, [["__scopeId", "data-v-2ec57e40"]]), Ji = { class: "k-alendar-container" }, ji = ["onClick"], Ki = { class: "k-alendar-span-container" }, Qi = { class: "k-alendar-text" }, Xi = {
   key: 0,
   class: "point"
 }, ea = {
@@ -5797,12 +5914,12 @@ const Gi = /* @__PURE__ */ W({
   class: "events"
 }, ta = /* @__PURE__ */ W({
   __name: "CIndex",
-  emits: ["eventClicked"],
+  emits: ["eventClicked", "plusEventCountClicked"],
   setup(n, { emit: e }) {
-    const { openEventsDetailDialog: t, dialogPositionToRender: s } = Tt(), { monthDays: r, calendarDaySelect: i } = ce(), { eventSelected: a } = gs(), { collision: o } = Tt(), l = e, u = J({}), d = (g) => {
+    const { openEventsDetailDialog: t, dialogPositionToRender: s } = Dt(), { monthDays: r, calendarDaySelect: i } = ue(), { eventSelected: o } = ks(), { collision: a } = Dt(), l = e, u = G({}), c = (g) => {
       if (window.innerWidth < 768) {
-        const p = Math.floor((window.innerWidth - 400) / 2);
-        s.value = { x: p, y: 16 }, g.events.length > 0 && (g.events.length === 1 ? (a.value = g.events[0], g.events[0].id != "more" && l("eventClicked", g.events[0])) : a.value = {
+        const v = Math.floor((window.innerWidth - 400) / 2);
+        s.value = { x: v, y: 16 }, g.events.length > 0 && (g.events.length === 1 ? (o.value = g.events[0], g.events[0].id != "more" && l("eventClicked", g.events[0])) : o.value = {
           id: "more",
           title: "",
           start_date: "",
@@ -5811,78 +5928,63 @@ const Gi = /* @__PURE__ */ W({
       }
     }, m = ({
       mauseEvent: g,
-      event: I,
+      event: O,
       calendar: y
     }) => {
-      if (a.value = I, i.value = y, y.events.length > 0) {
-        let p = g.target;
-        p.tagName === "H3" && (p = p.parentElement), s.value = o(p), t.value = !0;
+      if (o.value = O, i.value = y, y.events.length > 0) {
+        let v = g.target;
+        v.tagName === "H3" && (v = v.parentElement), s.value = a(v), t.value = !0;
       }
-      I.id != "more" && l("eventClicked", I);
-    }, v = (g) => {
-      var U;
-      const I = u.value[g];
+      O.id != "more" ? l("eventClicked", O) : l("plusEventCountClicked", { events: i.value.events });
+    }, p = (g) => {
+      var M;
+      const O = u.value[g];
       let y = 0;
-      const p = 32, x = 8, H = 8;
-      let M = 0;
-      if (I) {
-        y = I.clientHeight - H * 2;
-        const Se = (U = I.querySelector("span.k-alendar-text")) == null ? void 0 : U.offsetHeight;
-        y -= Se || 0, M = Math.floor(
-          y / (p + x)
+      const v = 32, C = 8, H = 8;
+      let J = 0;
+      if (O) {
+        y = O.clientHeight - H * 2;
+        const ce = (M = O.querySelector("span.k-alendar-text")) == null ? void 0 : M.offsetHeight;
+        y -= ce || 0, J = Math.floor(
+          y / (v + C)
         );
       }
-      return M;
-    }, h = (g, I) => {
-      const y = v(g), p = I.slice(0, y);
-      return I.length - y > 0 && p.splice(p.length - 1, 1, {
+      return J;
+    }, f = (g, O) => {
+      const y = p(g), v = O.slice(0, y);
+      return O.length - y > 0 && v.splice(v.length - 1, 1, {
         id: "more",
-        title: `+${I.length + 1 - y}`,
+        title: `+${O.length + 1 - y}`,
         start_date: "",
         description: ""
-      }), p;
+      }), v;
     };
-    return (g, I) => (k(), E("div", Ji, [
-      (k(!0), E(Pe, null, Be(A(r), (y) => (k(), E("div", {
+    return (g, O) => (k(), x("div", Ji, [
+      (k(!0), x(qe, null, Pe(Z(r), (y) => (k(), x("div", {
         key: y.day.toString(),
-        onClick: (p) => d(y),
-        class: Os([y.class, "date"]),
+        onClick: (v) => c(y),
+        class: Ms([y.class, "date"]),
         ref_for: !0,
-        ref: (p) => u.value[y.day] = p
+        ref: (v) => u.value[y.day] = v
       }, [
-        S("div", Ki, [
-          S("span", Qi, G(y.text), 1),
-          y.events.length > 0 ? (k(), E("span", Xi)) : te("", !0)
+        D("div", Ki, [
+          D("span", Qi, B(y.text), 1),
+          y.events.length > 0 ? (k(), x("span", Xi)) : Q("", !0)
         ]),
-        y.events.length > 0 ? (k(), E("div", ea, [
-          S("ul", null, [
-            (k(!0), E(Pe, null, Be(h(y.day, y.events), (p) => (k(), X(ws, {
-              key: p.id,
-              event: p,
+        y.events.length > 0 ? (k(), x("div", ea, [
+          D("ul", null, [
+            (k(!0), x(qe, null, Pe(f(y.day, y.events), (v) => (k(), K(Ts, {
+              key: v.id,
+              event: v,
               calendar: y,
               onEventClicked: m
             }, null, 8, ["event", "calendar"]))), 128))
           ])
-        ])) : te("", !0)
+        ])) : Q("", !0)
       ], 10, ji))), 128))
     ]));
   }
-}), na = /* @__PURE__ */ $(ta, [["__scopeId", "data-v-ebcbf5ae"]]), sa = ["open"], ra = /* @__PURE__ */ S("svg", {
-  "aria-hidden": "true",
-  focusable: "false",
-  "data-prefix": "fas",
-  "data-icon": "xmark",
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 320 512"
-}, [
-  /* @__PURE__ */ S("path", {
-    class: "",
-    fill: "currentColor",
-    d: "M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"
-  })
-], -1), ia = [
-  ra
-], aa = { class: "k-alendar-dialog-main" }, oa = /* @__PURE__ */ W({
+}), na = /* @__PURE__ */ L(ta, [["__scopeId", "data-v-9fdc34bb"]]), sa = ["open"], ra = { class: "k-alendar-dialog-main" }, ia = /* @__PURE__ */ W({
   __name: "KDialog",
   props: {
     modelValue: { type: Boolean },
@@ -5890,14 +5992,14 @@ const Gi = /* @__PURE__ */ W({
   },
   emits: ["update:modelValue"],
   setup(n) {
-    const e = mn(n, "modelValue"), t = J(null);
-    mt(e, (r) => {
+    const e = wn(n, "modelValue"), t = G(null);
+    ft(e, (r) => {
       t.value && r ? t.value.showModal() : t.value && t.value.close();
-    }), Ss(() => {
+    }), Es(() => {
       t.value && t.value.addEventListener("close", () => {
         s();
       });
-    }), Ds(() => {
+    }), xs(() => {
       t.value && t.value.removeEventListener("close", () => {
         s();
       });
@@ -5905,130 +6007,145 @@ const Gi = /* @__PURE__ */ W({
     const s = () => {
       e.value = !1;
     };
-    return (r, i) => (k(), E("dialog", {
+    return (r, i) => (k(), x("dialog", {
       ref_key: "dialog",
       ref: t,
       id: "k-alendar-dialog",
       "modal-mode": "mega",
       class: "k-alendar-dialog",
       open: e.value,
-      onClick: Ms(s, ["self"])
+      onClick: Is(s, ["self"])
     }, [
-      S("header", null, [
-        it(r.$slots, "header"),
-        S("button", {
+      D("header", null, [
+        nt(r.$slots, "header"),
+        D("button", {
           class: "k-alendar-button-close",
           type: "button",
           onClick: s
-        }, ia)
+        }, [...i[0] || (i[0] = [
+          D("svg", {
+            "aria-hidden": "true",
+            focusable: "false",
+            "data-prefix": "fas",
+            "data-icon": "xmark",
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: "0 0 320 512"
+          }, [
+            D("path", {
+              class: "",
+              fill: "currentColor",
+              d: "M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"
+            })
+          ], -1)
+        ])])
       ]),
-      S("article", aa, [
-        it(r.$slots, "default")
+      D("article", ra, [
+        nt(r.$slots, "default")
       ]),
-      S("footer", null, [
-        it(r.$slots, "footer")
+      D("footer", null, [
+        nt(r.$slots, "footer")
       ])
     ], 8, sa));
   }
-}), la = {}, ua = (n) => (Qe("data-v-58b8063e"), n = n(), Xe(), n), ca = {
+}), aa = {}, oa = {
   class: "k-alendar-button-edit-delete",
   type: "button"
-}, da = /* @__PURE__ */ ua(() => /* @__PURE__ */ S("svg", {
-  class: "h-5 w-5 text-gray-600",
-  "aria-hidden": "true",
-  focusable: "false",
-  "data-prefix": "far",
-  "data-icon": "trash-can",
-  role: "img",
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 448 512"
-}, [
-  /* @__PURE__ */ S("path", {
-    class: "",
-    fill: "currentColor",
-    d: "M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"
-  })
-], -1)), fa = [
-  da
-];
-function ha(n, e) {
-  return k(), E("button", ca, fa);
+};
+function la(n, e) {
+  return k(), x("button", oa, [...e[0] || (e[0] = [
+    D("svg", {
+      class: "h-5 w-5 text-gray-600",
+      "aria-hidden": "true",
+      focusable: "false",
+      "data-prefix": "far",
+      "data-icon": "trash-can",
+      role: "img",
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 448 512"
+    }, [
+      D("path", {
+        class: "",
+        fill: "currentColor",
+        d: "M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"
+      })
+    ], -1)
+  ])]);
 }
-const ma = /* @__PURE__ */ $(la, [["render", ha], ["__scopeId", "data-v-58b8063e"]]), ya = {}, ga = (n) => (Qe("data-v-bf161d91"), n = n(), Xe(), n), wa = {
+const ua = /* @__PURE__ */ L(aa, [["render", la], ["__scopeId", "data-v-58b8063e"]]), ca = {}, da = {
   class: "k-alendar-button-edit-delete",
   type: "button"
-}, pa = /* @__PURE__ */ ga(() => /* @__PURE__ */ S("svg", {
-  class: "h-5 w-5 text-gray-600",
-  "aria-hidden": "true",
-  focusable: "false",
-  "data-prefix": "far",
-  "data-icon": "pen-to-square",
-  role: "img",
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 512 512"
-}, [
-  /* @__PURE__ */ S("path", {
-    class: "",
-    fill: "currentColor",
-    d: "M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152V424c0 48.6 39.4 88 88 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z"
-  })
-], -1)), va = [
-  pa
-];
-function ka(n, e) {
-  return k(), E("button", wa, va);
+};
+function fa(n, e) {
+  return k(), x("button", da, [...e[0] || (e[0] = [
+    D("svg", {
+      class: "h-5 w-5 text-gray-600",
+      "aria-hidden": "true",
+      focusable: "false",
+      "data-prefix": "far",
+      "data-icon": "pen-to-square",
+      role: "img",
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512"
+    }, [
+      D("path", {
+        class: "",
+        fill: "currentColor",
+        d: "M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152V424c0 48.6 39.4 88 88 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z"
+      })
+    ], -1)
+  ])]);
 }
-const Ta = /* @__PURE__ */ $(ya, [["render", ka], ["__scopeId", "data-v-bf161d91"]]), Oa = (n) => (Qe("data-v-9c08a59e"), n = n(), Xe(), n), Sa = { class: "autor" }, Da = /* @__PURE__ */ Oa(() => /* @__PURE__ */ S("svg", {
-  "aria-hidden": "true",
-  focusable: "false",
-  "data-prefix": "far",
-  "data-icon": "user",
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 448 512"
-}, [
-  /* @__PURE__ */ S("path", {
-    class: "",
-    fill: "currentColor",
-    d: "M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"
-  })
-], -1)), Ma = /* @__PURE__ */ W({
+const ha = /* @__PURE__ */ L(ca, [["render", fa], ["__scopeId", "data-v-bf161d91"]]), ma = { class: "autor" }, ya = /* @__PURE__ */ W({
   __name: "EDAutor",
   props: {
     autor: {}
   },
   setup(n) {
-    return (e, t) => (k(), E("div", Sa, [
-      Da,
-      S("p", null, G(e.autor), 1)
+    return (e, t) => (k(), x("div", ma, [
+      t[0] || (t[0] = D("svg", {
+        "aria-hidden": "true",
+        focusable: "false",
+        "data-prefix": "far",
+        "data-icon": "user",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 448 512"
+      }, [
+        D("path", {
+          class: "",
+          fill: "currentColor",
+          d: "M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"
+        })
+      ], -1)),
+      D("p", null, B(n.autor), 1)
     ]));
   }
-}), Ea = /* @__PURE__ */ $(Ma, [["__scopeId", "data-v-9c08a59e"]]), Ia = (n) => (Qe("data-v-7de34190"), n = n(), Xe(), n), ba = { class: "content" }, Na = /* @__PURE__ */ Ia(() => /* @__PURE__ */ S("svg", {
-  class: "h-5 w-5 text-gray-600 dark:text-gray-300",
-  "aria-hidden": "true",
-  focusable: "false",
-  "data-prefix": "far",
-  "data-icon": "comment",
-  role: "img",
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 512 512"
-}, [
-  /* @__PURE__ */ S("path", {
-    class: "",
-    fill: "currentColor",
-    d: "M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9c.1-.2 .2-.3 .3-.5z"
-  })
-], -1)), _a = /* @__PURE__ */ W({
+}), ga = /* @__PURE__ */ L(ya, [["__scopeId", "data-v-9c08a59e"]]), wa = { class: "content" }, va = /* @__PURE__ */ W({
   __name: "EDContent",
   props: {
     content: {}
   },
   setup(n) {
-    return (e, t) => (k(), E("div", ba, [
-      Na,
-      S("p", null, G(e.content), 1)
+    return (e, t) => (k(), x("div", wa, [
+      t[0] || (t[0] = D("svg", {
+        class: "h-5 w-5 text-gray-600 dark:text-gray-300",
+        "aria-hidden": "true",
+        focusable: "false",
+        "data-prefix": "far",
+        "data-icon": "comment",
+        role: "img",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 512 512"
+      }, [
+        D("path", {
+          class: "",
+          fill: "currentColor",
+          d: "M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9c.1-.2 .2-.3 .3-.5z"
+        })
+      ], -1)),
+      D("p", null, B(n.content), 1)
     ]));
   }
-}), xa = /* @__PURE__ */ $(_a, [["__scopeId", "data-v-7de34190"]]), Va = { class: "title" }, Ca = /* @__PURE__ */ W({
+}), pa = /* @__PURE__ */ L(va, [["__scopeId", "data-v-7de34190"]]), ka = { class: "title" }, Ta = /* @__PURE__ */ W({
   __name: "EDTitle",
   props: {
     event: {}
@@ -6036,127 +6153,128 @@ const Ta = /* @__PURE__ */ $(ya, [["render", ka], ["__scopeId", "data-v-bf161d91
   setup(n) {
     return (e, t) => {
       var s, r;
-      return k(), E("div", Va, [
-        (s = e.event) != null && s.color ? (k(), E("span", {
+      return k(), x("div", ka, [
+        (s = n.event) != null && s.color ? (k(), x("span", {
           key: 0,
           class: "circle",
-          style: Ot({ backgroundColor: e.event.color })
-        }, null, 4)) : te("", !0),
-        S("h2", null, G((r = e.event) == null ? void 0 : r.title), 1)
+          style: Mt({ backgroundColor: n.event.color })
+        }, null, 4)) : Q("", !0),
+        D("h2", null, B((r = n.event) == null ? void 0 : r.title), 1)
       ]);
     };
   }
-}), Fa = /* @__PURE__ */ $(Ca, [["__scopeId", "data-v-16f01c17"]]), $a = {
+}), Oa = /* @__PURE__ */ L(Ta, [["__scopeId", "data-v-16f01c17"]]), Sa = {
   key: 0,
   class: "flex justify-between"
-}, La = { key: 1 }, Wa = ["datetime"], za = {
+}, Da = { key: 1 }, Ma = ["datetime"], Ea = {
   key: 0,
   class: "k-alendar-event-detail-main-wrapper"
-}, Aa = { class: "dates" }, Za = ["datetime"], Ra = { key: 1 }, Ha = { class: "events" }, Ua = /* @__PURE__ */ W({
+}, xa = { class: "dates" }, Ia = ["datetime"], ba = { key: 1 }, Na = { class: "events" }, Ca = /* @__PURE__ */ W({
   __name: "KAlendarEventDetailDialog",
-  props: /* @__PURE__ */ Vt({
+  props: /* @__PURE__ */ Lt({
     canEdit: { type: Boolean },
     canDelete: { type: Boolean }
   }, {
     modelValue: { type: Boolean },
     modelModifiers: {}
   }),
-  emits: /* @__PURE__ */ Vt(["edit", "delete", "eventClicked", "eventTitleClicked"], ["update:modelValue"]),
+  emits: /* @__PURE__ */ Lt(["edit", "delete", "eventClicked", "eventTitleClicked"], ["update:modelValue"]),
   setup(n, { emit: e }) {
-    const { formatDate: t } = xt(), { eventSelected: s } = gs(), { calendarDaySelect: r } = ce(), i = mn(n, "modelValue"), a = e, o = (y) => {
-      const p = f.fromISO(y);
-      return p.isValid && (p.hour !== 0 || p.minute !== 0 || p.second !== 0);
+    const { formatDate: t } = Ft(), { eventSelected: s } = ks(), { calendarDaySelect: r } = ue(), i = wn(n, "modelValue"), o = e, a = (y) => {
+      const v = h.fromISO(y);
+      return v.isValid && (v.hour !== 0 || v.minute !== 0 || v.second !== 0);
     }, l = se(() => {
       var y;
       return ((y = s.value) == null ? void 0 : y.id) === "more";
     }), u = se(() => {
       var y;
       return (y = r.value) == null ? void 0 : y.events;
-    }), d = se(() => {
-      var p;
-      const y = (p = r.value) == null ? void 0 : p.day;
-      return y ? t(y, f.DATE_FULL) : "";
+    }), c = se(() => {
+      var v;
+      const y = (v = r.value) == null ? void 0 : v.day;
+      return y ? t(y, h.DATE_FULL) : "";
     }), m = se(() => {
       if (!s.value || !s.value.start_date) return "";
-      const y = o(s.value.start_date) ? f.DATETIME_MED : f.DATE_FULL;
+      const y = a(s.value.start_date) ? h.DATETIME_MED : h.DATE_FULL;
       if (s.value.end_date) {
-        const p = o(s.value.end_date) ? f.DATETIME_MED : f.DATE_FULL, x = t(s.value.start_date, y), H = t(s.value.end_date, p);
-        return `${x} - ${H}`;
+        const v = a(s.value.end_date) ? h.DATETIME_MED : h.DATE_FULL, C = t(s.value.start_date, y), H = t(s.value.end_date, v);
+        return `${C} - ${H}`;
       }
       return `${t(s.value.start_date, y)}`;
-    }), v = () => {
-      a("eventTitleClicked", s.value);
-    }, h = () => {
-      a("edit", s.value);
+    }), p = () => {
+      o("eventTitleClicked", s.value);
+    }, f = () => {
+      o("edit", s.value);
     }, g = () => {
-      a("delete", s.value);
-    }, I = ({ event: y }) => {
-      s.value = y, a("eventClicked", y);
+      o("delete", s.value);
+    }, O = ({ event: y }) => {
+      s.value = y, o("eventClicked", y);
     };
-    return (y, p) => (k(), X(oa, {
+    return (y, v) => (k(), K(ia, {
       modelValue: i.value,
-      "onUpdate:modelValue": p[0] || (p[0] = (x) => i.value = x)
+      "onUpdate:modelValue": v[0] || (v[0] = (C) => i.value = C)
     }, {
-      header: Ct(() => [
-        l.value ? (k(), E("div", La, [
-          S("span", null, [
-            S("time", { datetime: d.value }, G(d.value), 9, Wa)
+      header: $t(() => [
+        l.value ? (k(), x("div", Da, [
+          D("span", null, [
+            D("time", { datetime: c.value }, B(c.value), 9, Ma)
           ])
-        ])) : (k(), E("div", $a, [
-          y.canEdit ? (k(), X(Ta, {
+        ])) : (k(), x("div", Sa, [
+          n.canEdit ? (k(), K(ha, {
             key: 0,
-            onClick: h
-          })) : te("", !0),
-          y.canDelete ? (k(), X(ma, {
+            onClick: f
+          })) : Q("", !0),
+          n.canDelete ? (k(), K(ua, {
             key: 1,
             onClick: g
-          })) : te("", !0)
+          })) : Q("", !0)
         ]))
       ]),
-      default: Ct(() => {
-        var x, H, M;
+      default: $t(() => {
+        var C, H, J;
         return [
-          l.value ? (k(), E("section", Ra, [
-            S("div", Ha, [
-              S("ul", null, [
-                (k(!0), E(Pe, null, Be(u.value, (U) => (k(), X(ws, {
-                  key: U.id,
-                  event: U,
-                  calendar: A(r),
-                  onEventClicked: I
+          l.value ? (k(), x("section", ba, [
+            D("div", Na, [
+              D("ul", null, [
+                (k(!0), x(qe, null, Pe(u.value, (M) => (k(), K(Ts, {
+                  key: M.id,
+                  event: M,
+                  calendar: Z(r),
+                  onEventClicked: O
                 }, null, 8, ["event", "calendar"]))), 128))
               ])
             ])
-          ])) : (k(), E("section", za, [
-            (x = A(s)) != null && x.title ? (k(), X(Fa, {
+          ])) : (k(), x("section", Ea, [
+            (C = Z(s)) != null && C.title ? (k(), K(Oa, {
               key: 0,
-              event: A(s),
-              onClick: v
-            }, null, 8, ["event"])) : te("", !0),
-            S("div", Aa, [
-              S("time", { datetime: m.value }, G(m.value), 9, Za)
+              event: Z(s),
+              onClick: p
+            }, null, 8, ["event"])) : Q("", !0),
+            D("div", xa, [
+              D("time", { datetime: m.value }, B(m.value), 9, Ia)
             ]),
-            (H = A(s)) != null && H.autor ? (k(), X(Ea, {
+            (H = Z(s)) != null && H.autor ? (k(), K(ga, {
               key: 1,
-              autor: A(s).autor
-            }, null, 8, ["autor"])) : te("", !0),
-            (M = A(s)) != null && M.description ? (k(), X(xa, {
+              autor: Z(s).autor
+            }, null, 8, ["autor"])) : Q("", !0),
+            (J = Z(s)) != null && J.description ? (k(), K(pa, {
               key: 2,
-              content: A(s).description
-            }, null, 8, ["content"])) : te("", !0)
+              content: Z(s).description
+            }, null, 8, ["content"])) : Q("", !0)
           ]))
         ];
       }),
       _: 1
     }, 8, ["modelValue"]));
   }
-}), qa = /* @__PURE__ */ $(Ua, [["__scopeId", "data-v-59bb36ea"]]), Ya = { class: "k-alendar-wrapper-container" }, Pa = /* @__PURE__ */ W({
+}), Va = /* @__PURE__ */ L(Ca, [["__scopeId", "data-v-59bb36ea"]]), _a = { class: "k-alendar-wrapper-container" }, Fa = /* @__PURE__ */ W({
   __name: "KAlendar",
   props: {
     events: {},
     lang: {},
     canEdit: { type: Boolean },
-    canDelete: { type: Boolean }
+    canDelete: { type: Boolean },
+    withDefaultModal: { type: Boolean }
   },
   emits: [
     "delete",
@@ -6165,65 +6283,72 @@ const Ta = /* @__PURE__ */ $(ya, [["render", ka], ["__scopeId", "data-v-bf161d91
     "eventTitleClicked",
     "nextMonth",
     "prevMonth",
-    "toToday"
+    "toToday",
+    "plusEventCountClicked"
   ],
   setup(n, { emit: e }) {
-    const t = e, s = n, { setLang: r } = $e(), { openEventsDetailDialog: i, dialogPositionToRender: a, closeDialog: o } = Tt(), { eventsToShowInCalendar: l, generateCalendar: u, monthDays: d, currentDate: m } = ce(), v = (M) => {
+    const t = e, s = n, { setLang: r } = Le(), { openEventsDetailDialog: i, dialogPositionToRender: o, closeDialog: a } = Dt(), { eventsToShowInCalendar: l, generateCalendar: u, monthDays: c, currentDate: m } = ue(), p = (M) => {
       t("prevMonth", M);
-    }, h = (M) => {
+    }, f = (M) => {
       t("nextMonth", M);
     }, g = (M) => {
       t("toToday", M);
-    }, I = () => {
-      l.value = s.events, d.value = u(m.value.toFormat("yyyy-MM-dd"));
+    }, O = () => {
+      l.value = s.events, c.value = u(m.value.toFormat("yyyy-MM-dd"));
     };
-    mt(
+    ft(
       () => s.lang,
       (M) => {
         M && r(M);
       },
       { immediate: !0 }
-    ), mt(
+    ), ft(
       s,
       ({ events: M }) => {
-        M && I();
+        M && O();
       },
       { immediate: !0, deep: !0 }
     );
     const y = (M) => {
       t("eventClicked", M);
-    }, p = (M) => {
-      t("eventTitleClicked", { event: M, closeDialog: o });
-    }, x = (M) => {
-      t("edit", { event: M, closeDialog: o });
+    }, v = (M) => {
+      t("eventTitleClicked", { event: M, closeDialog: a });
+    }, C = (M) => {
+      t("edit", { event: M, closeDialog: a });
     }, H = (M) => {
-      t("delete", { event: M, closeDialog: o });
+      t("delete", { event: M, closeDialog: a });
+    }, J = ({ events: M }) => {
+      t("plusEventCountClicked", { events: M, closeDialog: a });
     };
-    return (M, U) => (k(), E("section", Ya, [
-      oe(Pi, {
-        onHandlePrevMonth: v,
-        onHandleNextMonth: h,
+    return (M, ce) => (k(), x("section", _a, [
+      ye(Yi, {
+        onHandlePrevMonth: p,
+        onHandleNextMonth: f,
         onHandleToToday: g
       }),
-      oe(Fi),
-      oe(na, { onEventClicked: y }),
-      oe(qa, {
-        modelValue: A(i),
-        "onUpdate:modelValue": U[0] || (U[0] = (Se) => Es(i) ? i.value = Se : null),
-        canDelete: M.canDelete,
-        canEdit: M.canEdit,
+      ye(Fi),
+      ye(na, {
         onEventClicked: y,
-        onEventTitleClicked: p,
-        onEdit: x,
+        onPlusEventCountClicked: J
+      }),
+      n.withDefaultModal ? (k(), K(Va, {
+        key: 0,
+        modelValue: Z(i),
+        "onUpdate:modelValue": ce[0] || (ce[0] = (tt) => bs(i) ? i.value = tt : null),
+        canDelete: n.canDelete,
+        canEdit: n.canEdit,
+        onEventClicked: y,
+        onEventTitleClicked: v,
+        onEdit: C,
         onDelete: H,
-        style: Ot({
-          top: `${A(a).y}px`,
-          left: `${A(a).x}px`
+        style: Mt({
+          top: `${Z(o).y}px`,
+          left: `${Z(o).x}px`
         })
-      }, null, 8, ["modelValue", "canDelete", "canEdit", "style"])
+      }, null, 8, ["modelValue", "canDelete", "canEdit", "style"])) : Q("", !0)
     ]));
   }
-}), Ga = /* @__PURE__ */ $(Pa, [["__scopeId", "data-v-3b717708"]]);
+}), $a = /* @__PURE__ */ L(Fa, [["__scopeId", "data-v-435be947"]]);
 export {
-  Ga as KAlendar
+  $a as KAlendar
 };
