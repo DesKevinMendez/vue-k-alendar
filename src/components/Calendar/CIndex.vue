@@ -64,6 +64,7 @@ const selectThisDate = (calendar: MonthDays) => {
           start_date: '',
           description: ''
         }
+        emit('plusEventCountClicked', { events: calendar.events })
       }
 
       calendarDaySelect.value = calendar
