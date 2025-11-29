@@ -6,8 +6,9 @@
       @handleToToday="handleToToday"
     />
     <CDays />
-    <CIndex  @eventClicked="eventClickedFromDialog" />
+    <CIndex @eventClicked="eventClickedFromDialog" @plusEventCountClicked="plusEventCountClickedFromDialog" />
     <KAlendarEventDetailDialog
+      v-if="withDefaultModal"
       v-model="openEventsDetailDialog"
       :canDelete="canDelete"
       :canEdit="canEdit"
@@ -41,7 +42,8 @@ const emit = defineEmits([
   'eventTitleClicked',
   'nextMonth',
   'prevMonth',
-  'toToday'
+  'toToday',
+  'plusEventCountClicked'
 ])
 
 const props = defineProps<{
@@ -49,6 +51,7 @@ const props = defineProps<{
   lang?: string
   canEdit?: boolean
   canDelete?: boolean
+  withDefaultModal?: boolean
 }>()
 
 const { setLang } = useConfig()
@@ -107,6 +110,10 @@ const edit = (event: KEvent) => {
 const deleteEvent = (event: KEvent) => {
   emit('delete', { event, closeDialog })
 }
+
+const plusEventCountClickedFromDialog = ({ events }: { events: KEvent[] }) => {
+  emit('plusEventCountClicked', { events, closeDialog })
+}
 </script>
 
 <style scoped lang="postcss">
@@ -117,5 +124,4 @@ const deleteEvent = (event: KEvent) => {
 button {
   @apply hover:bg-[#ebeef5] transition-colors dark:hover:bg-slate-600;
 }
-
 </style>

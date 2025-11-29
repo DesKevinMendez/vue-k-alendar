@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 const lang = ref<string>('en')
 const canEdit = ref<boolean>(true)
 const canDelete = ref<boolean>(true)
+const withDefaultModal = ref<boolean>(true)
 
 const events = ref<KEvent[]>([])
 
@@ -67,6 +68,10 @@ const eventTitleClicked = (event: KEventDialogEmit) => {
   event.closeDialog()
 }
 
+const plusEventCountClickedFromDialog = (events: KEvent[]) => {
+  console.log('plusEventCountClickedFromDialog', events)
+}
+
 onMounted(() => {
   for (let i = 0; i < 30; i++) {
     duplicateRandomEvent(i + 1)
@@ -107,6 +112,12 @@ onMounted(() => {
       >
         Can delete: {{ canDelete ? 'Yes' : 'No' }}
       </button>
+      <button
+        class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+        @click="withDefaultModal = !withDefaultModal"
+      >
+        With default modal: {{ withDefaultModal ? 'Yes' : 'No' }}
+      </button>
     </div>
   </header>
 
@@ -114,11 +125,13 @@ onMounted(() => {
     <k-alendar
       :can-edit="canEdit"
       :can-delete="canDelete"
+      :with-default-modal="withDefaultModal"
       :lang
       :events
       @toToday="toToday"
       @eventClicked="eventClicked"
       @eventTitleClicked="eventTitleClicked"
+      @plusEventCountClicked="plusEventCountClickedFromDialog"
       @prevMonth="prevMonth"
       @nextMonth="nextMonth"
       @delete="deleteEvent"

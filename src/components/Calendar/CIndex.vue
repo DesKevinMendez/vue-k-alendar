@@ -39,7 +39,7 @@ const { openEventsDetailDialog, dialogPositionToRender } = useDialog()
 const { monthDays, calendarDaySelect } = useRenderCalendar()
 const { eventSelected } = useEvent()
 const { collision } = useDialog()
-const emit = defineEmits(['eventClicked'])
+const emit = defineEmits(['eventClicked', 'plusEventCountClicked'])
 const dateRefs = ref<Record<string, any>>({})
 
 const selectThisDate = (calendar: MonthDays) => {
@@ -98,7 +98,9 @@ const eventClicked = ({
   }
 
   if (event.id != 'more') {
-    emit('eventClicked',  event )
+    emit('eventClicked', event)
+  } else {
+    emit('plusEventCountClicked', { events: calendarDaySelect.value.events })
   }
 }
 
