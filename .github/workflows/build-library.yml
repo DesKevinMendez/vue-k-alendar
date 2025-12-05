@@ -85,3 +85,27 @@ jobs:
             echo "PUBLISH_NEW_RELEASE=true" >> $GITHUB_ENV
             echo "The release must be published"
           fi
+          
+          # Store version in environment variable for next step
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Publish release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Check if we should publish the release
+          if [ "$PUBLISH_NEW_RELEASE" != "true" ]; then
+            echo "Skipping release publication (PUBLISH_NEW_RELEASE is not true)"
+            exit 0
+          fi
+          
+          # Get the version from package.json
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="v${VERSION}"
+          
+          echo "Publishing release with tag: $TAG"
+          
+          # Create release using GitHub CLI
+          gh release create "$TAG" --title "$TAG" --notes "Release $TAG"
+          
+          echo "Release $TAG published successfully"
