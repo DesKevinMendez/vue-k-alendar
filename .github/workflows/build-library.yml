@@ -103,9 +103,9 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           TAG="v${VERSION}"
           
-          echo "Publishing release with tag: $TAG"
+          echo "Publishing release with tag: $TAG from library branch"
           
-          # Create release using GitHub CLI
-          gh release create "$TAG" --title "$TAG" --notes "Release $TAG"
+          # Create release using GitHub CLI from library branch
+          gh release create "$TAG" --target library --title "$TAG" --notes "Release $TAG"
           
           echo "Release $TAG published successfully"
