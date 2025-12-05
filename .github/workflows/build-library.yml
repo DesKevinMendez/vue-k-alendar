@@ -61,18 +61,27 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-library
     steps:
+      - uses: actions/checkout@v4
+
       - name: Check if the release already exists
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if gh release view ${{ github.ref_name }}; then
-            echo "Release already exists"
-            exit 0
+          # Get the version from the package.json
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $VERSION"
+          
+          # List the last 5 releases using GitHub CLI
+          RELEASES=$(gh release list --limit 5 --json tagName --jq '.[].tagName' | sed 's/^v//')
+          
+          echo "Releases encontradas:"
+          echo "$RELEASES"
+          
+          # Check if the version already exists
+          if echo "$RELEASES" | grep -q "^${VERSION}$"; then
+            echo "PUBLISH_NEW_RELEASE=false" >> $GITHUB_ENV
+            echo "release already exists"
           else
-            echo "Release does not exist"
-            exit 1
+            echo "PUBLISH_NEW_RELEASE=true" >> $GITHUB_ENV
+            echo "The release must be published"
           fi
-      - name: Create release
-        run: |
-          gh release create ${{ github.ref_name }} --title ${{ github.ref_name }} --notes ${{ github.event.head_commit.message }}
-      - name: Upload assets
-        run: |
-          gh release upload ${{ github.ref_name }} builds/dist/*
