@@ -3,8 +3,7 @@ name: build-library
 on:
   # trigger deployment on every push to main branch
   push:
-    # branches: [main]
-    branches: [github-actions-publish-version]
+    branches: [main]
   # trigger deployment manually
   workflow_dispatch:
 
