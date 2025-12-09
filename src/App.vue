@@ -117,7 +117,7 @@ onMounted(() => {
         class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
         @click="view = view === 'calendar' ? 'list' : 'calendar'"
       >
-        View list
+        View {{ view === 'calendar' ? 'list' : 'calendar' }}
       </button>
     </div>
   </header>
