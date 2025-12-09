@@ -1,0 +1,168 @@
+name: publish-release
+
+on:
+  # trigger deployment on every push to main branch
+  push:
+    branches: [main]
+  # trigger deployment manually
+  workflow_dispatch:
+
+jobs:
+  build-library:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # fetch all commits to get last updated time or other git log info
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          # choose pnpm version to use
+          version: 10
+          # install deps with pnpm
+          run_install: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # choose node.js version to use
+          node-version: 20
+          # cache deps for pnpm
+          cache: pnpm
+
+      # run build script
+      - name: Build library
+        run: pnpm build
+
+      - name: Copy assets
+        run: rm -rf builds && mkdir builds && mv dist builds/dist
+
+      - name: Copy package.json
+        run: cp package.json builds
+
+      - name: Copy README.md
+        run: cp README.md builds
+
+      - name: Push
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: library # The branch name where you want to push the assets
+          FOLDER: builds # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+          MESSAGE: 'Build ✍🏻: ({sha}) {msg}' # The commit message
+
+  publish-release:
+    runs-on: ubuntu-latest
+    needs: build-library
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check if the release already exists
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get the version from the package.json
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $VERSION"
+          
+          # List the last 5 releases using GitHub CLI
+          RELEASES=$(gh release list --limit 5 --json tagName --jq '.[].tagName' | sed 's/^v//')
+          
+          echo "Releases encontradas:"
+          echo "$RELEASES"
+          
+          # Check if the version already exists
+          if echo "$RELEASES" | grep -q "^${VERSION}$"; then
+            echo "PUBLISH_NEW_RELEASE=false" >> $GITHUB_ENV
+            echo "release already exists"
+          else
+            echo "PUBLISH_NEW_RELEASE=true" >> $GITHUB_ENV
+            echo "The release must be published"
+          fi
+          
+          # Store version in environment variable for next step
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Publish release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Check if we should publish the release
+          if [ "$PUBLISH_NEW_RELEASE" != "true" ]; then
+            echo "Skipping release publication (PUBLISH_NEW_RELEASE is not true)"
+            exit 0
+          fi
+          
+          # Get the version from package.json
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="v${VERSION}"
+          
+          echo "Publishing release with tag: $TAG from library branch"
+          
+          # Create release using GitHub CLI from library branch
+          gh release create "$TAG" --target library --title "$TAG" --notes "Release $TAG"
+          
+          echo "Release $TAG published successfully"
+
+  publish-npm:
+    runs-on: ubuntu-latest
+    needs: publish-release
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@deskevinmendez'
+
+      - name: Check if version exists in npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          
+          echo "Checking if version ${VERSION} already exists in npm..."
+          
+          if npm view "${PACKAGE_NAME}@${VERSION}" version > /dev/null 2>&1; then
+            echo "Version ${VERSION} already exists in npm, skipping publication"
+            echo "PUBLISH_NEW_RELEASE=false" >> $GITHUB_ENV
+          else
+            echo "Version ${VERSION} does not exist in npm, will publish"
+            echo "PUBLISH_NEW_RELEASE=true" >> $GITHUB_ENV
+          fi
+
+      - name: Setup pnpm
+        if: env.PUBLISH_NEW_RELEASE == 'true'
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Setup Node.js for pnpm
+        if: env.PUBLISH_NEW_RELEASE == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@deskevinmendez'
+          cache: pnpm
+
+      - name: Install dependencies
+        if: env.PUBLISH_NEW_RELEASE == 'true'
+        run: pnpm install
+
+      - name: Build library
+        if: env.PUBLISH_NEW_RELEASE == 'true'
+        run: pnpm build
+
+      - name: Publish to npmjs.com
+        if: env.PUBLISH_NEW_RELEASE == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --no-git-checks
