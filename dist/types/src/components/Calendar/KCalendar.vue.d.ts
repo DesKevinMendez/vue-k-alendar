@@ -4,5 +4,5 @@ declare const _default: import('vue').DefineComponent<{}, {}, {}, {}, {}, import
 }, string, import('vue').PublicProps, Readonly<{}> & Readonly<{
     onEventClicked?: ((...args: any[]) => any) | undefined;
     onPlusEventCountClicked?: ((...args: any[]) => any) | undefined;
-}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, HTMLDivElement>;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;

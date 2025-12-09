@@ -1,3 +1,4 @@
+import { View } from '../types/Calendar';
 import { KEvent } from '../types/Events';
 type __VLS_Props = {
     events: KEvent[];
@@ -5,6 +6,7 @@ type __VLS_Props = {
     canEdit?: boolean;
     canDelete?: boolean;
     withDefaultModal?: boolean;
+    view?: View;
 };
 declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     delete: (...args: any[]) => void;
