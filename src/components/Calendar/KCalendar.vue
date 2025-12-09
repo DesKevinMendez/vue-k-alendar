@@ -1,4 +1,5 @@
 <template>
+  <KWeekDays />
   <div class="k-alendar-container">
     <div
       v-for="calendar in monthDays"
@@ -34,6 +35,7 @@ import useRenderCalendar from '@/composables/useRenderCalendar'
 import type { DayCalendar, KEvent, MonthDays } from '@/types'
 import { ref } from 'vue'
 import KEventItem from '../KEventItem.vue'
+import KWeekDays from './KWeekDays.vue'
 
 const { openEventsDetailDialog, dialogPositionToRender } = useDialog()
 const { monthDays, calendarDaySelect } = useRenderCalendar()

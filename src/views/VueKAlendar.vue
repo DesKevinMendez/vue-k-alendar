@@ -5,7 +5,6 @@
       @handleNextMonth="handleNextMonth"
       @handleToToday="handleToToday"
     />
-    <KWeekDays />
     <KAlendar
       v-if="view === 'calendar'"
       @eventClicked="eventClicked"
@@ -34,14 +33,13 @@
 import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
 import useRenderCalendar from '@/composables/useRenderCalendar'
+import type { View } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
 import { watch } from 'vue'
-import KWeekDays from '../components/Calendar/KWeekDays.vue'
-import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KAlendar from '../components/Calendar/KCalendar.vue'
+import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
 import KListCalendar from '../components/List/KListCalendar.vue'
-import type { View } from '@/types/Calendar'
 
 const emit = defineEmits([
   'delete',
