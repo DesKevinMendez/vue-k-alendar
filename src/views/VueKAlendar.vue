@@ -6,7 +6,7 @@
       @handleToToday="handleToToday"
     />
     <KAlendar
-      v-if="view === 'calendar'"
+      v-if="defaultView === 'calendar'"
       @eventClicked="eventClicked"
       @plusEventCountClicked="plusEventCountClickedFromDialog"
     />
@@ -35,7 +35,7 @@ import { useDialog } from '@/composables/useDialog'
 import useRenderCalendar from '@/composables/useRenderCalendar'
 import type { View } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
-import { watch } from 'vue'
+import { computed, watch } from 'vue'
 import KAlendar from '../components/Calendar/KCalendar.vue'
 import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
@@ -60,6 +60,10 @@ const props = defineProps<{
   withDefaultModal?: boolean
   view?: View
 }>()
+
+const defaultView = computed(() => {
+  return props.view || 'calendar'
+})
 
 const { setLang } = useConfig()
 const { openEventsDetailDialog, dialogPositionToRender, closeDialog } = useDialog()
