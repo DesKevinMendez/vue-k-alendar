@@ -9,11 +9,21 @@ The `@deskevinmendez/vue-k-alendar` is a simple calendar created without depende
   <img src="./.vuepress/public/img/light-mode.png" alt="LightMode" width="300">
 </div>
 
+## Dark mode support
+
+<div style="margin: 0 auto; padding-top: 16px;">
+  <img src="./.vuepress/public/img/list-dark-mode.png" alt="DarkMode" width="300">
+  <img src="./.vuepress/public/img/list-light-mode.png" alt="LightMode" width="300">
+</div>
+
 Mobile support
 
-<div style="display:flex; gap: 16px; justify-content:center;">
+<div style="margin: 0 auto; padding-top: 16px;">
   <img src="./.vuepress/public/img/mobile-version.png" alt="MobileVersion" width="300">
+  <img src="./.vuepress/public/img/list-mobile-version.png" alt="MobileVersion" width="300">
 </div>
+
+
 
 ## Installation
 
