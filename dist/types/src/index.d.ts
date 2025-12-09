@@ -1,3 +1,3 @@
-import { default as KAlendar } from './components/KAlendar.vue';
+import { default as KAlendar } from './views/VueKAlendar.vue';
 export type * from './types/Events';
 export { KAlendar };
