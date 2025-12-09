@@ -1,8 +1,9 @@
 import KListCalendar from '@/components/List/KListCalendar.vue';
 
 import { mount, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, nextTick } from 'vitest';
 import type { KEvent } from '@/types/Events';
+import useConfig from '@/composables/useConfig';
 
 describe('KListCalendar', () => {
   let wrapper: VueWrapper<KListCalendar>;
@@ -53,7 +54,6 @@ describe('KListCalendar', () => {
       });
     });
 
-
     it('should render the list of events ordered by start date', () => {
       const events = wrapper.findAll('.k-list-calendar-event');
       expect(events[0].find('.k-list-calendar-event-title-text').text()).toBe('Event 2');
@@ -88,6 +88,21 @@ describe('KListCalendar', () => {
     it('should view all day when the event has no time', () => {
       const eventsKListCalendar = wrapper.findAll('.k-list-calendar-event');
       expect(eventsKListCalendar[0].find('.k-list-calendar-event-time').text()).toBe('All day');
+    });
+
+    it('should view Todo el día when the event has no time', async () => {
+      const { setLang } = useConfig();
+      setLang('es');
+
+      wrapper = mount(KListCalendar, {
+        props: {
+          events,
+        },
+      });
+
+      const eventTime = wrapper.find('.k-list-calendar-event-time');
+      expect(eventTime.text()).toBe('Todo el día');
+      setLang('en');
     });
   })
 

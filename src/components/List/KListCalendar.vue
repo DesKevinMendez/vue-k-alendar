@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import useConfig from '@/composables/useConfig';
 import type { KEvent } from '@/types/Events'
 import { DateTime } from 'luxon'
 import { computed, toRef } from 'vue'
+import { translations } from '@/locales/traductions'
+const { lang } = useConfig()
 
 const props = defineProps<{
   events: KEvent[]
@@ -23,7 +26,7 @@ const orderEventsByStartAt = computed(() => {
 })
 
 const formatDate = (date: string) => {
-  return DateTime.fromISO(date).toFormat('EEEE, dd MMMM yyyy')
+  return DateTime.fromISO(date).setLocale(lang.value).toFormat('EEEE, dd MMMM yyyy')
 }
 
 const hasTime = (date: string) => {
@@ -40,7 +43,7 @@ const time = (event: KEvent) => {
   const dateHasTime = hasTime(date)
   
   if (!dateHasTime) {
-    return 'All day'
+    return translations[lang.value]?.allDay || 'All day'
   }
 
   if (event.end_date) {
@@ -66,8 +69,8 @@ const eventClicked = (event: KEvent) => {
   <div class="k-list-calendar-container">
     <div v-for="[day, events] in Object.entries(orderEventsByStartAt)" :key="day">
       <div class="day-header">
-        <p>{{ formatDate(day) }}</p>
-        <h3>{{ formatDay(day) }}</h3>
+        <p class="day-header-full-date">{{ formatDate(day) }}</p>
+        <h3 class="day-header-simple-date">{{ formatDay(day) }}</h3>
       </div>
       <div v-for="event in events" :key="event.id" class="k-list-calendar-event" @click="eventClicked(event)">
         <h4 class="k-list-calendar-event-time">{{ time(event) }}</h4>
@@ -90,6 +93,12 @@ const eventClicked = (event: KEvent) => {
 <style scoped lang="postcss">
 .day-header {
   @apply flex justify-between items-center  p-2 bg-[#ebeef5] transition-colors dark:bg-slate-600;
+  .day-header-full-date {
+    @apply capitalize;
+  }
+  .day-header-simple-date {
+    @apply font-bold;
+  }
 }
 .k-list-calendar-event {
   @apply border-gray-200 border-t dark:border-slate-600 p-2 flex gap-x-4 hover:bg-[#f5f7fb] transition-colors hover:dark:bg-slate-700 hover:cursor-pointer;
