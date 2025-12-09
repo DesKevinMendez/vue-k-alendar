@@ -6,13 +6,19 @@
       @handleToToday="handleToToday"
     />
     <KWeekDays />
-    <KAlendar @eventClicked="eventClickedFromDialog" @plusEventCountClicked="plusEventCountClickedFromDialog" />
+    <KAlendar
+      v-if="view === 'calendar'"
+      @eventClicked="eventClicked"
+      @plusEventCountClicked="plusEventCountClickedFromDialog"
+    />
+
+    <KListCalendar v-else :events="events" @eventClicked="eventClicked" />
     <KAlendarEventDetailDialog
       v-if="withDefaultModal"
       v-model="openEventsDetailDialog"
       :canDelete="canDelete"
       :canEdit="canEdit"
-      @eventClicked="eventClickedFromDialog"
+      @eventClicked="eventClicked"
       @eventTitleClicked="eventTitleClicked"
       @edit="edit"
       @delete="deleteEvent"
@@ -34,6 +40,8 @@ import KWeekDays from '../components/Calendar/KWeekDays.vue'
 import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KAlendar from '../components/Calendar/KCalendar.vue'
 import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
+import KListCalendar from '../components/List/KListCalendar.vue'
+import type { View } from '@/types/Calendar'
 
 const emit = defineEmits([
   'delete',
@@ -52,6 +60,7 @@ const props = defineProps<{
   canEdit?: boolean
   canDelete?: boolean
   withDefaultModal?: boolean
+  view?: View
 }>()
 
 const { setLang } = useConfig()
@@ -95,7 +104,7 @@ watch(
   { immediate: true, deep: true }
 )
 
-const eventClickedFromDialog = (event: KEvent) => {
+const eventClicked = (event: KEvent) => {
   emit('eventClicked', event)
 }
 

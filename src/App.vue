@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import KAlendar from '@/views/VueKAlendar.vue'
+import VueKAlendar from '@/views/VueKAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
 import { v4 as uuidv4 } from 'uuid'
+import type { View } from './types/Calendar'
 const lang = ref<string>('en')
 const canEdit = ref<boolean>(true)
 const canDelete = ref<boolean>(true)
 const withDefaultModal = ref<boolean>(true)
-
+const view = ref<View>('list')
 const events = ref<KEvent[]>([])
 
 const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
@@ -118,11 +119,17 @@ onMounted(() => {
       >
         With default modal: {{ withDefaultModal ? 'Yes' : 'No' }}
       </button>
+      <button
+        class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+        @click="view = view === 'calendar' ? 'list' : 'calendar'"
+      >
+        View list
+      </button>
     </div>
   </header>
 
   <main class="p-4">
-    <k-alendar
+    <VueKAlendar
       :can-edit="canEdit"
       :can-delete="canDelete"
       :with-default-modal="withDefaultModal"
@@ -136,6 +143,7 @@ onMounted(() => {
       @nextMonth="nextMonth"
       @delete="deleteEvent"
       @edit="editEvent"
+      :view="view"
     />
   </main>
 </template>
