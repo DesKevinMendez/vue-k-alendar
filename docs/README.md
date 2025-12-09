@@ -136,6 +136,7 @@ The calendar component has been created with tailwind, and support the dark mode
 | `canEdit`          | Boolean | `'undefined'` | Show/hidden icon of the edit in event detail   |
 | `canDelete`        | Boolean | `'undefined'` | Show/hidden icon of the delete in event detail |
 | `withDefaultModal` | Boolean | `'true'`      | Show/hidden the default modal in the calendar. |
+| `view`             | String  | `'calendar'`  | View of the calendar (e.g., 'calendar', 'list'). |
 
 ## Events
 
