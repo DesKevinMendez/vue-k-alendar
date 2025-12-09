@@ -1,12 +1,12 @@
 <template>
   <section class="k-alendar-wrapper-container">
-    <CHeader
+    <KCalendarHeader
       @handlePrevMonth="handlePrevMonth"
       @handleNextMonth="handleNextMonth"
       @handleToToday="handleToToday"
     />
-    <CDays />
-    <CIndex @eventClicked="eventClickedFromDialog" @plusEventCountClicked="plusEventCountClickedFromDialog" />
+    <KWeekDays />
+    <KAlendar @eventClicked="eventClickedFromDialog" @plusEventCountClicked="plusEventCountClickedFromDialog" />
     <KAlendarEventDetailDialog
       v-if="withDefaultModal"
       v-model="openEventsDetailDialog"
@@ -30,10 +30,10 @@ import { useDialog } from '@/composables/useDialog'
 import useRenderCalendar from '@/composables/useRenderCalendar'
 import type { KEvent } from '@/types/Events'
 import { watch } from 'vue'
-import CDays from './Calendar/CDays.vue'
-import CHeader from './Calendar/CHeader.vue'
-import CIndex from './Calendar/CIndex.vue'
-import KAlendarEventDetailDialog from './KAlendarEventDetailDialog.vue'
+import KWeekDays from '../components/Calendar/KWeekDays.vue'
+import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
+import KAlendar from '../components/Calendar/KCalendar.vue'
+import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
 
 const emit = defineEmits([
   'delete',

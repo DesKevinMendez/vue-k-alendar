@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import KAlendar from '@/components/KAlendar.vue'
+import KAlendar from '@/views/VueKAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
 import { v4 as uuidv4 } from 'uuid'
