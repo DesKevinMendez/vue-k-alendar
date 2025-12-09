@@ -26,8 +26,36 @@ const formatDate = (date: string) => {
   return DateTime.fromISO(date).toFormat('EEEE, dd MMMM yyyy')
 }
 
-const time = (date: string) => {
-  return DateTime.fromISO(date).toFormat('HH:mm')
+const hasTime = (date: string) => {
+  return DateTime.fromISO(date).hour !== 0 || DateTime.fromISO(date).minute !== 0 || DateTime.fromISO(date).second !== 0
+}
+
+const time = (event: KEvent) => {
+  const date = event.start_date
+  const dateIsValid = DateTime.fromISO(date).isValid
+  if (!dateIsValid) {
+    return '-'
+  }
+  
+  const dateHasTime = hasTime(date)
+  
+  if (!dateHasTime) {
+    return 'All day'
+  }
+
+  if (event.end_date) {
+    const endDate = event.end_date
+    const endDateIsValid = DateTime.fromISO(endDate).isValid
+    const endDateHasTime = hasTime(endDate)
+    if (endDateIsValid && endDateHasTime) {
+      return `${DateTime.fromISO(date).toFormat('hh:mm a')} - ${DateTime.fromISO(endDate).toFormat('hh:mm a')}`;
+    }
+  }
+  return DateTime.fromISO(date).toFormat('hh:mm a');
+}
+
+const formatDay = (date: string) => {
+  return DateTime.fromISO(date).toFormat('yyyy-MM-dd')
 }
 
 const eventClicked = (event: KEvent) => {
@@ -39,10 +67,10 @@ const eventClicked = (event: KEvent) => {
     <div v-for="[day, events] in Object.entries(orderEventsByStartAt)" :key="day">
       <div class="day-header">
         <p>{{ formatDate(day) }}</p>
-        <h3>{{ day }}</h3>
+        <h3>{{ formatDay(day) }}</h3>
       </div>
       <div v-for="event in events" :key="event.id" class="k-list-calendar-event" @click="eventClicked(event)">
-        <h4>{{ time(event.start_date) }}</h4>
+        <h4 class="k-list-calendar-event-time">{{ time(event) }}</h4>
         <div class="k-list-calendar-event-title">
           <div class="k-list-calendar-event-title-container">
             <span
@@ -50,9 +78,9 @@ const eventClicked = (event: KEvent) => {
               :style="{ backgroundColor: event.color }"
               class="k-list-calendar-event-title-color"
             />
-            <h2>{{ event.title }}</h2>
+            <h2 class="k-list-calendar-event-title-text">{{ event.title }}</h2>
           </div>
-          <p>{{ event.description }}</p>
+          <p class="k-list-calendar-event-description">{{ event.description }}</p>
         </div>
       </div>
     </div>
