@@ -2,6 +2,7 @@ export type Translations = {
     dayView: string;
     monthView: string;
     allDay: string;
+    nothingToShow: string;
     buttons: {
         today: string;
     };
