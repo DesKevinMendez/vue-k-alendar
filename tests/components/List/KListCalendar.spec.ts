@@ -1,7 +1,7 @@
 import KListCalendar from '@/components/List/KListCalendar.vue';
 
 import { mount, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect, beforeEach, nextTick } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import type { KEvent } from '@/types/Events';
 import useConfig from '@/composables/useConfig';
 
@@ -176,6 +176,41 @@ describe('KListCalendar', () => {
 
       const kListCalendarEventTime = wrapper.findAll('.k-list-calendar-event-time');
       expect(kListCalendarEventTime[0].text()).toBe('12:45 PM');
+    });
+  });
+
+  describe('Events empty', () => {
+    beforeEach(() => {
+      wrapper = mount(KListCalendar, {
+        props: {
+          events: [],
+        },
+      });
+    });
+    
+    it('should not render any event', async () => {
+      const kListCalendarEventTime = wrapper.findAll('.k-list-calendar-event-time');
+      expect(kListCalendarEventTime.length).toBe(0);
+    });
+
+    it('Should see the message "No events found"', async () => {
+      const nothingToShow = wrapper.find('.nothing-to-show-message');
+      expect(nothingToShow.text()).toBe('No events found');
+    });
+
+    it('Should see the message "Nothing to show" in spanish', async () => {
+      const { setLang } = useConfig();
+      setLang('es');
+
+      wrapper = mount(KListCalendar, {
+        props: {
+          events: [],
+        },
+      });
+
+      const nothingToShow = wrapper.find('.nothing-to-show-message');
+      expect(nothingToShow.text()).toBe('No se encontraron eventos');
+      setLang('en');
     });
   });
 });
