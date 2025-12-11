@@ -11,7 +11,7 @@
       @plusEventCountClicked="plusEventCountClickedFromDialog"
     />
 
-    <KListCalendar v-else :events="events" @eventClicked="eventClicked" />
+    <KListCalendar v-else :events="eventsRecieved" @eventClicked="eventClicked" />
     <KAlendarEventDetailDialog
       v-if="withDefaultModal"
       v-model="openEventsDetailDialog"
@@ -63,6 +63,10 @@ const props = defineProps<{
 
 const defaultView = computed(() => {
   return props.view || 'calendar'
+})
+
+const eventsRecieved = computed(() => {
+  return props.events
 })
 
 const { setLang } = useConfig()

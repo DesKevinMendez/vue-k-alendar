@@ -2,7 +2,7 @@
 import useConfig from '@/composables/useConfig';
 import type { KEvent } from '@/types/Events'
 import { DateTime } from 'luxon'
-import { computed, toRef } from 'vue'
+import { computed } from 'vue'
 import { translations } from '@/locales/traductions'
 const { lang } = useConfig()
 
@@ -10,7 +10,9 @@ const props = defineProps<{
   events: KEvent[]
 }>()
 
-const events = toRef(props.events)
+const events = computed(() => {
+  return props.events
+})
 const emit = defineEmits(['eventClicked'])
 const orderEventsByDate = computed(() => {
   return events.value.slice().sort((a: KEvent, b: KEvent) => {
