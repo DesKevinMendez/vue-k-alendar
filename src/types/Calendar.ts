@@ -13,3 +13,5 @@ export type DayCalendar = {
   events: KEvent[]
   text: string
 }
+
+export type View = 'list' | 'calendar'

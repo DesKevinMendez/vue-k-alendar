@@ -5,14 +5,19 @@
       @handleNextMonth="handleNextMonth"
       @handleToToday="handleToToday"
     />
-    <KWeekDays />
-    <KAlendar @eventClicked="eventClickedFromDialog" @plusEventCountClicked="plusEventCountClickedFromDialog" />
+    <KAlendar
+      v-if="defaultView === 'calendar'"
+      @eventClicked="eventClicked"
+      @plusEventCountClicked="plusEventCountClickedFromDialog"
+    />
+
+    <KListCalendar v-else :events="eventsRecieved" @eventClicked="eventClicked" />
     <KAlendarEventDetailDialog
       v-if="withDefaultModal"
       v-model="openEventsDetailDialog"
       :canDelete="canDelete"
       :canEdit="canEdit"
-      @eventClicked="eventClickedFromDialog"
+      @eventClicked="eventClicked"
       @eventTitleClicked="eventTitleClicked"
       @edit="edit"
       @delete="deleteEvent"
@@ -28,12 +33,13 @@
 import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
 import useRenderCalendar from '@/composables/useRenderCalendar'
+import type { View } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
-import { watch } from 'vue'
-import KWeekDays from '../components/Calendar/KWeekDays.vue'
-import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
+import { computed, watch } from 'vue'
 import KAlendar from '../components/Calendar/KCalendar.vue'
+import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
+import KListCalendar from '../components/List/KListCalendar.vue'
 
 const emit = defineEmits([
   'delete',
@@ -52,7 +58,16 @@ const props = defineProps<{
   canEdit?: boolean
   canDelete?: boolean
   withDefaultModal?: boolean
+  view?: View
 }>()
+
+const defaultView = computed(() => {
+  return props.view || 'calendar'
+})
+
+const eventsRecieved = computed(() => {
+  return props.events
+})
 
 const { setLang } = useConfig()
 const { openEventsDetailDialog, dialogPositionToRender, closeDialog } = useDialog()
@@ -95,7 +110,7 @@ watch(
   { immediate: true, deep: true }
 )
 
-const eventClickedFromDialog = (event: KEvent) => {
+const eventClicked = (event: KEvent) => {
   emit('eventClicked', event)
 }
 

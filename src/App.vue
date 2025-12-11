@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import KAlendar from '@/views/VueKAlendar.vue'
+import VueKAlendar from '@/views/VueKAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
 import { v4 as uuidv4 } from 'uuid'
+import type { View } from './types/Calendar'
 const lang = ref<string>('en')
 const canEdit = ref<boolean>(true)
 const canDelete = ref<boolean>(true)
 const withDefaultModal = ref<boolean>(true)
-
+const view = ref<View>('list')
 const events = ref<KEvent[]>([])
 
 const deleteEvent = ({ closeDialog, event }: KEventDialogEmit) => {
@@ -23,21 +24,15 @@ const editEvent = ({ closeDialog, event }: KEventDialogEmit) => {
 }
 
 const duplicateRandomEvent = (event = events.value.length + 1) => {
-  let randomDay: string | number = Math.floor(Math.random() * 30) + 1
-  let month: string | number = new Date().getMonth() + 1
+  let randomDay: string = (Math.floor(Math.random() * 30) + 1).toString().padStart(2, '0')
+  let month: string = (new Date().getMonth() + 1).toString().padStart(2, '0')
   const year = new Date().getFullYear()
-  const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`
-  if (randomDay < 10) {
-    randomDay = `0${randomDay}`
-  }
-
-  if (month < 10) {
-    month = `0${month}`
-  }
+  const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`
 
   const randomEvent = {
     title: `Event ${event}`,
     start_date: `${year}-${month}-${randomDay}`,
+    end_date: '',
     description: 'Description of random event',
     color: randomColor,
     autor: 'Kevin Méndez'
@@ -118,11 +113,17 @@ onMounted(() => {
       >
         With default modal: {{ withDefaultModal ? 'Yes' : 'No' }}
       </button>
+      <button
+        class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
+        @click="view = view === 'calendar' ? 'list' : 'calendar'"
+      >
+        View {{ view === 'calendar' ? 'list' : 'calendar' }}
+      </button>
     </div>
   </header>
 
   <main class="p-4">
-    <k-alendar
+    <VueKAlendar
       :can-edit="canEdit"
       :can-delete="canDelete"
       :with-default-modal="withDefaultModal"
@@ -136,6 +137,7 @@ onMounted(() => {
       @nextMonth="nextMonth"
       @delete="deleteEvent"
       @edit="editEvent"
+      :view="view"
     />
   </main>
 </template>
