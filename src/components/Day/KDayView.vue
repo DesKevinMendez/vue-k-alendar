@@ -1,6 +1,7 @@
 <template>
+  
   <div class="k-day-view-container">
-    <h1 class="k-day-view-title">{{ dayName }}</h1>
+    <KWeekDays />
     <section class="k-day-view-events">
       <div class="k-day-view-hour">
         <div class="k-day-view-hour-slot" v-for="hour in hours" :key="hour">
@@ -20,7 +21,10 @@ import useRenderCalendar from '@/composables/useRenderCalendar'
 import type { KEvent } from '@/types'
 import { DateTime } from 'luxon'
 import { computed, ref } from 'vue'
+import KWeekDays from '../Calendar/KWeekDays.vue'
+import useConfig from '@/composables/useConfig'
 const { currentDate } = useRenderCalendar()
+const { lang } = useConfig()
 const props = defineProps<{
   events: KEvent[]
 }>()
@@ -29,16 +33,10 @@ const events = computed(() => {
   return props.events
 })
 
-const heightOfHourSlit = ref(0)
-
 const orderEventsByHour = computed(() => {
   return events.value.slice().sort((a: KEvent, b: KEvent) => {
     return new Date(a.start_date).getTime() - new Date(b.start_date).getTime()
   })
-})
-
-const dayName = computed(() => {
-  return DateTime.fromJSDate(currentDate.value.toJSDate()).setLocale('es').toFormat('EEEE')
 })
 
 const hours = computed(() => {
@@ -53,9 +51,6 @@ const hours = computed(() => {
 </script>
 <style scoped lang="postcss">
 .k-day-view-container {
-  .k-day-view-title {
-    @apply font-bold capitalize py-4 border-gray-200 dark:border-slate-600 text-center;
-  }
   .k-day-view-events {
     /* @apply flex flex-col; */
     @apply grid grid-cols-12;
@@ -73,7 +68,7 @@ const hours = computed(() => {
     @apply border-gray-200 dark:border-slate-600 border-r flex-1;
   }
   .k-day-view-hour-slot, .k-day-view-event-slot {
-    @apply border-gray-200 dark:border-slate-600 border-t px-2 py-4;
+    @apply border-gray-200 dark:border-slate-600 border-b px-2 py-4;
   }
   .k-day-view-events-container {
     @apply col-span-10 flex flex-col;
