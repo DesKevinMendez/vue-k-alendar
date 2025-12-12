@@ -202,7 +202,6 @@ const eventClicked = (event: KEvent) => {
 <style scoped lang="postcss">
 .k-day-view-container {
   .k-day-view-events {
-    /* @apply flex flex-col; */
     @apply grid grid-cols-12;
   }
   .k-day-view-hour {
@@ -215,21 +214,16 @@ const eventClicked = (event: KEvent) => {
     @apply border-gray-200 dark:border-slate-600 border-r flex-1 min-h-0 flex items-center;
   }
   .k-day-view-hour-slot, .k-day-view-event-slot {
-    @apply border-gray-200 dark:border-slate-600 border-b px-2 py-4;
-    min-height: 0;
-    flex: 1 1 0%;
+    @apply border-gray-200 dark:border-slate-600 border-b px-2 py-4 min-h-0 flex-1;
   }
   .k-day-view-events-container {
     @apply col-span-10 flex flex-col;
   }
   .k-day-view-event-slot {
-    @apply relative;
-    overflow: visible;
+    @apply relative overflow-visible;
   }
   .k-day-view-event-item {
-    @apply rounded-md p-2 text-white cursor-pointer absolute border border-solid border-gray-400 dark:border-slate-600;
-    box-sizing: border-box;
-    min-height: 40px;
+    @apply rounded-md p-2 text-white cursor-pointer absolute border border-solid border-gray-400 dark:border-slate-600 min-h-10 box-border;
   }
   .k-day-view-event-title {
     @apply font-semibold text-sm;
