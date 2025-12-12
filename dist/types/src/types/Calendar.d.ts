@@ -11,4 +11,4 @@ export type DayCalendar = {
     events: KEvent[];
     text: string;
 };
-export type View = 'list' | 'calendar';
+export type View = 'list' | 'calendar' | 'day';
