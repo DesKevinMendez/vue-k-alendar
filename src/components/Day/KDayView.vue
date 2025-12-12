@@ -221,7 +221,7 @@ const hours = computed(() => {
     overflow: visible;
   }
   .k-day-view-event-item {
-    @apply rounded-md p-2 text-white cursor-pointer absolute;
+    @apply rounded-md p-2 text-white cursor-pointer absolute border border-solid border-gray-400 dark:border-slate-600;
     box-sizing: border-box;
     min-height: 40px;
   }
