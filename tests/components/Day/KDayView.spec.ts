@@ -255,4 +255,16 @@ describe('KDayView', () => {
       expect(pThirdEvent.text()).toBe('05:45 AM - 08:45 AM');
     });
   });
+
+  describe('Event clicked', () => {
+    it('should emit the eventClicked event when the event is clicked', async () => {
+      const container = wrapper.find('.k-day-view-events-container');
+      const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
+      const firstEvent = slot5AM.find('.k-day-view-event-item');
+      console.log(firstEvent.html());
+      await firstEvent.trigger('click');
+      expect(wrapper.emitted('eventClicked')).toBeTruthy();
+      expect(wrapper.emitted('eventClicked')[0][0]).toStrictEqual(events[2]);
+    });
+  });
 });

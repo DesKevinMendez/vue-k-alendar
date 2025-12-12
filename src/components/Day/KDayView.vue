@@ -22,6 +22,7 @@
               height: `${getEventHeightInSlot(event, index)}%`,
               zIndex: 10 + eventIndex
             }"
+            @click="eventClicked(event)"
           >
             <h3 class="k-day-view-event-title">{{ event.title }}</h3>
             <p class="k-day-view-event-time">{{ formatEventTime(event) }}</p>
@@ -43,6 +44,7 @@ const props = defineProps<{
   events: KEvent[]
 }>()
 
+const emit = defineEmits(['eventClicked'])
 const { currentDate } = useRenderCalendar()
 
 const events = computed(() => {
@@ -192,6 +194,10 @@ const hours = computed(() => {
     return `${(hour24 - 12).toString().padStart(2, '0')}:00 PM`
   })
 })
+
+const eventClicked = (event: KEvent) => {
+  emit('eventClicked', event)
+}
 </script>
 <style scoped lang="postcss">
 .k-day-view-container {

@@ -10,8 +10,16 @@
       @eventClicked="eventClicked"
       @plusEventCountClicked="plusEventCountClickedFromDialog"
     />
-    <KListCalendar v-else-if="defaultView === 'list'" :events="eventsRecieved" @eventClicked="eventClicked" />
-    <KDayViewVue :events="eventsRecieved" v-if="defaultView === 'day'" @eventClicked="eventClicked" />
+    <KListCalendar
+      v-else-if="defaultView === 'list'"
+      :events="eventsRecieved"
+      @eventClicked="eventClicked"
+    />
+    <KDayViewVue
+      :events="eventsRecieved"
+      v-if="defaultView === 'day'"
+      @eventClicked="eventClicked"
+    />
     <KAlendarEventDetailDialog
       v-if="withDefaultModal"
       v-model="openEventsDetailDialog"
