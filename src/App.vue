@@ -104,6 +104,15 @@ const eventsForDay = ref<KEvent[]>([
     color: '#fbbf24'
   },
   {
+    id: '019afbc3-a702-7173-945e-af576a73803b',
+    title: 'MRHQ+G9 Soyapango, El Salvador (IGG-3519)',
+    start_date: '2025-12-11T11:30:00.999Z',
+    end_date: '',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#807900'
+  },
+  {
     id: '019afbc3-a702-7173-945e-af576a73803c',
     title: 'Soyapango, El Salvador',
     start_date: '2025-12-11T11:45:00.999Z',
@@ -119,6 +128,33 @@ const eventsForDay = ref<KEvent[]>([
     end_date: '',
     description:
       'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#008080'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803d',
+    title: 'Parque central de La Palma, Chalatenango.',
+    start_date: '2025-12-11T20:00:00.999Z',
+    end_date: '2025-12-12T02:15:00.999Z',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#008080'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803d',
+    title: 'Event all day',
+    start_date: '2025-12-11',
+    end_date: '',
+    description:
+      'All Day Event',
+    color: '#890000'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803d',
+    title: 'Event all day 2 ',
+    start_date: '2025-12-11',
+    end_date: '',
+    description:
+      'All Day Event',
     color: '#008080'
   },
 ])

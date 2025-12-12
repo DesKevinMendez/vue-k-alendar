@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="k-day-view-events-container">
-        <div class="k-day-view-event-slot" v-for="(hour, index) in hours" :key="hour">
+        <div class="k-day-view-event-slot" v-for="(hour, index) in hours" :key="hour" :calendar-hour-container="hour">
           <div
             v-for="(event, eventIndex) in eventsByHour[index]"
             :key="event.id"
@@ -17,8 +17,9 @@
             :style="{
               backgroundColor: event.color || '#3b82f6',
               top: `${getEventTopPosition(event)}%`,
-              left: `${eventIndex * 70}px`,
-              width: `calc(100% - ${eventIndex * 70}px)`,
+              left: `${getEventLeftOffset(event, index, eventIndex)}px`,
+              width: `calc(100% - ${getEventLeftOffset(event, index, eventIndex)}px)`,
+              height: `${getEventHeightInSlot(event, index)}%`,
               zIndex: 10 + eventIndex
             }"
           >
@@ -80,17 +81,47 @@ const eventsByHour = computed(() => {
     }
   })
   
+  // Sort events within each hour by start time
   Object.keys(eventsMap).forEach((hourKey) => {
     const hour = parseInt(hourKey)
     eventsMap[hour].sort((a, b) => {
       const dateA = DateTime.fromISO(a.start_date)
       const dateB = DateTime.fromISO(b.start_date)
-      return dateA.minute - dateB.minute
+      return dateA.toMillis() - dateB.toMillis()
     })
   })
   
   return Array.from({ length: 24 }, (_, index) => eventsMap[index])
 })
+
+const getEventLeftOffset = (event: KEvent, slotHourIndex: number, eventIndex: number) => {
+  const startDate = DateTime.fromISO(event.start_date)
+  if (!startDate.isValid || startDate.hour !== slotHourIndex) return 0
+  
+  const eventStart = startDate.toMillis()
+  const eventEnd = event.end_date 
+    ? DateTime.fromISO(event.end_date).toMillis() 
+    : startDate.plus({ hours: 1 }).toMillis()
+  
+  // Get all events in the same hour slot
+  const eventsInSlot = eventsByHour.value[slotHourIndex]
+  
+  let overlappingCount = 0
+  for (let i = 0; i < eventIndex; i++) {
+    const otherEvent = eventsInSlot[i]
+    const otherStart = DateTime.fromISO(otherEvent.start_date).toMillis()
+    const otherEnd = otherEvent.end_date 
+      ? DateTime.fromISO(otherEvent.end_date).toMillis()
+      : DateTime.fromISO(otherEvent.start_date).plus({ hours: 1 }).toMillis()
+    
+    // Check if events overlap in time
+    if (eventStart < otherEnd && eventEnd > otherStart) {
+      overlappingCount++
+    }
+  }
+  
+  return overlappingCount * 70
+}
 
 const getEventTopPosition = (event: KEvent) => {
   const eventDateTime = DateTime.fromISO(event.start_date)
@@ -99,6 +130,37 @@ const getEventTopPosition = (event: KEvent) => {
   // 0 minutes = 0%, 60 minutes = 100%
   const minutes = eventDateTime.minute + (eventDateTime.second / 60)
   return (minutes / 60) * 100
+}
+
+const getEventHeightInSlot = (event: KEvent, slotHourIndex: number) => {
+  const startDate = DateTime.fromISO(event.start_date)
+  const defaultHeight = 100
+  if (!startDate.isValid) return defaultHeight
+  
+  const eventStartHour = startDate.hour
+  const eventStartMinutes = startDate.minute + (startDate.second / 60)
+  
+  if (eventStartHour !== slotHourIndex) {
+    return 0
+  }
+  
+  if (event.end_date) {
+    const endDate = DateTime.fromISO(event.end_date)
+    if (endDate.isValid) {
+      const endHasTime = endDate.hour !== 0 || endDate.minute !== 0 || endDate.second !== 0
+      if (endHasTime) {
+        const eventEndHour = endDate.hour
+        const eventEndMinutesInHour = endDate.minute + (endDate.second / 60)
+        const startTotalMinutes = eventStartHour * 60 + eventStartMinutes
+        const endTotalMinutes = eventEndHour * 60 + eventEndMinutesInHour
+        const durationMinutes = Math.max(endTotalMinutes - startTotalMinutes, 15)
+        
+        return (durationMinutes / 60) * 100
+      }
+    }
+  }
+  
+  return defaultHeight
 }
 
 const formatEventTime = (event: KEvent) => {
@@ -161,6 +223,7 @@ const hours = computed(() => {
   .k-day-view-event-item {
     @apply rounded-md p-2 text-white cursor-pointer absolute;
     box-sizing: border-box;
+    min-height: 40px;
   }
   .k-day-view-event-title {
     @apply font-semibold text-sm;
