@@ -6487,7 +6487,7 @@ const ha = /* @__PURE__ */ Z(ca, [["render", fa], ["__scopeId", "data-v-bf161d91
       ])
     ]));
   }
-}), to = /* @__PURE__ */ Z(eo, [["__scopeId", "data-v-5aa2d06e"]]), no = { class: "k-alendar-wrapper-container" }, so = /* @__PURE__ */ R({
+}), to = /* @__PURE__ */ Z(eo, [["__scopeId", "data-v-3d7bfce4"]]), no = { class: "k-alendar-wrapper-container" }, so = /* @__PURE__ */ R({
   __name: "VueKAlendar",
   props: {
     events: {},
