@@ -88,7 +88,7 @@ const eventsForDay = ref<KEvent[]>([
   {
     id: '019b0aae-b5d3-70d2-9f0e-88c579168ee7',
     title: 'Parque central de La Palma, Chalatenango. (IGG-3519)',
-    start_date: '2025-12-12T08:30:00.999Z',
+    start_date: '2025-12-11T08:30:00.999Z',
     end_date: '',
     description:
       'Vehículo: IGG-3519\nDestino: Parque central de La Palma, Chalatenango.\nCoordenadas: 14.3170912, -89.1706838',
@@ -97,12 +97,30 @@ const eventsForDay = ref<KEvent[]>([
   {
     id: '019afbc3-a702-7173-945e-af576a73803b',
     title: 'MRHQ+G9 Soyapango, El Salvador (IGG-3519)',
-    start_date: '2025-12-28T11:00:00.999Z',
+    start_date: '2025-12-11T11:00:00.999Z',
     end_date: '',
     description:
       'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
     color: '#fbbf24'
-  }
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803c',
+    title: 'Soyapango, El Salvador',
+    start_date: '2025-12-11T11:45:00.999Z',
+    end_date: '2025-12-11T14:45:00.999Z',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#175000'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803c',
+    title: 'Aereopuerto, El Salvador',
+    start_date: '2025-12-11T12:00:00.999Z',
+    end_date: '',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#008080'
+  },
 ])
 </script>
 
