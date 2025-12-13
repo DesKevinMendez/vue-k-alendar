@@ -44,7 +44,7 @@ const props = defineProps<{
   events: KEvent[]
 }>()
 
-const emit = defineEmits(['eventClicked'])
+const emit = defineEmits(['event'])
 const { currentDay } = useKWeekDays()
 
 const events = computed(() => {
@@ -192,7 +192,7 @@ const hours = computed(() => {
 })
 
 const eventClicked = (event: KEvent) => {
-  emit('eventClicked', event)
+  emit('event', event)
 }
 </script>
 <style scoped lang="postcss">

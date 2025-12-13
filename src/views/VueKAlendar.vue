@@ -8,32 +8,18 @@
     />
     <KAlendar
       v-if="currentView === 'calendar'"
-      @eventClicked="eventClicked"
-      @plusEventCountClicked="plusEventCountClickedFromDialog"
+      @event="eventClicked"
+      @events="eventsReceived"
     />
     <KListCalendar
       v-else-if="currentView === 'list'"
       :events="eventsRecieved"
-      @eventClicked="eventClicked"
+      @event="eventClicked"
     />
     <KDayViewVue
       :events="eventsRecieved"
       v-if="currentView === 'day'"
-      @eventClicked="eventClicked"
-    />
-    <KAlendarEventDetailDialog
-      v-if="withDefaultModal"
-      v-model="openEventsDetailDialog"
-      :canDelete="canDelete"
-      :canEdit="canEdit"
-      @eventClicked="eventClicked"
-      @eventTitleClicked="eventTitleClicked"
-      @edit="edit"
-      @delete="deleteEvent"
-      :style="{
-        top: `${dialogPositionToRender.y}px`,
-        left: `${dialogPositionToRender.x}px`
-      }"
+      @event="eventClicked"
     />
   </section>
 </template>
@@ -41,7 +27,7 @@
 <script setup lang="ts">
 import KDayViewVue from '@/components/Day/KDayView.vue'
 import useConfig from '@/composables/useConfig'
-import { useDialog } from '@/composables/useDialog'
+import useKWeekDays from '@/composables/useKWeekDays'
 import useRenderCalendar from '@/composables/useRenderCalendar'
 import useView from '@/composables/useView'
 import type { View } from '@/types/Calendar'
@@ -49,27 +35,19 @@ import type { KEvent } from '@/types/Events'
 import { computed, watch } from 'vue'
 import KAlendar from '../components/Calendar/KCalendar.vue'
 import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
-import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
 import KListCalendar from '../components/List/KListCalendar.vue'
-import useKWeekDays from '@/composables/useKWeekDays'
 
 const emit = defineEmits([
-  'delete',
-  'edit',
-  'eventClicked',
-  'eventTitleClicked',
+  'event',
   'nextMonth',
   'prevMonth',
   'toToday',
-  'plusEventCountClicked',
+  'events',
 ])
 
 const props = defineProps<{
   events: KEvent[]
   lang?: string
-  canEdit?: boolean
-  canDelete?: boolean
-  withDefaultModal?: boolean
   view?: View
 }>()
 
@@ -82,7 +60,6 @@ const eventsRecieved = computed(() => {
 })
 
 const { setLang } = useConfig()
-const { openEventsDetailDialog, dialogPositionToRender, closeDialog } = useDialog()
 const { eventsToShowInCalendar, generateCalendar, monthDays, currentDate } = useRenderCalendar()
 const { setCurrentDay } = useKWeekDays()
 
@@ -125,23 +102,11 @@ watch(
 )
 
 const eventClicked = (event: KEvent) => {
-  emit('eventClicked', event)
+  emit('event', event)
 }
 
-const eventTitleClicked = (event: KEvent) => {
-  emit('eventTitleClicked', { event, closeDialog })
-}
-
-const edit = (event: KEvent) => {
-  emit('edit', { event, closeDialog })
-}
-
-const deleteEvent = (event: KEvent) => {
-  emit('delete', { event, closeDialog })
-}
-
-const plusEventCountClickedFromDialog = ({ events }: { events: KEvent[] }) => {
-  emit('plusEventCountClicked', { events, closeDialog })
+const eventsReceived = ({ events }: { events: KEvent[] }) => {
+  emit('events', events)
 }
 </script>
 

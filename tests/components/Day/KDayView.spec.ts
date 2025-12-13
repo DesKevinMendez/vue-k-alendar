@@ -283,8 +283,8 @@ describe('KDayView', () => {
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
       const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
       await firstEvent.trigger('click');
-      expect(wrapper.emitted('eventClicked')).toBeTruthy();
-      expect(wrapper.emitted('eventClicked')?.[0]?.[0]).toStrictEqual(events[2]);
+      expect(wrapper.emitted('event')).toBeTruthy();
+      expect(wrapper.emitted('event')?.[0]?.[0]).toStrictEqual(events[2]);
     });
   });
 });

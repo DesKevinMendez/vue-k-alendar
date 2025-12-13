@@ -20,7 +20,7 @@
             :key="event.id"
             :event="event"
             :calendar
-            @eventClicked="eventClicked"
+            @event="eventClicked"
           />
         </ul>
       </div>
@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { useDialog } from '@/composables/useDialog'
 import useEvent from '@/composables/useEvent'
 import useRenderCalendar from '@/composables/useRenderCalendar'
 import type { DayCalendar, KEvent, MonthDays } from '@/types'
@@ -37,27 +36,22 @@ import { ref } from 'vue'
 import KEventItem from '../KEventItem.vue'
 import KWeekDays from './KWeekDays.vue'
 
-const { openEventsDetailDialog, dialogPositionToRender } = useDialog()
 const { monthDays, calendarDaySelect } = useRenderCalendar()
 const { eventSelected } = useEvent()
-const { collision } = useDialog()
-const emit = defineEmits(['eventClicked', 'plusEventCountClicked'])
+const emit = defineEmits(['event', 'events'])
 const dateRefs = ref<Record<string, any>>({})
 
 const selectThisDate = (calendar: MonthDays) => {
   const isMobile = window.innerWidth < 768
 
   if (isMobile) {
-    const sizeOfDialog = 400
-    const x = Math.floor((window.innerWidth - sizeOfDialog) / 2)
-    dialogPositionToRender.value = { x, y: 16 }
 
     if (calendar.events.length > 0) {
       if (calendar.events.length === 1) {
         eventSelected.value = calendar.events[0]
 
         if (calendar.events[0].id != 'more') {
-          emit('eventClicked', calendar.events[0])
+          emit('event', calendar.events[0])
         }
       } else {
         eventSelected.value = {
@@ -66,11 +60,10 @@ const selectThisDate = (calendar: MonthDays) => {
           start_date: '',
           description: ''
         }
-        emit('plusEventCountClicked', { events: calendar.events })
+        emit('events', { events: calendar.events })
       }
 
       calendarDaySelect.value = calendar
-      openEventsDetailDialog.value = true
     }
   }
 }
@@ -94,16 +87,12 @@ const eventClicked = ({
     if (target.tagName === 'H3') {
       target = target.parentElement as HTMLElement
     }
-
-    dialogPositionToRender.value = collision(target)
-
-    openEventsDetailDialog.value = true
   }
 
   if (event.id != 'more') {
-    emit('eventClicked', event)
+    emit('event', event)
   } else {
-    emit('plusEventCountClicked', { events: calendarDaySelect.value.events })
+    emit('events', { events: calendarDaySelect.value.events })
   }
 }
 

@@ -13,7 +13,7 @@ const props = defineProps<{
 const events = computed(() => {
   return props.events
 })
-const emit = defineEmits(['eventClicked'])
+const emit = defineEmits(['event'])
 const orderEventsByDate = computed(() => {
   return events.value.slice().sort((a: KEvent, b: KEvent) => {
     return new Date(a.start_date).getTime() - new Date(b.start_date).getTime()
@@ -64,7 +64,7 @@ const formatDay = (date: string) => {
 }
 
 const eventClicked = (event: KEvent) => {
-  emit('eventClicked', event)
+  emit('event', event)
 }
 </script>
 <template>

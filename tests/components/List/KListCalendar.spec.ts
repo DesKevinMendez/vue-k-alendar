@@ -40,8 +40,8 @@ describe('KListCalendar', () => {
     it('should emit the eventClicked event when the event is clicked', async () => {
       const eventsKListCalendar = wrapper.findAll('.k-list-calendar-event');
       await eventsKListCalendar[0].trigger('click');
-      expect(wrapper.emitted('eventClicked')).toBeTruthy();
-      expect(wrapper.emitted('eventClicked')?.[0]?.[0]).toStrictEqual(events[1]);
+      expect(wrapper.emitted('event')).toBeTruthy();
+      expect(wrapper.emitted('event')?.[0]?.[0]).toStrictEqual(events[1]);
     });
   });
 
