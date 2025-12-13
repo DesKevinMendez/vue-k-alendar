@@ -6,6 +6,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 const fakeDate = '2025-12-11T12:00:00.000Z';
 
 import { mockDate } from 'tests/utils/mockDate';
+import useView from '@/composables/useView';
 
 mockDate(fakeDate);
 
@@ -50,5 +51,18 @@ describe('KWeekDays', () => {
     expect(wrapper.emitted('dateClicked')).toBeTruthy();
     // 2025-12-11 is a Thursday, so the start of the week (Monday) is 2025-12-08
     expect(wrapper.emitted('dateClicked')?.[0]?.[0]).toBe('2025-12-08');
+  });
+
+  it('should not be cursor pointer if the current view is not day', () => {
+    const { setCurrentView } = useView();
+    setCurrentView('calendar');
+    wrapper = mount(KWeekDays);
+    const weekDays = wrapper.findAll('.k-alendar-days-container div');
+    expect(weekDays[0].classes()).toStrictEqual([]);
+
+    setCurrentView('day');
+    wrapper = mount(KWeekDays);
+    const weekDays2 = wrapper.findAll('.k-alendar-days-container div');
+    expect(weekDays2[0].classes()).toContain('k-alendar-day');
   });
 });

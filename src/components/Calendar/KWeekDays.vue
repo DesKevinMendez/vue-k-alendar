@@ -1,11 +1,13 @@
 <template>
   <div class="k-alendar-days-container">
-    <div 
-      class="k-alendar-day"
-      v-for="day in getWeekDays()" 
-      @click="emitDateClicked(day.date)" 
+    <div
+      v-for="day in getWeekDays()"
+      @click="emitDateClicked(day.date)"
       :key="day.date"
-      :class="{ today: day.date === currentDay }"
+      :class="{
+        today: day.date === currentDay && currentView === 'day',
+        'k-alendar-day': currentView === 'day'
+      }"
     >
       {{ day.text }}
     </div>
@@ -15,9 +17,11 @@
 <script setup lang="ts">
 import useConfig from '@/composables/useConfig'
 import useKWeekDays from '@/composables/useKWeekDays'
+import useView from '@/composables/useView'
 import { DateTime } from 'luxon'
 
 const { currentDay, setCurrentDay } = useKWeekDays()
+const { currentView } = useView()
 const { lang } = useConfig()
 const emit = defineEmits(['dateClicked'])
 
@@ -30,6 +34,7 @@ const emitDateClicked = (date: string) => {
   setCurrentDay(date)
   emit('dateClicked', date)
 }
+
 const getWeekDays = (): WeekDay[] => {
   const start = DateTime.now().startOf('week')
   const end = DateTime.now().endOf('week')
