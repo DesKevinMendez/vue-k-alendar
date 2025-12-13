@@ -1,83 +1,103 @@
-import KDayView from '@/components/Day/KDayView.vue';
-
 import { mount, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import type { KEvent } from '@/types/Events';
 
-describe('KDayView', () => {
-  let wrapper: VueWrapper<KDayView>;
-  const events: KEvent[] = [
-    {
-      id: '019b0aba-cc6c-736a-9503-0b1c8e7a6bf5',
-      title: 'Pizza Hut (IGG-3519)',
-      start_date: '2025-12-10T05:59:59.999Z',
-      end_date: '',
-      description:
-        'Vehículo: IGG-3519\nDestino: Pizza Hut\nCoordenadas: 13.7014537, -89.22279309999999',
-      color: '#fbbf24'
-    },
-    {
-      id: '019b0aae-b5d3-70d2-9f0e-88c579168ee7',
-      title: 'Parque central de La Palma, Chalatenango. (IGG-3519)',
-      start_date: '2025-12-11T08:30:00.999Z',
-      end_date: '',
-      description:
-        'Vehículo: IGG-3519\nDestino: Parque central de La Palma, Chalatenango.\nCoordenadas: 14.3170912, -89.1706838',
-      color: '#fbbf24'
-    },
-    {
-      id: '019afbc3-a702-7173-945e-af576a73803b',
-      title: 'MRHQ+G9 Soyapango, El Salvador (IGG-3519)',
-      start_date: '2025-12-11T11:00:00.999Z',
-      end_date: '',
-      description:
-        'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-      color: '#fbbf24'
-    },
-    {
-      id: '019afbc3-a702-7173-945e-af576a73803b',
-      title: 'MRHQ+G9 Soyapango, El Salvador 2 (IGG-3519)',
-      start_date: '2025-12-11T11:30:00.999Z',
-      end_date: '',
-      description:
-        'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-      color: '#807900'
-    },
-    {
-      id: '019afbc3-a702-7173-945e-af576a73803c',
-      title: 'Soyapango, El Salvador',
-      start_date: '2025-12-11T11:45:00.999Z',
-      end_date: '2025-12-11T14:45:00.999Z',
-      description:
-        'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-      color: '#175000'
-    },
-    {
-      id: '019afbc3-a702-7173-945e-af576a73803c',
-      title: 'Aereopuerto, El Salvador',
-      start_date: '2025-12-11T12:00:00.999Z',
-      end_date: '',
-      description:
-        'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-      color: '#008080'
-    },
-    {
-      id: '019afbc3-a702-7173-945e-af576a73803d',
-      title: 'Parque central de La Palma, Chalatenango.',
-      start_date: '2025-12-11T20:00:00.999Z',
-      end_date: '2025-12-12T02:15:00.999Z',
-      description:
-        'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-      color: '#008080'
-    },
-  ];
+const fakeDate = new Date('2025-12-11T12:00:00.000Z');
 
+vi.mock('luxon', async () => {
+  const actual = await vi.importActual<typeof import('luxon')>('luxon');
+  const fakeDateTime = actual.DateTime.fromJSDate(new Date('2025-12-11T12:00:00.000Z'));
+  
+  return {
+    ...actual,
+    DateTime: Object.assign(actual.DateTime, {
+      now: () => fakeDateTime,
+    }),
+  };
+});
+
+import KDayView from '@/components/Day/KDayView.vue';
+
+let wrapper: VueWrapper<KDayView>;
+const events: KEvent[] = [
+  {
+    id: '019b0aba-cc6c-736a-9503-0b1c8e7a6bf5',
+    title: 'Pizza Hut (IGG-3519)',
+    start_date: '2025-12-10T05:59:59.999Z',
+    end_date: '',
+    description:
+      'Vehículo: IGG-3519\nDestino: Pizza Hut\nCoordenadas: 13.7014537, -89.22279309999999',
+    color: '#fbbf24'
+  },
+  {
+    id: '019b0aae-b5d3-70d2-9f0e-88c579168ee7',
+    title: 'Parque central de La Palma, Chalatenango. (IGG-3519)',
+    start_date: '2025-12-11T08:30:00.999Z',
+    end_date: '',
+    description:
+      'Vehículo: IGG-3519\nDestino: Parque central de La Palma, Chalatenango.\nCoordenadas: 14.3170912, -89.1706838',
+    color: '#fbbf24'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803b',
+    title: 'MRHQ+G9 Soyapango, El Salvador (IGG-3519)',
+    start_date: '2025-12-11T11:00:00.999Z',
+    end_date: '',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#fbbf24'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803b',
+    title: 'MRHQ+G9 Soyapango, El Salvador 2 (IGG-3519)',
+    start_date: '2025-12-11T11:30:00.999Z',
+    end_date: '',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#807900'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803c',
+    title: 'Soyapango, El Salvador',
+    start_date: '2025-12-11T11:45:00.999Z',
+    end_date: '2025-12-11T14:45:00.999Z',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#175000'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803c',
+    title: 'Aereopuerto, El Salvador',
+    start_date: '2025-12-11T12:00:00.999Z',
+    end_date: '',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#008080'
+  },
+  {
+    id: '019afbc3-a702-7173-945e-af576a73803d',
+    title: 'Parque central de La Palma, Chalatenango.',
+    start_date: '2025-12-11T20:00:00.999Z',
+    end_date: '2025-12-12T02:15:00.999Z',
+    description:
+      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
+    color: '#008080'
+  },
+];
+
+describe('KDayView', () => {
   beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(fakeDate);
     wrapper = mount(KDayView, {
       props: {
         events,
       },
     });
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('should render the component', () => {
@@ -118,7 +138,7 @@ describe('KDayView', () => {
        * I Don't like to use "if" in tests
        */
 
-      const slot12AM = container.find('.k-day-view-event-slot[calendar-hour-container="12:00 AM"]');      
+      const slot12AM = container.find('.k-day-view-event-slot[calendar-hour-container="12:00 AM"]');
       const slot1AM = container.find('.k-day-view-event-slot[calendar-hour-container="01:00 AM"]');
       const slot2AM = container.find('.k-day-view-event-slot[calendar-hour-container="02:00 PM"]');
       const slot3AM = container.find('.k-day-view-event-slot[calendar-hour-container="03:00 AM"]');
@@ -143,9 +163,9 @@ describe('KDayView', () => {
       const slot10PM = container.find('.k-day-view-event-slot[calendar-hour-container="10:00 PM"]');
       const slot11PM = container.find('.k-day-view-event-slot[calendar-hour-container="11:00 PM"]');
 
-      expect(slot12AM.element.children.length).toBe(0); 
+      expect(slot12AM.element.children.length).toBe(0);
       expect(slot1AM.element.children.length).toBe(0);
-      expect(slot3AM.element.children.length).toBe(0);    
+      expect(slot3AM.element.children.length).toBe(0);
       expect(slot4AM.element.children.length).toBe(0);
       expect(slot2AM.element.children.length).toBe(1);
       expect(slot5AM.element.children.length).toBe(3);
@@ -187,7 +207,7 @@ describe('KDayView', () => {
       const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
       const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
       expect(firstEvent.element.style.top).toBe('0%');
-      expect(secondEvent.element.style.top).toBe('50%');
+      expect(secondEvent?.element.style.top).toBe('50%');
       expect(thirdEvent.element.style.top).toBe('75%');
     });
 
@@ -209,7 +229,7 @@ describe('KDayView', () => {
       const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
       const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
       expect(firstEvent.element.style.height).toBe('100%');
-      expect(secondEvent.element.style.height).toBe('100%'); 
+      expect(secondEvent.element.style.height).toBe('100%');
       expect(thirdEvent.element.style.height).toBe('300%'); // 300% because the event is from 05:45 AM to 08:45 AM (3 hours) one hour is 100% so 3 hours is 300%
     });
 
@@ -224,7 +244,8 @@ describe('KDayView', () => {
       expect(thirdEvent.element.style.zIndex).toBe('12');
     });
 
-    it('k-day-view-event-title should be the event title', () => {      const container = wrapper.find('.k-day-view-events-container');
+    it('k-day-view-event-title should be the event title', () => {
+      const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
       const firstEvent = slot5AM.find('.k-day-view-event-item');
       const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
@@ -245,7 +266,7 @@ describe('KDayView', () => {
       const firstEvent = slot5AM.find('.k-day-view-event-item');
       const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
       const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
-      
+
       const pFirstEvent = firstEvent.find('p.k-day-view-event-time');
       const pSecondEvent = secondEvent.find('p.k-day-view-event-time');
       const pThirdEvent = thirdEvent.find('p.k-day-view-event-time');
