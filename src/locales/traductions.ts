@@ -1,6 +1,7 @@
 export type Translations = {
   dayView: string;
   monthView: string;
+  listView: string;
   allDay: string;
   nothingToShow: string;
   buttons: {
@@ -12,6 +13,7 @@ export const translations: Record<string, Translations> = {
   en: {
     dayView: 'Day',
     monthView: 'Month',
+    listView: 'List',
     allDay: 'All day',
     nothingToShow: 'No events found',
     buttons: {
@@ -21,6 +23,7 @@ export const translations: Record<string, Translations> = {
   es: {
     dayView: 'Día',
     monthView: 'Mes',
+    listView: 'Lista',
     allDay: 'Todo el día',
     nothingToShow: 'No se encontraron eventos',
     buttons: {
@@ -30,6 +33,7 @@ export const translations: Record<string, Translations> = {
   fr: {
     dayView: 'Jour',
     monthView: 'Mois',
+    listView: 'Liste',
     allDay: 'Toute la journée',
     nothingToShow: 'Aucun événement trouvé',
     buttons: {
@@ -39,6 +43,7 @@ export const translations: Record<string, Translations> = {
   it: {
     dayView: 'Giorno',
     monthView: 'Mese',
+    listView: 'Elenco',
     allDay: 'Tutto il giorno',
     nothingToShow: 'Nessun evento trovato',
     buttons: {
@@ -48,6 +53,7 @@ export const translations: Record<string, Translations> = {
   de: {
     dayView: 'Tag',
     monthView: 'Monat',
+    listView: 'Liste',
     allDay: 'Ganztägig',
     nothingToShow: 'Keine Ereignisse gefunden',
     buttons: {
@@ -57,6 +63,7 @@ export const translations: Record<string, Translations> = {
   pt: {
     dayView: 'Dia',
     monthView: 'Mês',
+    listView: 'Lista',
     allDay: 'Dia inteiro',
     nothingToShow: 'Nenhum evento encontrado',
     buttons: {
@@ -66,6 +73,7 @@ export const translations: Record<string, Translations> = {
   nl: {
     dayView: 'Dag',
     monthView: 'Maand',
+    listView: 'Lijst',
     allDay: 'Hele dag',
     nothingToShow: 'Geen evenementen gevonden',
     buttons: {
@@ -75,6 +83,7 @@ export const translations: Record<string, Translations> = {
   ru: {
     dayView: 'День',
     monthView: 'Месяц',
+    listView: 'Список',
     allDay: 'Весь день',
     nothingToShow: 'События не найдены',
     buttons: {
@@ -84,6 +93,7 @@ export const translations: Record<string, Translations> = {
   ja: {
     dayView: '日',
     monthView: '月',
+    listView: 'リスト',
     allDay: '終日',
     nothingToShow: 'イベントが見つかりませんでした',
     buttons: {
@@ -93,6 +103,7 @@ export const translations: Record<string, Translations> = {
   zh: {
     dayView: '日',
     monthView: '月',
+    listView: '列表',
     allDay: '全天',
     nothingToShow: '未找到事件',
     buttons: {
@@ -102,6 +113,7 @@ export const translations: Record<string, Translations> = {
   ko: {
     dayView: '일',
     monthView: '월',
+    listView: '목록',
     allDay: '하루 종일',
     nothingToShow: '이벤트를 찾을 수 없습니다',
     buttons: {
@@ -111,6 +123,7 @@ export const translations: Record<string, Translations> = {
   ar: {
     dayView: 'يوم',
     monthView: 'شهر',
+    listView: 'قائمة',
     allDay: 'طوال اليوم',
     nothingToShow: 'لم يتم العثور على أحداث',
     buttons: {
@@ -120,6 +133,7 @@ export const translations: Record<string, Translations> = {
   he: {
     dayView: 'יום',
     monthView: 'חודש',
+    listView: 'רשימה',
     allDay: 'כל היום',
     nothingToShow: 'לא נמצאו אירועים',
     buttons: {
@@ -129,6 +143,7 @@ export const translations: Record<string, Translations> = {
   id: {
     dayView: 'Hari',
     monthView: 'Bulan',
+    listView: 'Daftar',
     allDay: 'Sepanjang hari',
     nothingToShow: 'Tidak ada acara yang ditemukan',
     buttons: {
@@ -138,6 +153,7 @@ export const translations: Record<string, Translations> = {
   tr: {
     dayView: 'Gün',
     monthView: 'Ay',
+    listView: 'Liste',
     allDay: 'Tüm gün',
     nothingToShow: 'Etkinlik bulunamadı',
     buttons: {
@@ -147,6 +163,7 @@ export const translations: Record<string, Translations> = {
   vi: {
     dayView: 'Ngày',
     monthView: 'Tháng',
+    listView: 'Danh sách',
     allDay: 'Cả ngày',
     nothingToShow: 'Không tìm thấy sự kiện',
     buttons: {
@@ -156,6 +173,7 @@ export const translations: Record<string, Translations> = {
   th: {
     dayView: 'วัน',
     monthView: 'เดือน',
+    listView: 'รายการ',
     allDay: 'ทั้งวัน',
     nothingToShow: 'ไม่พบเหตุการณ์',
     buttons: {
@@ -165,6 +183,7 @@ export const translations: Record<string, Translations> = {
   pl: {
     dayView: 'Dzień',
     monthView: 'Miesiąc',
+    listView: 'Lista',
     allDay: 'Cały dzień',
     nothingToShow: 'Nie znaleziono wydarzeń',
     buttons: {
@@ -174,6 +193,7 @@ export const translations: Record<string, Translations> = {
   hu: {
     dayView: 'Nap',
     monthView: 'Hónap',
+    listView: 'Lista',
     allDay: 'Egész nap',
     nothingToShow: 'Nem találhatók események',
     buttons: {
@@ -183,6 +203,7 @@ export const translations: Record<string, Translations> = {
   cs: {
     dayView: 'Den',
     monthView: 'Měsíc',
+    listView: 'Seznam',
     allDay: 'Celý den',
     nothingToShow: 'Nebyly nalezeny žádné události',
     buttons: {
@@ -192,6 +213,7 @@ export const translations: Record<string, Translations> = {
   sk: {
     dayView: 'Deň',
     monthView: 'Mesiac',
+    listView: 'Zoznam',
     allDay: 'Celý deň',
     nothingToShow: 'Nenašli sa žiadne udalosti',
     buttons: {
@@ -201,6 +223,7 @@ export const translations: Record<string, Translations> = {
   hr: {
     dayView: 'Dan',
     monthView: 'Mjesec',
+    listView: 'Lista',
     allDay: 'Cijeli dan',
     nothingToShow: 'Nisu pronađeni događaji',
     buttons: {
@@ -210,6 +233,7 @@ export const translations: Record<string, Translations> = {
   ro: {
     dayView: 'Zi',
     monthView: 'Lună',
+    listView: 'Listă',
     allDay: 'Toată ziua',
     nothingToShow: 'Nu s-au găsit evenimente',
     buttons: {
@@ -219,6 +243,7 @@ export const translations: Record<string, Translations> = {
   bg: {
     dayView: 'Ден',
     monthView: 'Месец',
+    listView: 'Списък',
     allDay: 'Цял ден',
     nothingToShow: 'Не са намерени събития',
     buttons: {
@@ -228,6 +253,7 @@ export const translations: Record<string, Translations> = {
   sl: {
     dayView: 'Dan',
     monthView: 'Mesec',
+    listView: 'Seznam',
     allDay: 'Ves dan',
     nothingToShow: 'Ni dogodkov ni najdenih',
     buttons: {
@@ -237,6 +263,7 @@ export const translations: Record<string, Translations> = {
   et: {
     dayView: 'Päev',
     monthView: 'Kuu',
+    listView: 'Nimekiri',
     allDay: 'Kogu päev',
     nothingToShow: 'Sündmusi ei leitud',
     buttons: {

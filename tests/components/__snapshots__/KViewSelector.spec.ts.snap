@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`KViewSelector > should render the component 1`] = `"<div data-v-86224488="" class="k-view-selector-container"><button data-v-86224488="" class="k-view-selector-button k-view-selector-button-active">Month</button><button data-v-86224488="" class="k-view-selector-button">Day</button><button data-v-86224488="" class="k-view-selector-button">List</button></div>"`;

@@ -1,7 +1,7 @@
 <template>
   <header class="k-alendar-header-container">
     <div class="left-buttons">
-      <div>
+      <div class="navigation-buttons-group">
         <ButtonPrevMonth @handle="handlePrevMonth" />
         <ButtonNextMonth @handle="handleNextMonth" />
       </div>
@@ -10,14 +10,18 @@
     <div class="center-title">
       <h2>{{ title }}</h2>
     </div>
+    <div class="right-controls">
+      <KViewSelector />
+    </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import useRenderCalendar from '@/composables/useRenderCalendar'
-import ButtonPrevMonth from '../Buttons/ButtonPrevMonth.vue';
+import useRenderCalendar from '@/composables/useRenderCalendar';
 import ButtonNextMonth from '../Buttons/ButtonNextMonth.vue';
+import ButtonPrevMonth from '../Buttons/ButtonPrevMonth.vue';
 import ButtonTodayMonth from '../Buttons/ButtonTodayMonth.vue';
+import KViewSelector from '../KViewSelector.vue';
 
 const { title } = useRenderCalendar()
 
@@ -41,7 +45,13 @@ const handleToToday = (date: string) => {
     @apply capitalize;
   }
   .left-buttons {
-    @apply flex items-center space-x-2;
+    @apply flex items-center gap-2;
+  }
+  .navigation-buttons-group {
+    @apply flex items-center;
+  }
+  .right-controls {
+    @apply flex items-center;
   }
 }
 </style>
