@@ -1,9 +1,8 @@
 import KWeekDays from '@/components/Calendar/KWeekDays.vue';
 
-import { mount, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import useConfig from '@/composables/useConfig';
-import MockDate from 'mockdate';
+import { mount, VueWrapper } from '@vue/test-utils';
+import { beforeEach, describe, expect, it } from 'vitest';
 const fakeDate = '2025-12-11T12:00:00.000Z';
 
 import { mockDate } from 'tests/utils/mockDate';
@@ -14,12 +13,7 @@ describe('KWeekDays', () => {
   let wrapper: VueWrapper<InstanceType<typeof KWeekDays>>;
 
   beforeEach(() => {
-    MockDate.set(fakeDate);
     wrapper = mount(KWeekDays);
-  });
-
-  afterEach(() => {
-    MockDate.reset();
   });
 
   it('should render the week days in format ccc', () => {
