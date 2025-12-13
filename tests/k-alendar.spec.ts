@@ -1,4 +1,4 @@
-import kAlendar from '@/components/kAlendar.vue';
+import KCalendar from '@/components/Calendar/KCalendar.vue';
 import { mount, VueWrapper } from '@vue/test-utils';
 import MockDate from 'mockdate';
 import { beforeEach, describe, expect, it } from 'vitest';
@@ -16,13 +16,13 @@ const props = {
     },
   ]
 }
-let wrapper: VueWrapper<kAlendar>
+let wrapper: VueWrapper<InstanceType<typeof KCalendar>>
 
 describe('kAlendar', () => {
 
   beforeEach(() => {
     MockDate.set(fakeDate)
-    wrapper = mount(kAlendar, {
+    wrapper = mount(KCalendar, {
       props,
     });
   })

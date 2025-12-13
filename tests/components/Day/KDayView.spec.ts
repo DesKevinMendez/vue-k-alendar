@@ -7,7 +7,7 @@ const fakeDate = new Date('2025-12-11T12:00:00.000Z');
 vi.mock('luxon', async () => {
   const actual = await vi.importActual<typeof import('luxon')>('luxon');
   const fakeDateTime = actual.DateTime.fromJSDate(new Date('2025-12-11T12:00:00.000Z'));
-  
+
   return {
     ...actual,
     DateTime: Object.assign(actual.DateTime, {
@@ -18,7 +18,7 @@ vi.mock('luxon', async () => {
 
 import KDayView from '@/components/Day/KDayView.vue';
 
-let wrapper: VueWrapper<KDayView>;
+let wrapper: VueWrapper<InstanceType<typeof KDayView>>;
 const events: KEvent[] = [
   {
     id: '019b0aba-cc6c-736a-9503-0b1c8e7a6bf5',
@@ -192,88 +192,88 @@ describe('KDayView', () => {
     it('should calculate width dinamically based on 70px of overlap', () => {
       const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
-      const firstEvent = slot5AM.find('.k-day-view-event-item');
-      const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
-      const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
+      const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
+      const secondEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(1);
+      const thirdEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(2);
       expect(firstEvent.element.style.width).toBe('calc(100% - 0px)');
-      expect(secondEvent.element.style.width).toBe('calc(100% - 70px)');
-      expect(thirdEvent.element.style.width).toBe('calc(100% - 140px)');
+      expect(secondEvent?.element.style.width).toBe('calc(100% - 70px)');
+      expect(thirdEvent?.element.style.width).toBe('calc(100% - 140px)');
     });
 
     it('shoud calculate the top position dinamically based on the event start time', () => {
       const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
-      const firstEvent = slot5AM.find('.k-day-view-event-item');
-      const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
-      const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
+      const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
+      const secondEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(1);
+      const thirdEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(2);
       expect(firstEvent.element.style.top).toBe('0%');
       expect(secondEvent?.element.style.top).toBe('50%');
-      expect(thirdEvent.element.style.top).toBe('75%');
+      expect(thirdEvent?.element.style.top).toBe('75%');
     });
 
     it('should calculate the left position dinamically based on the event start time', () => {
       const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
-      const firstEvent = slot5AM.find('.k-day-view-event-item');
-      const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
-      const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
-      expect(firstEvent.element.style.left).toBe('0px');
-      expect(secondEvent.element.style.left).toBe('70px');
-      expect(thirdEvent.element.style.left).toBe('140px');
+      const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
+      const secondEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(1);
+      const thirdEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(2);
+      expect(firstEvent?.element.style.left).toBe('0px');
+      expect(secondEvent?.element.style.left).toBe('70px');
+      expect(thirdEvent?.element.style.left).toBe('140px');
     });
 
     it('should calculate the height dinamically based on the event start time', () => {
       const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
-      const firstEvent = slot5AM.find('.k-day-view-event-item');
-      const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
-      const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
-      expect(firstEvent.element.style.height).toBe('100%');
-      expect(secondEvent.element.style.height).toBe('100%');
-      expect(thirdEvent.element.style.height).toBe('300%'); // 300% because the event is from 05:45 AM to 08:45 AM (3 hours) one hour is 100% so 3 hours is 300%
+      const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
+      const secondEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(1);
+      const thirdEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(2);
+      expect(firstEvent?.element.style.height).toBe('100%');
+      expect(secondEvent?.element.style.height).toBe('100%');
+      expect(thirdEvent?.element.style.height).toBe('300%'); // 300% because the event is from 05:45 AM to 08:45 AM (3 hours) one hour is 100% so 3 hours is 300%
     });
 
     it('should calculate the z-index dinamically based on the event start time', () => {
       const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
-      const firstEvent = slot5AM.find('.k-day-view-event-item');
-      const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
-      const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
+      const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
+      const secondEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(1);
+      const thirdEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(2);
       expect(firstEvent.element.style.zIndex).toBe('10');
-      expect(secondEvent.element.style.zIndex).toBe('11');
-      expect(thirdEvent.element.style.zIndex).toBe('12');
+      expect(secondEvent?.element.style.zIndex).toBe('11');
+      expect(thirdEvent?.element.style.zIndex).toBe('12');
     });
 
     it('k-day-view-event-title should be the event title', () => {
       const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
-      const firstEvent = slot5AM.find('.k-day-view-event-item');
-      const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
-      const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
+      const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
+      const secondEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(1);
+      const thirdEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(2);
 
       const h3FirstEvent = firstEvent.find('h3.k-day-view-event-title');
-      const h3SecondEvent = secondEvent.find('h3.k-day-view-event-title');
-      const h3ThirdEvent = thirdEvent.find('h3.k-day-view-event-title');
+      const h3SecondEvent = secondEvent?.find('h3.k-day-view-event-title');
+      const h3ThirdEvent = thirdEvent?.find('h3.k-day-view-event-title');
 
       expect(h3FirstEvent.text()).toBe('MRHQ+G9 Soyapango, El Salvador (IGG-3519)');
-      expect(h3SecondEvent.text()).toBe('MRHQ+G9 Soyapango, El Salvador 2 (IGG-3519)');
-      expect(h3ThirdEvent.text()).toBe('Soyapango, El Salvador');
+      expect(h3SecondEvent?.text()).toBe('MRHQ+G9 Soyapango, El Salvador 2 (IGG-3519)');
+      expect(h3ThirdEvent?.text()).toBe('Soyapango, El Salvador');
     });
 
     it('k-day-view-event-time should be the event time', () => {
       const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
-      const firstEvent = slot5AM.find('.k-day-view-event-item');
-      const secondEvent = slot5AM.findAll('.k-day-view-event-item').at(1);
-      const thirdEvent = slot5AM.findAll('.k-day-view-event-item').at(2);
+      const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
+      const secondEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(1);
+      const thirdEvent = slot5AM.findAll<HTMLDivElement>('.k-day-view-event-item').at(2);
 
       const pFirstEvent = firstEvent.find('p.k-day-view-event-time');
-      const pSecondEvent = secondEvent.find('p.k-day-view-event-time');
-      const pThirdEvent = thirdEvent.find('p.k-day-view-event-time');
+      const pSecondEvent = secondEvent?.find('p.k-day-view-event-time');
+      const pThirdEvent = thirdEvent?.find('p.k-day-view-event-time');
 
       expect(pFirstEvent.text()).toBe('05:00 AM');
-      expect(pSecondEvent.text()).toBe('05:30 AM');
-      expect(pThirdEvent.text()).toBe('05:45 AM - 08:45 AM');
+      expect(pSecondEvent?.text()).toBe('05:30 AM');
+      expect(pThirdEvent?.text()).toBe('05:45 AM - 08:45 AM');
     });
   });
 
@@ -281,11 +281,10 @@ describe('KDayView', () => {
     it('should emit the eventClicked event when the event is clicked', async () => {
       const container = wrapper.find('.k-day-view-events-container');
       const slot5AM = container.find('.k-day-view-event-slot[calendar-hour-container="05:00 AM"]');
-      const firstEvent = slot5AM.find('.k-day-view-event-item');
-      console.log(firstEvent.html());
+      const firstEvent = slot5AM.find<HTMLDivElement>('.k-day-view-event-item');
       await firstEvent.trigger('click');
       expect(wrapper.emitted('eventClicked')).toBeTruthy();
-      expect(wrapper.emitted('eventClicked')[0][0]).toStrictEqual(events[2]);
+      expect(wrapper.emitted('eventClicked')?.[0]?.[0]).toStrictEqual(events[2]);
     });
   });
 });

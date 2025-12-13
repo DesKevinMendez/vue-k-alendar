@@ -8,7 +8,7 @@ const fakeDate = '2024-08-22T03:59:10.000000Z';
 
 
 describe('KWeekDays', () => {
-  let wrapper: VueWrapper<KWeekDays>;
+  let wrapper: VueWrapper<InstanceType<typeof KWeekDays>>;
 
   beforeEach(() => {
     MockDate.set(fakeDate);
