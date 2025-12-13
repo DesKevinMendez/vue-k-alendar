@@ -47,11 +47,11 @@ const toToday = (date: string) => {
 }
 
 const eventClicked = (event: KEventDialogEmit) => {
-  console.log('eventClicked', event)
+  console.log('event', event)
 }
 
-const plusEventCountClickedFromDialog = (events: KEvent[]) => {
-  console.log('plusEventCountClickedFromDialog', events)
+const eventsReceived = (events: KEvent[]) => {
+  console.log('events', events)
 }
 
 onMounted(() => {
@@ -170,8 +170,8 @@ const eventsForDay = ref<KEvent[]>([
       :lang
       :events="eventsForDay"
       @toToday="toToday"
-      @eventClicked="eventClicked"
-      @plusEventCountClicked="plusEventCountClickedFromDialog"
+      @event="eventClicked"
+      @events="eventsReceived"
       @prevMonth="prevMonth"
       @nextMonth="nextMonth"
       :view="view"

@@ -20,7 +20,7 @@
             :key="event.id"
             :event="event"
             :calendar
-            @eventClicked="eventClicked"
+            @event="eventClicked"
           />
         </ul>
       </div>
@@ -38,7 +38,7 @@ import KWeekDays from './KWeekDays.vue'
 
 const { monthDays, calendarDaySelect } = useRenderCalendar()
 const { eventSelected } = useEvent()
-const emit = defineEmits(['eventClicked', 'plusEventCountClicked'])
+const emit = defineEmits(['event', 'events'])
 const dateRefs = ref<Record<string, any>>({})
 
 const selectThisDate = (calendar: MonthDays) => {
@@ -51,7 +51,7 @@ const selectThisDate = (calendar: MonthDays) => {
         eventSelected.value = calendar.events[0]
 
         if (calendar.events[0].id != 'more') {
-          emit('eventClicked', calendar.events[0])
+          emit('event', calendar.events[0])
         }
       } else {
         eventSelected.value = {
@@ -60,7 +60,7 @@ const selectThisDate = (calendar: MonthDays) => {
           start_date: '',
           description: ''
         }
-        emit('plusEventCountClicked', { events: calendar.events })
+        emit('events', { events: calendar.events })
       }
 
       calendarDaySelect.value = calendar
@@ -90,9 +90,9 @@ const eventClicked = ({
   }
 
   if (event.id != 'more') {
-    emit('eventClicked', event)
+    emit('event', event)
   } else {
-    emit('plusEventCountClicked', { events: calendarDaySelect.value.events })
+    emit('events', { events: calendarDaySelect.value.events })
   }
 }
 

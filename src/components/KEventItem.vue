@@ -13,7 +13,7 @@
 import type { MonthDays } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
 import { computed } from 'vue';
-const emit = defineEmits(['eventClicked'])
+const emit = defineEmits(['event'])
 
 const props = defineProps<{
   event: KEvent
@@ -25,7 +25,7 @@ const eventReceived = computed(() => {
 })
 
 const eventClicked = (mauseEvent: MouseEvent) => {
-  emit('eventClicked', { mauseEvent, event: props.event, calendar: props.calendar })
+  emit('event', { mauseEvent, event: props.event, calendar: props.calendar })
 }
 </script>
 

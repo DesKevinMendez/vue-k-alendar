@@ -8,18 +8,18 @@
     />
     <KAlendar
       v-if="currentView === 'calendar'"
-      @eventClicked="eventClicked"
-      @plusEventCountClicked="plusEventCountClickedFromDialog"
+      @event="eventClicked"
+      @events="eventsReceived"
     />
     <KListCalendar
       v-else-if="currentView === 'list'"
       :events="eventsRecieved"
-      @eventClicked="eventClicked"
+      @event="eventClicked"
     />
     <KDayViewVue
       :events="eventsRecieved"
       v-if="currentView === 'day'"
-      @eventClicked="eventClicked"
+      @event="eventClicked"
     />
   </section>
 </template>
@@ -38,11 +38,11 @@ import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KListCalendar from '../components/List/KListCalendar.vue'
 
 const emit = defineEmits([
-  'eventClicked',
+  'event',
   'nextMonth',
   'prevMonth',
   'toToday',
-  'plusEventCountClicked',
+  'events',
 ])
 
 const props = defineProps<{
@@ -102,11 +102,11 @@ watch(
 )
 
 const eventClicked = (event: KEvent) => {
-  emit('eventClicked', event)
+  emit('event', event)
 }
 
-const plusEventCountClickedFromDialog = ({ events }: { events: KEvent[] }) => {
-  emit('plusEventCountClicked', { events })
+const eventsReceived = ({ events }: { events: KEvent[] }) => {
+  emit('events', events)
 }
 </script>
 
