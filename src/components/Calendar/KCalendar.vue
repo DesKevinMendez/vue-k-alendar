@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { useDialog } from '@/composables/useDialog'
 import useEvent from '@/composables/useEvent'
 import useRenderCalendar from '@/composables/useRenderCalendar'
 import type { DayCalendar, KEvent, MonthDays } from '@/types'
@@ -37,10 +36,8 @@ import { ref } from 'vue'
 import KEventItem from '../KEventItem.vue'
 import KWeekDays from './KWeekDays.vue'
 
-const { openEventsDetailDialog, dialogPositionToRender } = useDialog()
 const { monthDays, calendarDaySelect } = useRenderCalendar()
 const { eventSelected } = useEvent()
-const { collision } = useDialog()
 const emit = defineEmits(['eventClicked', 'plusEventCountClicked'])
 const dateRefs = ref<Record<string, any>>({})
 
@@ -48,9 +45,6 @@ const selectThisDate = (calendar: MonthDays) => {
   const isMobile = window.innerWidth < 768
 
   if (isMobile) {
-    const sizeOfDialog = 400
-    const x = Math.floor((window.innerWidth - sizeOfDialog) / 2)
-    dialogPositionToRender.value = { x, y: 16 }
 
     if (calendar.events.length > 0) {
       if (calendar.events.length === 1) {
@@ -70,7 +64,6 @@ const selectThisDate = (calendar: MonthDays) => {
       }
 
       calendarDaySelect.value = calendar
-      openEventsDetailDialog.value = true
     }
   }
 }
@@ -94,10 +87,6 @@ const eventClicked = ({
     if (target.tagName === 'H3') {
       target = target.parentElement as HTMLElement
     }
-
-    dialogPositionToRender.value = collision(target)
-
-    openEventsDetailDialog.value = true
   }
 
   if (event.id != 'more') {
