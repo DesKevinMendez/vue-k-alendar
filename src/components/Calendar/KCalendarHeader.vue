@@ -7,11 +7,13 @@
       </div>
       <ButtonTodayMonth @handle="handleToToday" />
     </div>
-    <div class="center-title">
-      <h2>{{ title }}</h2>
-    </div>
-    <div class="right-controls">
-      <KViewSelector />
+    <div class="title-and-controls">
+      <div class="center-title">
+        <h2>{{ title }}</h2>
+      </div>
+      <div class="right-controls">
+        <KViewSelector />
+      </div>
     </div>
   </header>
 </template>
@@ -40,18 +42,24 @@ const handleToToday = (date: string) => {
 
 <style scoped lang="postcss">
 .k-alendar-header-container {
-  @apply flex justify-between space-y-2 items-center sm:space-y-0;
+  @apply flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0;
+  .title-and-controls {
+    @apply flex items-center justify-between w-full sm:contents gap-2;
+  }
+  .center-title {
+    @apply flex-1 sm:flex-1 sm:text-center;
+  }
   .center-title > h2 {
     @apply capitalize;
   }
   .left-buttons {
-    @apply flex items-center gap-2;
+    @apply flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start;
   }
   .navigation-buttons-group {
     @apply flex items-center;
   }
   .right-controls {
-    @apply flex items-center;
+    @apply flex items-center flex-shrink-0;
   }
 }
 </style>
