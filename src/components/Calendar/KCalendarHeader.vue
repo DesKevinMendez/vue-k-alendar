@@ -9,7 +9,7 @@
     </div>
     <div class="title-and-controls">
       <div class="center-title">
-        <h2>{{ title }}</h2>
+        <h2>{{ date }}</h2>
       </div>
       <div class="right-controls">
         <KViewSelector />
@@ -24,8 +24,17 @@ import ButtonNextMonth from '../Buttons/ButtonNextMonth.vue';
 import ButtonPrevMonth from '../Buttons/ButtonPrevMonth.vue';
 import ButtonTodayMonth from '../Buttons/ButtonTodayMonth.vue';
 import KViewSelector from '../KViewSelector.vue';
+import useKWeekDays from '@/composables/useKWeekDays';
+import useView from '@/composables/useView';
+import { computed } from 'vue';
 
 const { title } = useRenderCalendar()
+const { currentView } = useView()
+const { currentDayWithFormat } = useKWeekDays()
+
+const date = computed(() => {
+  return currentView.value === 'day' ? currentDayWithFormat.value : title.value
+})
 
 const emit = defineEmits(['handlePrevMonth', 'handleNextMonth', 'handleToToday'])
 

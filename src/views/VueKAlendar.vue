@@ -51,6 +51,7 @@ import KAlendar from '../components/Calendar/KCalendar.vue'
 import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
 import KListCalendar from '../components/List/KListCalendar.vue'
+import useKWeekDays from '@/composables/useKWeekDays'
 
 const emit = defineEmits([
   'delete',
@@ -83,6 +84,7 @@ const eventsRecieved = computed(() => {
 const { setLang } = useConfig()
 const { openEventsDetailDialog, dialogPositionToRender, closeDialog } = useDialog()
 const { eventsToShowInCalendar, generateCalendar, monthDays, currentDate } = useRenderCalendar()
+const { setCurrentDay } = useKWeekDays()
 
 const handlePrevMonth = (date: string) => {
   emit('prevMonth', date)
@@ -93,6 +95,7 @@ const handleNextMonth = (date: string) => {
 }
 
 const handleToToday = (date: string) => {
+  setCurrentDay(date)
   emit('toToday', date)
 }
 
