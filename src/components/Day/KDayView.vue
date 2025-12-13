@@ -207,7 +207,7 @@ const eventClicked = (event: KEvent) => {
     @apply col-span-10;
   }
   .k-day-view-hour-slot {
-    @apply border-gray-200 dark:border-slate-600 border-r flex-1 min-h-0 flex items-center;
+    @apply border-gray-200 dark:border-slate-600 border-r flex-1 min-h-0 flex items-center text-sm;
   }
   .k-day-view-hour-slot, .k-day-view-event-slot {
     @apply border-gray-200 dark:border-slate-600 border-b px-2 py-4 min-h-0 flex-1;
