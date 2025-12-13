@@ -3,12 +3,22 @@
 </template>
 
 <script setup lang="ts">
+import useKWeekDays from '@/composables/useKWeekDays'
 import useRenderCalendar from '@/composables/useRenderCalendar'
+import useView from '@/composables/useView'
 import { DateTime } from 'luxon'
 const { currentDate, monthDays, generateCalendar } = useRenderCalendar()
 const emit = defineEmits(['handle'])
 
+const { currentView } = useView()
+const { currentDay, setCurrentDay } = useKWeekDays()
+
 const handleClick = () => {
+  if (currentView.value === 'day') {
+    setCurrentDay(DateTime.fromISO(currentDay.value).plus({ days: 1 }).toISODate() || '')
+    return;
+  }
+
   currentDate.value = currentDate.value.plus({ months: 1 })
 
   const next = DateTime.fromJSDate(currentDate.value.toJSDate()).toFormat('yyyy-MM-dd')
