@@ -2,9 +2,11 @@
 import { onMounted, ref } from 'vue'
 import VueKAlendar from '@/views/VueKAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
+import KLanguageSelector from './components/KLanguageSelector.vue'
 import type { KEvent, KEventDialogEmit } from './types/Events'
 import { v4 as uuidv4 } from 'uuid'
 import type { View } from './types/Calendar'
+
 const lang = ref<string>('en')
 const canEdit = ref<boolean>(true)
 const canDelete = ref<boolean>(true)
@@ -156,12 +158,7 @@ const eventsForDay = ref<KEvent[]>([
       >
         Generate random event
       </button>
-      <button
-        class="px-2 py-1 border rounded-md border-gray-200 dark:border-slate-600"
-        @click="lang = lang === 'es' ? 'en' : 'es'"
-      >
-        Switch to {{ lang === 'es' ? 'English' : 'Spanish' }}
-      </button>
+      <KLanguageSelector v-model="lang" />
     </div>
   </header>
 
