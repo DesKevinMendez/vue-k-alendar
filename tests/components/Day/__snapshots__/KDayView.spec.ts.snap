@@ -3,13 +3,13 @@
 exports[`KDayView > should render the component 1`] = `
 "<div data-v-d90c37db="" class="k-day-view-container">
   <div data-v-4b920447="" data-v-d90c37db="" class="k-alendar-days-container">
-    <div data-v-4b920447="" class="">Mon</div>
-    <div data-v-4b920447="" class="">Tue</div>
-    <div data-v-4b920447="" class="">Wed</div>
-    <div data-v-4b920447="" class="today">Thu</div>
-    <div data-v-4b920447="" class="">Fri</div>
-    <div data-v-4b920447="" class="">Sat</div>
-    <div data-v-4b920447="" class="">Sun</div>
+    <div data-v-4b920447="" class="k-alendar-day">Mon</div>
+    <div data-v-4b920447="" class="k-alendar-day">Tue</div>
+    <div data-v-4b920447="" class="k-alendar-day">Wed</div>
+    <div data-v-4b920447="" class="k-alendar-day today">Thu</div>
+    <div data-v-4b920447="" class="k-alendar-day">Fri</div>
+    <div data-v-4b920447="" class="k-alendar-day">Sat</div>
+    <div data-v-4b920447="" class="k-alendar-day">Sun</div>
   </div>
   <section data-v-d90c37db="" class="k-day-view-events">
     <div data-v-d90c37db="" class="k-day-view-hour">

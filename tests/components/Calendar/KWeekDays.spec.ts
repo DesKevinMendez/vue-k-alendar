@@ -4,8 +4,11 @@ import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import useConfig from '@/composables/useConfig';
 import MockDate from 'mockdate';
-const fakeDate = '2024-08-22T03:59:10.000000Z';
+const fakeDate = '2025-12-11T12:00:00.000Z';
 
+import { mockDate } from 'tests/utils/mockDate';
+
+mockDate(fakeDate);
 
 describe('KWeekDays', () => {
   let wrapper: VueWrapper<InstanceType<typeof KWeekDays>>;
@@ -45,5 +48,13 @@ describe('KWeekDays', () => {
     expect(weekDays.at(4)?.text()).toBe('vie');
     expect(weekDays.at(5)?.text()).toBe('sáb');
     expect(weekDays.at(6)?.text()).toBe('dom');
+  });
+
+  it('should emit date when week day is clicked', async () => {
+    const weekDays = wrapper.findAll<HTMLDivElement>('.k-alendar-days-container div');
+    await weekDays.at(0)?.trigger('click');
+    expect(wrapper.emitted('dateClicked')).toBeTruthy();
+    // 2025-12-11 is a Thursday, so the start of the week (Monday) is 2025-12-08
+    expect(wrapper.emitted('dateClicked')?.[0]?.[0]).toBe('2025-12-08');
   });
 });
