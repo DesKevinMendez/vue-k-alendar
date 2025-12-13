@@ -1,6 +1,7 @@
 export type Translations = {
     dayView: string;
     monthView: string;
+    listView: string;
     allDay: string;
     nothingToShow: string;
     buttons: {

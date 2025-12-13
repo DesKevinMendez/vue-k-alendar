@@ -125,7 +125,7 @@ export default function useRenderCalendar(): {
         readonly daysInYear: import('luxon').PossibleDaysInYear;
         readonly weeksInWeekYear: import('luxon').PossibleWeeksInYear;
         readonly weeksInLocalWeekYear: import('luxon').PossibleWeeksInYear;
-        resolvedLocaleOptions: (opts?: Intl.DateTimeFormatOptions | import('luxon').LocaleOptions | undefined) => Required<import('luxon').LocaleOptions>;
+        resolvedLocaleOptions: (opts?: import('luxon').LocaleOptions | Intl.DateTimeFormatOptions | undefined) => Required<import('luxon').LocaleOptions>;
         toUTC: (offset?: number | undefined, opts?: import('luxon').ZoneOptions | undefined) => DateTime<true>;
         toLocal: () => DateTime<true>;
         setZone: (zone?: string | import('luxon').Zone<boolean> | undefined, opts?: import('luxon').ZoneOptions | undefined) => DateTime<true> | DateTime<false>;
@@ -216,7 +216,7 @@ export default function useRenderCalendar(): {
         readonly daysInYear: import('luxon').PossibleDaysInYear;
         readonly weeksInWeekYear: import('luxon').PossibleWeeksInYear;
         readonly weeksInLocalWeekYear: import('luxon').PossibleWeeksInYear;
-        resolvedLocaleOptions: (opts?: Intl.DateTimeFormatOptions | import('luxon').LocaleOptions | undefined) => Required<import('luxon').LocaleOptions>;
+        resolvedLocaleOptions: (opts?: import('luxon').LocaleOptions | Intl.DateTimeFormatOptions | undefined) => Required<import('luxon').LocaleOptions>;
         toUTC: (offset?: number | undefined, opts?: import('luxon').ZoneOptions | undefined) => DateTime<true>;
         toLocal: () => DateTime<true>;
         setZone: (zone?: string | import('luxon').Zone<boolean> | undefined, opts?: import('luxon').ZoneOptions | undefined) => DateTime<true> | DateTime<false>;
