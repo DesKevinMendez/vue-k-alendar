@@ -1,23 +1,24 @@
 <template>
   <section class="k-alendar-wrapper-container">
     <KCalendarHeader
+      :view="currentView"
       @handlePrevMonth="handlePrevMonth"
       @handleNextMonth="handleNextMonth"
       @handleToToday="handleToToday"
     />
     <KAlendar
-      v-if="defaultView === 'calendar'"
+      v-if="currentView === 'calendar'"
       @eventClicked="eventClicked"
       @plusEventCountClicked="plusEventCountClickedFromDialog"
     />
     <KListCalendar
-      v-else-if="defaultView === 'list'"
+      v-else-if="currentView === 'list'"
       :events="eventsRecieved"
       @eventClicked="eventClicked"
     />
     <KDayViewVue
       :events="eventsRecieved"
-      v-if="defaultView === 'day'"
+      v-if="currentView === 'day'"
       @eventClicked="eventClicked"
     />
     <KAlendarEventDetailDialog
@@ -38,9 +39,11 @@
 </template>
 
 <script setup lang="ts">
+import KDayViewVue from '@/components/Day/KDayView.vue'
 import useConfig from '@/composables/useConfig'
 import { useDialog } from '@/composables/useDialog'
 import useRenderCalendar from '@/composables/useRenderCalendar'
+import useView from '@/composables/useView'
 import type { View } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
 import { computed, watch } from 'vue'
@@ -48,7 +51,6 @@ import KAlendar from '../components/Calendar/KCalendar.vue'
 import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
 import KListCalendar from '../components/List/KListCalendar.vue'
-import KDayViewVue from '@/components/Day/KDayView.vue'
 
 const emit = defineEmits([
   'delete',
@@ -58,7 +60,7 @@ const emit = defineEmits([
   'nextMonth',
   'prevMonth',
   'toToday',
-  'plusEventCountClicked'
+  'plusEventCountClicked',
 ])
 
 const props = defineProps<{
@@ -70,9 +72,9 @@ const props = defineProps<{
   view?: View
 }>()
 
-const defaultView = computed(() => {
-  return props.view || 'calendar'
-})
+const { currentView, setCurrentView } = useView()
+
+setCurrentView(props.view || 'calendar')
 
 const eventsRecieved = computed(() => {
   return props.events
