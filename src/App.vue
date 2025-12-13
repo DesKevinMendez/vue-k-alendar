@@ -8,9 +8,6 @@ import { v4 as uuidv4 } from 'uuid'
 import type { View } from './types/Calendar'
 
 const lang = ref<string>('en')
-const canEdit = ref<boolean>(true)
-const canDelete = ref<boolean>(true)
-const withDefaultModal = ref<boolean>(true)
 const view = ref<View>('calendar')
 const events = ref<KEvent[]>([])
 
@@ -164,9 +161,6 @@ const eventsForDay = ref<KEvent[]>([
 
   <main class="p-4">
     <VueKAlendar
-      :can-edit="canEdit"
-      :can-delete="canDelete"
-      :with-default-modal="withDefaultModal"
       :lang
       :events="eventsForDay"
       @toToday="toToday"
