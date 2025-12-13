@@ -57,6 +57,7 @@ npm  install @deskevinmendez/vue-k-alendar
     @toToday="handleToToday"
     @event="handleEvent"
     @events="handleEvents"
+    @date="handleDate"
   />
 </template>
 
@@ -103,13 +104,18 @@ export default {
       console.log('Plus event count clicked:', events)
     }
 
+    const handleDate = ({ day, events }) => {
+      console.log('Date clicked:', day, events)
+    }
+
     return {
       events,
       handleNextMonth,
       handlePrevMonth,
       handleToToday,
       handleEvent,
-      handleEvents
+      handleEvents,
+      handleDate
     }
   }
 }
@@ -137,6 +143,7 @@ The calendar component has been created with tailwind, and support the dark mode
 | `toToday`               | Emitted when the user navigates to the current month.        |
 | `event`          | Emitted when an event is clicked.                            |
 | `events` | Emitted when the user clicks on the plus icon in the dialog. |
+| `date` | Emitted when the user clicks on a date. |
 
 ## Typescript
 

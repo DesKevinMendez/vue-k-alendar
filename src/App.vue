@@ -51,6 +51,10 @@ const eventsReceived = (events: KEvent[]) => {
   console.log('events', events)
 }
 
+const dateReceived = ({ day, events }: { day: string, events: KEvent[] }) => {
+  console.log('date', day, events)
+}
+
 onMounted(() => {
   for (let i = 0; i < 30; i++) {
     duplicateRandomEvent(i + 1)
@@ -168,6 +172,7 @@ const eventsForDay = ref<KEvent[]>([
       @events="eventsReceived"
       @prevMonth="prevMonth"
       @nextMonth="nextMonth"
+      @date="dateReceived"
       :view="view"
     />
   </main>
