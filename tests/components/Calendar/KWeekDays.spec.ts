@@ -1,0 +1,49 @@
+import KWeekDays from '@/components/Calendar/KWeekDays.vue';
+
+import { mount, VueWrapper } from '@vue/test-utils';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import useConfig from '@/composables/useConfig';
+import MockDate from 'mockdate';
+const fakeDate = '2024-08-22T03:59:10.000000Z';
+
+
+describe('KWeekDays', () => {
+  let wrapper: VueWrapper<KWeekDays>;
+
+  beforeEach(() => {
+    MockDate.set(fakeDate);
+    wrapper = mount(KWeekDays);
+  });
+
+  afterEach(() => {
+    MockDate.reset();
+  });
+
+  it('should render the week days in format ccc', () => {
+    const weekDays = wrapper.findAll('.k-alendar-days-container div');
+    expect(weekDays.length).toBe(7);
+    expect(weekDays.at(0)?.text()).toBe('Mon');
+    expect(weekDays.at(1)?.text()).toBe('Tue');
+    expect(weekDays.at(2)?.text()).toBe('Wed');
+    expect(weekDays.at(3)?.text()).toBe('Thu');
+    expect(weekDays.at(4)?.text()).toBe('Fri');
+    expect(weekDays.at(5)?.text()).toBe('Sat');
+    expect(weekDays.at(6)?.text()).toBe('Sun');
+  });
+
+  it('should render the week days in format ccc in spanish', () => {
+    const { setLang } = useConfig();
+    setLang('es');
+    wrapper = mount(KWeekDays);
+
+    const weekDays = wrapper.findAll('.k-alendar-days-container div');
+    expect(weekDays.length).toBe(7);
+    expect(weekDays.at(0)?.text()).toBe('lun');
+    expect(weekDays.at(1)?.text()).toBe('mar');
+    expect(weekDays.at(2)?.text()).toBe('mié');
+    expect(weekDays.at(3)?.text()).toBe('jue');
+    expect(weekDays.at(4)?.text()).toBe('vie');
+    expect(weekDays.at(5)?.text()).toBe('sáb');
+    expect(weekDays.at(6)?.text()).toBe('dom');
+  });
+});
