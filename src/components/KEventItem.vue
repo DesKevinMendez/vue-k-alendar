@@ -1,23 +1,28 @@
 <template>
   <li
     :style="{
-      'background-color': event.id === 'more' ? 'gray' : event.color ? event.color : '#374151'
+      'background-color': eventReceived.id === 'more' ? 'gray' : eventReceived.color ? eventReceived.color : '#374151'
     }"
     @click="eventClicked"
   >
-    <h3>{{ event.title }}</h3>
+    <h3>{{ eventReceived.title }}</h3>
   </li>
 </template>
 
 <script setup lang="ts">
 import type { MonthDays } from '@/types/Calendar'
 import type { KEvent } from '@/types/Events'
+import { computed } from 'vue';
 const emit = defineEmits(['eventClicked'])
 
 const props = defineProps<{
   event: KEvent
   calendar: MonthDays | null
 }>()
+
+const eventReceived = computed(() => {
+  return props.event
+})
 
 const eventClicked = (mauseEvent: MouseEvent) => {
   emit('eventClicked', { mauseEvent, event: props.event, calendar: props.calendar })
