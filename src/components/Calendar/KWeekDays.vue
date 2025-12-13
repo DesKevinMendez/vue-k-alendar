@@ -5,7 +5,7 @@
       v-for="day in getWeekDays()" 
       @click="emitDateClicked(day.date)" 
       :key="day.date"
-      :class="{ today: day.date === todayDate }"
+      :class="{ today: day.date === currentDay }"
     >
       {{ day.text }}
     </div>
@@ -14,9 +14,10 @@
 
 <script setup lang="ts">
 import useConfig from '@/composables/useConfig'
+import useKWeekDays from '@/composables/useKWeekDays'
 import { DateTime } from 'luxon'
-import { computed } from 'vue'
 
+const { currentDay, setCurrentDay } = useKWeekDays()
 const { lang } = useConfig()
 const emit = defineEmits(['dateClicked'])
 
@@ -26,6 +27,7 @@ interface WeekDay {
 }
 
 const emitDateClicked = (date: string) => {
+  setCurrentDay(date)
   emit('dateClicked', date)
 }
 const getWeekDays = (): WeekDay[] => {
@@ -45,10 +47,6 @@ const getWeekDays = (): WeekDay[] => {
 
   return days
 }
-
-const todayDate = computed(() => {
-  return DateTime.now().toISODate() || ''
-})
 </script>
 
 <style scoped lang="postcss">

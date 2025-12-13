@@ -34,8 +34,8 @@
 </template>
 
 <script setup lang="ts">
+import useKWeekDays from '@/composables/useKWeekDays'
 import type { KEvent } from '@/types'
-import useRenderCalendar from '@/composables/useRenderCalendar'
 import { DateTime } from 'luxon'
 import { computed } from 'vue'
 import KWeekDays from '../Calendar/KWeekDays.vue'
@@ -45,7 +45,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits(['eventClicked'])
-const { currentDate } = useRenderCalendar()
+const { currentDay } = useKWeekDays()
 
 const events = computed(() => {
   return props.events
@@ -55,10 +55,6 @@ const orderEventsByHour = computed(() => {
   return events.value.slice().sort((a: KEvent, b: KEvent) => {
     return new Date(a.start_date).getTime() - new Date(b.start_date).getTime()
   })
-})
-
-const currentDay = computed(() => {
-  return currentDate.value.toFormat('yyyy-MM-dd')
 })
 
 const eventsForCurrentDay = computed(() => {
