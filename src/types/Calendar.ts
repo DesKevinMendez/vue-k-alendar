@@ -14,4 +14,4 @@ export type DayCalendar = {
   text: string
 }
 
-export type View = 'list' | 'calendar'
+export type View = 'list' | 'calendar' | 'day'

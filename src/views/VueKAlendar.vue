@@ -10,8 +10,16 @@
       @eventClicked="eventClicked"
       @plusEventCountClicked="plusEventCountClickedFromDialog"
     />
-
-    <KListCalendar v-else :events="eventsRecieved" @eventClicked="eventClicked" />
+    <KListCalendar
+      v-else-if="defaultView === 'list'"
+      :events="eventsRecieved"
+      @eventClicked="eventClicked"
+    />
+    <KDayViewVue
+      :events="eventsRecieved"
+      v-if="defaultView === 'day'"
+      @eventClicked="eventClicked"
+    />
     <KAlendarEventDetailDialog
       v-if="withDefaultModal"
       v-model="openEventsDetailDialog"
@@ -40,6 +48,7 @@ import KAlendar from '../components/Calendar/KCalendar.vue'
 import KCalendarHeader from '../components/Calendar/KCalendarHeader.vue'
 import KAlendarEventDetailDialog from '../components/KAlendarEventDetailDialog.vue'
 import KListCalendar from '../components/List/KListCalendar.vue'
+import KDayViewVue from '@/components/Day/KDayView.vue'
 
 const emit = defineEmits([
   'delete',

@@ -6,7 +6,7 @@ import type { KEvent } from '@/types/Events';
 import useConfig from '@/composables/useConfig';
 
 describe('KListCalendar', () => {
-  let wrapper: VueWrapper<KListCalendar>;
+  let wrapper: VueWrapper<InstanceType<typeof KListCalendar>>;
   const events: KEvent[] = [
     {
       id: '1',
@@ -41,7 +41,7 @@ describe('KListCalendar', () => {
       const eventsKListCalendar = wrapper.findAll('.k-list-calendar-event');
       await eventsKListCalendar[0].trigger('click');
       expect(wrapper.emitted('eventClicked')).toBeTruthy();
-      expect(wrapper.emitted('eventClicked')[0][0]).toStrictEqual(events[1]);
+      expect(wrapper.emitted('eventClicked')?.[0]?.[0]).toStrictEqual(events[1]);
     });
   });
 
