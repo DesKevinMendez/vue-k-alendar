@@ -36,18 +36,18 @@ const emitDateClicked = (date: string) => {
 }
 
 const getWeekDays = (): WeekDay[] => {
-  const start = DateTime.now().startOf('week')
-  const end = DateTime.now().endOf('week')
+  const start = DateTime.fromISO(currentDay.value).startOf('week')
+  const end = DateTime.fromISO(currentDay.value).endOf('week')
 
   const days: WeekDay[] = []
-  let currentDay = start
+  let day = start
 
-  while (currentDay <= end) {
+  while (day <= end) {
     days.push({
-      text: currentDay.setLocale(lang.value).toFormat('ccc'),
-      date: currentDay.toISODate() || ''
+      text: day.setLocale(lang.value).toFormat('ccc'),
+      date: day.toISODate() || ''
     })
-    currentDay = currentDay.plus({ days: 1 })
+    day = day.plus({ days: 1 })
   }
 
   return days
