@@ -1,2 +1,2 @@
 export type { DayCalendar, MonthDays } from './Calendar';
-export type { KEvent, KEventDialogEmit } from './Events';
+export type { KEvent, KEventEmit } from './Events';

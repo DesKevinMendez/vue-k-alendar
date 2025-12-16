@@ -6,7 +6,6 @@ export default function useEvent(): {
         start_date: string;
         end_date?: string | null | undefined;
         description: string;
-        autor?: string | undefined;
         color?: string | undefined;
     }, KEvent | {
         id: string;
@@ -14,7 +13,6 @@ export default function useEvent(): {
         start_date: string;
         end_date?: string | null | undefined;
         description: string;
-        autor?: string | undefined;
         color?: string | undefined;
     }>;
 };

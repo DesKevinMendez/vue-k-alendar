@@ -8,7 +8,6 @@ export default function useRenderCalendar(): {
         start_date: string;
         end_date?: string | null | undefined;
         description: string;
-        autor?: string | undefined;
         color?: string | undefined;
     }[], KEvent[] | {
         id: string;
@@ -16,7 +15,6 @@ export default function useRenderCalendar(): {
         start_date: string;
         end_date?: string | null | undefined;
         description: string;
-        autor?: string | undefined;
         color?: string | undefined;
     }[]>;
     calendarDaySelect: import('vue').Ref<{
@@ -28,7 +26,6 @@ export default function useRenderCalendar(): {
             start_date: string;
             end_date?: string | null | undefined;
             description: string;
-            autor?: string | undefined;
             color?: string | undefined;
         }[];
         text: string;
@@ -41,7 +38,6 @@ export default function useRenderCalendar(): {
             start_date: string;
             end_date?: string | null | undefined;
             description: string;
-            autor?: string | undefined;
             color?: string | undefined;
         }[];
         text: string;
@@ -56,7 +52,6 @@ export default function useRenderCalendar(): {
             start_date: string;
             end_date?: string | null | undefined;
             description: string;
-            autor?: string | undefined;
             color?: string | undefined;
         }[];
         text: string;
@@ -69,7 +64,6 @@ export default function useRenderCalendar(): {
             start_date: string;
             end_date?: string | null | undefined;
             description: string;
-            autor?: string | undefined;
             color?: string | undefined;
         }[];
         text: string;
