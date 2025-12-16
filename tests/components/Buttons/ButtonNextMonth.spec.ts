@@ -1,10 +1,17 @@
+import { VueWrapper, mount } from '@vue/test-utils'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+
+// Mock must be before any imports that use luxon
+vi.mock('luxon', async () => {
+  const { mockDate } = await import('tests/utils/mockDate')
+  return mockDate('2025-12-12T12:00:00.000Z')()
+})
+
 import ButtonNextMonth from '@/components/Buttons/ButtonNextMonth.vue'
 import useKWeekDays from '@/composables/useKWeekDays'
 import useRenderCalendar from '@/composables/useRenderCalendar'
 import useView from '@/composables/useView'
-import { VueWrapper, mount } from '@vue/test-utils'
 import { DateTime } from 'luxon'
-import { beforeEach, describe, expect, it } from 'vitest'
 
 describe('ButtonNextMonth', () => {
   let wrapper: VueWrapper<InstanceType<typeof ButtonNextMonth>>

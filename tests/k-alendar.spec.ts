@@ -1,10 +1,17 @@
-import KCalendar from '@/components/Calendar/KCalendar.vue';
 import { mount, VueWrapper } from '@vue/test-utils';
-import MockDate from 'mockdate';
-import { beforeEach, describe, expect, it } from 'vitest';
-const fakeDate = '2024-08-22T03:59:10.000000Z';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+// Mock must be before any imports that use luxon
+vi.mock('luxon', async () => {
+  const { mockDate } = await import('tests/utils/mockDate');
+  return mockDate('2024-08-21T12:00:00.000Z')();
+});
+
+import VueKAlendar from '@/views/VueKAlendar.vue';
+import useConfig from '@/composables/useConfig';
 
 const props = {
+  lang: 'es',
   events: [
     {
       id: '9cc69d03-7215-41e2-966a-9c787b690223',
@@ -16,20 +23,17 @@ const props = {
     },
   ]
 }
-let wrapper: VueWrapper<InstanceType<typeof KCalendar>>
+let wrapper: VueWrapper<InstanceType<typeof VueKAlendar>>
 
 describe('kAlendar', () => {
 
   beforeEach(() => {
-    MockDate.set(fakeDate)
-    wrapper = mount(KCalendar, {
+    const { setLang } = useConfig();
+    setLang('es');
+    wrapper = mount(VueKAlendar, {
       props,
     });
   })
-
-  beforeEach(() => {
-    MockDate.reset();
-  });
 
   it('should render the component', () => {
     expect(wrapper.html()).toMatchSnapshot();

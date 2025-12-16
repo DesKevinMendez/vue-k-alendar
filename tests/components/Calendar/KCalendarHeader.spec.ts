@@ -1,14 +1,17 @@
-import KCalendarHeader from '@/components/Calendar/KCalendarHeader.vue';
 import { mount, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect, beforeEach } from 'vitest';
-import { DateTime } from 'luxon';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-const fakeDate = '2025-12-11T12:00:00.000Z';
-import { mockDate } from 'tests/utils/mockDate';
+// Mock must be before any imports that use luxon
+vi.mock('luxon', async () => {
+  const { mockDate } = await import('tests/utils/mockDate');
+  return mockDate('2025-12-11T12:00:00.000Z')();
+});
+
+import KCalendarHeader from '@/components/Calendar/KCalendarHeader.vue';
+import { DateTime } from 'luxon';
 import useView from '@/composables/useView';
 import useKWeekDays from '@/composables/useKWeekDays';
 import useRenderCalendar from '@/composables/useRenderCalendar';
-mockDate(fakeDate);
 
 describe('KCalendarHeader', () => {
   let wrapper: VueWrapper<InstanceType<typeof KCalendarHeader>>;

@@ -1,14 +1,14 @@
-import KWeekDays from '@/components/Calendar/KWeekDays.vue';
-
-import useConfig from '@/composables/useConfig';
 import { mount, VueWrapper } from '@vue/test-utils';
-import { beforeEach, describe, expect, it } from 'vitest';
-const fakeDate = '2025-12-11T12:00:00.000Z';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { mockDate } from 'tests/utils/mockDate';
+vi.mock('luxon', async () => {
+  const { mockDate } = await import('tests/utils/mockDate');
+  return mockDate('2025-12-11T12:00:00.000Z')();
+});
+
+import KWeekDays from '@/components/Calendar/KWeekDays.vue';
+import useConfig from '@/composables/useConfig';
 import useView from '@/composables/useView';
-
-mockDate(fakeDate);
 
 describe('KWeekDays', () => {
   let wrapper: VueWrapper<InstanceType<typeof KWeekDays>>;
