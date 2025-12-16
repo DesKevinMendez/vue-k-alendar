@@ -58,6 +58,7 @@ npm  install @deskevinmendez/vue-k-alendar
     @event="handleEvent"
     @events="handleEvents"
     @date="handleDate"
+    @day="handleDay"
   />
 </template>
 
@@ -108,6 +109,10 @@ export default {
       console.log('Date clicked:', day, events)
     }
 
+    const handleDay = (day) => {
+      console.log('Day clicked:', day)
+    }
+
     return {
       events,
       handleNextMonth,
@@ -115,7 +120,8 @@ export default {
       handleToToday,
       handleEvent,
       handleEvents,
-      handleDate
+      handleDate,
+      handleDay
     }
   }
 }
@@ -132,7 +138,7 @@ The calendar component has been created with tailwind, and support the dark mode
 | ------------------ | ------- | ------------- | ---------------------------------------------- |
 | `lang`             | String  | `'en'`        | Language for the calendar (e.g., 'en', 'es').  |
 | `events`           | Array   | `[]`          | List of events to display in the calendar.     |
-| `view`             | String  | `'calendar'`  | View of the calendar (e.g., 'calendar', 'list'). |
+| `view`             | String  | `'calendar'`  | View of the calendar (e.g., 'calendar', 'list', 'day'). |
 
 ## Events
 
@@ -142,8 +148,9 @@ The calendar component has been created with tailwind, and support the dark mode
 | `prevMonth`             | Emitted when the user navigates to the previous month.       |
 | `toToday`               | Emitted when the user navigates to the current month.        |
 | `event`          | Emitted when an event is clicked.                            |
-| `events` | Emitted when the user clicks on the plus icon in the dialog. |
+| `events` | Emitted when the user clicks on the 'more events' indicator (showing +X events) or when multiple events are clicked on mobile. |
 | `date` | Emitted when the user clicks on a date. |
+| `day` | Emitted when the user changes the day in the day view. |
 
 ## Typescript
 
