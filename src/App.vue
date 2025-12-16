@@ -60,90 +60,6 @@ onMounted(() => {
     duplicateRandomEvent(i + 1)
   }
 })
-
-const eventsForDay = ref<KEvent[]>([
-  {
-    id: '019b0aba-cc6c-736a-9503-0b1c8e7a6bf5',
-    title: 'Pizza Hut (IGG-3519)',
-    start_date: '2025-12-10T05:59:59.999Z',
-    end_date: '',
-    description:
-      'Vehículo: IGG-3519\nDestino: Pizza Hut\nCoordenadas: 13.7014537, -89.22279309999999',
-    color: '#fbbf24'
-  },
-  {
-    id: '019b0aae-b5d3-70d2-9f0e-88c579168ee7',
-    title: 'Parque central de La Palma, Chalatenango. (IGG-3519)',
-    start_date: '2025-12-11T08:30:00.999Z',
-    end_date: '',
-    description:
-      'Vehículo: IGG-3519\nDestino: Parque central de La Palma, Chalatenango.\nCoordenadas: 14.3170912, -89.1706838',
-    color: '#fbbf24'
-  },
-  {
-    id: '019afbc3-a702-7173-945e-af576a73803b',
-    title: 'MRHQ+G9 Soyapango, El Salvador (IGG-3519)',
-    start_date: '2025-12-11T11:00:00.999Z',
-    end_date: '',
-    description:
-      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-    color: '#fbbf24'
-  },
-  {
-    id: '019afbc3-a702-7173-945e-af576a73803b',
-    title: 'MRHQ+G9 Soyapango, El Salvador (IGG-3519)',
-    start_date: '2025-12-11T11:30:00.999Z',
-    end_date: '',
-    description:
-      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-    color: '#807900'
-  },
-  {
-    id: '019afbc3-a702-7173-945e-af576a73803c',
-    title: 'Soyapango, El Salvador',
-    start_date: '2025-12-11T11:45:00.999Z',
-    end_date: '2025-12-11T14:45:00.999Z',
-    description:
-      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-    color: '#175000'
-  },
-  {
-    id: '019afbc3-a702-7173-945e-af576a73803c',
-    title: 'Aereopuerto, El Salvador',
-    start_date: '2025-12-11T12:00:00.999Z',
-    end_date: '',
-    description:
-      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-    color: '#008080'
-  },
-  {
-    id: '019afbc3-a702-7173-945e-af576a73803d',
-    title: 'Parque central de La Palma, Chalatenango.',
-    start_date: '2025-12-11T20:00:00.999Z',
-    end_date: '2025-12-12T02:15:00.999Z',
-    description:
-      'Vehículo: IGG-3519\nDestino: MRHQ+G9 Soyapango, El Salvador\nCoordenadas: 13.67884722049237, -89.16160583496094',
-    color: '#008080'
-  },
-  {
-    id: '019afbc3-a702-7173-945e-af576a73803d',
-    title: 'Event all day',
-    start_date: '2025-12-11',
-    end_date: '',
-    description:
-      'All Day Event',
-    color: '#890000'
-  },
-  {
-    id: '019afbc3-a702-7173-945e-af576a73803d',
-    title: 'Event all day 2 ',
-    start_date: '2025-12-11',
-    end_date: '',
-    description:
-      'All Day Event',
-    color: '#008080'
-  },
-])
 </script>
 
 <template>
@@ -166,7 +82,7 @@ const eventsForDay = ref<KEvent[]>([
   <main class="p-4">
     <VueKAlendar
       :lang
-      :events="eventsForDay"
+      :events="events"
       @toToday="toToday"
       @event="eventClicked"
       @events="eventsReceived"
