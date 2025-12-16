@@ -38,11 +38,13 @@ import KWeekDays from './KWeekDays.vue'
 
 const { monthDays, calendarDaySelect } = useRenderCalendar()
 const { eventSelected } = useEvent()
-const emit = defineEmits(['event', 'events'])
+const emit = defineEmits(['event', 'events', 'date'])
 const dateRefs = ref<Record<string, any>>({})
 
 const selectThisDate = (calendar: MonthDays) => {
   const isMobile = window.innerWidth < 768
+
+  emit('date', {day: calendar.day, events: calendar.events})
 
   if (isMobile) {
 

@@ -37,14 +37,14 @@
 import useKWeekDays from '@/composables/useKWeekDays'
 import type { KEvent } from '@/types'
 import { DateTime } from 'luxon'
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import KWeekDays from '../Calendar/KWeekDays.vue'
 
 const props = defineProps<{
   events: KEvent[]
 }>()
 
-const emit = defineEmits(['event'])
+const emit = defineEmits(['event', 'day'])
 const { currentDay } = useKWeekDays()
 
 const events = computed(() => {
@@ -190,6 +190,10 @@ const hours = computed(() => {
     return `${(hour24 - 12).toString().padStart(2, '0')}:00 PM`
   })
 })
+
+watch(() => currentDay.value, () => {
+  emit('day', currentDay.value)
+}, { immediate: true })
 
 const eventClicked = (event: KEvent) => {
   emit('event', event)

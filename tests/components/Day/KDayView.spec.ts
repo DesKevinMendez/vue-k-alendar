@@ -17,6 +17,7 @@ vi.mock('luxon', async () => {
 });
 
 import KDayView from '@/components/Day/KDayView.vue';
+import useKWeekDays from '@/composables/useKWeekDays';
 
 let wrapper: VueWrapper<InstanceType<typeof KDayView>>;
 const events: KEvent[] = [
@@ -285,6 +286,18 @@ describe('KDayView', () => {
       await firstEvent.trigger('click');
       expect(wrapper.emitted('event')).toBeTruthy();
       expect(wrapper.emitted('event')?.[0]?.[0]).toStrictEqual(events[2]);
+    });
+
+    it('should emit the currentDay value when is changed', async () => {
+      const { setCurrentDay } = useKWeekDays();
+      wrapper = mount(KDayView, {
+        props: {
+          events,
+        },
+      });
+      setCurrentDay('2025-12-12');
+
+      expect(wrapper.emitted('day')).toBeTruthy();
     });
   });
 });

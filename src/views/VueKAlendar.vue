@@ -10,6 +10,7 @@
       v-if="currentView === 'calendar'"
       @event="eventClicked"
       @events="eventsReceived"
+      @date="dateReceived"
     />
     <KListCalendar
       v-else-if="currentView === 'list'"
@@ -20,6 +21,7 @@
       :events="eventsRecieved"
       v-if="currentView === 'day'"
       @event="eventClicked"
+      @day="dayReceived"
     />
   </section>
 </template>
@@ -43,6 +45,8 @@ const emit = defineEmits([
   'prevMonth',
   'toToday',
   'events',
+  'date',
+  'day',
 ])
 
 const props = defineProps<{
@@ -107,6 +111,14 @@ const eventClicked = (event: KEvent) => {
 
 const eventsReceived = ({ events }: { events: KEvent[] }) => {
   emit('events', events)
+}
+
+const dateReceived = ({ day, events }: { day: string, events: KEvent[] }) => {
+  emit('date', { day, events })
+}
+
+const dayReceived = (day: string) => {
+  emit('day', day)
 }
 </script>
 
