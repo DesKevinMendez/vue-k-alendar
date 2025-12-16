@@ -163,7 +163,6 @@ export type KEvent = {
   start_date: string
   end_date?: string | null
   description: string
-  autor?: string
   color?: string
 }
 ```
@@ -172,15 +171,14 @@ export type KEvent = {
 Use the import `import { type KEvent } from "@deskevinmendez/vue-k-alendar";`
 :::
 
-The emits returns a type `KEventDialogEmit`
+The emits returns a type `KEventEmit`
 
 ```ts
-export type KEventDialogEmit = {
+export type KEventEmit = {
   event: KEvent
-  closeDialog: () => void
 }
 ```
 
 ::: tip
-and you can import as `import { type KEventDialogEmit } from "@deskevinmendez/vue-k-alendar";`
+and you can import as `import { type KEventEmit } from "@deskevinmendez/vue-k-alendar";`
 :::
