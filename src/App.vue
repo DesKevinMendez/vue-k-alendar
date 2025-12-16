@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue'
 import VueKAlendar from '@/views/VueKAlendar.vue'
 import KDarkModeButton from './components/KDarkModeButton.vue'
 import KLanguageSelector from './components/KLanguageSelector.vue'
-import type { KEvent, KEventDialogEmit } from './types/Events'
+import type { KEvent, KEventEmit } from './types/Events'
 import { v4 as uuidv4 } from 'uuid'
 import type { View } from './types/Calendar'
 
@@ -25,7 +25,6 @@ const duplicateRandomEvent = (event = events.value.length + 1) => {
     end_date: '',
     description: 'Description of random event',
     color: randomColor,
-    autor: 'Kevin Méndez'
   }
 
   events.value.push({ ...randomEvent, id: uuidv4() })
@@ -43,7 +42,7 @@ const toToday = (date: string) => {
   console.log('toToday', date)
 }
 
-const eventClicked = (event: KEventDialogEmit) => {
+const eventClicked = (event: KEventEmit) => {
   console.log('event', event)
 }
 
