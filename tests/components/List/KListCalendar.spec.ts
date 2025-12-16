@@ -15,7 +15,6 @@ describe('KListCalendar', () => {
       end_date: '2025-01-02',
       description: 'Description 1',
       color: '#000000',
-      autor: 'Author 1',
     },
     {
       id: '2',
@@ -24,7 +23,6 @@ describe('KListCalendar', () => {
       end_date: '2025-01-01',
       description: 'Description 2',
       color: '#000000',
-      autor: 'Author 1',
     },
   ];
 

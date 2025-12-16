@@ -80,7 +80,6 @@ export default {
         end_date: '2024-08-17T00:35:00.000000Z',
         description: 'Description of event 1',
         color: '#a02222',
-        autor: 'Kevin Méndez'
       }
       // more events...
     ])
