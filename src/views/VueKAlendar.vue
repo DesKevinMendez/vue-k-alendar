@@ -21,6 +21,7 @@
       :events="eventsRecieved"
       v-if="currentView === 'day'"
       @event="eventClicked"
+      @day="dayReceived"
     />
   </section>
 </template>
@@ -45,6 +46,7 @@ const emit = defineEmits([
   'toToday',
   'events',
   'date',
+  'day',
 ])
 
 const props = defineProps<{
@@ -113,6 +115,10 @@ const eventsReceived = ({ events }: { events: KEvent[] }) => {
 
 const dateReceived = ({ day, events }: { day: string, events: KEvent[] }) => {
   emit('date', { day, events })
+}
+
+const dayReceived = (day: string) => {
+  emit('day', day)
 }
 </script>
 
