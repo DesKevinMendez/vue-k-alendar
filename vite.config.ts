@@ -30,12 +30,15 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["vue"],
+      // Externalize luxon to avoid conflict with Vitest's global 'vi' identifier
+      // Luxon creates internal variables like 'vi' that conflict with Vitest
+      external: ["vue", "luxon"],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           vue: "Vue",
+          luxon: "luxon",
         },
       },
     },
