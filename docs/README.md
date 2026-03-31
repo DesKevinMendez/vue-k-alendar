@@ -100,7 +100,7 @@ export default {
       console.log('Event clicked:', event)
     }
 
-    const handleEvents = ({ events }) => {
+    const handleEvents = (events) => {
       console.log('Plus event count clicked:', events)
     }
 
