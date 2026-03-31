@@ -31,6 +31,6 @@ const eventClicked = (mauseEvent: MouseEvent) => {
 
 <style scoped>
 li {
-  @apply bg-gray-700 px-2 py-1 text-white rounded-md line-clamp-1 relative z-50;
+  @apply bg-gray-700 px-2 py-1 text-white rounded-md line-clamp-1 relative overflow-hidden;
 }
 </style>
